@@ -1,1 +1,30 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link al CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link al JS. El 'defer' hace que se ejecute AL FINAL, después de haber cargado el html inicial -->
+    <script src="main.js" defer ></script>
+  </head>
+  <body>
+ <title> TEG-WEB</title>
+    <input id="Imput" placeholder="A que pais quieres atacar?" >
+    <button id="Atacar" style="border: 70px;" > Atacar</button> 
+       <button id="Reagrupar" style="border: 70px;" > Reagrupar</button> 
+          <button id="Reponer fichas" style="border: 70px;" > Reponer fichas</button> 
+             <button id="Canjear cartas" style="border: 70px;" > Canjear cartas</button> 
+    <select id="menu desplegable" class="inter-comun">
+       <option value= "Selecionar opcion" > Selecionar opcion</option>
+      <option value= "Asia" >Asia</option>
+      <option value="Europa">Europa</option>
+      <option value="America del norte">America del norte</option>
+      <option value="America del sur">America del Sur</option>
+      <option value="Africa">Africa</option>
+      <option value="Oceania">Oceania</option>
+    </select>
+    <button id="Parar de atacar" style="border: 70px;" > Parar de atacar</button>
+    <button id="Terminar turno" style="border: 70px;" >Terminar turno</button>
+  </body>
+</html>
