@@ -34,12 +34,13 @@ countdown();
 
 setInterval(countdown, 1000);
 //el timer  preguntale a ivo como lo termino
-const resultado1 = tirarDado1(); 
+const resultado1 = tirarDado(); 
 let tirar1 = document.getElementById("tirar1") 
-tirar1.addEventListener("click", tirarDado1) 
-function tirarDado1() {
+tirar1.addEventListener("click", tirarDado) 
+function tirarDado() {
   let numeroAleatorio = Math.round(Math.random() * 5) + 1;
   console.log (numeroAleatorio) 
 }
 let tirar2 = document.getElementById("tirar2") 
-tirar2.addEventListener("click", tirarDado1) 
+tirar2.addEventListener("click", tirarDado) 
+//esta es la función de tirar dados y también hice que se ejecute cuando apretamos los botones de tirar. 
