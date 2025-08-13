@@ -7,9 +7,7 @@ let menu = document.getElementById ("Menu")
 let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 // timer
-let temporizador = document.getElementById ("temporizador")
-let minutesEl = document.getElementById('minutos');
-let secondsEl = document.getElementById('segundos');
+
 
 let newYear = '1 jan 2026'; // Cambia esta fecha por tu fecha objetivo
 
