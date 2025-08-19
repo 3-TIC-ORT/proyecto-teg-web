@@ -7,31 +7,30 @@ let menu = document.getElementById ("Menu")
 let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 // timer
+let targetDate = new Date();
+targetDate.setSeconds(targetDate.getSeconds() + 120); 
 
+function updateTimer() {
+  let now = new Date();
+  let diff = targetDate - now;
 
-let newYear = '1 jan 2026'; // Cambia esta fecha por tu fecha objetivo
+  if (diff <= 0) {
+    document.getElementById("timer").textContent = "¡Tiempo terminado!";
+    clearInterval(timerInterval);
+    return;
+  }
 
-function countdown() {
-  let newYearDate = new Date(newYear);
-  let currentDate = new Date();
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  let totalSeconds = (newYearDate - currentDate) / 1000;
-
-  let minutes = Math.floor(totalSeconds / 60) % 60;
-  let seconds = Math.floor(totalSeconds) % 60;
-
-
-  minutesEl.innerHTML = formatTime(minutes);
-  secondsEl.innerHTML = formatTime(seconds);
+  document.getElementById("timer").textContent =
+    String(minutes).padStart(2, '0') + ":" +
+    String(seconds).padStart(2, '0');
 }
 
-function formatTime(time) {
-  return time < 10 ? (`0${time}`) : time;
-}
-countdown();
-
-setInterval(countdown, 1000);
-//el timer  preguntale a ivo como lo termino
+const timerInterval = setInterval(updateTimer, 1000);
+//termine el putisimo timer
 const resultado1 = tirarDado(); 
 let tirar1 = document.getElementById("tirar1") 
 tirar1.addEventListener("click", tirarDado) 
