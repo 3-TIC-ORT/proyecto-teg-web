@@ -1,6 +1,6 @@
-let siguiente = document.getElementsByClassName("siguiente")
-let revelar = document.getElementsByClassName("revelar")
-let objetivorevelado = document.getElementsByClassName("objetivo")
+let siguiente = document.getElementByClass("siguiente")
+let revelar = document.getElementByClass("revelar")
+let objetivorevelado = document.getElementByClass("objetivo")
 
 function texto1 (){
   objetivorevelado.textContent = "Objetivo revelado."
