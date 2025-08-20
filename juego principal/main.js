@@ -15,11 +15,11 @@ function updateTimer() {
   let diff = targetDate - now;
 
   if (diff <= 0) {
-    document.getElementByclass("timer").textContent = "¡Tiempo terminado!";
+    document.getElementById("timer").textContent = "¡Tiempo terminado!";
     clearInterval(timerInterval);
     return;
   }
-
+}
   let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -27,9 +27,7 @@ function updateTimer() {
   document.getElementById("timer").textContent =
     String(minutes).padStart(2, '0') + ":" +
     String(seconds).padStart(2, '0');
-}
-
-const timerInterval = setInterval(updateTimer, 1000);
+    const timerInterval = setInterval(updateTimer, 1000);
 //termine el putisimo timer
 const resultado1 = tirarDado(); 
 let tirar1 = document.getElementByclass("tirar1") 
