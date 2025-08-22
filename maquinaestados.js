@@ -47,6 +47,9 @@ const machine = {
   // Ejemplo de uso:
   console.log(`Estado inicial: ${machine.state}`); // Salida: Estado inicial: OFF
   
+  let boton = document.getElementById("apretar")
+  boton.addEventListener("click", dispatch(press))
+  
   machine.dispatch('press'); // Salida: Botón presionado. Cambiando a estado ON.
   console.log(`Estado actual: ${machine.state}`); // Salida: Estado actual: ON
   
@@ -55,3 +58,52 @@ const machine = {
   
   machine.dispatch('press'); // Salida: Botón presionado. Cambiando a estado OFF.
   console.log(`Estado actual: ${machine.state}`); // Salida: Estado actual: OFF
+
+  
+  
+  
+  
+  class LightbulbMachine {
+    constructor() {
+      this.state = 'OFF';
+    }
+  
+    transition(event) {
+      switch (this.state) {
+        case 'OFF':
+          if (event === 'press') {
+            console.log('Cambio de OFF a ON');
+            this.state = 'ON';
+          }
+          break;
+        case 'ON':
+          if (event === 'press') {
+            console.log('Cambio de ON a BLINK');
+            this.state = 'BLINK';
+          }
+          break;
+        case 'BLINK':
+          if (event === 'press') {
+            console.log('Cambio de BLINK a OFF');
+            this.state = 'OFF';
+          }
+          break;
+        default:
+          console.log(`No se puede manejar el evento "${event}" en el estado "${this.state}".`);
+      }
+      return this.state;
+    }
+  }
+  
+  // Ejemplo de uso:
+  const lightbulb = new LightbulbMachine();
+  console.log(`Estado inicial: ${lightbulb.state}`); // Salida: Estado inicial: OFF
+  
+  lightbulb.transition('press');
+  console.log(`Estado actual: ${lightbulb.state}`); // Salida: Estado actual: ON
+  
+  lightbulb.transition('press');
+  console.log(`Estado actual: ${lightbulb.state}`); // Salida: Estado actual: BLINK
+  
+  lightbulb.transition('press');
+  console.log(`Estado actual: ${lightbulb.state}`); // Salida: Estado actual: OFF
