@@ -1,5 +1,12 @@
-  let cantidadFases = 0
-  
+  let cantidadJugadores = prompt("cuantos jugadores?")
+  if (cantidadJugadores < 3) {
+    cantidadJugadores = 3
+  }
+  if (cantidadJugadores > 6) {
+    cantidadJugadores = 6
+  }
+  let cantidadFases = 0 
+
   class fasesMachine {
     constructor() {
       this.state = 'fase de ataque';
@@ -32,15 +39,31 @@
     }
   }
   
-  // Ejemplo de uso:
+
+  for ( cantidadFases = 0 ; cantidadFases < cantidadJugadores ; cantidadFases++) {
+    cantidadFases = cantidadFases + 1
   const fases = new fasesMachine();
-  console.log(`Estado inicial: ${fases.state}`); // Salida: Estado inicial: fase de ataque
+  const fasesTurno = cantidadJugadores * 2
+  const fasesJugadas = 0
+  while (fasesJugadas <= fasesTurno) {
+  console.log(`Estado inicial: ${fases.state}`); 
   
   fases.transition('press');
-  console.log(`Estado actual: ${fases.state}`); // Salida: Estado actual: fase de reagrupación
+  console.log(`Estado actual: ${fases.state}`); 
   
+  fasesJugadas = fasesJugadas + 1
+ 
   fases.transition('press');
-  console.log(`Estado actual: ${fases.state}`); // Salida: Estado actual: fase de reposición
-  
-  fases.transition('press');
-  console.log(`Estado actual: ${fases.state}`); // Salida: Estado actual: fase de ataque
+  console.log(`Estado actual: ${fases.state}`); 
+
+  fasesJugadas = fasesJugadas + 1
+  }
+
+  if (cantidadFases <= cantidadJugadores) {
+    cantidadFases = 0
+    const reposicionesHechas = 0
+  while (reposicionesHechas <= cantidadJugadores)
+    fases.transition('press');
+    console.log(`Estado actual: ${fases.state}`); 
+  }
+}
