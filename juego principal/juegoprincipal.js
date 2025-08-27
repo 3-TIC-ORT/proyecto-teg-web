@@ -54,7 +54,7 @@ if (tirar1 < tirar2 && atacar === paisselecionado){
   console.log ("perdiste")
 }
 }
-// LA MAQUINAAAA
+// LA MAQUINAAAA (todavía no anda jajajajaja)
 let cantidadJugadores = prompt("cuantos jugadores?")
   if (cantidadJugadores < 3) {
     cantidadJugadores = 3
