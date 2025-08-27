@@ -1,0 +1,81 @@
+:root {
+    --coloramericadelsur: #C9CF9A ;
+    --coloramericanorte: #EEBD88 ;
+    --coloreuropa: #F2DCE8;
+    --colorafrica: #FBBF7E ;
+    --colorasia: #CCCEAD ;
+    --coloroceania: #C2E0D4 ;
+}
+   .inknut-antiqua-light {
+        font-family: "Inknut Antiqua", serif;
+        font-weight: 300;
+        font-style: normal;
+      }
+      
+      .inknut-antiqua-regular {
+        font-family: "Inknut Antiqua", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      
+      .inknut-antiqua-bold {
+        font-family: "Inknut Antiqua", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+      
+      .inknut-antiqua-extrabold {
+        font-family: "Inknut Antiqua", serif;
+        font-weight: 800;
+        font-style: normal;
+      }
+      ;
+
+.americadelsur {
+ background-color: var(--coloramericadelsur); 
+}
+body {
+background-color: #EFEDE0;
+}
+.Americadelnorte {
+background-color: var(--coloramericanorte);
+}
+.Africa {
+    background-color: var(--colorafrica); 
+}
+.Europa {
+    background-color: var(--coloreuropa);
+}
+.Asia {
+    background-color: var(--colorasia);
+}
+.Oceania {
+    background-color: var(--coloroceania);
+}
+.atacar{
+
+}
+.Reagrupar{
+
+}
+.Reponer{
+
+}
+.Canjear{
+
+}
+.Menu{
+
+}
+.Parar{
+
+}
+.Terminar{
+
+}
+.Tirar1{
+
+}
+.Tirar2{
+    
+}
