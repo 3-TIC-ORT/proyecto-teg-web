@@ -17,7 +17,7 @@
         case 'fase de ataque':
           if (event === 'press') {
             console.log('Cambio de fase de ataque a fase de reagrupacion');
-            this.state = 'ON';
+            this.state = 'fase de ataque';
           }
           break;
         case 'fase de reagrupacion':
@@ -43,9 +43,9 @@
   for ( cantidadFases = 0 ; cantidadFases < cantidadJugadores ; cantidadFases++) {
     cantidadFases = cantidadFases + 1
   const fases = new fasesMachine();
-  const fasesTurno = cantidadJugadores * 2
+  const fasesTurnos = cantidadJugadores * 2
   const fasesJugadas = 0
-  while (fasesJugadas <= fasesTurno) {
+  while (fasesJugadas < fasesTurnos) {
   console.log(`Estado inicial: ${fases.state}`); 
   
   fases.transition('press');
@@ -62,8 +62,9 @@
   if (cantidadFases <= cantidadJugadores) {
     cantidadFases = 0
     const reposicionesHechas = 0
-  while (reposicionesHechas <= cantidadJugadores)
+  while (reposicionesHechas < cantidadJugadores)
     fases.transition('press');
     console.log(`Estado actual: ${fases.state}`); 
+    reposicionesHechas = reposicionesHechas + 1
   }
 }
