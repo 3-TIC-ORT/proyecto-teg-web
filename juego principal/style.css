@@ -30,13 +30,14 @@
         font-style: normal;
       }
       ;
+      body {
+        background-color: #EFEDE0;
+        }
 
 .americadelsur {
  background-color: var(--coloramericadelsur); 
 }
-body {
-background-color: #EFEDE0;
-}
+
 .Americadelnorte {
 background-color: var(--coloramericanorte);
 }

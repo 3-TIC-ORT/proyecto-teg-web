@@ -6,10 +6,7 @@ let menu = document.getElementById ("Menu")
 let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
-let colorjugador = document.getElementById("colorjugador")
-let cantidadfichas = document.getElementById("fichas")
-let atacado= document.getElementById("paisatacado")
-let atacador = document.getElementById ("paisatacante")
+let jugador1 = document.getElementById ("")
 // timer
 const targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
@@ -43,85 +40,33 @@ function tirarDado() {
 let tirar2 = document.getElementById("tirar2") 
 tirar2.addEventListener("click", tirarDado) 
 //esta es la función de tirar dados y también hice que se ejecute cuando apretamos los botones de tirar. 
-//maquina de estados (ataque)
-const updateOrderStatus = (event) => {
-if (tirar1 > tirar2 && atacar === paisselecionado){
-  div.style.color (paisselecionado) = colorjugador
-  console.log("ganaste")
-}
-if (tirar1 < tirar2 && atacar === paisselecionado){
-  paisselecionado = paisselecionado - fichas(paisatacado)
-  console.log ("perdiste")
-}
-}
-// LA MAQUINAAAA (todavía no anda jajajajaja)
-let cantidadJugadores = prompt("cuantos jugadores?")
-  if (cantidadJugadores < 3) {
-    cantidadJugadores = 3
-  }
-  if (cantidadJugadores > 6) {
-    cantidadJugadores = 6
-  }
-  let cantidadFases = 0 
 
-  class fasesMachine {
-    constructor() {
-      this.state = 'fase de ataque';
-    }
-  
-    transition(event) {
-      switch (this.state) {
-        case 'fase de ataque':
-          if (event === 'press') {
-            console.log('Cambio de fase de ataque a fase de reagrupacion');
-            this.state = 'fase de ataque';
-          }
-          break;
-        case 'fase de reagrupacion':
-          if (event === 'press') {
-            console.log('Cambio de fase de reagrupacion a fase de reposición');
-            this.state = 'fase de reposición';
-          }
-          break;
-        case 'fase de reposición':
-          if (event === 'press') {
-            console.log('Cambio de fase de reposición a fase de ataque');
-            this.state = 'fase de ataque';
-          }
-          break;
-        default:
-          console.log(`No se puede manejar el evento "${event}" en el estado "${this.state}".`);
-      }
-      return this.state;
-    }
+//objetivos secretos
+let objetivos =document.getElementById ("objetivos")
+let botoncolor = document.getElementById ("botoncolor")
+let colores = []
+function objetos (){
+  if (jugador1 === "rojo"){
+    colores.push = ("rojo".value)
   }
-  
-
-  for ( cantidadFases = 0 ; cantidadFases < cantidadJugadores ; cantidadFases++) {
-    cantidadFases = cantidadFases + 1
-  const fases = new fasesMachine();
-  const fasesTurnos = cantidadJugadores * 2
-  const fasesJugadas = 0
-  while (fasesJugadas < fasesTurnos) {
-  console.log(`Estado inicial: ${fases.state}`); 
-  
-  fases.transition('press');
-  console.log(`Estado actual: ${fases.state}`); 
-  
-  fasesJugadas = fasesJugadas + 1
- 
-  fases.transition('press');
-  console.log(`Estado actual: ${fases.state}`); 
-
-  fasesJugadas = fasesJugadas + 1
+  if (jugador1 ===  "azul"){
+    jugador1 = ("azul".value)
   }
-
-  if (cantidadFases <= cantidadJugadores) {
-    cantidadFases = 0
-    const reposicionesHechas = 0
-  while (reposicionesHechas < cantidadJugadores)
-    fases.transition('press');
-    console.log(`Estado actual: ${fases.state}`); 
-    reposicionesHechas = reposicionesHechas + 1
+  if (jugador1 === "amarillo"){
+    jugador1=("amarillo".value)
   }
+  if (jugador1 === "rosa"){
+    jugador1 =  ("rosa".value)
+  }
+  if (jugador1 === "verde"){
+    jugador1 === "verde"
+  }
+  if (jugador1==="negro"){
+    jugador1 ="negro"
+  }
+  jugador1.textContent = jugador1;
+  return
 }
+botoncolor.addEventListener("click", objetos)
+//intento de la eleccion de color
+//intento2 de la eleccion de color
