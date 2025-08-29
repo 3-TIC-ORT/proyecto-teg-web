@@ -10,8 +10,8 @@
       // Paso 1: Obtener el elemento HTML para mostrar el estado y el botón
         const faseActual = document.getElementById('faseActual');
         const botonCambioFase = document.getElementById('botonCambioFase');
-
-        // Paso 2: Definir la máquina de estados
+      
+      // Paso 2: Definir la máquina de estados
         const maquinaFasesTurnos = {
             // Estado inicial
             state: 'fase de ataque',
@@ -87,12 +87,13 @@
   }
   
 
-  for ( cantidadFases = 0 ; cantidadFases < cantidadJugadores ; cantidadFases++) {
+  for ( cantidadFases = 0 ; cantidadFases <= cantidadJugadores ; cantidadFases++) {
     cantidadFases = cantidadFases + 1
   const fases = new fasesMachine();
   const fasesTurnos = cantidadJugadores * 2
   const fasesJugadas = 0
-  while (fasesJugadas < fasesTurnos) {
+  for (fasesJugadas = 0 ; fasesJugadas <= fasesTurnos ; fasesJugadas++) {
+  
   console.log(`Estado inicial: ${fases.state}`); 
   
   fases.transition('press');
@@ -109,7 +110,7 @@
   if (cantidadFases <= cantidadJugadores) {
     cantidadFases = 0
     const reposicionesHechas = 0
-  while (reposicionesHechas < cantidadJugadores)
+  while (reposicionesHechas <= cantidadJugadores)
     fases.transition('press');
     console.log(`Estado actual: ${fases.state}`); 
     reposicionesHechas = reposicionesHechas + 1
