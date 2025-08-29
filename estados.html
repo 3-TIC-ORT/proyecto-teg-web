@@ -3,82 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Máquina de Estados de una Bombilla</title>
-    <style>
-        button {
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>prueba maquina de estados finitos</title>
 </head>
 <body>
 
     <div class="container">
-        <h1>Control de la Bombilla</h1>
+        <h1>Fases de los Turnos (prueba de maquina de estados finitos)</h1>
         <p>Estado actual:</p>
-        <span id="estado-actual">APAGADO</span>
+        <span id="faseActual">fase de ataque</span>
         <br><br>
-        <button id="boton-accion">Presionar Botón</button>
+        <button id="botonCambioFase">Presionar Botón</button>
     </div>
-
-    <script>
-        // Paso 1: Obtener el elemento HTML para mostrar el estado y el botón
-        const estadoElemento = document.getElementById('estado-actual');
-        const botonAccion = document.getElementById('boton-accion');
-
-        // Paso 2: Definir la máquina de estados
-        const maquinaDeLuz = {
-            // Estado inicial
-            state: 'apagado',
-
-            // Definición de los estados y sus transiciones
-            states: {
-                apagado: {
-                    presionar: 'encendido',
-                },
-                encendido: {
-                    presionar: 'parpadeando',
-                },
-                parpadeando: {
-                    presionar: 'apagado',
-                },
-            },
-
-            // Método para manejar eventos (acciones)
-            transition(evento) {
-                const estadoActual = this.state;
-                const proximoEstado = this.states[estadoActual][evento];
-
-                if (proximoEstado) {
-                    this.state = proximoEstado;
-                    console.log(`Transición: de "${estadoActual}" a "${proximoEstado}" con el evento "${evento}".`);
-                    // Actualizar el texto en la página
-                    estadoElemento.textContent = this.state;
-                } else {
-                    console.log(`Error: El evento "${evento}" no es válido en el estado "${estadoActual}".`);
-                }
-            },
-        };
-
-        // Paso 3: Asignar un "oyente" de clic al botón
-        botonAccion.addEventListener('click', () => {
-            // Cuando se haga clic, llama al método transition con el evento 'presionar'
-            maquinaDeLuz.transition('presionar');
-        });
-
-        // Opcional: Establecer el estado inicial en la página al cargar
-        estadoElemento.textContent = maquinaDeLuz.state;
-
-    </script>
-
+    
 </body>
 </html>
