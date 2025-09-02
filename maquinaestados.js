@@ -8,8 +8,8 @@
   let cantidadFases = 0 
       
       // Paso 1: Obtener el elemento HTML para mostrar el estado y el botón
-        const faseActual = document.getElementById('faseActual');
-        const botonCambioFase = document.getElementById('botonCambioFase');
+        const faseActual = document.getElementById('atacar');
+        const botonCambioFase = document.getElementsByClassName('botonCambioFase');
       
       // Paso 2: Definir la máquina de estados
         const maquinaFasesTurnos = {
