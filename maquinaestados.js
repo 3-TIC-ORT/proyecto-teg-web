@@ -1,7 +1,7 @@
 let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('atacar');
-const botonCambioFase = document.getElementsById('botonCambioFase');
+const botonCambioFase = document.getElementById('botonCambioFase');
 
 class fasesMachine {
 constructor() {
