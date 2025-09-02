@@ -1,43 +1,38 @@
-  let cantidadJugadores = prompt("¿Cuántos jugadores?");
-  cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
+ let cantidadJugadores = prompt("¿Cuántos jugadores?");
+ cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
 
-  // Paso 1: Obtener los elementos HTML
-  const faseActual = document.getElementById('faseActual');
-  const infoTurnos = document.getElementById('infoTurnos');
-  const botonCambioFase = document.getElementById('botonCambioFase');
+ const faseActual = document.getElementById('faseActual');
+ const infoTurnos = document.getElementById('infoTurnos');
+ const botonCambioFase = document.getElementById('botonCambioFase');
 
-  // Variables para controlar el flujo del juego
-  let jugadorActual = 1;
-  let faseJuego = 'ataque y reagrupacion'; 
+ // Variables para controlar el flujo del juego
+ let jugadorActual = 1;
+ let faseDelJuego = 'ataque y reagrupacion'; // 'ataque y reagrupacion' o 'reposicion'
 
-  // Función para actualizar la interfaz del juego
-  function actualizarInterfaz() {
-      faseActual.textContent = `fase de ${faseJuego}`;
-      infoTurnos.textContent = `Jugador ${jugadorActual}`;
+ // Función para actualizar la interfaz del juego
+ function actualizarInterfaz() {
+     if (jugadorActual > cantidadJugadores) {
+         if (faseDelJuego === 'ataque y reagrupacion') {
+             faseDelJuego = 'reposicion';
+             jugadorActual = 1; // Reinicia para la fase de reposición
+             console.log("Todos los jugadores han atacado y reagrupado. Comienza la fase de reposición.");
+         } else { // Si ya estaban en reposición, reinicia el ciclo completo
+             faseDelJuego = 'ataque y reagrupacion';
+             jugadorActual = 1; // Reinicia para la próxima ronda de ataque y reagrupación
+             console.log("Todos los jugadores han repuesto. Un nuevo turno ha comenzado.");
+         }
+     }
 
-      // Si todos los jugadores terminaron su fase de ataque/reagrupación,
-      // pasamos a la fase de reposición
-      if (jugadorActual > cantidadJugadores && faseJuego === 'ataque y reagrupacion') {
-          faseJuego = 'reposicion';
-          jugadorActual = 1;
-          // Actualizamos la interfaz una vez más para reflejar el cambio de fase
-          faseActual.textContent = `fase de ${faseJuego}`;
-      } 
-      // Si todos los jugadores terminaron su fase de reposición, el juego termina
-      else if (jugadorActual > cantidadJugadores && faseJuego === 'reposicion') {
-          botonCambioFase.disabled = true;
-          botonCambioFase.textContent = "¡Turno Finalizado!";
-          faseActual.textContent = "Finalizado";
-          infoTurnos.textContent = "Todos los jugadores han completado su turno.";
-      }
-  }
+     // Actualizar el texto en la página
+     faseActual.textContent = `fase de ${faseDelJuego}`;
+     infoTurnos.textContent = `Jugador ${jugadorActual}`;
+ }
 
-  // Paso 2: Asignar el listener de clic al botón
-  botonCambioFase.addEventListener('click', () => {
-      // Avanzar al siguiente jugador
-      jugadorActual++;
-      actualizarInterfaz();
-  });
+ // Paso 2: Asignar el listener de clic al botón
+ botonCambioFase.addEventListener('click', () => {
+     jugadorActual++;
+     actualizarInterfaz();
+ });
 
-  // (Opcional) Actualizar la interfaz al cargar la página
-  actualizarInterfaz();
+ // (Opcional) Actualizar la interfaz al cargar la página
+ actualizarInterfaz();
