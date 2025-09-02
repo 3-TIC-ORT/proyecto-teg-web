@@ -41,9 +41,10 @@ let tirar2 = document.getElementById("tirar2")
 tirar2.addEventListener("click", tirarDado) 
 //esta es la función de tirar dados y también hice que se ejecute cuando apretamos los botones de tirar. 
 
-//objetivos secretos
+//colores 
 let objetivos =document.getElementById ("objetivos")
 let botoncolor = document.getElementById ("botoncolor")
+let colorines =document.getElementById ("color de jugadores")
 let colores = []
 function objetos (){
   colores.push (objetivos.value)
@@ -59,10 +60,14 @@ function final (){
 
 }
 }
-convocados.addEventListener ("click",final)
+colorines.addEventListener ("click",final)
 
 //intento de la eleccion de color
 //paso de maquina de estado
+
+  // Paso 1: Obtener el elemento HTML para mostrar el estado y el botón
+        const faseActual = document.getElementById('atacar');
+        const botonCambioFase = document.getElementsByClassName('botonCambioFase');
 const maquinaFasesTurnos = {
   // Estado inicial
   state: 'fase de ataque',
