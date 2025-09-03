@@ -1,7 +1,9 @@
 let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('atacar');
-const botonCambioFase = document.getElementById('botonCambioFase');
+const botonPararAtacar = document.getElementById('botonPararAtacar');
+botonPararAtacar.addEventListener("click")
+const botonTerminarTurno = document.getElementById("terminarTurno")
 
 class fasesMachine {
 constructor() {
@@ -42,7 +44,7 @@ const fases = new fasesMachine();
 const fasesTurnos = cantidadJugadores * 2
 const fasesJugadas = 0
 
-for (fasesJugadas = 0 ; fasesJugadas <= fasesTurnos ; fasesJugadas++) {
+if (botonPararAtacar.click) {
 
 console.log(`Estado inicial: ${fases.state}`); 
 
