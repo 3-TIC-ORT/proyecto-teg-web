@@ -9,7 +9,7 @@ let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
 const targetDate = new Date();
-targetDate.setSeconds(targetDate.getSeconds() + 120); 
+targetDate.setSeconds(targetDate.getSeconds() + 180); 
 
 function updateTimer() {
   const now = new Date();
@@ -29,7 +29,7 @@ function updateTimer() {
 
 }
 const timerInterval = setInterval(updateTimer, 1000);
-//termine el putisimo timer
+//termine el  timer
 const resultado1 = tirarDado(); 
 let tirar1 = document.getElementById("tirar1") 
 tirar1.addEventListener("click", tirarDado) 
