@@ -56,29 +56,28 @@ class fasesMachine {
         }
     }
 
+const maquinaDeFases = new fasesMachine(cantidadJugadores);
+
+function actualizarFase() {
+    faseActual.textContent = `Fase actual: ${maquinaDeFases.state}`;
+}
+
 function pararAtaque() {
-
+    if (maquinaDeFases.state === 'fase de ataque') {
+        maquinaDeFases.transition('parar de atacar');
+        actualizarFase();
+    } else {
+        console.log("Este botón no tiene efecto en la fase actual.");
+    }
 }
-pararAtaque.addEventListener ("click")
+botonPararAtacar.addEventListener('click', pararAtaque);
+
 function terminarTurno() {
-
+    if (maquinaDeFases.state === 'fase de reagrupación' || maquinaDeFases.state === 'fase de reposición') {
+        maquinaDeFases.transition('terminar turno');
+        actualizarFase();
+    } else {
+        console.log("Este botón no tiene efecto en la fase actual.");
+    }
 }
-terminarTurno.addddEventListener ("click")
-for (cantidadFases = 0; cantidadFases <= cantidadJugadores; cantidadFases++) {
-    cantidadFases = cantidadFases + 1
-    const fases = new fasesMachine();
-
-    if (botonPararAtacar.click) {
-        fases.transition('click');
-        console.log(`fase actual: ${fases.state}`);
-    }
-
-    if (cantidadFases <= cantidadJugadores) {
-        cantidadFases = 0
-        const reposicionesHechas = 0
-        while (reposicionesHechas <= cantidadJugadores)
-            fases.transition('click');
-        console.log(`Estado actual: ${fases.state}`);
-        reposicionesHechas = reposicionesHechas + 1
-    }
-} 
+botonTerminarTurno.addEventListener('click', terminarTurno);
