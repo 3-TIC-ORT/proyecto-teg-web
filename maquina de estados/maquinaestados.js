@@ -59,11 +59,11 @@ class fasesMachine {
 function pararAtaque() {
 
 }
-
+pararAtaque.addEventListener ("click")
 function terminarTurno() {
 
 }
-
+terminarTurno.addddEventListener ("click")
 for (cantidadFases = 0; cantidadFases <= cantidadJugadores; cantidadFases++) {
     cantidadFases = cantidadFases + 1
     const fases = new fasesMachine();
@@ -82,4 +82,3 @@ for (cantidadFases = 0; cantidadFases <= cantidadJugadores; cantidadFases++) {
         reposicionesHechas = reposicionesHechas + 1
     }
 } 
-
