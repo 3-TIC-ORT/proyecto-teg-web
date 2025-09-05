@@ -6,7 +6,7 @@ const botonTerminarTurno = document.getElementById("terminarTurno")
 
 class fasesMachine {
         constructor() {
-            this.state = 'fase de reposición';
+            this.state = 'fase de ataque';
             this.cambioDeFaseTurnos = 0;
             this.reposicionesHechas = 0;
         }
