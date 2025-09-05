@@ -35,7 +35,7 @@ let tirar1 = document.getElementById("tirar1")
 tirar1.addEventListener("click", tirarDado) 
 function tirarDado() {
   let numeroAleatorio = Math.round((Math.random() * 5) + 1)*3;
-  console.log (numeroAleatorio) 
+  alert (numeroAleatorio) 
 }
 let tirar2 = document.getElementById("tirar2") 
 tirar2.addEventListener("click", tirarDado) 
@@ -45,10 +45,8 @@ let cantidadjugadores = document.getElementById ("cantidadjugadores")
 let botoncantidadjugadores = document.getElementById ("botoncantdadjugadores")
 let numerodejugadores =document.getElementById ("numerodejugadores")
 let numero   =[]
-if (cantidadjugadores > 6 || cantidadjugadores < 3){
-  alert ("no llegas a la cantidad de jugadores")
-}
-function canti (){
+cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
+function nombre (){
   numero.push (numerodejugadores.value)
   console.log (numero)
 }
@@ -71,7 +69,7 @@ function final (){
   if (jugador === players[i]){
       let pizzeria=document.createElement ("botoncolor")
       pizzeria.textContent= players
-      objetivos.appendChild (li)}
+      objetivos.appendChild (p)}
   i++
 
 }
@@ -79,3 +77,4 @@ function final (){
 colorines.addEventListener ("click",final)
 
 //intento de la eleccion de color
+//intento color2

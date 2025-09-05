@@ -1,15 +1,17 @@
 let siguiente = document.getElementById("siguiente")
 let revelar = document.getElementById("revelar")
 let objetivorevelado = document.getElementById("objetivo")
+let objetivo1 =document.getElementById("objeto1")
+let objetivo2 =document.getElementById("objeto2")
 
 function texto1 (){
   objetivorevelado.textContent = "Objetivo revelado."
   siguiente.disabled = false
 }
-revelar.addEventListener ("click", texto1) 
+siguiente.addEventListener ("click", texto1) 
 
 function texto2 (){
     objetivorevelado.textContent = "Todos los jugadores salvo el jugador colorjugador."
     siguiente.disabled = true
   }
-  siguiente.addEventListener ("click", texto2) 
+revelar.addEventListener ("click", texto2) 
