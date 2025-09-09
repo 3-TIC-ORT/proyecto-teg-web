@@ -16,30 +16,32 @@ class fasesMachine {
             switch (this.state) {
                 case 'fase de ataque':
                     if (event === 'click') {
-                        console.log('Cambio de fase de ataque a fase de reagrupacion');
+                        console.log('Cambio de fase de ataque a fase de reagrupación');
                         this.state = 'fase de reagrupación';
                     }
                     break;
-                case 'fase de reagrupacion':
+                case 'fase de reagrupación':
                     if (event === 'click' && this.cambioDeFaseTurnos < cantidadJugadores * 2) {
                         console.log('Cambio de fase de reagrupacion a fase de ataque');
                         this.state = 'fase de ataque';
+                        this.cambioDeFaseTurnos++
                     }
-                    else if (event === 'click' && this.cambioDeFaseTurnos === cantidadJugadores * 2) {
-                        console.log('Cambio de fase de reagrupacion a fase de reposición');
+                    else if (event === 'click' && this.cambioDeFaseTurnos >= cantidadJugadores * 2) {
+                        console.log('Cambio de fase de reagrupación a fase de reposición');
                         this.state = 'fase de reposición';
-                        cambioDeFaseTurnos = 0;
+                        this.cambioDeFaseTurnos = 0;
                     }
                     break;
                 case 'fase de reposición':
                     if (event === 'click' && this.reposicionesHechas < cantidadJugadores) {
                         console.log('Repone el siguiente jugador');
                         this.state = 'fase de reposición';
+                        this.reposicionesHechas++
                     }
-                   else  if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
+                    else  if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
                         console.log('Cambio de fase de reposición a fase de ataque');
                         this.state = 'fase de ataque';
-                        reposicionesHechas = 0;
+                        this.reposicionesHechas = 0;
                     }
                     break;
                 default:
@@ -64,7 +66,7 @@ function actualizarFase() {
 
 function pararAtaque() {
     if (maquinaDeFases.state === 'fase de ataque') {
-        maquinaDeFases.transition('parar de atacar');
+        maquinaDeFases.transition('click');
         actualizarFase();
     } else {
         console.log("Este botón no tiene efecto en la fase actual.");
@@ -74,7 +76,7 @@ botonPararAtacar.addEventListener('click', pararAtaque);
 
 function terminarTurno() {
     if (maquinaDeFases.state === 'fase de reagrupación' || maquinaDeFases.state === 'fase de reposición') {
-        maquinaDeFases.transition('terminar turno');
+        maquinaDeFases.transition('click');
         actualizarFase();
     } else {
         console.log("Este botón no tiene efecto en la fase actual.");
