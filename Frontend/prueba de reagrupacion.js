@@ -1,3 +1,11 @@
+//Lo que hay que hacer para mí es que cada pais INDIVIDUALMENTE sea una variable. 
+//En el juego principal, cada país va a ser un array. 
+//La función para reagrupar lo que tendría que hacer es tener 2 inputs: 
+//uno que sea el país que va a dar los ejércitos y otro que los va a recibir.
+//Lo que tendría que hacer la función es restarle la cantidad de ejércitos deseada por el jugador 
+//al país que va a dar los ejércitos y sumarle esa cantidad al país que los va a recibir.
+//Si se te complica mucho dejame esta parte a mí 
+//y vos dedicate a integrar la maquina de estados finitos al juego princial
 let numerofichas = document.getElementById ("numerofichas")
 let reagrupar = document.getElementById ("reagrupar")
 let numero = 1;
@@ -78,7 +86,7 @@ if (reagrupar===Alaska && Alaska===4){
 }
 }
 
-//copiado en chat gpt
+//copiado de chat gpt
 let seleccion = [];
 
 const countryElements = document.getElementsByClassName('.country');
