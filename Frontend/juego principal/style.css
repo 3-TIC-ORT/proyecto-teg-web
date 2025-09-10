@@ -6,33 +6,15 @@
     --colorasia: #CCCEAD ;
     --coloroceania: #C2E0D4 ;
 }
-   .inknut-antiqua-light {
-        font-family: "Inknut Antiqua", serif;
-        font-weight: 300;
-        font-style: normal;
-      }
-      
-      .inknut-antiqua-regular {
-        font-family: "Inknut Antiqua", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-      
-      .inknut-antiqua-bold {
-        font-family: "Inknut Antiqua", serif;
-        font-weight: 700;
-        font-style: normal;
-      }
-      
-      .inknut-antiqua-extrabold {
-        font-family: "Inknut Antiqua", serif;
-        font-weight: 800;
-        font-style: normal;
-      }
-      ;
-      body {
-        background-color: #EFEDE0;
-        }
+.cuadrado {
+  width: 150px; /* Ancho igual al alto para un cuadrado */
+  height: 150px; /* Alto igual al ancho */
+  background-color: blue; /* Color de fondo para hacerlo visible */
+  /* O puedes usar: border: 2px solid black; */
+}
+body {
+background-color: #EFEDE0;
+}
 
 .americadelsur {
  background-color: var(--coloramericadelsur); 
@@ -60,7 +42,12 @@ background-color: var(--coloramericanorte);
 
 }
 .Reponer{
-
+width: 174px;
+height: 76px;
+position: absolute;
+top: 295px;
+left: 14px;
+background-color: #fff;
 }
 .Canjear{
 
@@ -79,4 +66,25 @@ background-color: var(--coloramericanorte);
 }
 .Tirar2{
     
+}
+.groenlandia{
+  width: 178px;
+  height: 227px;
+  position: absolute ;
+  top: 132px;
+  right: 809px;
+}
+.japan{
+  width: 96px;
+  height: 89px;
+  position: absolute;
+  top: 221px;
+  right: 1809px;
+}
+.sumatra{
+  width: 98px;
+  height: 108px;
+  position: absolute;
+  top: 735px;
+  right: 1583px;
 }

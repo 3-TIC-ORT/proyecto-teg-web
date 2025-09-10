@@ -7,7 +7,7 @@ let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
-let cantidadJugadores = prompt("¿Cuántos jugadores?");
+//let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('faseActual');
 const botonPararAtacar = document.getElementById('botonPararAtacar');
@@ -121,7 +121,7 @@ let tirar1 = document.getElementById("tirar1")
 tirar1.addEventListener("click", tirarDado) 
 function tirarDado() {
   let numeroAleatorio = Math.round((Math.random() * 5) + 1)*3;
-  alert (numeroAleatorio) 
+  console.log (numeroAleatorio) 
 }
 let tirar2 = document.getElementById("tirar2") 
 tirar2.addEventListener("click", tirarDado) 
