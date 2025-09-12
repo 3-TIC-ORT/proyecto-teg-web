@@ -5,7 +5,6 @@ let argentina = {
   argentinaSeleccionado: false
 };
 argentina.argentinaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Argentina.");
   if (argentina.argentinaSeleccionado === false) {
     argentina.argentinaSeleccionado = true;
     console.log("Argentina ha sido seleccionada.");
@@ -21,7 +20,6 @@ let chile = {
   chileSeleccionado: false
 };
 chile.chileMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Chile.");
   if (chile.chileSeleccionado === false) {
     chile.chileSeleccionado = true;
     console.log("Chile ha sido seleccionado.");
@@ -37,7 +35,6 @@ let uruguay = {
   uruguaySeleccionado: false
 };
 uruguay.uruguayMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Uruguay.");
   if (uruguay.uruguaySeleccionado === false) {
     uruguay.uruguaySeleccionado = true;
     console.log("Uruguay ha sido seleccionado.");
@@ -53,7 +50,6 @@ let brasil = {
   brasilSeleccionado: false
 };
 brasil.brasilMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Brasil.");
   if (brasil.brasilSeleccionado === false) {
     brasil.brasilSeleccionado = true;
     console.log("Brasil ha sido seleccionado.");
@@ -69,7 +65,6 @@ let peru = {
   peruSeleccionado: false
 };
 peru.peruMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Perú.");
   if (peru.peruSeleccionado === false) {
     peru.peruSeleccionado = true;
     console.log("Perú ha sido seleccionado.");
@@ -85,7 +80,6 @@ let colombia = {
   colombiaSeleccionado: false
 };
 colombia.colombiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Colombia.");
   if (colombia.colombiaSeleccionado === false) {
     colombia.colombiaSeleccionado = true;
     console.log("Colombia ha sido seleccionada.");
@@ -102,7 +96,6 @@ let islandia = {
   islandiaSeleccionado: false
 };
 islandia.islandiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Islandia.");
   if (islandia.islandiaSeleccionado === false) {
     islandia.islandiaSeleccionado = true;
     console.log("Islandia ha sido seleccionada.");
@@ -118,7 +111,6 @@ let bretana = {
   bretanaSeleccionado: false
 };
 bretana.bretanaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Bretaña.");
   if (bretana.bretanaSeleccionado === false) {
     bretana.bretanaSeleccionado = true;
     console.log("Bretaña ha sido seleccionada.");
@@ -134,7 +126,6 @@ let espana = {
   espanaSeleccionado: false
 };
 espana.espanaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en España.");
   if (espana.espanaSeleccionado === false) {
     espana.espanaSeleccionado = true;
     console.log("España ha sido seleccionada.");
@@ -150,7 +141,6 @@ let francia = {
   franciaSeleccionado: false
 };
 francia.franciaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Francia.");
   if (francia.franciaSeleccionado === false) {
     francia.franciaSeleccionado = true;
     console.log("Francia ha sido seleccionada.");
@@ -166,7 +156,6 @@ let alemania = {
   alemaniaSeleccionado: false
 };
 alemania.alemaniaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Alemania.");
   if (alemania.alemaniaSeleccionado === false) {
     alemania.alemaniaSeleccionado = true;
     console.log("Alemania ha sido seleccionada.");
@@ -182,7 +171,6 @@ let italia = {
   italiaSeleccionado: false
 };
 italia.italiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Italia.");
   if (italia.italiaSeleccionado === false) {
     italia.italiaSeleccionado = true;
     console.log("Italia ha sido seleccionada.");
@@ -198,7 +186,6 @@ let polonia = {
   poloniaSeleccionado: false
 };
 polonia.poloniaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Polonia.");
   if (polonia.poloniaSeleccionado === false) {
     polonia.poloniaSeleccionado = true;
     console.log("Polonia ha sido seleccionada.");
@@ -214,7 +201,6 @@ let rusia = {
   rusiaSeleccionado: false
 };
 rusia.rusiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Rusia.");
   if (rusia.rusiaSeleccionado === false) {
     rusia.rusiaSeleccionado = true;
     console.log("Rusia ha sido seleccionada.");
@@ -231,7 +217,6 @@ let australia = {
   australiaSeleccionado: false
 };
 australia.australiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Australia.");
   if (australia.australiaSeleccionado === false) {
     australia.australiaSeleccionado = true;
     console.log("Australia ha sido seleccionada.");
@@ -247,7 +232,6 @@ let sumatra = {
   sumatraSeleccionado: false
 };
 sumatra.sumatraMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Sumatra.");
   if (sumatra.sumatraSeleccionado === false) {
     sumatra.sumatraSeleccionado = true;
     console.log("Sumatra ha sido seleccionada.");
@@ -263,7 +247,6 @@ let java = {
   javaSeleccionado: false
 };
 java.javaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Java.");
   if (java.javaSeleccionado === false) {
     java.javaSeleccionado = true;
     console.log("Java ha sido seleccionada.");
@@ -279,7 +262,6 @@ let borneo = {
   borneoSeleccionado: false
 };
 borneo.borneoMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Borneo.");
   if (borneo.borneoSeleccionado === false) {
     borneo.borneoSeleccionado = true;
     console.log("Borneo ha sido seleccionado.");
@@ -296,7 +278,6 @@ let sahara = {
   saharaSeleccionado: false
 };
 sahara.saharaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Sahara.");
   if (sahara.saharaSeleccionado === false) {
     sahara.saharaSeleccionado = true;
     console.log("Sahara ha sido seleccionado.");
@@ -312,7 +293,6 @@ let egipto = {
   egiptoSeleccionado: false
 };
 egipto.egiptoMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Egipto.");
   if (egipto.egiptoSeleccionado === false) {
     egipto.egiptoSeleccionado = true;
     console.log("Egipto ha sido seleccionado.");
@@ -328,7 +308,6 @@ let etiopia = {
   etiopiaSeleccionado: false
 };
 etiopia.etiopiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Etiopía.");
   if (etiopia.etiopiaSeleccionado === false) {
     etiopia.etiopiaSeleccionado = true;
     console.log("Etiopía ha sido seleccionada.");
@@ -344,7 +323,6 @@ let zaire = {
   zaireSeleccionado: false
 };
 zaire.zaireMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Zaire.");
   if (zaire.zaireSeleccionado === false) {
     zaire.zaireSeleccionado = true;
     console.log("Zaire ha sido seleccionado.");
@@ -360,7 +338,6 @@ let sudafrica = {
   sudafricaSeleccionado: false
 };
 sudafrica.sudafricaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Sudáfrica.");
   if (sudafrica.sudafricaSeleccionado === false) {
     sudafrica.sudafricaSeleccionado = true;
     console.log("Sudáfrica ha sido seleccionada.");
@@ -376,7 +353,6 @@ let madagascar = {
   madagascarSeleccionado: false
 };
 madagascar.madagascarMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Madagascar.");
   if (madagascar.madagascarSeleccionado === false) {
     madagascar.madagascarSeleccionado = true;
     console.log("Madagascar ha sido seleccionada.");
@@ -393,7 +369,6 @@ let alaska = {
   alaskaSeleccionado: false
 };
 alaska.alaskaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Alaska.");
   if (alaska.alaskaSeleccionado === false) {
     alaska.alaskaSeleccionado = true;
     console.log("Alaska ha sido seleccionada.");
@@ -409,7 +384,6 @@ let canada = {
   canadaSeleccionado: false
 };
 canada.canadaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Canadá.");
   if (canada.canadaSeleccionado === false) {
     canada.canadaSeleccionado = true;
     console.log("Canadá ha sido seleccionada.");
@@ -425,7 +399,6 @@ let groenlandia = {
   groenlandiaSeleccionado: false
 };
 groenlandia.groenlandiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Groenlandia.");
   if (groenlandia.groenlandiaSeleccionado === false) {
     groenlandia.groenlandiaSeleccionado = true;
     console.log("Groenlandia ha sido seleccionada.");
@@ -441,7 +414,6 @@ let terranova = {
   terranovaSeleccionado: false
 };
 terranova.terranovaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Terranova.");
   if (terranova.terranovaSeleccionado === false) {
     terranova.terranovaSeleccionado = true;
     console.log("Terranova ha sido seleccionada.");
@@ -457,7 +429,6 @@ let mexico = {
   mexicoSeleccionado: false
 };
 mexico.mexicoMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en México.");
   if (mexico.mexicoSeleccionado === false) {
     mexico.mexicoSeleccionado = true;
     console.log("México ha sido seleccionado.");
@@ -473,7 +444,6 @@ let california = {
   californiaSeleccionado: false
 };
 california.californiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en California.");
   if (california.californiaSeleccionado === false) {
     california.californiaSeleccionado = true;
     console.log("California ha sido seleccionada.");
@@ -489,7 +459,6 @@ let labrador = {
   labradorSeleccionado: false
 };
 labrador.labradorMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Labrador.");
   if (labrador.labradorSeleccionado === false) {
     labrador.labradorSeleccionado = true;
     console.log("Labrador ha sido seleccionado.");
@@ -505,7 +474,6 @@ let oregon = {
   oregonSeleccionado: false
 };
 oregon.oregonMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Oregón.");
   if (oregon.oregonSeleccionado === false) {
     oregon.oregonSeleccionado = true;
     console.log("Oregón ha sido seleccionado.");
@@ -521,7 +489,6 @@ let nuevaYork = {
   nuevaYorkSeleccionado: false
 };
 nuevaYork.nuevaYorkMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Nueva York.");
   if (nuevaYork.nuevaYorkSeleccionado === false) {
     nuevaYork.nuevaYorkSeleccionado = true;
     console.log("Nueva York ha sido seleccionada.");
@@ -537,7 +504,6 @@ let yukon = {
   yukonSeleccionado: false
 };
 yukon.yukonMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Yukón.");
   if (yukon.yukonSeleccionado === false) {
     yukon.yukonSeleccionado = true;
     console.log("Yukón ha sido seleccionado.");
@@ -554,7 +520,6 @@ let china = {
   chinaSeleccionado: false
 };
 china.chinaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en China.");
   if (china.chinaSeleccionado === false) {
     china.chinaSeleccionado = true;
     console.log("China ha sido seleccionada.");
@@ -570,7 +535,6 @@ let japon = {
   japonSeleccionado: false
 };
 japon.japonMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Japón.");
   if (japon.japonSeleccionado === false) {
     japon.japonSeleccionado = true;
     console.log("Japón ha sido seleccionado.");
@@ -586,7 +550,6 @@ let iran = {
   iranSeleccionado: false
 };
 iran.iranMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Irán.");
   if (iran.iranSeleccionado === false) {
     iran.iranSeleccionado = true;
     console.log("Irán ha sido seleccionado.");
@@ -602,7 +565,6 @@ let israel = {
   israelSeleccionado: false
 };
 israel.israelMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Israel.");
   if (israel.israelSeleccionado === false) {
     israel.israelSeleccionado = true;
     console.log("Israel ha sido seleccionado.");
@@ -618,7 +580,6 @@ let arabia = {
   arabiaSeleccionado: false
 };
 arabia.arabiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Arabia.");
   if (arabia.arabiaSeleccionado === false) {
     arabia.arabiaSeleccionado = true;
     console.log("Arabia ha sido seleccionada.");
@@ -634,7 +595,6 @@ let turquia = {
   turquiaSeleccionado: false
 };
 turquia.turquiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Turquía.");
   if (turquia.turquiaSeleccionado === false) {
     turquia.turquiaSeleccionado = true;
     console.log("Turquía ha sido seleccionada.");
@@ -650,7 +610,6 @@ let tartaria = {
   tartariaSeleccionado: false
 };
 tartaria.tartariaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Tartaria.");
   if (tartaria.tartariaSeleccionado === false) {
     tartaria.tartariaSeleccionado = true;
     console.log("Tartaria ha sido seleccionada.");
@@ -666,7 +625,6 @@ let kamchatka = {
   kamchatkaSeleccionado: false
 };
 kamchatka.kamchatkaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Kamchatka.");
   if (kamchatka.kamchatkaSeleccionado === false) {
     kamchatka.kamchatkaSeleccionado = true;
     console.log("Kamchatka ha sido seleccionada.");
@@ -682,7 +640,6 @@ let taimir = {
   taimirSeleccionado: false
 };
 taimir.taimirMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Taimir.");
   if (taimir.taimirSeleccionado === false) {
     taimir.taimirSeleccionado = true;
     console.log("Taimir ha sido seleccionado.");
@@ -698,7 +655,6 @@ let gobi = {
   gobiSeleccionado: false
 };
 gobi.gobiMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Gobi.");
   if (gobi.gobiSeleccionado === false) {
     gobi.gobiSeleccionado = true;
     console.log("Gobi ha sido seleccionado.");
@@ -714,7 +670,6 @@ let india = {
   indiaSeleccionado: false
 };
 india.indiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en India.");
   if (india.indiaSeleccionado === false) {
     india.indiaSeleccionado = true;
     console.log("India ha sido seleccionada.");
@@ -730,7 +685,6 @@ let malasia = {
   malasiaSeleccionado: false
 };
 malasia.malasiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Malasia.");
   if (malasia.malasiaSeleccionado === false) {
     malasia.malasiaSeleccionado = true;
     console.log("Malasia ha sido seleccionada.");
@@ -746,7 +700,6 @@ let siberia = {
   siberiaSeleccionado: false
 };
 siberia.siberiaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Siberia.");
   if (siberia.siberiaSeleccionado === false) {
     siberia.siberiaSeleccionado = true;
     console.log("Siberia ha sido seleccionada.");
@@ -762,7 +715,6 @@ let aral = {
   aralSeleccionado: false
 };
 aral.aralMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Aral.");
   if (aral.aralSeleccionado === false) {
     aral.aralSeleccionado = true;
     console.log("Aral ha sido seleccionado.");
@@ -778,7 +730,6 @@ let mongolia = {
   mongoliaSeleccionado: false
 };
 mongolia.mongoliaMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Mongolia.");
   if (mongolia.mongoliaSeleccionado === false) {
     mongolia.mongoliaSeleccionado = true;
     console.log("Mongolia ha sido seleccionada.");
