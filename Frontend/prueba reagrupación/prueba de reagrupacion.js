@@ -113,7 +113,7 @@ islandia.islandiaMapa.addEventListener('click', function() {
 });
 
 let bretana = {
-  bretanaMapa: document.getElementById("inglaterra"),
+  bretanaMapa: document.getElementById("bretana"),
   fichasBretana: 1,
   bretanaSeleccionado: false
 };
@@ -787,4 +787,3 @@ mongolia.mongoliaMapa.addEventListener('click', function() {
     console.log("Mongolia ha sido deseleccionada.");
   }
 });
-
