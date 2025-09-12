@@ -13,11 +13,11 @@
   /* O puedes usar: border: 2px solid black; */
 }
 body {
-background-color: #EFEDE0;
+background-color: #ffffff;
 }
 
 .americadelsur {
- background-color: var(--coloramericadelsur); 
+background-color: var(--coloramericadelsur);
 }
 
 .Americadelnorte {
@@ -36,11 +36,24 @@ background-color: var(--coloramericanorte);
     background-color: var(--coloroceania);
 }
 .atacar{
-
+height: 90px;
+width: 176px;
+position: absolute;
+top: 154px;
+left: 13px;
+border-radius: 5rem;
+background-color: #fff;
 }
 .Reagrupar{
-
+  border-radius: 5rem;
+  background-color: #fff;
+  position: absolute;
+  width: 174px;
+  height: 76px ;
+  top: 295px;
+  left: 14px;
 }
+
 .Reponer{
 width: 174px;
 height: 76px;
@@ -48,18 +61,37 @@ position: absolute;
 top: 295px;
 left: 14px;
 background-color: #fff;
+border-radius: 5rem;
 }
 .Canjear{
-
+  border-radius: 5rem;
+  background-color: #fff;
+  position: absolute;
+  width: 184px;
+  height: 80px ;
+  top: 290px;
+  left: 201px;
 }
 .Menu{
 
 }
 .Parar{
-
+  border-radius: 5rem;
+  background-color: #fff;
+  position: absolute;
+  width: 176px;
+  height:80px ;
+  top: 605px;
+  left: 13px;
 }
 .Terminar{
-
+  border-radius: 5rem;
+  background-color: #fff;
+  position: absolute;
+  width: 165px;
+  height:80px ;
+  top: 605px;
+  left: 206px;
 }
 .Tirar1{
 
@@ -74,17 +106,15 @@ background-color: #fff;
   top: 132px;
   right: 809px;
 }
-.japan{
+.japon{
   width: 96px;
   height: 89px;
   position: absolute;
-  top: 221px;
-  right: 1809px;
+
 }
 .sumatra{
   width: 98px;
   height: 108px;
   position: absolute;
-  top: 735px;
-  right: 1583px;
-}
+} 
+
