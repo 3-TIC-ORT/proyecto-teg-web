@@ -9,8 +9,7 @@ argentina.argentinaMapa.addEventListener('click', function() {
   if (argentina.argentinaSeleccionado === false) {
     argentina.argentinaSeleccionado = true;
     console.log("Argentina ha sido seleccionada.");
-  }
-  if (argentina.argentinaSeleccionado === true) {
+  } else {
     argentina.argentinaSeleccionado = false;
     console.log("Argentina ha sido deseleccionada.");
   }
@@ -26,8 +25,7 @@ chile.chileMapa.addEventListener('click', function() {
   if (chile.chileSeleccionado === false) {
     chile.chileSeleccionado = true;
     console.log("Chile ha sido seleccionado.");
-  }
-  if (chile.chileSeleccionado === true) {
+  } else {
     chile.chileSeleccionado = false;
     console.log("Chile ha sido deseleccionado.");
   }
@@ -43,8 +41,7 @@ uruguay.uruguayMapa.addEventListener('click', function() {
   if (uruguay.uruguaySeleccionado === false) {
     uruguay.uruguaySeleccionado = true;
     console.log("Uruguay ha sido seleccionado.");
-  }
-  if (uruguay.uruguaySeleccionado === true) {
+  } else {
     uruguay.uruguaySeleccionado = false;
     console.log("Uruguay ha sido deseleccionado.");
   }
@@ -60,8 +57,7 @@ brasil.brasilMapa.addEventListener('click', function() {
   if (brasil.brasilSeleccionado === false) {
     brasil.brasilSeleccionado = true;
     console.log("Brasil ha sido seleccionado.");
-  }
-  if (brasil.brasilSeleccionado === true) {
+  } else {
     brasil.brasilSeleccionado = false;
     console.log("Brasil ha sido deseleccionado.");
   }
@@ -77,8 +73,7 @@ peru.peruMapa.addEventListener('click', function() {
   if (peru.peruSeleccionado === false) {
     peru.peruSeleccionado = true;
     console.log("Perú ha sido seleccionado.");
-  }
-  if (peru.peruSeleccionado === true) {
+  } else {
     peru.peruSeleccionado = false;
     console.log("Perú ha sido deseleccionado.");
   }
@@ -94,8 +89,7 @@ colombia.colombiaMapa.addEventListener('click', function() {
   if (colombia.colombiaSeleccionado === false) {
     colombia.colombiaSeleccionado = true;
     console.log("Colombia ha sido seleccionada.");
-  }
-  if (colombia.colombiaSeleccionado === true) {
+  } else {
     colombia.colombiaSeleccionado = false;
     console.log("Colombia ha sido deseleccionada.");
   }
@@ -112,8 +106,7 @@ islandia.islandiaMapa.addEventListener('click', function() {
   if (islandia.islandiaSeleccionado === false) {
     islandia.islandiaSeleccionado = true;
     console.log("Islandia ha sido seleccionada.");
-  }
-  if (islandia.islandiaSeleccionado === true) {
+  } else {
     islandia.islandiaSeleccionado = false;
     console.log("Islandia ha sido deseleccionada.");
   }
@@ -129,8 +122,7 @@ bretana.bretanaMapa.addEventListener('click', function() {
   if (bretana.bretanaSeleccionado === false) {
     bretana.bretanaSeleccionado = true;
     console.log("Bretaña ha sido seleccionada.");
-  }
-  if (bretana.bretanaSeleccionado === true) {
+  } else {
     bretana.bretanaSeleccionado = false;
     console.log("Bretaña ha sido deseleccionada.");
   }
@@ -146,8 +138,7 @@ espana.espanaMapa.addEventListener('click', function() {
   if (espana.espanaSeleccionado === false) {
     espana.espanaSeleccionado = true;
     console.log("España ha sido seleccionada.");
-  }
-  if (espana.espanaSeleccionado === true) {
+  } else {
     espana.espanaSeleccionado = false;
     console.log("España ha sido deseleccionada.");
   }
@@ -163,8 +154,7 @@ francia.franciaMapa.addEventListener('click', function() {
   if (francia.franciaSeleccionado === false) {
     francia.franciaSeleccionado = true;
     console.log("Francia ha sido seleccionada.");
-  }
-  if (francia.franciaSeleccionado === true) {
+  } else {
     francia.franciaSeleccionado = false;
     console.log("Francia ha sido deseleccionada.");
   }
@@ -180,8 +170,7 @@ alemania.alemaniaMapa.addEventListener('click', function() {
   if (alemania.alemaniaSeleccionado === false) {
     alemania.alemaniaSeleccionado = true;
     console.log("Alemania ha sido seleccionada.");
-  }
-  if (alemania.alemaniaSeleccionado === true) {
+  } else {
     alemania.alemaniaSeleccionado = false;
     console.log("Alemania ha sido deseleccionada.");
   }
@@ -197,8 +186,7 @@ italia.italiaMapa.addEventListener('click', function() {
   if (italia.italiaSeleccionado === false) {
     italia.italiaSeleccionado = true;
     console.log("Italia ha sido seleccionada.");
-  }
-  if (italia.italiaSeleccionado === true) {
+  } else {
     italia.italiaSeleccionado = false;
     console.log("Italia ha sido deseleccionada.");
   }
@@ -214,8 +202,7 @@ polonia.poloniaMapa.addEventListener('click', function() {
   if (polonia.poloniaSeleccionado === false) {
     polonia.poloniaSeleccionado = true;
     console.log("Polonia ha sido seleccionada.");
-  }
-  if (polonia.poloniaSeleccionado === true) {
+  } else {
     polonia.poloniaSeleccionado = false;
     console.log("Polonia ha sido deseleccionada.");
   }
@@ -231,8 +218,7 @@ rusia.rusiaMapa.addEventListener('click', function() {
   if (rusia.rusiaSeleccionado === false) {
     rusia.rusiaSeleccionado = true;
     console.log("Rusia ha sido seleccionada.");
-  }
-  if (rusia.rusiaSeleccionado === true) {
+  } else {
     rusia.rusiaSeleccionado = false;
     console.log("Rusia ha sido deseleccionada.");
   }
@@ -249,8 +235,7 @@ australia.australiaMapa.addEventListener('click', function() {
   if (australia.australiaSeleccionado === false) {
     australia.australiaSeleccionado = true;
     console.log("Australia ha sido seleccionada.");
-  }
-  if (australia.australiaSeleccionado === true) {
+  } else {
     australia.australiaSeleccionado = false;
     console.log("Australia ha sido deseleccionada.");
   }
@@ -266,8 +251,7 @@ sumatra.sumatraMapa.addEventListener('click', function() {
   if (sumatra.sumatraSeleccionado === false) {
     sumatra.sumatraSeleccionado = true;
     console.log("Sumatra ha sido seleccionada.");
-  }
-  if (sumatra.sumatraSeleccionado === true) {
+  } else {
     sumatra.sumatraSeleccionado = false;
     console.log("Sumatra ha sido deseleccionada.");
   }
@@ -283,8 +267,7 @@ java.javaMapa.addEventListener('click', function() {
   if (java.javaSeleccionado === false) {
     java.javaSeleccionado = true;
     console.log("Java ha sido seleccionada.");
-  }
-  if (java.javaSeleccionado === true) {
+  } else {
     java.javaSeleccionado = false;
     console.log("Java ha sido deseleccionada.");
   }
@@ -300,8 +283,7 @@ borneo.borneoMapa.addEventListener('click', function() {
   if (borneo.borneoSeleccionado === false) {
     borneo.borneoSeleccionado = true;
     console.log("Borneo ha sido seleccionado.");
-  }
-  if (borneo.borneoSeleccionado === true) {
+  } else {
     borneo.borneoSeleccionado = false;
     console.log("Borneo ha sido deseleccionado.");
   }
@@ -318,8 +300,7 @@ sahara.saharaMapa.addEventListener('click', function() {
   if (sahara.saharaSeleccionado === false) {
     sahara.saharaSeleccionado = true;
     console.log("Sahara ha sido seleccionado.");
-  }
-  if (sahara.saharaSeleccionado === true) {
+  } else {
     sahara.saharaSeleccionado = false;
     console.log("Sahara ha sido deseleccionado.");
   }
@@ -335,8 +316,7 @@ egipto.egiptoMapa.addEventListener('click', function() {
   if (egipto.egiptoSeleccionado === false) {
     egipto.egiptoSeleccionado = true;
     console.log("Egipto ha sido seleccionado.");
-  }
-  if (egipto.egiptoSeleccionado === true) {
+  } else {
     egipto.egiptoSeleccionado = false;
     console.log("Egipto ha sido deseleccionado.");
   }
@@ -352,8 +332,7 @@ etiopia.etiopiaMapa.addEventListener('click', function() {
   if (etiopia.etiopiaSeleccionado === false) {
     etiopia.etiopiaSeleccionado = true;
     console.log("Etiopía ha sido seleccionada.");
-  }
-  if (etiopia.etiopiaSeleccionado === true) {
+  } else {
     etiopia.etiopiaSeleccionado = false;
     console.log("Etiopía ha sido deseleccionada.");
   }
@@ -369,8 +348,7 @@ zaire.zaireMapa.addEventListener('click', function() {
   if (zaire.zaireSeleccionado === false) {
     zaire.zaireSeleccionado = true;
     console.log("Zaire ha sido seleccionado.");
-  }
-  if (zaire.zaireSeleccionado === true) {
+  } else {
     zaire.zaireSeleccionado = false;
     console.log("Zaire ha sido deseleccionado.");
   }
@@ -386,8 +364,7 @@ sudafrica.sudafricaMapa.addEventListener('click', function() {
   if (sudafrica.sudafricaSeleccionado === false) {
     sudafrica.sudafricaSeleccionado = true;
     console.log("Sudáfrica ha sido seleccionada.");
-  }
-  if (sudafrica.sudafricaSeleccionado === true) {
+  } else {
     sudafrica.sudafricaSeleccionado = false;
     console.log("Sudáfrica ha sido deseleccionada.");
   }
@@ -403,8 +380,7 @@ madagascar.madagascarMapa.addEventListener('click', function() {
   if (madagascar.madagascarSeleccionado === false) {
     madagascar.madagascarSeleccionado = true;
     console.log("Madagascar ha sido seleccionada.");
-  }
-  if (madagascar.madagascarSeleccionado === true) {
+  } else {
     madagascar.madagascarSeleccionado = false;
     console.log("Madagascar ha sido deseleccionada.");
   }
@@ -421,8 +397,7 @@ alaska.alaskaMapa.addEventListener('click', function() {
   if (alaska.alaskaSeleccionado === false) {
     alaska.alaskaSeleccionado = true;
     console.log("Alaska ha sido seleccionada.");
-  }
-  if (alaska.alaskaSeleccionado === true) {
+  } else {
     alaska.alaskaSeleccionado = false;
     console.log("Alaska ha sido deseleccionada.");
   }
@@ -438,8 +413,7 @@ canada.canadaMapa.addEventListener('click', function() {
   if (canada.canadaSeleccionado === false) {
     canada.canadaSeleccionado = true;
     console.log("Canadá ha sido seleccionada.");
-  }
-  if (canada.canadaSeleccionado === true) {
+  } else {
     canada.canadaSeleccionado = false;
     console.log("Canadá ha sido deseleccionada.");
   }
@@ -455,8 +429,7 @@ groenlandia.groenlandiaMapa.addEventListener('click', function() {
   if (groenlandia.groenlandiaSeleccionado === false) {
     groenlandia.groenlandiaSeleccionado = true;
     console.log("Groenlandia ha sido seleccionada.");
-  }
-  if (groenlandia.groenlandiaSeleccionado === true) {
+  } else {
     groenlandia.groenlandiaSeleccionado = false;
     console.log("Groenlandia ha sido deseleccionada.");
   }
@@ -472,8 +445,7 @@ terranova.terranovaMapa.addEventListener('click', function() {
   if (terranova.terranovaSeleccionado === false) {
     terranova.terranovaSeleccionado = true;
     console.log("Terranova ha sido seleccionada.");
-  }
-  if (terranova.terranovaSeleccionado === true) {
+  } else {
     terranova.terranovaSeleccionado = false;
     console.log("Terranova ha sido deseleccionada.");
   }
@@ -489,8 +461,7 @@ mexico.mexicoMapa.addEventListener('click', function() {
   if (mexico.mexicoSeleccionado === false) {
     mexico.mexicoSeleccionado = true;
     console.log("México ha sido seleccionado.");
-  }
-  if (mexico.mexicoSeleccionado === true) {
+  } else {
     mexico.mexicoSeleccionado = false;
     console.log("México ha sido deseleccionado.");
   }
@@ -506,8 +477,7 @@ california.californiaMapa.addEventListener('click', function() {
   if (california.californiaSeleccionado === false) {
     california.californiaSeleccionado = true;
     console.log("California ha sido seleccionada.");
-  }
-  if (california.californiaSeleccionado === true) {
+  } else {
     california.californiaSeleccionado = false;
     console.log("California ha sido deseleccionada.");
   }
@@ -523,8 +493,7 @@ labrador.labradorMapa.addEventListener('click', function() {
   if (labrador.labradorSeleccionado === false) {
     labrador.labradorSeleccionado = true;
     console.log("Labrador ha sido seleccionado.");
-  }
-  if (labrador.labradorSeleccionado === true) {
+  } else {
     labrador.labradorSeleccionado = false;
     console.log("Labrador ha sido deseleccionado.");
   }
@@ -536,12 +505,11 @@ let oregon = {
   oregonSeleccionado: false
 };
 oregon.oregonMapa.addEventListener('click', function() {
-  console.log("Hiciste clic en Oregon.");
+  console.log("Hiciste clic en Oregón.");
   if (oregon.oregonSeleccionado === false) {
     oregon.oregonSeleccionado = true;
     console.log("Oregón ha sido seleccionado.");
-  }
-  if (oregon.oregonSeleccionado === true) {
+  } else {
     oregon.oregonSeleccionado = false;
     console.log("Oregón ha sido deseleccionado.");
   }
@@ -557,8 +525,7 @@ nuevaYork.nuevaYorkMapa.addEventListener('click', function() {
   if (nuevaYork.nuevaYorkSeleccionado === false) {
     nuevaYork.nuevaYorkSeleccionado = true;
     console.log("Nueva York ha sido seleccionada.");
-  }
-  if (nuevaYork.nuevaYorkSeleccionado === true) {
+  } else {
     nuevaYork.nuevaYorkSeleccionado = false;
     console.log("Nueva York ha sido deseleccionada.");
   }
@@ -574,8 +541,7 @@ yukon.yukonMapa.addEventListener('click', function() {
   if (yukon.yukonSeleccionado === false) {
     yukon.yukonSeleccionado = true;
     console.log("Yukón ha sido seleccionado.");
-  }
-  if (yukon.yukonSeleccionado === true) {
+  } else {
     yukon.yukonSeleccionado = false;
     console.log("Yukón ha sido deseleccionado.");
   }
@@ -592,8 +558,7 @@ china.chinaMapa.addEventListener('click', function() {
   if (china.chinaSeleccionado === false) {
     china.chinaSeleccionado = true;
     console.log("China ha sido seleccionada.");
-  }
-  if (china.chinaSeleccionado === true) {
+  } else {
     china.chinaSeleccionado = false;
     console.log("China ha sido deseleccionada.");
   }
@@ -609,8 +574,7 @@ japon.japonMapa.addEventListener('click', function() {
   if (japon.japonSeleccionado === false) {
     japon.japonSeleccionado = true;
     console.log("Japón ha sido seleccionado.");
-  }
-  if (japon.japonSeleccionado === true) {
+  } else {
     japon.japonSeleccionado = false;
     console.log("Japón ha sido deseleccionado.");
   }
@@ -626,8 +590,7 @@ iran.iranMapa.addEventListener('click', function() {
   if (iran.iranSeleccionado === false) {
     iran.iranSeleccionado = true;
     console.log("Irán ha sido seleccionado.");
-  }
-  if (iran.iranSeleccionado === true) {
+  } else {
     iran.iranSeleccionado = false;
     console.log("Irán ha sido deseleccionado.");
   }
@@ -643,8 +606,7 @@ israel.israelMapa.addEventListener('click', function() {
   if (israel.israelSeleccionado === false) {
     israel.israelSeleccionado = true;
     console.log("Israel ha sido seleccionado.");
-  }
-  if (israel.israelSeleccionado === true) {
+  } else {
     israel.israelSeleccionado = false;
     console.log("Israel ha sido deseleccionado.");
   }
@@ -660,8 +622,7 @@ arabia.arabiaMapa.addEventListener('click', function() {
   if (arabia.arabiaSeleccionado === false) {
     arabia.arabiaSeleccionado = true;
     console.log("Arabia ha sido seleccionada.");
-  }
-  if (arabia.arabiaSeleccionado === true) {
+  } else {
     arabia.arabiaSeleccionado = false;
     console.log("Arabia ha sido deseleccionada.");
   }
@@ -677,8 +638,7 @@ turquia.turquiaMapa.addEventListener('click', function() {
   if (turquia.turquiaSeleccionado === false) {
     turquia.turquiaSeleccionado = true;
     console.log("Turquía ha sido seleccionada.");
-  }
-  if (turquia.turquiaSeleccionado === true) {
+  } else {
     turquia.turquiaSeleccionado = false;
     console.log("Turquía ha sido deseleccionada.");
   }
@@ -694,8 +654,7 @@ tartaria.tartariaMapa.addEventListener('click', function() {
   if (tartaria.tartariaSeleccionado === false) {
     tartaria.tartariaSeleccionado = true;
     console.log("Tartaria ha sido seleccionada.");
-  }
-  if (tartaria.tartariaSeleccionado === true) {
+  } else {
     tartaria.tartariaSeleccionado = false;
     console.log("Tartaria ha sido deseleccionada.");
   }
@@ -711,8 +670,7 @@ kamchatka.kamchatkaMapa.addEventListener('click', function() {
   if (kamchatka.kamchatkaSeleccionado === false) {
     kamchatka.kamchatkaSeleccionado = true;
     console.log("Kamchatka ha sido seleccionada.");
-  }
-  if (kamchatka.kamchatkaSeleccionado === true) {
+  } else {
     kamchatka.kamchatkaSeleccionado = false;
     console.log("Kamchatka ha sido deseleccionada.");
   }
@@ -728,8 +686,7 @@ taimir.taimirMapa.addEventListener('click', function() {
   if (taimir.taimirSeleccionado === false) {
     taimir.taimirSeleccionado = true;
     console.log("Taimir ha sido seleccionado.");
-  }
-  if (taimir.taimirSeleccionado === true) {
+  } else {
     taimir.taimirSeleccionado = false;
     console.log("Taimir ha sido deseleccionado.");
   }
@@ -745,8 +702,7 @@ gobi.gobiMapa.addEventListener('click', function() {
   if (gobi.gobiSeleccionado === false) {
     gobi.gobiSeleccionado = true;
     console.log("Gobi ha sido seleccionado.");
-  }
-  if (gobi.gobiSeleccionado === true) {
+  } else {
     gobi.gobiSeleccionado = false;
     console.log("Gobi ha sido deseleccionado.");
   }
@@ -762,8 +718,7 @@ india.indiaMapa.addEventListener('click', function() {
   if (india.indiaSeleccionado === false) {
     india.indiaSeleccionado = true;
     console.log("India ha sido seleccionada.");
-  }
-  if (india.indiaSeleccionado === true) {
+  } else {
     india.indiaSeleccionado = false;
     console.log("India ha sido deseleccionada.");
   }
@@ -779,8 +734,7 @@ malasia.malasiaMapa.addEventListener('click', function() {
   if (malasia.malasiaSeleccionado === false) {
     malasia.malasiaSeleccionado = true;
     console.log("Malasia ha sido seleccionada.");
-  }
-  if (malasia.malasiaSeleccionado === true) {
+  } else {
     malasia.malasiaSeleccionado = false;
     console.log("Malasia ha sido deseleccionada.");
   }
@@ -796,8 +750,7 @@ siberia.siberiaMapa.addEventListener('click', function() {
   if (siberia.siberiaSeleccionado === false) {
     siberia.siberiaSeleccionado = true;
     console.log("Siberia ha sido seleccionada.");
-  }
-  if (siberia.siberiaSeleccionado === true) {
+  } else {
     siberia.siberiaSeleccionado = false;
     console.log("Siberia ha sido deseleccionada.");
   }
@@ -813,8 +766,7 @@ aral.aralMapa.addEventListener('click', function() {
   if (aral.aralSeleccionado === false) {
     aral.aralSeleccionado = true;
     console.log("Aral ha sido seleccionado.");
-  }
-  if (aral.aralSeleccionado === true) {
+  } else {
     aral.aralSeleccionado = false;
     console.log("Aral ha sido deseleccionado.");
   }
@@ -830,9 +782,9 @@ mongolia.mongoliaMapa.addEventListener('click', function() {
   if (mongolia.mongoliaSeleccionado === false) {
     mongolia.mongoliaSeleccionado = true;
     console.log("Mongolia ha sido seleccionada.");
-  }
-  if (mongolia.mongoliaSeleccionado === true) {
+  } else {
     mongolia.mongoliaSeleccionado = false;
     console.log("Mongolia ha sido deseleccionada.");
   }
 });
+
