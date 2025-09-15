@@ -4,6 +4,10 @@ let argentina = {
   fichasArgentina: 1,
   argentinaSeleccionado: false
 };
+let fichasArgentinaElemento = document.getElementById("fichas-argentina");
+if (fichasArgentinaElemento) {
+  fichasArgentinaElemento.textContent = argentina.fichasArgentina;
+}
 argentina.argentinaMapa.addEventListener('click', function() {
   if (argentina.argentinaSeleccionado === false) {
     argentina.argentinaSeleccionado = true;
@@ -19,6 +23,10 @@ let chile = {
   fichasChile: 1,
   chileSeleccionado: false
 };
+let fichasChileElemento = document.getElementById("fichas-chile");
+if (fichasChileElemento) {
+  fichasChileElemento.textContent = chile.fichasChile;
+}
 chile.chileMapa.addEventListener('click', function() {
   if (chile.chileSeleccionado === false) {
     chile.chileSeleccionado = true;
@@ -34,6 +42,10 @@ let uruguay = {
   fichasUruguay: 1,
   uruguaySeleccionado: false
 };
+let fichasUruguayElemento = document.getElementById("fichas-uruguay");
+if (fichasUruguayElemento) {
+  fichasUruguayElemento.textContent = uruguay.fichasUruguay;
+}
 uruguay.uruguayMapa.addEventListener('click', function() {
   if (uruguay.uruguaySeleccionado === false) {
     uruguay.uruguaySeleccionado = true;
@@ -49,6 +61,10 @@ let brasil = {
   fichasBrasil: 1,
   brasilSeleccionado: false
 };
+let fichasBrasilElemento = document.getElementById("fichas-brasil");
+if (fichasBrasilElemento) {
+  fichasBrasilElemento.textContent = brasil.fichasBrasil;
+}
 brasil.brasilMapa.addEventListener('click', function() {
   if (brasil.brasilSeleccionado === false) {
     brasil.brasilSeleccionado = true;
@@ -64,6 +80,10 @@ let peru = {
   fichasPeru: 1,
   peruSeleccionado: false
 };
+let fichasPeruElemento = document.getElementById("fichas-peru");
+if (fichasPeruElemento) {
+  fichasPeruElemento.textContent = peru.fichasPeru;
+}
 peru.peruMapa.addEventListener('click', function() {
   if (peru.peruSeleccionado === false) {
     peru.peruSeleccionado = true;
@@ -79,6 +99,10 @@ let colombia = {
   fichasColombia: 1,
   colombiaSeleccionado: false
 };
+let fichasColombiaElemento = document.getElementById("fichas-colombia");
+if (fichasColombiaElemento) {
+  fichasColombiaElemento.textContent = colombia.fichasColombia;
+}
 colombia.colombiaMapa.addEventListener('click', function() {
   if (colombia.colombiaSeleccionado === false) {
     colombia.colombiaSeleccionado = true;
@@ -95,6 +119,10 @@ let islandia = {
   fichasIslandia: 1,
   islandiaSeleccionado: false
 };
+let fichasIslandiaElemento = document.getElementById("fichas-islandia");
+if (fichasIslandiaElemento) {
+  fichasIslandiaElemento.textContent = islandia.fichasIslandia;
+}
 islandia.islandiaMapa.addEventListener('click', function() {
   if (islandia.islandiaSeleccionado === false) {
     islandia.islandiaSeleccionado = true;
@@ -106,10 +134,14 @@ islandia.islandiaMapa.addEventListener('click', function() {
 });
 
 let bretana = {
-  bretanaMapa: document.getElementById("bretana"),
+  bretanaMapa: document.getElementById("inglaterra"),
   fichasBretana: 1,
   bretanaSeleccionado: false
 };
+let fichasBretanaElemento = document.getElementById("fichas-bretana");
+if (fichasBretanaElemento) {
+  fichasBretanaElemento.textContent = bretana.fichasBretana;
+}
 bretana.bretanaMapa.addEventListener('click', function() {
   if (bretana.bretanaSeleccionado === false) {
     bretana.bretanaSeleccionado = true;
@@ -125,6 +157,10 @@ let espana = {
   fichasEspana: 1,
   espanaSeleccionado: false
 };
+let fichasEspanaElemento = document.getElementById("fichas-espana");
+if (fichasEspanaElemento) {
+  fichasEspanaElemento.textContent = espana.fichasEspana;
+}
 espana.espanaMapa.addEventListener('click', function() {
   if (espana.espanaSeleccionado === false) {
     espana.espanaSeleccionado = true;
@@ -140,6 +176,10 @@ let francia = {
   fichasFrancia: 1,
   franciaSeleccionado: false
 };
+let fichasFranciaElemento = document.getElementById("fichas-francia");
+if (fichasFranciaElemento) {
+  fichasFranciaElemento.textContent = francia.fichasFrancia;
+}
 francia.franciaMapa.addEventListener('click', function() {
   if (francia.franciaSeleccionado === false) {
     francia.franciaSeleccionado = true;
@@ -155,6 +195,10 @@ let alemania = {
   fichasAlemania: 1,
   alemaniaSeleccionado: false
 };
+let fichasAlemaniaElemento = document.getElementById("fichas-alemania");
+if (fichasAlemaniaElemento) {
+  fichasAlemaniaElemento.textContent = alemania.fichasAlemania;
+}
 alemania.alemaniaMapa.addEventListener('click', function() {
   if (alemania.alemaniaSeleccionado === false) {
     alemania.alemaniaSeleccionado = true;
@@ -170,6 +214,10 @@ let italia = {
   fichasItalia: 1,
   italiaSeleccionado: false
 };
+let fichasItaliaElemento = document.getElementById("fichas-italia");
+if (fichasItaliaElemento) {
+  fichasItaliaElemento.textContent = italia.fichasItalia;
+}
 italia.italiaMapa.addEventListener('click', function() {
   if (italia.italiaSeleccionado === false) {
     italia.italiaSeleccionado = true;
@@ -185,6 +233,10 @@ let polonia = {
   fichasPolonia: 1,
   poloniaSeleccionado: false
 };
+let fichasPoloniaElemento = document.getElementById("fichas-polonia");
+if (fichasPoloniaElemento) {
+  fichasPoloniaElemento.textContent = polonia.fichasPolonia;
+}
 polonia.poloniaMapa.addEventListener('click', function() {
   if (polonia.poloniaSeleccionado === false) {
     polonia.poloniaSeleccionado = true;
@@ -200,6 +252,10 @@ let rusia = {
   fichasRusia: 1,
   rusiaSeleccionado: false
 };
+let fichasRusiaElemento = document.getElementById("fichas-rusia");
+if (fichasRusiaElemento) {
+  fichasRusiaElemento.textContent = rusia.fichasRusia;
+}
 rusia.rusiaMapa.addEventListener('click', function() {
   if (rusia.rusiaSeleccionado === false) {
     rusia.rusiaSeleccionado = true;
@@ -210,12 +266,16 @@ rusia.rusiaMapa.addEventListener('click', function() {
   }
 });
 
-// Oceanía y Sudeste Asiático
+// Oceanía
 let australia = {
   australiaMapa: document.getElementById("australia"),
   fichasAustralia: 1,
   australiaSeleccionado: false
 };
+let fichasAustraliaElemento = document.getElementById("fichas-australia");
+if (fichasAustraliaElemento) {
+  fichasAustraliaElemento.textContent = australia.fichasAustralia;
+}
 australia.australiaMapa.addEventListener('click', function() {
   if (australia.australiaSeleccionado === false) {
     australia.australiaSeleccionado = true;
@@ -231,6 +291,10 @@ let sumatra = {
   fichasSumatra: 1,
   sumatraSeleccionado: false
 };
+let fichasSumatraElemento = document.getElementById("fichas-sumatra");
+if (fichasSumatraElemento) {
+  fichasSumatraElemento.textContent = sumatra.fichasSumatra;
+}
 sumatra.sumatraMapa.addEventListener('click', function() {
   if (sumatra.sumatraSeleccionado === false) {
     sumatra.sumatraSeleccionado = true;
@@ -246,6 +310,10 @@ let java = {
   fichasJava: 1,
   javaSeleccionado: false
 };
+let fichasJavaElemento = document.getElementById("fichas-java");
+if (fichasJavaElemento) {
+  fichasJavaElemento.textContent = java.fichasJava;
+}
 java.javaMapa.addEventListener('click', function() {
   if (java.javaSeleccionado === false) {
     java.javaSeleccionado = true;
@@ -261,6 +329,10 @@ let borneo = {
   fichasBorneo: 1,
   borneoSeleccionado: false
 };
+let fichasBorneoElemento = document.getElementById("fichas-borneo");
+if (fichasBorneoElemento) {
+  fichasBorneoElemento.textContent = borneo.fichasBorneo;
+}
 borneo.borneoMapa.addEventListener('click', function() {
   if (borneo.borneoSeleccionado === false) {
     borneo.borneoSeleccionado = true;
@@ -277,6 +349,10 @@ let sahara = {
   fichasSahara: 1,
   saharaSeleccionado: false
 };
+let fichasSaharaElemento = document.getElementById("fichas-sahara");
+if (fichasSaharaElemento) {
+  fichasSaharaElemento.textContent = sahara.fichasSahara;
+}
 sahara.saharaMapa.addEventListener('click', function() {
   if (sahara.saharaSeleccionado === false) {
     sahara.saharaSeleccionado = true;
@@ -292,6 +368,10 @@ let egipto = {
   fichasEgipto: 1,
   egiptoSeleccionado: false
 };
+let fichasEgiptoElemento = document.getElementById("fichas-egipto");
+if (fichasEgiptoElemento) {
+  fichasEgiptoElemento.textContent = egipto.fichasEgipto;
+}
 egipto.egiptoMapa.addEventListener('click', function() {
   if (egipto.egiptoSeleccionado === false) {
     egipto.egiptoSeleccionado = true;
@@ -307,6 +387,10 @@ let etiopia = {
   fichasEtiopia: 1,
   etiopiaSeleccionado: false
 };
+let fichasEtiopiaElemento = document.getElementById("fichas-etiopia");
+if (fichasEtiopiaElemento) {
+  fichasEtiopiaElemento.textContent = etiopia.fichasEtiopia;
+}
 etiopia.etiopiaMapa.addEventListener('click', function() {
   if (etiopia.etiopiaSeleccionado === false) {
     etiopia.etiopiaSeleccionado = true;
@@ -322,6 +406,10 @@ let zaire = {
   fichasZaire: 1,
   zaireSeleccionado: false
 };
+let fichasZaireElemento = document.getElementById("fichas-zaire");
+if (fichasZaireElemento) {
+  fichasZaireElemento.textContent = zaire.fichasZaire;
+}
 zaire.zaireMapa.addEventListener('click', function() {
   if (zaire.zaireSeleccionado === false) {
     zaire.zaireSeleccionado = true;
@@ -337,6 +425,10 @@ let sudafrica = {
   fichasSudafrica: 1,
   sudafricaSeleccionado: false
 };
+let fichasSudafricaElemento = document.getElementById("fichas-sudafrica");
+if (fichasSudafricaElemento) {
+  fichasSudafricaElemento.textContent = sudafrica.fichasSudafrica;
+}
 sudafrica.sudafricaMapa.addEventListener('click', function() {
   if (sudafrica.sudafricaSeleccionado === false) {
     sudafrica.sudafricaSeleccionado = true;
@@ -352,6 +444,10 @@ let madagascar = {
   fichasMadagascar: 1,
   madagascarSeleccionado: false
 };
+let fichasMadagascarElemento = document.getElementById("fichas-madagascar");
+if (fichasMadagascarElemento) {
+  fichasMadagascarElemento.textContent = madagascar.fichasMadagascar;
+}
 madagascar.madagascarMapa.addEventListener('click', function() {
   if (madagascar.madagascarSeleccionado === false) {
     madagascar.madagascarSeleccionado = true;
@@ -368,6 +464,10 @@ let alaska = {
   fichasAlaska: 1,
   alaskaSeleccionado: false
 };
+let fichasAlaskaElemento = document.getElementById("fichas-alaska");
+if (fichasAlaskaElemento) {
+  fichasAlaskaElemento.textContent = alaska.fichasAlaska;
+}
 alaska.alaskaMapa.addEventListener('click', function() {
   if (alaska.alaskaSeleccionado === false) {
     alaska.alaskaSeleccionado = true;
@@ -383,6 +483,10 @@ let canada = {
   fichasCanada: 1,
   canadaSeleccionado: false
 };
+let fichasCanadaElemento = document.getElementById("fichas-canada");
+if (fichasCanadaElemento) {
+  fichasCanadaElemento.textContent = canada.fichasCanada;
+}
 canada.canadaMapa.addEventListener('click', function() {
   if (canada.canadaSeleccionado === false) {
     canada.canadaSeleccionado = true;
@@ -398,6 +502,10 @@ let groenlandia = {
   fichasGroenlandia: 1,
   groenlandiaSeleccionado: false
 };
+let fichasGroenlandiaElemento = document.getElementById("fichas-groenlandia");
+if (fichasGroenlandiaElemento) {
+  fichasGroenlandiaElemento.textContent = groenlandia.fichasGroenlandia;
+}
 groenlandia.groenlandiaMapa.addEventListener('click', function() {
   if (groenlandia.groenlandiaSeleccionado === false) {
     groenlandia.groenlandiaSeleccionado = true;
@@ -413,6 +521,10 @@ let terranova = {
   fichasTerranova: 1,
   terranovaSeleccionado: false
 };
+let fichasTerranovaElemento = document.getElementById("fichas-terranova");
+if (fichasTerranovaElemento) {
+  fichasTerranovaElemento.textContent = terranova.fichasTerranova;
+}
 terranova.terranovaMapa.addEventListener('click', function() {
   if (terranova.terranovaSeleccionado === false) {
     terranova.terranovaSeleccionado = true;
@@ -428,6 +540,10 @@ let mexico = {
   fichasMexico: 1,
   mexicoSeleccionado: false
 };
+let fichasMexicoElemento = document.getElementById("fichas-mexico");
+if (fichasMexicoElemento) {
+  fichasMexicoElemento.textContent = mexico.fichasMexico;
+}
 mexico.mexicoMapa.addEventListener('click', function() {
   if (mexico.mexicoSeleccionado === false) {
     mexico.mexicoSeleccionado = true;
@@ -443,6 +559,10 @@ let california = {
   fichasCalifornia: 1,
   californiaSeleccionado: false
 };
+let fichasCaliforniaElemento = document.getElementById("fichas-california");
+if (fichasCaliforniaElemento) {
+  fichasCaliforniaElemento.textContent = california.fichasCalifornia;
+}
 california.californiaMapa.addEventListener('click', function() {
   if (california.californiaSeleccionado === false) {
     california.californiaSeleccionado = true;
@@ -458,6 +578,10 @@ let labrador = {
   fichasLabrador: 1,
   labradorSeleccionado: false
 };
+let fichasLabradorElemento = document.getElementById("fichas-labrador");
+if (fichasLabradorElemento) {
+  fichasLabradorElemento.textContent = labrador.fichasLabrador;
+}
 labrador.labradorMapa.addEventListener('click', function() {
   if (labrador.labradorSeleccionado === false) {
     labrador.labradorSeleccionado = true;
@@ -473,6 +597,10 @@ let oregon = {
   fichasOregon: 1,
   oregonSeleccionado: false
 };
+let fichasOregonElemento = document.getElementById("fichas-oregon");
+if (fichasOregonElemento) {
+  fichasOregonElemento.textContent = oregon.fichasOregon;
+}
 oregon.oregonMapa.addEventListener('click', function() {
   if (oregon.oregonSeleccionado === false) {
     oregon.oregonSeleccionado = true;
@@ -488,6 +616,10 @@ let nuevaYork = {
   fichasNuevaYork: 1,
   nuevaYorkSeleccionado: false
 };
+let fichasNuevaYorkElemento = document.getElementById("fichas-nuevaYork");
+if (fichasNuevaYorkElemento) {
+  fichasNuevaYorkElemento.textContent = nuevaYork.fichasNuevaYork;
+}
 nuevaYork.nuevaYorkMapa.addEventListener('click', function() {
   if (nuevaYork.nuevaYorkSeleccionado === false) {
     nuevaYork.nuevaYorkSeleccionado = true;
@@ -503,6 +635,10 @@ let yukon = {
   fichasYukon: 1,
   yukonSeleccionado: false
 };
+let fichasYukonElemento = document.getElementById("fichas-yukon");
+if (fichasYukonElemento) {
+  fichasYukonElemento.textContent = yukon.fichasYukon;
+}
 yukon.yukonMapa.addEventListener('click', function() {
   if (yukon.yukonSeleccionado === false) {
     yukon.yukonSeleccionado = true;
@@ -519,6 +655,10 @@ let china = {
   fichasChina: 1,
   chinaSeleccionado: false
 };
+let fichasChinaElemento = document.getElementById("fichas-china");
+if (fichasChinaElemento) {
+  fichasChinaElemento.textContent = china.fichasChina;
+}
 china.chinaMapa.addEventListener('click', function() {
   if (china.chinaSeleccionado === false) {
     china.chinaSeleccionado = true;
@@ -534,6 +674,10 @@ let japon = {
   fichasJapon: 1,
   japonSeleccionado: false
 };
+let fichasJaponElemento = document.getElementById("fichas-japon");
+if (fichasJaponElemento) {
+  fichasJaponElemento.textContent = japon.fichasJapon;
+}
 japon.japonMapa.addEventListener('click', function() {
   if (japon.japonSeleccionado === false) {
     japon.japonSeleccionado = true;
@@ -549,6 +693,10 @@ let iran = {
   fichasIran: 1,
   iranSeleccionado: false
 };
+let fichasIranElemento = document.getElementById("fichas-iran");
+if (fichasIranElemento) {
+  fichasIranElemento.textContent = iran.fichasIran;
+}
 iran.iranMapa.addEventListener('click', function() {
   if (iran.iranSeleccionado === false) {
     iran.iranSeleccionado = true;
@@ -564,6 +712,10 @@ let israel = {
   fichasIsrael: 1,
   israelSeleccionado: false
 };
+let fichasIsraelElemento = document.getElementById("fichas-israel");
+if (fichasIsraelElemento) {
+  fichasIsraelElemento.textContent = israel.fichasIsrael;
+}
 israel.israelMapa.addEventListener('click', function() {
   if (israel.israelSeleccionado === false) {
     israel.israelSeleccionado = true;
@@ -579,6 +731,10 @@ let arabia = {
   fichasArabia: 1,
   arabiaSeleccionado: false
 };
+let fichasArabiaElemento = document.getElementById("fichas-arabia");
+if (fichasArabiaElemento) {
+  fichasArabiaElemento.textContent = arabia.fichasArabia;
+}
 arabia.arabiaMapa.addEventListener('click', function() {
   if (arabia.arabiaSeleccionado === false) {
     arabia.arabiaSeleccionado = true;
@@ -594,6 +750,10 @@ let turquia = {
   fichasTurquia: 1,
   turquiaSeleccionado: false
 };
+let fichasTurquiaElemento = document.getElementById("fichas-turquia");
+if (fichasTurquiaElemento) {
+  fichasTurquiaElemento.textContent = turquia.fichasTurquia;
+}
 turquia.turquiaMapa.addEventListener('click', function() {
   if (turquia.turquiaSeleccionado === false) {
     turquia.turquiaSeleccionado = true;
@@ -609,6 +769,10 @@ let tartaria = {
   fichasTartaria: 1,
   tartariaSeleccionado: false
 };
+let fichasTartariaElemento = document.getElementById("fichas-tartaria");
+if (fichasTartariaElemento) {
+  fichasTartariaElemento.textContent = tartaria.fichasTartaria;
+}
 tartaria.tartariaMapa.addEventListener('click', function() {
   if (tartaria.tartariaSeleccionado === false) {
     tartaria.tartariaSeleccionado = true;
@@ -624,6 +788,10 @@ let kamchatka = {
   fichasKamchatka: 1,
   kamchatkaSeleccionado: false
 };
+let fichasKamchatkaElemento = document.getElementById("fichas-kamchatka");
+if (fichasKamchatkaElemento) {
+  fichasKamchatkaElemento.textContent = kamchatka.fichasKamchatka;
+}
 kamchatka.kamchatkaMapa.addEventListener('click', function() {
   if (kamchatka.kamchatkaSeleccionado === false) {
     kamchatka.kamchatkaSeleccionado = true;
@@ -639,6 +807,10 @@ let taimir = {
   fichasTaimir: 1,
   taimirSeleccionado: false
 };
+let fichasTaimirElemento = document.getElementById("fichas-taimir");
+if (fichasTaimirElemento) {
+  fichasTaimirElemento.textContent = taimir.fichasTaimir;
+}
 taimir.taimirMapa.addEventListener('click', function() {
   if (taimir.taimirSeleccionado === false) {
     taimir.taimirSeleccionado = true;
@@ -654,6 +826,10 @@ let gobi = {
   fichasGobi: 1,
   gobiSeleccionado: false
 };
+let fichasGobiElemento = document.getElementById("fichas-gobi");
+if (fichasGobiElemento) {
+  fichasGobiElemento.textContent = gobi.fichasGobi;
+}
 gobi.gobiMapa.addEventListener('click', function() {
   if (gobi.gobiSeleccionado === false) {
     gobi.gobiSeleccionado = true;
@@ -669,6 +845,10 @@ let india = {
   fichasIndia: 1,
   indiaSeleccionado: false
 };
+let fichasIndiaElemento = document.getElementById("fichas-india");
+if (fichasIndiaElemento) {
+  fichasIndiaElemento.textContent = india.fichasIndia;
+}
 india.indiaMapa.addEventListener('click', function() {
   if (india.indiaSeleccionado === false) {
     india.indiaSeleccionado = true;
@@ -684,6 +864,10 @@ let malasia = {
   fichasMalasia: 1,
   malasiaSeleccionado: false
 };
+let fichasMalasiaElemento = document.getElementById("fichas-malasia");
+if (fichasMalasiaElemento) {
+  fichasMalasiaElemento.textContent = malasia.fichasMalasia;
+}
 malasia.malasiaMapa.addEventListener('click', function() {
   if (malasia.malasiaSeleccionado === false) {
     malasia.malasiaSeleccionado = true;
@@ -699,6 +883,10 @@ let siberia = {
   fichasSiberia: 1,
   siberiaSeleccionado: false
 };
+let fichasSiberiaElemento = document.getElementById("fichas-siberia");
+if (fichasSiberiaElemento) {
+  fichasSiberiaElemento.textContent = siberia.fichasSiberia;
+}
 siberia.siberiaMapa.addEventListener('click', function() {
   if (siberia.siberiaSeleccionado === false) {
     siberia.siberiaSeleccionado = true;
@@ -714,6 +902,10 @@ let aral = {
   fichasAral: 1,
   aralSeleccionado: false
 };
+let fichasAralElemento = document.getElementById("fichas-aral");
+if (fichasAralElemento) {
+  fichasAralElemento.textContent = aral.fichasAral;
+}
 aral.aralMapa.addEventListener('click', function() {
   if (aral.aralSeleccionado === false) {
     aral.aralSeleccionado = true;
@@ -729,6 +921,10 @@ let mongolia = {
   fichasMongolia: 1,
   mongoliaSeleccionado: false
 };
+let fichasMongoliaElemento = document.getElementById("fichas-mongolia");
+if (fichasMongoliaElemento) {
+  fichasMongoliaElemento.textContent = mongolia.fichasMongolia;
+}
 mongolia.mongoliaMapa.addEventListener('click', function() {
   if (mongolia.mongoliaSeleccionado === false) {
     mongolia.mongoliaSeleccionado = true;
