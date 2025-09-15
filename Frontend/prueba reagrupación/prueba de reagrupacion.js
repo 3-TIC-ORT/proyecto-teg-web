@@ -934,3 +934,19 @@ mongolia.mongoliaMapa.addEventListener('click', function() {
     console.log("Mongolia ha sido deseleccionada.");
   }
 });
+
+let paisesSeleccionados = [];
+
+function seleccionarPais(pais) {
+  if (pais.seleccionado) {
+    pais.seleccionado = false;
+    paisesSeleccionados = paisesSeleccionados.filter(p => p.nombre !== pais.nombre);
+  } else {
+    if (paisesSeleccionados.length < 2) {
+      pais.seleccionado = true;
+      paisesSeleccionados.push(pais);
+    } else {
+      console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
+    }
+  }
+}
