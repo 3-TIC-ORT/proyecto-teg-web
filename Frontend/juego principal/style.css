@@ -35,6 +35,14 @@ background-color: var(--coloramericanorte);
 .Oceania {
     background-color: var(--coloroceania);
 }
+.timer{
+  display: flexbox;
+  position: absolute;
+  left: 600px;
+  top: 40px;
+  width: 154px;
+  height: 58px;
+}
 .atacar{
 height: 90px;
 width: 176px;
@@ -106,7 +114,7 @@ border-radius: 5rem;
   top: 132px;
   right: 809px;
 }
-.japon{
+/*.japon{
   width: 96px;
   height: 89px;
   position: absolute;
@@ -118,3 +126,4 @@ border-radius: 5rem;
   position: absolute;
 } 
 
+*/
