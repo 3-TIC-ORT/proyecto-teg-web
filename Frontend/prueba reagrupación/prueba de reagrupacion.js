@@ -1,952 +1,824 @@
-// América del Sur
-let argentina = {
-  argentinaMapa: document.getElementById("argentina"),
-  fichasArgentina: 1,
-  argentinaSeleccionado: false
-};
-let fichasArgentinaElemento = document.getElementById("fichas-argentina");
-if (fichasArgentinaElemento) {
-  fichasArgentinaElemento.textContent = argentina.fichasArgentina;
-}
-argentina.argentinaMapa.addEventListener('click', function() {
-  if (argentina.argentinaSeleccionado === false) {
-    argentina.argentinaSeleccionado = true;
-    console.log("Argentina ha sido seleccionada.");
-  } else {
-    argentina.argentinaSeleccionado = false;
-    console.log("Argentina ha sido deseleccionada.");
-  }
-});
-
-let chile = {
-  chileMapa: document.getElementById("chile"),
-  fichasChile: 1,
-  chileSeleccionado: false
-};
-let fichasChileElemento = document.getElementById("fichas-chile");
-if (fichasChileElemento) {
-  fichasChileElemento.textContent = chile.fichasChile;
-}
-chile.chileMapa.addEventListener('click', function() {
-  if (chile.chileSeleccionado === false) {
-    chile.chileSeleccionado = true;
-    console.log("Chile ha sido seleccionado.");
-  } else {
-    chile.chileSeleccionado = false;
-    console.log("Chile ha sido deseleccionado.");
-  }
-});
-
-let uruguay = {
-  uruguayMapa: document.getElementById("uruguay"),
-  fichasUruguay: 1,
-  uruguaySeleccionado: false
-};
-let fichasUruguayElemento = document.getElementById("fichas-uruguay");
-if (fichasUruguayElemento) {
-  fichasUruguayElemento.textContent = uruguay.fichasUruguay;
-}
-uruguay.uruguayMapa.addEventListener('click', function() {
-  if (uruguay.uruguaySeleccionado === false) {
-    uruguay.uruguaySeleccionado = true;
-    console.log("Uruguay ha sido seleccionado.");
-  } else {
-    uruguay.uruguaySeleccionado = false;
-    console.log("Uruguay ha sido deseleccionado.");
-  }
-});
-
-let brasil = {
-  brasilMapa: document.getElementById("brasil"),
-  fichasBrasil: 1,
-  brasilSeleccionado: false
-};
-let fichasBrasilElemento = document.getElementById("fichas-brasil");
-if (fichasBrasilElemento) {
-  fichasBrasilElemento.textContent = brasil.fichasBrasil;
-}
-brasil.brasilMapa.addEventListener('click', function() {
-  if (brasil.brasilSeleccionado === false) {
-    brasil.brasilSeleccionado = true;
-    console.log("Brasil ha sido seleccionado.");
-  } else {
-    brasil.brasilSeleccionado = false;
-    console.log("Brasil ha sido deseleccionado.");
-  }
-});
-
-let peru = {
-  peruMapa: document.getElementById("peru"),
-  fichasPeru: 1,
-  peruSeleccionado: false
-};
-let fichasPeruElemento = document.getElementById("fichas-peru");
-if (fichasPeruElemento) {
-  fichasPeruElemento.textContent = peru.fichasPeru;
-}
-peru.peruMapa.addEventListener('click', function() {
-  if (peru.peruSeleccionado === false) {
-    peru.peruSeleccionado = true;
-    console.log("Perú ha sido seleccionado.");
-  } else {
-    peru.peruSeleccionado = false;
-    console.log("Perú ha sido deseleccionado.");
-  }
-});
-
-let colombia = {
-  colombiaMapa: document.getElementById("colombia"),
-  fichasColombia: 1,
-  colombiaSeleccionado: false
-};
-let fichasColombiaElemento = document.getElementById("fichas-colombia");
-if (fichasColombiaElemento) {
-  fichasColombiaElemento.textContent = colombia.fichasColombia;
-}
-colombia.colombiaMapa.addEventListener('click', function() {
-  if (colombia.colombiaSeleccionado === false) {
-    colombia.colombiaSeleccionado = true;
-    console.log("Colombia ha sido seleccionada.");
-  } else {
-    colombia.colombiaSeleccionado = false;
-    console.log("Colombia ha sido deseleccionada.");
-  }
-});
-
-// Europa
-let islandia = {
-  islandiaMapa: document.getElementById("islandia"),
-  fichasIslandia: 1,
-  islandiaSeleccionado: false
-};
-let fichasIslandiaElemento = document.getElementById("fichas-islandia");
-if (fichasIslandiaElemento) {
-  fichasIslandiaElemento.textContent = islandia.fichasIslandia;
-}
-islandia.islandiaMapa.addEventListener('click', function() {
-  if (islandia.islandiaSeleccionado === false) {
-    islandia.islandiaSeleccionado = true;
-    console.log("Islandia ha sido seleccionada.");
-  } else {
-    islandia.islandiaSeleccionado = false;
-    console.log("Islandia ha sido deseleccionada.");
-  }
-});
-
-let bretana = {
-  bretanaMapa: document.getElementById("inglaterra"),
-  fichasBretana: 1,
-  bretanaSeleccionado: false
-};
-let fichasBretanaElemento = document.getElementById("fichas-bretana");
-if (fichasBretanaElemento) {
-  fichasBretanaElemento.textContent = bretana.fichasBretana;
-}
-bretana.bretanaMapa.addEventListener('click', function() {
-  if (bretana.bretanaSeleccionado === false) {
-    bretana.bretanaSeleccionado = true;
-    console.log("Bretaña ha sido seleccionada.");
-  } else {
-    bretana.bretanaSeleccionado = false;
-    console.log("Bretaña ha sido deseleccionada.");
-  }
-});
-
-let espana = {
-  espanaMapa: document.getElementById("espana"),
-  fichasEspana: 1,
-  espanaSeleccionado: false
-};
-let fichasEspanaElemento = document.getElementById("fichas-espana");
-if (fichasEspanaElemento) {
-  fichasEspanaElemento.textContent = espana.fichasEspana;
-}
-espana.espanaMapa.addEventListener('click', function() {
-  if (espana.espanaSeleccionado === false) {
-    espana.espanaSeleccionado = true;
-    console.log("España ha sido seleccionada.");
-  } else {
-    espana.espanaSeleccionado = false;
-    console.log("España ha sido deseleccionada.");
-  }
-});
-
-let francia = {
-  franciaMapa: document.getElementById("francia"),
-  fichasFrancia: 1,
-  franciaSeleccionado: false
-};
-let fichasFranciaElemento = document.getElementById("fichas-francia");
-if (fichasFranciaElemento) {
-  fichasFranciaElemento.textContent = francia.fichasFrancia;
-}
-francia.franciaMapa.addEventListener('click', function() {
-  if (francia.franciaSeleccionado === false) {
-    francia.franciaSeleccionado = true;
-    console.log("Francia ha sido seleccionada.");
-  } else {
-    francia.franciaSeleccionado = false;
-    console.log("Francia ha sido deseleccionada.");
-  }
-});
-
-let alemania = {
-  alemaniaMapa: document.getElementById("alemania"),
-  fichasAlemania: 1,
-  alemaniaSeleccionado: false
-};
-let fichasAlemaniaElemento = document.getElementById("fichas-alemania");
-if (fichasAlemaniaElemento) {
-  fichasAlemaniaElemento.textContent = alemania.fichasAlemania;
-}
-alemania.alemaniaMapa.addEventListener('click', function() {
-  if (alemania.alemaniaSeleccionado === false) {
-    alemania.alemaniaSeleccionado = true;
-    console.log("Alemania ha sido seleccionada.");
-  } else {
-    alemania.alemaniaSeleccionado = false;
-    console.log("Alemania ha sido deseleccionada.");
-  }
-});
-
-let italia = {
-  italiaMapa: document.getElementById("italia"),
-  fichasItalia: 1,
-  italiaSeleccionado: false
-};
-let fichasItaliaElemento = document.getElementById("fichas-italia");
-if (fichasItaliaElemento) {
-  fichasItaliaElemento.textContent = italia.fichasItalia;
-}
-italia.italiaMapa.addEventListener('click', function() {
-  if (italia.italiaSeleccionado === false) {
-    italia.italiaSeleccionado = true;
-    console.log("Italia ha sido seleccionada.");
-  } else {
-    italia.italiaSeleccionado = false;
-    console.log("Italia ha sido deseleccionada.");
-  }
-});
-
-let polonia = {
-  poloniaMapa: document.getElementById("polonia"),
-  fichasPolonia: 1,
-  poloniaSeleccionado: false
-};
-let fichasPoloniaElemento = document.getElementById("fichas-polonia");
-if (fichasPoloniaElemento) {
-  fichasPoloniaElemento.textContent = polonia.fichasPolonia;
-}
-polonia.poloniaMapa.addEventListener('click', function() {
-  if (polonia.poloniaSeleccionado === false) {
-    polonia.poloniaSeleccionado = true;
-    console.log("Polonia ha sido seleccionada.");
-  } else {
-    polonia.poloniaSeleccionado = false;
-    console.log("Polonia ha sido deseleccionada.");
-  }
-});
-
-let rusia = {
-  rusiaMapa: document.getElementById("rusia"),
-  fichasRusia: 1,
-  rusiaSeleccionado: false
-};
-let fichasRusiaElemento = document.getElementById("fichas-rusia");
-if (fichasRusiaElemento) {
-  fichasRusiaElemento.textContent = rusia.fichasRusia;
-}
-rusia.rusiaMapa.addEventListener('click', function() {
-  if (rusia.rusiaSeleccionado === false) {
-    rusia.rusiaSeleccionado = true;
-    console.log("Rusia ha sido seleccionada.");
-  } else {
-    rusia.rusiaSeleccionado = false;
-    console.log("Rusia ha sido deseleccionada.");
-  }
-});
-
-// Oceanía
-let australia = {
-  australiaMapa: document.getElementById("australia"),
-  fichasAustralia: 1,
-  australiaSeleccionado: false
-};
-let fichasAustraliaElemento = document.getElementById("fichas-australia");
-if (fichasAustraliaElemento) {
-  fichasAustraliaElemento.textContent = australia.fichasAustralia;
-}
-australia.australiaMapa.addEventListener('click', function() {
-  if (australia.australiaSeleccionado === false) {
-    australia.australiaSeleccionado = true;
-    console.log("Australia ha sido seleccionada.");
-  } else {
-    australia.australiaSeleccionado = false;
-    console.log("Australia ha sido deseleccionada.");
-  }
-});
-
-let sumatra = {
-  sumatraMapa: document.getElementById("sumatra"),
-  fichasSumatra: 1,
-  sumatraSeleccionado: false
-};
-let fichasSumatraElemento = document.getElementById("fichas-sumatra");
-if (fichasSumatraElemento) {
-  fichasSumatraElemento.textContent = sumatra.fichasSumatra;
-}
-sumatra.sumatraMapa.addEventListener('click', function() {
-  if (sumatra.sumatraSeleccionado === false) {
-    sumatra.sumatraSeleccionado = true;
-    console.log("Sumatra ha sido seleccionada.");
-  } else {
-    sumatra.sumatraSeleccionado = false;
-    console.log("Sumatra ha sido deseleccionada.");
-  }
-});
-
-let java = {
-  javaMapa: document.getElementById("java"),
-  fichasJava: 1,
-  javaSeleccionado: false
-};
-let fichasJavaElemento = document.getElementById("fichas-java");
-if (fichasJavaElemento) {
-  fichasJavaElemento.textContent = java.fichasJava;
-}
-java.javaMapa.addEventListener('click', function() {
-  if (java.javaSeleccionado === false) {
-    java.javaSeleccionado = true;
-    console.log("Java ha sido seleccionada.");
-  } else {
-    java.javaSeleccionado = false;
-    console.log("Java ha sido deseleccionada.");
-  }
-});
-
-let borneo = {
-  borneoMapa: document.getElementById("borneo"),
-  fichasBorneo: 1,
-  borneoSeleccionado: false
-};
-let fichasBorneoElemento = document.getElementById("fichas-borneo");
-if (fichasBorneoElemento) {
-  fichasBorneoElemento.textContent = borneo.fichasBorneo;
-}
-borneo.borneoMapa.addEventListener('click', function() {
-  if (borneo.borneoSeleccionado === false) {
-    borneo.borneoSeleccionado = true;
-    console.log("Borneo ha sido seleccionado.");
-  } else {
-    borneo.borneoSeleccionado = false;
-    console.log("Borneo ha sido deseleccionado.");
-  }
-});
-
-// África
-let sahara = {
-  saharaMapa: document.getElementById("sahara"),
-  fichasSahara: 1,
-  saharaSeleccionado: false
-};
-let fichasSaharaElemento = document.getElementById("fichas-sahara");
-if (fichasSaharaElemento) {
-  fichasSaharaElemento.textContent = sahara.fichasSahara;
-}
-sahara.saharaMapa.addEventListener('click', function() {
-  if (sahara.saharaSeleccionado === false) {
-    sahara.saharaSeleccionado = true;
-    console.log("Sahara ha sido seleccionado.");
-  } else {
-    sahara.saharaSeleccionado = false;
-    console.log("Sahara ha sido deseleccionado.");
-  }
-});
-
-let egipto = {
-  egiptoMapa: document.getElementById("egipto"),
-  fichasEgipto: 1,
-  egiptoSeleccionado: false
-};
-let fichasEgiptoElemento = document.getElementById("fichas-egipto");
-if (fichasEgiptoElemento) {
-  fichasEgiptoElemento.textContent = egipto.fichasEgipto;
-}
-egipto.egiptoMapa.addEventListener('click', function() {
-  if (egipto.egiptoSeleccionado === false) {
-    egipto.egiptoSeleccionado = true;
-    console.log("Egipto ha sido seleccionado.");
-  } else {
-    egipto.egiptoSeleccionado = false;
-    console.log("Egipto ha sido deseleccionado.");
-  }
-});
-
-let etiopia = {
-  etiopiaMapa: document.getElementById("etiopia"),
-  fichasEtiopia: 1,
-  etiopiaSeleccionado: false
-};
-let fichasEtiopiaElemento = document.getElementById("fichas-etiopia");
-if (fichasEtiopiaElemento) {
-  fichasEtiopiaElemento.textContent = etiopia.fichasEtiopia;
-}
-etiopia.etiopiaMapa.addEventListener('click', function() {
-  if (etiopia.etiopiaSeleccionado === false) {
-    etiopia.etiopiaSeleccionado = true;
-    console.log("Etiopía ha sido seleccionada.");
-  } else {
-    etiopia.etiopiaSeleccionado = false;
-    console.log("Etiopía ha sido deseleccionada.");
-  }
-});
-
-let zaire = {
-  zaireMapa: document.getElementById("zaire"),
-  fichasZaire: 1,
-  zaireSeleccionado: false
-};
-let fichasZaireElemento = document.getElementById("fichas-zaire");
-if (fichasZaireElemento) {
-  fichasZaireElemento.textContent = zaire.fichasZaire;
-}
-zaire.zaireMapa.addEventListener('click', function() {
-  if (zaire.zaireSeleccionado === false) {
-    zaire.zaireSeleccionado = true;
-    console.log("Zaire ha sido seleccionado.");
-  } else {
-    zaire.zaireSeleccionado = false;
-    console.log("Zaire ha sido deseleccionado.");
-  }
-});
-
-let sudafrica = {
-  sudafricaMapa: document.getElementById("sudafrica"),
-  fichasSudafrica: 1,
-  sudafricaSeleccionado: false
-};
-let fichasSudafricaElemento = document.getElementById("fichas-sudafrica");
-if (fichasSudafricaElemento) {
-  fichasSudafricaElemento.textContent = sudafrica.fichasSudafrica;
-}
-sudafrica.sudafricaMapa.addEventListener('click', function() {
-  if (sudafrica.sudafricaSeleccionado === false) {
-    sudafrica.sudafricaSeleccionado = true;
-    console.log("Sudáfrica ha sido seleccionada.");
-  } else {
-    sudafrica.sudafricaSeleccionado = false;
-    console.log("Sudáfrica ha sido deseleccionada.");
-  }
-});
-
-let madagascar = {
-  madagascarMapa: document.getElementById("madagascar"),
-  fichasMadagascar: 1,
-  madagascarSeleccionado: false
-};
-let fichasMadagascarElemento = document.getElementById("fichas-madagascar");
-if (fichasMadagascarElemento) {
-  fichasMadagascarElemento.textContent = madagascar.fichasMadagascar;
-}
-madagascar.madagascarMapa.addEventListener('click', function() {
-  if (madagascar.madagascarSeleccionado === false) {
-    madagascar.madagascarSeleccionado = true;
-    console.log("Madagascar ha sido seleccionada.");
-  } else {
-    madagascar.madagascarSeleccionado = false;
-    console.log("Madagascar ha sido deseleccionada.");
-  }
-});
-
-// América del Norte
-let alaska = {
-  alaskaMapa: document.getElementById("alaska"),
-  fichasAlaska: 1,
-  alaskaSeleccionado: false
-};
-let fichasAlaskaElemento = document.getElementById("fichas-alaska");
-if (fichasAlaskaElemento) {
-  fichasAlaskaElemento.textContent = alaska.fichasAlaska;
-}
-alaska.alaskaMapa.addEventListener('click', function() {
-  if (alaska.alaskaSeleccionado === false) {
-    alaska.alaskaSeleccionado = true;
-    console.log("Alaska ha sido seleccionada.");
-  } else {
-    alaska.alaskaSeleccionado = false;
-    console.log("Alaska ha sido deseleccionada.");
-  }
-});
-
-let canada = {
-  canadaMapa: document.getElementById("canada"),
-  fichasCanada: 1,
-  canadaSeleccionado: false
-};
-let fichasCanadaElemento = document.getElementById("fichas-canada");
-if (fichasCanadaElemento) {
-  fichasCanadaElemento.textContent = canada.fichasCanada;
-}
-canada.canadaMapa.addEventListener('click', function() {
-  if (canada.canadaSeleccionado === false) {
-    canada.canadaSeleccionado = true;
-    console.log("Canadá ha sido seleccionada.");
-  } else {
-    canada.canadaSeleccionado = false;
-    console.log("Canadá ha sido deseleccionada.");
-  }
-});
-
-let groenlandia = {
-  groenlandiaMapa: document.getElementById("groenlandia"),
-  fichasGroenlandia: 1,
-  groenlandiaSeleccionado: false
-};
-let fichasGroenlandiaElemento = document.getElementById("fichas-groenlandia");
-if (fichasGroenlandiaElemento) {
-  fichasGroenlandiaElemento.textContent = groenlandia.fichasGroenlandia;
-}
-groenlandia.groenlandiaMapa.addEventListener('click', function() {
-  if (groenlandia.groenlandiaSeleccionado === false) {
-    groenlandia.groenlandiaSeleccionado = true;
-    console.log("Groenlandia ha sido seleccionada.");
-  } else {
-    groenlandia.groenlandiaSeleccionado = false;
-    console.log("Groenlandia ha sido deseleccionada.");
-  }
-});
-
-let terranova = {
-  terranovaMapa: document.getElementById("terranova"),
-  fichasTerranova: 1,
-  terranovaSeleccionado: false
-};
-let fichasTerranovaElemento = document.getElementById("fichas-terranova");
-if (fichasTerranovaElemento) {
-  fichasTerranovaElemento.textContent = terranova.fichasTerranova;
-}
-terranova.terranovaMapa.addEventListener('click', function() {
-  if (terranova.terranovaSeleccionado === false) {
-    terranova.terranovaSeleccionado = true;
-    console.log("Terranova ha sido seleccionada.");
-  } else {
-    terranova.terranovaSeleccionado = false;
-    console.log("Terranova ha sido deseleccionada.");
-  }
-});
-
-let mexico = {
-  mexicoMapa: document.getElementById("mexico"),
-  fichasMexico: 1,
-  mexicoSeleccionado: false
-};
-let fichasMexicoElemento = document.getElementById("fichas-mexico");
-if (fichasMexicoElemento) {
-  fichasMexicoElemento.textContent = mexico.fichasMexico;
-}
-mexico.mexicoMapa.addEventListener('click', function() {
-  if (mexico.mexicoSeleccionado === false) {
-    mexico.mexicoSeleccionado = true;
-    console.log("México ha sido seleccionado.");
-  } else {
-    mexico.mexicoSeleccionado = false;
-    console.log("México ha sido deseleccionado.");
-  }
-});
-
-let california = {
-  californiaMapa: document.getElementById("california"),
-  fichasCalifornia: 1,
-  californiaSeleccionado: false
-};
-let fichasCaliforniaElemento = document.getElementById("fichas-california");
-if (fichasCaliforniaElemento) {
-  fichasCaliforniaElemento.textContent = california.fichasCalifornia;
-}
-california.californiaMapa.addEventListener('click', function() {
-  if (california.californiaSeleccionado === false) {
-    california.californiaSeleccionado = true;
-    console.log("California ha sido seleccionada.");
-  } else {
-    california.californiaSeleccionado = false;
-    console.log("California ha sido deseleccionada.");
-  }
-});
-
-let labrador = {
-  labradorMapa: document.getElementById("labrador"),
-  fichasLabrador: 1,
-  labradorSeleccionado: false
-};
-let fichasLabradorElemento = document.getElementById("fichas-labrador");
-if (fichasLabradorElemento) {
-  fichasLabradorElemento.textContent = labrador.fichasLabrador;
-}
-labrador.labradorMapa.addEventListener('click', function() {
-  if (labrador.labradorSeleccionado === false) {
-    labrador.labradorSeleccionado = true;
-    console.log("Labrador ha sido seleccionado.");
-  } else {
-    labrador.labradorSeleccionado = false;
-    console.log("Labrador ha sido deseleccionado.");
-  }
-});
-
-let oregon = {
-  oregonMapa: document.getElementById("oregon"),
-  fichasOregon: 1,
-  oregonSeleccionado: false
-};
-let fichasOregonElemento = document.getElementById("fichas-oregon");
-if (fichasOregonElemento) {
-  fichasOregonElemento.textContent = oregon.fichasOregon;
-}
-oregon.oregonMapa.addEventListener('click', function() {
-  if (oregon.oregonSeleccionado === false) {
-    oregon.oregonSeleccionado = true;
-    console.log("Oregón ha sido seleccionado.");
-  } else {
-    oregon.oregonSeleccionado = false;
-    console.log("Oregón ha sido deseleccionado.");
-  }
-});
-
-let nuevaYork = {
-  nuevaYorkMapa: document.getElementById("nuevaYork"),
-  fichasNuevaYork: 1,
-  nuevaYorkSeleccionado: false
-};
-let fichasNuevaYorkElemento = document.getElementById("fichas-nuevaYork");
-if (fichasNuevaYorkElemento) {
-  fichasNuevaYorkElemento.textContent = nuevaYork.fichasNuevaYork;
-}
-nuevaYork.nuevaYorkMapa.addEventListener('click', function() {
-  if (nuevaYork.nuevaYorkSeleccionado === false) {
-    nuevaYork.nuevaYorkSeleccionado = true;
-    console.log("Nueva York ha sido seleccionada.");
-  } else {
-    nuevaYork.nuevaYorkSeleccionado = false;
-    console.log("Nueva York ha sido deseleccionada.");
-  }
-});
-
-let yukon = {
-  yukonMapa: document.getElementById("yukon"),
-  fichasYukon: 1,
-  yukonSeleccionado: false
-};
-let fichasYukonElemento = document.getElementById("fichas-yukon");
-if (fichasYukonElemento) {
-  fichasYukonElemento.textContent = yukon.fichasYukon;
-}
-yukon.yukonMapa.addEventListener('click', function() {
-  if (yukon.yukonSeleccionado === false) {
-    yukon.yukonSeleccionado = true;
-    console.log("Yukón ha sido seleccionado.");
-  } else {
-    yukon.yukonSeleccionado = false;
-    console.log("Yukón ha sido deseleccionado.");
-  }
-});
-
-// Asia
-let china = {
-  chinaMapa: document.getElementById("china"),
-  fichasChina: 1,
-  chinaSeleccionado: false
-};
-let fichasChinaElemento = document.getElementById("fichas-china");
-if (fichasChinaElemento) {
-  fichasChinaElemento.textContent = china.fichasChina;
-}
-china.chinaMapa.addEventListener('click', function() {
-  if (china.chinaSeleccionado === false) {
-    china.chinaSeleccionado = true;
-    console.log("China ha sido seleccionada.");
-  } else {
-    china.chinaSeleccionado = false;
-    console.log("China ha sido deseleccionada.");
-  }
-});
-
-let japon = {
-  japonMapa: document.getElementById("japon"),
-  fichasJapon: 1,
-  japonSeleccionado: false
-};
-let fichasJaponElemento = document.getElementById("fichas-japon");
-if (fichasJaponElemento) {
-  fichasJaponElemento.textContent = japon.fichasJapon;
-}
-japon.japonMapa.addEventListener('click', function() {
-  if (japon.japonSeleccionado === false) {
-    japon.japonSeleccionado = true;
-    console.log("Japón ha sido seleccionado.");
-  } else {
-    japon.japonSeleccionado = false;
-    console.log("Japón ha sido deseleccionado.");
-  }
-});
-
-let iran = {
-  iranMapa: document.getElementById("iran"),
-  fichasIran: 1,
-  iranSeleccionado: false
-};
-let fichasIranElemento = document.getElementById("fichas-iran");
-if (fichasIranElemento) {
-  fichasIranElemento.textContent = iran.fichasIran;
-}
-iran.iranMapa.addEventListener('click', function() {
-  if (iran.iranSeleccionado === false) {
-    iran.iranSeleccionado = true;
-    console.log("Irán ha sido seleccionado.");
-  } else {
-    iran.iranSeleccionado = false;
-    console.log("Irán ha sido deseleccionado.");
-  }
-});
-
-let israel = {
-  israelMapa: document.getElementById("israel"),
-  fichasIsrael: 1,
-  israelSeleccionado: false
-};
-let fichasIsraelElemento = document.getElementById("fichas-israel");
-if (fichasIsraelElemento) {
-  fichasIsraelElemento.textContent = israel.fichasIsrael;
-}
-israel.israelMapa.addEventListener('click', function() {
-  if (israel.israelSeleccionado === false) {
-    israel.israelSeleccionado = true;
-    console.log("Israel ha sido seleccionado.");
-  } else {
-    israel.israelSeleccionado = false;
-    console.log("Israel ha sido deseleccionado.");
-  }
-});
-
-let arabia = {
-  arabiaMapa: document.getElementById("arabia"),
-  fichasArabia: 1,
-  arabiaSeleccionado: false
-};
-let fichasArabiaElemento = document.getElementById("fichas-arabia");
-if (fichasArabiaElemento) {
-  fichasArabiaElemento.textContent = arabia.fichasArabia;
-}
-arabia.arabiaMapa.addEventListener('click', function() {
-  if (arabia.arabiaSeleccionado === false) {
-    arabia.arabiaSeleccionado = true;
-    console.log("Arabia ha sido seleccionada.");
-  } else {
-    arabia.arabiaSeleccionado = false;
-    console.log("Arabia ha sido deseleccionada.");
-  }
-});
-
-let turquia = {
-  turquiaMapa: document.getElementById("turquia"),
-  fichasTurquia: 1,
-  turquiaSeleccionado: false
-};
-let fichasTurquiaElemento = document.getElementById("fichas-turquia");
-if (fichasTurquiaElemento) {
-  fichasTurquiaElemento.textContent = turquia.fichasTurquia;
-}
-turquia.turquiaMapa.addEventListener('click', function() {
-  if (turquia.turquiaSeleccionado === false) {
-    turquia.turquiaSeleccionado = true;
-    console.log("Turquía ha sido seleccionada.");
-  } else {
-    turquia.turquiaSeleccionado = false;
-    console.log("Turquía ha sido deseleccionada.");
-  }
-});
-
-let tartaria = {
-  tartariaMapa: document.getElementById("tartaria"),
-  fichasTartaria: 1,
-  tartariaSeleccionado: false
-};
-let fichasTartariaElemento = document.getElementById("fichas-tartaria");
-if (fichasTartariaElemento) {
-  fichasTartariaElemento.textContent = tartaria.fichasTartaria;
-}
-tartaria.tartariaMapa.addEventListener('click', function() {
-  if (tartaria.tartariaSeleccionado === false) {
-    tartaria.tartariaSeleccionado = true;
-    console.log("Tartaria ha sido seleccionada.");
-  } else {
-    tartaria.tartariaSeleccionado = false;
-    console.log("Tartaria ha sido deseleccionada.");
-  }
-});
-
-let kamchatka = {
-  kamchatkaMapa: document.getElementById("kamchatka"),
-  fichasKamchatka: 1,
-  kamchatkaSeleccionado: false
-};
-let fichasKamchatkaElemento = document.getElementById("fichas-kamchatka");
-if (fichasKamchatkaElemento) {
-  fichasKamchatkaElemento.textContent = kamchatka.fichasKamchatka;
-}
-kamchatka.kamchatkaMapa.addEventListener('click', function() {
-  if (kamchatka.kamchatkaSeleccionado === false) {
-    kamchatka.kamchatkaSeleccionado = true;
-    console.log("Kamchatka ha sido seleccionada.");
-  } else {
-    kamchatka.kamchatkaSeleccionado = false;
-    console.log("Kamchatka ha sido deseleccionada.");
-  }
-});
-
-let taimir = {
-  taimirMapa: document.getElementById("taimir"),
-  fichasTaimir: 1,
-  taimirSeleccionado: false
-};
-let fichasTaimirElemento = document.getElementById("fichas-taimir");
-if (fichasTaimirElemento) {
-  fichasTaimirElemento.textContent = taimir.fichasTaimir;
-}
-taimir.taimirMapa.addEventListener('click', function() {
-  if (taimir.taimirSeleccionado === false) {
-    taimir.taimirSeleccionado = true;
-    console.log("Taimir ha sido seleccionado.");
-  } else {
-    taimir.taimirSeleccionado = false;
-    console.log("Taimir ha sido deseleccionado.");
-  }
-});
-
-let gobi = {
-  gobiMapa: document.getElementById("gobi"),
-  fichasGobi: 1,
-  gobiSeleccionado: false
-};
-let fichasGobiElemento = document.getElementById("fichas-gobi");
-if (fichasGobiElemento) {
-  fichasGobiElemento.textContent = gobi.fichasGobi;
-}
-gobi.gobiMapa.addEventListener('click', function() {
-  if (gobi.gobiSeleccionado === false) {
-    gobi.gobiSeleccionado = true;
-    console.log("Gobi ha sido seleccionado.");
-  } else {
-    gobi.gobiSeleccionado = false;
-    console.log("Gobi ha sido deseleccionado.");
-  }
-});
-
-let india = {
-  indiaMapa: document.getElementById("india"),
-  fichasIndia: 1,
-  indiaSeleccionado: false
-};
-let fichasIndiaElemento = document.getElementById("fichas-india");
-if (fichasIndiaElemento) {
-  fichasIndiaElemento.textContent = india.fichasIndia;
-}
-india.indiaMapa.addEventListener('click', function() {
-  if (india.indiaSeleccionado === false) {
-    india.indiaSeleccionado = true;
-    console.log("India ha sido seleccionada.");
-  } else {
-    india.indiaSeleccionado = false;
-    console.log("India ha sido deseleccionada.");
-  }
-});
-
-let malasia = {
-  malasiaMapa: document.getElementById("malasia"),
-  fichasMalasia: 1,
-  malasiaSeleccionado: false
-};
-let fichasMalasiaElemento = document.getElementById("fichas-malasia");
-if (fichasMalasiaElemento) {
-  fichasMalasiaElemento.textContent = malasia.fichasMalasia;
-}
-malasia.malasiaMapa.addEventListener('click', function() {
-  if (malasia.malasiaSeleccionado === false) {
-    malasia.malasiaSeleccionado = true;
-    console.log("Malasia ha sido seleccionada.");
-  } else {
-    malasia.malasiaSeleccionado = false;
-    console.log("Malasia ha sido deseleccionada.");
-  }
-});
-
-let siberia = {
-  siberiaMapa: document.getElementById("siberia"),
-  fichasSiberia: 1,
-  siberiaSeleccionado: false
-};
-let fichasSiberiaElemento = document.getElementById("fichas-siberia");
-if (fichasSiberiaElemento) {
-  fichasSiberiaElemento.textContent = siberia.fichasSiberia;
-}
-siberia.siberiaMapa.addEventListener('click', function() {
-  if (siberia.siberiaSeleccionado === false) {
-    siberia.siberiaSeleccionado = true;
-    console.log("Siberia ha sido seleccionada.");
-  } else {
-    siberia.siberiaSeleccionado = false;
-    console.log("Siberia ha sido deseleccionada.");
-  }
-});
-
-let aral = {
-  aralMapa: document.getElementById("aral"),
-  fichasAral: 1,
-  aralSeleccionado: false
-};
-let fichasAralElemento = document.getElementById("fichas-aral");
-if (fichasAralElemento) {
-  fichasAralElemento.textContent = aral.fichasAral;
-}
-aral.aralMapa.addEventListener('click', function() {
-  if (aral.aralSeleccionado === false) {
-    aral.aralSeleccionado = true;
-    console.log("Aral ha sido seleccionado.");
-  } else {
-    aral.aralSeleccionado = false;
-    console.log("Aral ha sido deseleccionado.");
-  }
-});
-
-let mongolia = {
-  mongoliaMapa: document.getElementById("mongolia"),
-  fichasMongolia: 1,
-  mongoliaSeleccionado: false
-};
-let fichasMongoliaElemento = document.getElementById("fichas-mongolia");
-if (fichasMongoliaElemento) {
-  fichasMongoliaElemento.textContent = mongolia.fichasMongolia;
-}
-mongolia.mongoliaMapa.addEventListener('click', function() {
-  if (mongolia.mongoliaSeleccionado === false) {
-    mongolia.mongoliaSeleccionado = true;
-    console.log("Mongolia ha sido seleccionada.");
-  } else {
-    mongolia.mongoliaSeleccionado = false;
-    console.log("Mongolia ha sido deseleccionada.");
-  }
-});
-
 let paisesSeleccionados = [];
+function gestionarSeleccion(pais) {
+  const indice = paisesSeleccionados.indexOf(pais.nombre);
+  const estaSeleccionado = indice !== -1;
 
-function seleccionarPais(pais) {
-  if (pais.seleccionado) {
+  if (estaSeleccionado) {
+    paisesSeleccionados.splice(indice, 1);
     pais.seleccionado = false;
-    paisesSeleccionados = paisesSeleccionados.filter(p => p.nombre !== pais.nombre);
+    console.log(`${pais.nombre} ha sido deseleccionado.`);
   } else {
     if (paisesSeleccionados.length < 2) {
+      paisesSeleccionados.push(pais.nombre);
       pais.seleccionado = true;
-      paisesSeleccionados.push(pais);
+      console.log(`${pais.nombre} ha sido seleccionado.`);
     } else {
       console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
     }
   }
+  console.log("Países seleccionados:", paisesSeleccionados);
+}
+
+let paisEmisor = null;
+
+let paisReceptor = null;
+
+if (paisesSeleccionados.length === 2) {
+  paisEmisor = paisesSeleccionados[0];
+  paisReceptor = paisesSeleccionados[1];
+
+  console.log(`País Emisor: ${paisEmisor}`);
+  console.log(`País Receptor: ${paisReceptor}`);
+} else {
+  console.log("Aún no se han seleccionado 2 países.");
+}
+
+// América del Sur
+let argentina = {
+  nombre: "Argentina",
+  mapa: document.getElementById("argentina"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasArgentinaElemento = document.getElementById("fichas-argentina");
+if (fichasArgentinaElemento) {
+  fichasArgentinaElemento.textContent = argentina.fichas;
+}
+if (argentina.mapa) {
+  argentina.mapa.addEventListener('click', function() {
+    gestionarSeleccion(argentina);
+  });
+}
+
+let chile = {
+  nombre: "Chile",
+  mapa: document.getElementById("chile"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasChileElemento = document.getElementById("fichas-chile");
+if (fichasChileElemento) {
+  fichasChileElemento.textContent = chile.fichas;
+}
+if (chile.mapa) {
+  chile.mapa.addEventListener('click', function() {
+    gestionarSeleccion(chile);
+  });
+}
+
+let uruguay = {
+  nombre: "Uruguay",
+  mapa: document.getElementById("uruguay"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasUruguayElemento = document.getElementById("fichas-uruguay");
+if (fichasUruguayElemento) {
+  fichasUruguayElemento.textContent = uruguay.fichas;
+}
+if (uruguay.mapa) {
+  uruguay.mapa.addEventListener('click', function() {
+    gestionarSeleccion(uruguay);
+  });
+}
+
+let brasil = {
+  nombre: "Brasil",
+  mapa: document.getElementById("brasil"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasBrasilElemento = document.getElementById("fichas-brasil");
+if (fichasBrasilElemento) {
+  fichasBrasilElemento.textContent = brasil.fichas;
+}
+if (brasil.mapa) {
+  brasil.mapa.addEventListener('click', function() {
+    gestionarSeleccion(brasil);
+  });
+}
+
+let peru = {
+  nombre: "Perú",
+  mapa: document.getElementById("peru"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasPeruElemento = document.getElementById("fichas-peru");
+if (fichasPeruElemento) {
+  fichasPeruElemento.textContent = peru.fichas;
+}
+if (peru.mapa) {
+  peru.mapa.addEventListener('click', function() {
+    gestionarSeleccion(peru);
+  });
+}
+
+let colombia = {
+  nombre: "Colombia",
+  mapa: document.getElementById("colombia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasColombiaElemento = document.getElementById("fichas-colombia");
+if (fichasColombiaElemento) {
+  fichasColombiaElemento.textContent = colombia.fichas;
+}
+if (colombia.mapa) {
+  colombia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(colombia);
+  });
+}
+
+// Europa
+let islandia = {
+  nombre: "Islandia",
+  mapa: document.getElementById("islandia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasIslandiaElemento = document.getElementById("fichas-islandia");
+if (fichasIslandiaElemento) {
+  fichasIslandiaElemento.textContent = islandia.fichas;
+}
+if (islandia.mapa) {
+  islandia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(islandia);
+  });
+}
+
+let bretana = {
+  nombre: "Bretaña",
+  mapa: document.getElementById("inglaterra"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasBretanaElemento = document.getElementById("fichas-bretana");
+if (fichasBretanaElemento) {
+  fichasBretanaElemento.textContent = bretana.fichas;
+}
+if (bretana.mapa) {
+  bretana.mapa.addEventListener('click', function() {
+    gestionarSeleccion(bretana);
+  });
+}
+
+let espana = {
+  nombre: "España",
+  mapa: document.getElementById("espana"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasEspanaElemento = document.getElementById("fichas-espana");
+if (fichasEspanaElemento) {
+  fichasEspanaElemento.textContent = espana.fichas;
+}
+if (espana.mapa) {
+  espana.mapa.addEventListener('click', function() {
+    gestionarSeleccion(espana);
+  });
+}
+
+let francia = {
+  nombre: "Francia",
+  mapa: document.getElementById("francia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasFranciaElemento = document.getElementById("fichas-francia");
+if (fichasFranciaElemento) {
+  fichasFranciaElemento.textContent = francia.fichas;
+}
+if (francia.mapa) {
+  francia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(francia);
+  });
+}
+
+let alemania = {
+  nombre: "Alemania",
+  mapa: document.getElementById("alemania"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasAlemaniaElemento = document.getElementById("fichas-alemania");
+if (fichasAlemaniaElemento) {
+  fichasAlemaniaElemento.textContent = alemania.fichas;
+}
+if (alemania.mapa) {
+  alemania.mapa.addEventListener('click', function() {
+    gestionarSeleccion(alemania);
+  });
+}
+
+let italia = {
+  nombre: "Italia",
+  mapa: document.getElementById("italia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasItaliaElemento = document.getElementById("fichas-italia");
+if (fichasItaliaElemento) {
+  fichasItaliaElemento.textContent = italia.fichas;
+}
+if (italia.mapa) {
+  italia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(italia);
+  });
+}
+
+let polonia = {
+  nombre: "Polonia",
+  mapa: document.getElementById("polonia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasPoloniaElemento = document.getElementById("fichas-polonia");
+if (fichasPoloniaElemento) {
+  fichasPoloniaElemento.textContent = polonia.fichas;
+}
+if (polonia.mapa) {
+  polonia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(polonia);
+  });
+}
+
+let rusia = {
+  nombre: "Rusia",
+  mapa: document.getElementById("rusia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasRusiaElemento = document.getElementById("fichas-rusia");
+if (fichasRusiaElemento) {
+  fichasRusiaElemento.textContent = rusia.fichas;
+}
+if (rusia.mapa) {
+  rusia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(rusia);
+  });
+}
+
+// Oceanía y Sudeste Asiático
+let australia = {
+  nombre: "Australia",
+  mapa: document.getElementById("australia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasAustraliaElemento = document.getElementById("fichas-australia");
+if (fichasAustraliaElemento) {
+  fichasAustraliaElemento.textContent = australia.fichas;
+}
+if (australia.mapa) {
+  australia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(australia);
+  });
+}
+
+let sumatra = {
+  nombre: "Sumatra",
+  mapa: document.getElementById("sumatra"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasSumatraElemento = document.getElementById("fichas-sumatra");
+if (fichasSumatraElemento) {
+  fichasSumatraElemento.textContent = sumatra.fichas;
+}
+if (sumatra.mapa) {
+  sumatra.mapa.addEventListener('click', function() {
+    gestionarSeleccion(sumatra);
+  });
+}
+
+let java = {
+  nombre: "Java",
+  mapa: document.getElementById("java"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasJavaElemento = document.getElementById("fichas-java");
+if (fichasJavaElemento) {
+  fichasJavaElemento.textContent = java.fichas;
+}
+if (java.mapa) {
+  java.mapa.addEventListener('click', function() {
+    gestionarSeleccion(java);
+  });
+}
+
+let borneo = {
+  nombre: "Borneo",
+  mapa: document.getElementById("borneo"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasBorneoElemento = document.getElementById("fichas-borneo");
+if (fichasBorneoElemento) {
+  fichasBorneoElemento.textContent = borneo.fichas;
+}
+if (borneo.mapa) {
+  borneo.mapa.addEventListener('click', function() {
+    gestionarSeleccion(borneo);
+  });
+}
+
+// África
+let sahara = {
+  nombre: "Sahara",
+  mapa: document.getElementById("sahara"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasSaharaElemento = document.getElementById("fichas-sahara");
+if (fichasSaharaElemento) {
+  fichasSaharaElemento.textContent = sahara.fichas;
+}
+if (sahara.mapa) {
+  sahara.mapa.addEventListener('click', function() {
+    gestionarSeleccion(sahara);
+  });
+}
+
+let egipto = {
+  nombre: "Egipto",
+  mapa: document.getElementById("egipto"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasEgiptoElemento = document.getElementById("fichas-egipto");
+if (fichasEgiptoElemento) {
+  fichasEgiptoElemento.textContent = egipto.fichas;
+}
+if (egipto.mapa) {
+  egipto.mapa.addEventListener('click', function() {
+    gestionarSeleccion(egipto);
+  });
+}
+
+let etiopia = {
+  nombre: "Etiopía",
+  mapa: document.getElementById("etiopia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasEtiopiaElemento = document.getElementById("fichas-etiopia");
+if (fichasEtiopiaElemento) {
+  fichasEtiopiaElemento.textContent = etiopia.fichas;
+}
+if (etiopia.mapa) {
+  etiopia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(etiopia);
+  });
+}
+
+let zaire = {
+  nombre: "Zaire",
+  mapa: document.getElementById("zaire"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasZaireElemento = document.getElementById("fichas-zaire");
+if (fichasZaireElemento) {
+  fichasZaireElemento.textContent = zaire.fichas;
+}
+if (zaire.mapa) {
+  zaire.mapa.addEventListener('click', function() {
+    gestionarSeleccion(zaire);
+  });
+}
+
+let sudafrica = {
+  nombre: "Sudáfrica",
+  mapa: document.getElementById("sudafrica"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasSudafricaElemento = document.getElementById("fichas-sudafrica");
+if (fichasSudafricaElemento) {
+  fichasSudafricaElemento.textContent = sudafrica.fichas;
+}
+if (sudafrica.mapa) {
+  sudafrica.mapa.addEventListener('click', function() {
+    gestionarSeleccion(sudafrica);
+  });
+}
+
+let madagascar = {
+  nombre: "Madagascar",
+  mapa: document.getElementById("madagascar"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasMadagascarElemento = document.getElementById("fichas-madagascar");
+if (fichasMadagascarElemento) {
+  fichasMadagascarElemento.textContent = madagascar.fichas;
+}
+if (madagascar.mapa) {
+  madagascar.mapa.addEventListener('click', function() {
+    gestionarSeleccion(madagascar);
+  });
+}
+
+// América del Norte
+let alaska = {
+  nombre: "Alaska",
+  mapa: document.getElementById("alaska"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasAlaskaElemento = document.getElementById("fichas-alaska");
+if (fichasAlaskaElemento) {
+  fichasAlaskaElemento.textContent = alaska.fichas;
+}
+if (alaska.mapa) {
+  alaska.mapa.addEventListener('click', function() {
+    gestionarSeleccion(alaska);
+  });
+}
+
+let canada = {
+  nombre: "Canadá",
+  mapa: document.getElementById("canada"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasCanadaElemento = document.getElementById("fichas-canada");
+if (fichasCanadaElemento) {
+  fichasCanadaElemento.textContent = canada.fichas;
+}
+if (canada.mapa) {
+  canada.mapa.addEventListener('click', function() {
+    gestionarSeleccion(canada);
+  });
+}
+
+let groenlandia = {
+  nombre: "Groenlandia",
+  mapa: document.getElementById("groenlandia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasGroenlandiaElemento = document.getElementById("fichas-groenlandia");
+if (fichasGroenlandiaElemento) {
+  fichasGroenlandiaElemento.textContent = groenlandia.fichas;
+}
+if (groenlandia.mapa) {
+  groenlandia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(groenlandia);
+  });
+}
+
+let terranova = {
+  nombre: "Terranova",
+  mapa: document.getElementById("terranova"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasTerranovaElemento = document.getElementById("fichas-terranova");
+if (fichasTerranovaElemento) {
+  fichasTerranovaElemento.textContent = terranova.fichas;
+}
+if (terranova.mapa) {
+  terranova.mapa.addEventListener('click', function() {
+    gestionarSeleccion(terranova);
+  });
+}
+
+let mexico = {
+  nombre: "México",
+  mapa: document.getElementById("mexico"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasMexicoElemento = document.getElementById("fichas-mexico");
+if (fichasMexicoElemento) {
+  fichasMexicoElemento.textContent = mexico.fichas;
+}
+if (mexico.mapa) {
+  mexico.mapa.addEventListener('click', function() {
+    gestionarSeleccion(mexico);
+  });
+}
+
+let california = {
+  nombre: "California",
+  mapa: document.getElementById("california"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasCaliforniaElemento = document.getElementById("fichas-california");
+if (fichasCaliforniaElemento) {
+  fichasCaliforniaElemento.textContent = california.fichas;
+}
+if (california.mapa) {
+  california.mapa.addEventListener('click', function() {
+    gestionarSeleccion(california);
+  });
+}
+
+let labrador = {
+  nombre: "Labrador",
+  mapa: document.getElementById("labrador"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasLabradorElemento = document.getElementById("fichas-labrador");
+if (fichasLabradorElemento) {
+  fichasLabradorElemento.textContent = labrador.fichas;
+}
+if (labrador.mapa) {
+  labrador.mapa.addEventListener('click', function() {
+    gestionarSeleccion(labrador);
+  });
+}
+
+let oregon = {
+  nombre: "Oregón",
+  mapa: document.getElementById("oregon"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasOregonElemento = document.getElementById("fichas-oregon");
+if (fichasOregonElemento) {
+  fichasOregonElemento.textContent = oregon.fichas;
+}
+if (oregon.mapa) {
+  oregon.mapa.addEventListener('click', function() {
+    gestionarSeleccion(oregon);
+  });
+}
+
+let nuevaYork = {
+  nombre: "Nueva York",
+  mapa: document.getElementById("nuevaYork"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasNuevaYorkElemento = document.getElementById("fichas-nuevaYork");
+if (fichasNuevaYorkElemento) {
+  fichasNuevaYorkElemento.textContent = nuevaYork.fichas;
+}
+if (nuevaYork.mapa) {
+  nuevaYork.mapa.addEventListener('click', function() {
+    gestionarSeleccion(nuevaYork);
+  });
+}
+
+let yukon = {
+  nombre: "Yukón",
+  mapa: document.getElementById("yukon"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasYukonElemento = document.getElementById("fichas-yukon");
+if (fichasYukonElemento) {
+  fichasYukonElemento.textContent = yukon.fichas;
+}
+if (yukon.mapa) {
+  yukon.mapa.addEventListener('click', function() {
+    gestionarSeleccion(yukon);
+  });
+}
+
+// Asia
+let china = {
+  nombre: "China",
+  mapa: document.getElementById("china"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasChinaElemento = document.getElementById("fichas-china");
+if (fichasChinaElemento) {
+  fichasChinaElemento.textContent = china.fichas;
+}
+if (china.mapa) {
+  china.mapa.addEventListener('click', function() {
+    gestionarSeleccion(china);
+  });
+}
+
+let japon = {
+  nombre: "Japón",
+  mapa: document.getElementById("japon"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasJaponElemento = document.getElementById("fichas-japon");
+if (fichasJaponElemento) {
+  fichasJaponElemento.textContent = japon.fichas;
+}
+if (japon.mapa) {
+  japon.mapa.addEventListener('click', function() {
+    gestionarSeleccion(japon);
+  });
+}
+
+let iran = {
+  nombre: "Irán",
+  mapa: document.getElementById("iran"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasIranElemento = document.getElementById("fichas-iran");
+if (fichasIranElemento) {
+  fichasIranElemento.textContent = iran.fichas;
+}
+if (iran.mapa) {
+  iran.mapa.addEventListener('click', function() {
+    gestionarSeleccion(iran);
+  });
+}
+
+let israel = {
+  nombre: "Israel",
+  mapa: document.getElementById("israel"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasIsraelElemento = document.getElementById("fichas-israel");
+if (fichasIsraelElemento) {
+  fichasIsraelElemento.textContent = israel.fichas;
+}
+if (israel.mapa) {
+  israel.mapa.addEventListener('click', function() {
+    gestionarSeleccion(israel);
+  });
+}
+
+let arabia = {
+  nombre: "Arabia",
+  mapa: document.getElementById("arabia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasArabiaElemento = document.getElementById("fichas-arabia");
+if (fichasArabiaElemento) {
+  fichasArabiaElemento.textContent = arabia.fichas;
+}
+if (arabia.mapa) {
+  arabia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(arabia);
+  });
+}
+
+let turquia = {
+  nombre: "Turquía",
+  mapa: document.getElementById("turquia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasTurquiaElemento = document.getElementById("fichas-turquia");
+if (fichasTurquiaElemento) {
+  fichasTurquiaElemento.textContent = turquia.fichas;
+}
+if (turquia.mapa) {
+  turquia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(turquia);
+  });
+}
+
+let tartaria = {
+  nombre: "Tartaria",
+  mapa: document.getElementById("tartaria"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasTartariaElemento = document.getElementById("fichas-tartaria");
+if (fichasTartariaElemento) {
+  fichasTartariaElemento.textContent = tartaria.fichas;
+}
+if (tartaria.mapa) {
+  tartaria.mapa.addEventListener('click', function() {
+    gestionarSeleccion(tartaria);
+  });
+}
+
+let kamchatka = {
+  nombre: "Kamchatka",
+  mapa: document.getElementById("kamchatka"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasKamchatkaElemento = document.getElementById("fichas-kamchatka");
+if (fichasKamchatkaElemento) {
+  fichasKamchatkaElemento.textContent = kamchatka.fichas;
+}
+if (kamchatka.mapa) {
+  kamchatka.mapa.addEventListener('click', function() {
+    gestionarSeleccion(kamchatka);
+  });
+}
+
+let taimir = {
+  nombre: "Taimir",
+  mapa: document.getElementById("taimir"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasTaimirElemento = document.getElementById("fichas-taimir");
+if (fichasTaimirElemento) {
+  fichasTaimirElemento.textContent = taimir.fichas;
+}
+if (taimir.mapa) {
+  taimir.mapa.addEventListener('click', function() {
+    gestionarSeleccion(taimir);
+  });
+}
+
+let gobi = {
+  nombre: "Gobi",
+  mapa: document.getElementById("gobi"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasGobiElemento = document.getElementById("fichas-gobi");
+if (fichasGobiElemento) {
+  fichasGobiElemento.textContent = gobi.fichas;
+}
+if (gobi.mapa) {
+  gobi.mapa.addEventListener('click', function() {
+    gestionarSeleccion(gobi);
+  });
+}
+
+let india = {
+  nombre: "India",
+  mapa: document.getElementById("india"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasIndiaElemento = document.getElementById("fichas-india");
+if (fichasIndiaElemento) {
+  fichasIndiaElemento.textContent = india.fichas;
+}
+if (india.mapa) {
+  india.mapa.addEventListener('click', function() {
+    gestionarSeleccion(india);
+  });
+}
+
+let malasia = {
+  nombre: "Malasia",
+  mapa: document.getElementById("malasia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasMalasiaElemento = document.getElementById("fichas-malasia");
+if (fichasMalasiaElemento) {
+  fichasMalasiaElemento.textContent = malasia.fichas;
+}
+if (malasia.mapa) {
+  malasia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(malasia);
+  });
+}
+
+let siberia = {
+  nombre: "Siberia",
+  mapa: document.getElementById("siberia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasSiberiaElemento = document.getElementById("fichas-siberia");
+if (fichasSiberiaElemento) {
+  fichasSiberiaElemento.textContent = siberia.fichas;
+}
+if (siberia.mapa) {
+  siberia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(siberia);
+  });
+}
+
+let aral = {
+  nombre: "Aral",
+  mapa: document.getElementById("aral"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasAralElemento = document.getElementById("fichas-aral");
+if (fichasAralElemento) {
+  fichasAralElemento.textContent = aral.fichas;
+}
+if (aral.mapa) {
+  aral.mapa.addEventListener('click', function() {
+    gestionarSeleccion(aral);
+  });
+}
+
+let mongolia = {
+  nombre: "Mongolia",
+  mapa: document.getElementById("mongolia"),
+  fichas: 1,
+  seleccionado: false
+};
+let fichasMongoliaElemento = document.getElementById("fichas-mongolia");
+if (fichasMongoliaElemento) {
+  fichasMongoliaElemento.textContent = mongolia.fichas;
+}
+if (mongolia.mapa) {
+  mongolia.mapa.addEventListener('click', function() {
+    gestionarSeleccion(mongolia);
+  });
 }
