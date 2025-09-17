@@ -33,6 +33,11 @@ if (paisesSeleccionados.length === 2) {
   console.log("Aún no se han seleccionado 2 países.");
 }
 
+const botonMoverFichas = document.getElementById("mover-fichas-btn");
+if (botonMoverFichas) {
+  botonMoverFichas.addEventListener('click', solicitarMovimiento);
+}
+
 // América del Sur
 let argentina = {
   nombre: "Argentina",
