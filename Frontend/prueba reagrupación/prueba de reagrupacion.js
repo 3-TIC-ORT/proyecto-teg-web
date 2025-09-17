@@ -33,9 +33,28 @@ if (paisesSeleccionados.length === 2) {
   console.log("Aún no se han seleccionado 2 países.");
 }
 
+function moverFichas(paisOrigen, paisDestino, cantidad) {
+  if (!paisOrigen || !paisDestino || cantidad <= 0 || !Number.isInteger(cantidad)) {
+    console.log("Movimiento de fichas inválido.");
+    return;
+  }
+
+  if (paisOrigen.fichas - cantidad >= 1) {
+    paisOrigen.fichas -= cantidad;
+    paisDestino.fichas += cantidad;
+
+    document.getElementById(`fichas-${paisOrigen.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisOrigen.fichas;
+    document.getElementById(`fichas-${paisDestino.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisDestino.fichas;
+
+    console.log(`Se han movido ${cantidad} fichas de ${paisOrigen.nombre} a ${paisDestino.nombre}.`);
+  } else {
+    console.log(`Error: ${paisOrigen.nombre} debe conservar al menos una ficha.`);
+  }
+}
+
 const botonMoverFichas = document.getElementById("mover-fichas-btn");
 if (botonMoverFichas) {
-  botonMoverFichas.addEventListener('click', solicitarMovimiento);
+  botonMoverFichas.addEventListener('click', moverFichas);
 }
 
 // América del Sur
