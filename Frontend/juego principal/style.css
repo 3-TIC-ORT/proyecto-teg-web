@@ -125,8 +125,8 @@ position: absolute;
 }
 .mongolia{
 position: absolute;
-width: px;
-height: px;
+width: 190px;
+height: 164px;
 }
 .israel{
 width: 180px;
@@ -134,8 +134,8 @@ height: 119px ;
 position: absolute;
 }
 .aral{
-width: px;
-height: px;
+width: 123px;
+height: 178px;
 position: absolute;
 }
 .turquia{
@@ -154,10 +154,14 @@ height: 190px;
 position: absolute;
 }
 .gobi{
-
+  width: px;
+  height: px;
+  position: absolute;
 }
 .malasia{
-
+  width: 135px;
+  height: 169px;
+  position: absolute;
 }
 .iran{
   width: 220px;
@@ -170,21 +174,31 @@ height: 151px;
 position: absolute;
 }
 .taimir{
-
+  width: 109px;
+  height: 133px;
+  position: absolute;
 }
 .tartaria{
-
+  width: 114px;
+  height: 161px;
+  position: absolute; 
 }
 
 
 .labrador{
-
+  width: px;
+  height: px;
+  position: absolute;
 }
 .australia{
-
+  width: px;
+  height: px;
+  position: absolute;
 }
 .borneo{
-
+  width: px;
+  height: px;
+  position: absolute;
 }
 .sumatra{
   width: 98px;
@@ -224,11 +238,20 @@ height: 216px;
 position: absolute;
 }
 
+.canada{
+  width: 253px;
+  height: 312px;
+  position: absolute;
+}
 .california{
-
+  width: 283px;
+  height: 218px;
+  position: absolute;
 }
 .terranova{
-
+  width: 218x;
+  height: 156px;
+  position: absolute;
 }
 .mexico{
 width: 234px;
@@ -236,19 +259,29 @@ height: 178px;
 position: absolute;
 }
 .yukon{
-
+ width: 178px;
+ height: 249px;
+ position: absolute;
 }
 .alaska{
-
+  width: 117px;
+  height: 252px;
+  position: absolute;
 }
 .nuevayork{
-
+  width: 274px;
+  height: 213px;
+  position: absolute;
 }
 .oregon{
-
+  width: 300px;
+  height: 234px;
+  position: absolute;
 }
 .labrador{
-
+  width: 136px;
+  height: 128px;
+  position: absolute;
 }
 .groenlandia{
   width: 178px;
@@ -259,53 +292,73 @@ position: absolute;
 }
 
 .españa{
-width: 160px;
-height: 157px;
-position: absolute;
+ width: 160px;
+ height: 157px;
+ position: absolute;
 }
 .francia{
-width: 168px;
-height: 202px;
-position: absolute;
+ width: 168px;
+ height: 202px;
+ position: absolute;
 }
 .alemania{
-width: 158px;
-height: 213px;
-position: absolute;
+ width: 158px;
+ height: 213px;
+ position: absolute;
 }
 .polonia{
-width: 203px;
-height: 205px;
-position: absolute;
+ width: 203px;
+ height: 205px;
+ position: absolute;
 }
 .granbretaña{
-
+ width: px;
+ height: px;
+  position: absolute;
 }
 .italia{
-
+ width: 168px;
+ height: 177px;
+ position: absolute;
 }
 .ruisia{
-
+ width: 292px;
+ height: 384px;
+ position: absolute;
 }
 .suecia{
-
+ width: 163px;
+ height: 171px;
+ position: absolute;
 }
 
 .sahara{
-
+  width: 222px;
+  height: 192px;
+  position: absolute;
 }
 .madagascar{
-
+ width: px;
+ height: px;
+  position: absolute;
 }
 .sudafrica{
-
+ width: 162px;
+ height: 163px;
+ position: absolute;
 }
 .egipto{
-
+ width: 285px;
+ height: 145px;
+ position: absolute;
 }
 .etiopia{
-
+ width: 230px;
+ height: 198px;
+ position: absolute;
 }
 .zaire{
-
+  width: 192px;
+  height: 141px;
+  position: absolute;
 }
