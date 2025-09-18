@@ -57,10 +57,6 @@ if (botonAtacar) {
     botonAtacar.addEventListener('click', atacar);
 }
 
-
-const resultadoAtacante1 = tirarDado1();
-const resultadoAtacante2 = tirarDado1();
-const resultadoAtacante3 = tirarDado1();
 let tirar1 = document.getElementById("tirar1")
 function tirarDadoAtacante1() {
     let numeroAleatorio = Math.round((Math.random() * 5) + 1) * 3;
@@ -74,15 +70,40 @@ function tirarDadoAtacante3() {
     let numeroAleatorio = Math.round((Math.random() * 5) + 1) * 3;
     console.log(numeroAleatorio)
 }
-if (paisAtacante.fichas >= 3) {
-    tirar1.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
+tirar1.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
+
+const resultadoAtacante1 = tirarDado1();
+const resultadoAtacante2 = tirarDado1();
+const resultadoAtacante3 = tirarDado1();
+const dadosAtacante = [resultadoAtacante1, resultadoAtacante2, resultadoAtacante3]
+const numeroDadosAtacante = dadosAtacante.length
+
+if (paisAtacante.fichas >= 4) {
+    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1 + "dado 2:" + dadosAtacante.resultadoAtacante2 + "dado 3:" + dadosAtacante.resultadoAtacante3)
+}
+if (paisAtacante.fichas === 3) {
+    if (numeroDadosAtacante.length === 3) {
+        dadosAtacante.splice(2, 1)
+    }
+    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1 + "dado 2:" + dadosAtacante.resultadoAtacante2)
+
 }
 if (paisAtacante.fichas === 2) {
-    tirar1.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2)
+   if (numeroDadosAtacante.length === 3) {
+    dadosAtacante.splice(2, 1)
+    dadosAtacante.splice(1, 1)
+   }
+   if (numeroDadosAtacante.length === 2) {
+    dadosAtacante.splice(1, 1)
+   }
+    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
 }
+if (paisAtacante.fichas <= 1) {
+    console.log("Ejércitos insuficientes")
+}
+
 let tirar2 = document.getElementById("tirar2")
 tirar2.addEventListener("click", tirarDado1)
-
 
 
 
