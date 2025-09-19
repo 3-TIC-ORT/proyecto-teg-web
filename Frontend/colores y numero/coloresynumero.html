@@ -8,16 +8,30 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Juego de Objetivos Secretos</h1>
-        <div id="gameStatus">Es tu turno. Cierra los ojos si no eres el jugador activo.</div>
-        <div id="blurredScreen" class="blurred"></div>
-        <div id="objective" class="hidden-content">
-            <h2>Tu objetivo secreto es:</h2>
-            <p id="objectiveText"></p>
+        <h1>Selección de Jugadores - TEG</h1>
+
+        <!-- Selección de cantidad de jugadores -->
+        <div class="player-selection">
+            <label for="playerCount">Selecciona la cantidad de jugadores (3 a 6):</label>
+            <select id="playerCount" onchange="updatePlayerSelection()">
+                <option value="3">3 Jugadores</option>
+                <option value="4">4 Jugadores</option>
+                <option value="5">5 Jugadores</option>
+                <option value="6">6 Jugadores</option>
+            </select>
         </div>
-        <button class="button" id="showObjectiveButton">Ver objetivo secreto</button>
-        <button class="button" id="closeEyesButton" onclick="closeEyes()">Cierra los ojos si eres el jugador que se olvido su objetivo</button>
-        <button class="button" id="nextTurnButton">Siguiente turno</button>
+
+        <!-- Selección de colores -->
+        <div id="colorSelection" class="player-selection">
+            <h2>Selecciona los colores para los jugadores</h2>
+            <div id="colorButtons">
+                <!-- Los botones de colores serán insertados dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Botón para avanzar al siguiente paso -->
+        <button id="nextButton" class="next-button" onclick="startGame()" disabled>Empezar juego</button>
+    </div>
     </div>
 </body>
 </html>
