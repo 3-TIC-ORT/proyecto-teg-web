@@ -1,10 +1,10 @@
 let paisAtacante = {
-    pais: null,
-    fichas: pais.fichas
+    nombre: null,
+    fichas: 1
 }
 let paisAtacado = {
-    pais: null,
-    fichas: pais.fichas
+    nombre: null,
+    fichas: 1
 }
 let paisesSeleccionados = [];
 function gestionarSeleccion(pais) {
@@ -16,7 +16,7 @@ function gestionarSeleccion(pais) {
         pais.seleccionado = false;
         console.log(`${pais.nombre} ha sido deseleccionado.`);
         if (paisesSeleccionados.length === 1) {
-        paisesSeleccionados.splice[0];
+            paisesSeleccionados.splice[0];
         }
         if (paisesSeleccionados.length === 2) {
             paisAtacado = paisesSeleccionados[1];
@@ -28,10 +28,12 @@ function gestionarSeleccion(pais) {
             console.log(`${pais.nombre} ha sido seleccionado.`);
             if (paisesSeleccionados === null) {
                 paisAtacante = paisesSeleccionados[0];
-                }
-                if (paisesSeleccionados !== null) {
-                    paisAtacado = paisesSeleccionados[1];
-                }
+                paisAtacante.fichas = paisesSeleccionados[0].fichas;
+            }
+            if (paisesSeleccionados !== null) {
+                paisAtacado = paisesSeleccionados[1];
+                paisAtacado.fichas = paisesSeleccionados[1].fichas;
+            }
         } else {
             console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
         }
@@ -48,6 +50,11 @@ if (paisesSeleccionados.length === 2) {
     console.log(`País atacado: ${paisAtacado}`);
 } else {
     console.log("Aún no se han seleccionado 2 países.");
+}
+
+const botonAtacar = document.getElementById("atacar");
+if (botonAtacar) {
+    botonAtacar.addEventListener('click', atacar);
 }
 
 function atacar(paisAtacante, paisAtacado, cantidad) {
@@ -69,11 +76,6 @@ function atacar(paisAtacante, paisAtacado, cantidad) {
     }
 }
 
-const botonAtacar = document.getElementById("atacar");
-if (botonAtacar) {
-    botonAtacar.addEventListener('click', atacar);
-}
-
 let tirar1 = document.getElementById("tirar1")
 function tirarDadoAtacante1() {
     let numeroAleatorio1 = Math.round((Math.random() * 5) + 1) * 3;
@@ -87,7 +89,8 @@ function tirarDadoAtacante3() {
     let numeroAleatorio3 = Math.round((Math.random() * 5) + 1) * 3;
     console.log(numeroAleatorio3)
 }
-tirar1.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
+let tirarDadosAtacante = document.getElementById("tirar1")
+tirarDadosAtacante.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
 
 const resultadoAtacante1 = tirarDadoAtacante1();
 const resultadoAtacante2 = tirarDadoAtacante2();
@@ -130,7 +133,7 @@ if (paisAtacante.fichas === 1) {
 }
 
 let tirar2 = document.getElementById("tirar2")
-tirar2.addEventListener("click", tirarDado1)
+tirar2.addEventListener("click", tirarDadosAtacante)
 
 
 
