@@ -1,3 +1,11 @@
+let paisAtacante = {
+    pais: null,
+    fichas: pais.fichas
+}
+let paisAtacado = {
+    pais: null,
+    fichas: pais.fichas
+}
 let paisesSeleccionados = [];
 function gestionarSeleccion(pais) {
     const indice = paisesSeleccionados.indexOf(pais.nombre);
@@ -7,11 +15,23 @@ function gestionarSeleccion(pais) {
         paisesSeleccionados.splice(indice, 1);
         pais.seleccionado = false;
         console.log(`${pais.nombre} ha sido deseleccionado.`);
+        if (paisesSeleccionados.length === 1) {
+        paisesSeleccionados.splice[0];
+        }
+        if (paisesSeleccionados.length === 2) {
+            paisAtacado = paisesSeleccionados[1];
+        }
     } else {
         if (paisesSeleccionados.length < 2) {
             paisesSeleccionados.push(pais.nombre);
             pais.seleccionado = true;
             console.log(`${pais.nombre} ha sido seleccionado.`);
+            if (paisesSeleccionados === null) {
+                paisAtacante = paisesSeleccionados[0];
+                }
+                if (paisesSeleccionados !== null) {
+                    paisAtacado = paisesSeleccionados[1];
+                }
         } else {
             console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
         }
@@ -19,9 +39,6 @@ function gestionarSeleccion(pais) {
     console.log("Países seleccionados:", paisesSeleccionados);
 }
 
-let paisAtacante = null;
-
-let paisAtacado = null;
 
 if (paisesSeleccionados.length === 2) {
     paisAtacante = paisesSeleccionados[0];
@@ -59,46 +76,56 @@ if (botonAtacar) {
 
 let tirar1 = document.getElementById("tirar1")
 function tirarDadoAtacante1() {
-    let numeroAleatorio = Math.round((Math.random() * 5) + 1) * 3;
-    console.log(numeroAleatorio)
+    let numeroAleatorio1 = Math.round((Math.random() * 5) + 1) * 3;
+    console.log(numeroAleatorio1)
 }
 function tirarDadoAtacante2() {
-    let numeroAleatorio = Math.round((Math.random() * 5) + 1) * 3;
-    console.log(numeroAleatorio)
+    let numeroAleatorio2 = Math.round((Math.random() * 5) + 1) * 3;
+    console.log(numeroAleatorio2)
 }
 function tirarDadoAtacante3() {
-    let numeroAleatorio = Math.round((Math.random() * 5) + 1) * 3;
-    console.log(numeroAleatorio)
+    let numeroAleatorio3 = Math.round((Math.random() * 5) + 1) * 3;
+    console.log(numeroAleatorio3)
 }
 tirar1.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
 
-const resultadoAtacante1 = tirarDado1();
-const resultadoAtacante2 = tirarDado1();
-const resultadoAtacante3 = tirarDado1();
+const resultadoAtacante1 = tirarDadoAtacante1();
+const resultadoAtacante2 = tirarDadoAtacante2();
+const resultadoAtacante3 = tirarDadoAtacante3();
 const dadosAtacante = [resultadoAtacante1, resultadoAtacante2, resultadoAtacante3]
 const numeroDadosAtacante = dadosAtacante.length
 
 if (paisAtacante.fichas >= 4) {
+    if (numeroDadosAtacante === 3) {
+        dadosAtacante.push(resultadoAtacante3)
+    }
+    if (numeroDadosAtacante === 2) {
+        dadosAtacante.push(resultadoAtacante2)
+        dadosAtacante.push(resultadoAtacante3)
+    }
     console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1 + "dado 2:" + dadosAtacante.resultadoAtacante2 + "dado 3:" + dadosAtacante.resultadoAtacante3)
 }
 if (paisAtacante.fichas === 3) {
     if (numeroDadosAtacante.length === 3) {
         dadosAtacante.splice(2, 1)
     }
+    if (numeroDadosAtacante === 1) {
+        dadosAtacante.push(resultadoAtacante2)
+    }
     console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1 + "dado 2:" + dadosAtacante.resultadoAtacante2)
 
 }
 if (paisAtacante.fichas === 2) {
-   if (numeroDadosAtacante.length === 3) {
-    dadosAtacante.splice(2, 1)
-    dadosAtacante.splice(1, 1)
-   }
-   if (numeroDadosAtacante.length === 2) {
-    dadosAtacante.splice(1, 1)
-   }
+    if (numeroDadosAtacante.length === 3) {
+        dadosAtacante.splice(2, 1)
+        dadosAtacante.splice(1, 1)
+    }
+    if (numeroDadosAtacante.length === 2) {
+        dadosAtacante.splice(1, 1)
+    }
     console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
 }
-if (paisAtacante.fichas <= 1) {
+if (paisAtacante.fichas === 1) {
     console.log("Ejércitos insuficientes")
 }
 
