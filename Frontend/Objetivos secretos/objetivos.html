@@ -10,10 +10,16 @@
     <title>objetivos secretos</title>
 </head>
 <body>
-    <h1 id="objetivo">Todos los jugadores salvo el jugador colorjugador </h1>
-    <button id="revelar">revelar objetivo</button>
-    <button id="siguiente" disabled>siguiente jugador</button>
-    <p id="objetivo1" class="objetivo1"></p>
-    <p id="objetivo2" class="objetivo2"></p>
+    <div class="game-container">
+        <h1>Juego de Objetivos Secretos</h1>
+        <div id="gameStatus">Es tu turno. Cierra los ojos si no eres el jugador activo.</div>
+        <div id="blurredScreen" class="blurred"></div>
+        <div id="objective" class="hidden-content">
+            <h2>Tu objetivo secreto es:</h2>
+            <p id="objectiveText"></p>
+        </div>
+        <button class="button" id="showObjectiveButton">Ver objetivo secreto</button>
+        <button class="button" id="closeEyesButton" onclick="closeEyes()">Cierra los ojos si eres el jugador que se olvido su objetivo</button>
+        <button class="button" id="nextTurnButton">Siguiente turno</button>
 </body>
 </html>
