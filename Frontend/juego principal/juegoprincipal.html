@@ -13,25 +13,59 @@
   </head>
   <body>
  <title> TEG-WEB</title>
-    <button id="Atacar" class="atacar" style="border: 70px;" > Atacar</button> 
-       <button class="Reagrupar" id="Reagrupar" style="border: 70px;" > Reagrupar</button> 
-          <button class="Reponer" id="Reponer" style="border: 70px;" > Reponer fichas</button> 
-             <button class="Canjear" id="Canjear" style="border: 70px;" > Canjear cartas</button> 
-             <div class="container">
-              <h1>Fases de los Turnos (prueba de maquina de estados finitos)</h1>
-              <span id="faseActual">fase de ataque</span>
-              <br><br>
-              <button id="botonPararAtacar">parar de atacar</button>
-              <button id="terminarTurno">terminar turno</button>
-          </div>      
-    <select id="menu" class="menu">
-       <option value= "Selecionar opcion" > Selecionar opcion</option>
-      <option value= "Asia" >Asia</option>
-      <option value="Europa">Europa</option>
-      <option value="America del norte">America del norte</option>
-      <option value="America del sur">America del Sur</option>
-      <option value="Africa">Africa</option>
-      <option value="Oceania">Oceania</option>
+  <button id="Atacar" class="atacar" style="border: 70px;" > Atacar</button> 
+  <button class="Reagrupar" id="Reagrupar" style="border: 70px;" > Reagrupar</button> 
+  <button class="Reponer" id="Reponer" style="border: 70px;" > Reponer fichas</button> 
+  <button class="Canjear" id="Canjear" style="border: 70px;" > Canjear cartas</button> 
+  <div class="container">
+  <h1>Fases de los Turnos (prueba de maquina de estados finitos)</h1>
+  <span id="faseActual">fase de ataque</span>
+  <br><br>
+  <button id="botonPararAtacar">parar de atacar</button>
+  <button id="terminarTurno">terminar turno</button>
+  </div>      
+    <select disabled id="menuasia" class="menuaisa">
+      <option value= "Selecionaropcion" > Selecionar opcion en Asia</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <select disabled id="menueuropa" class="menueuropa">
+      <option value="selecionaropcioneuropa">Selecionar opcion en Europa</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <select disabled id="menuamericadelsur" class="menuamericadelsur">
+      <option value="selecionaropcionamericadelsur">Selecionar opcion en America Del Sur</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <select disabled id="menuamericadelnorte" class="menuamericadelnorte">
+      <option value="selecionaropcionamericadelnorte">Selecionar opcion en America Del Norte</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <select disabled id="menuafrica" class="menuafrica">
+      <option value="selecionaropcionafrica">Selecionar opcion en Africa</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <select disabled id="menuoceania" class="menuoceania">
+      <option value="selecionaropcionoceania">Selecionar opcion en Oceania</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
     </select>
     <button class="Parar botonCambioFase" id="Parar" style="border: 70px;" > Parar de atacar</button>
     <button class="Terminar botonCambioFase style="border: 70px; >Terminar turno</button>
