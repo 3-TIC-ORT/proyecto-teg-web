@@ -1,14 +1,6 @@
-let paisAtacante = {
-    nombre: null,
-    fichas: 1
-}
-let paisAtacado = {
-    nombre: null,
-    fichas: 1
-}
 let paisesSeleccionados = [];
 function gestionarSeleccion(pais) {
-    const indice = paisesSeleccionados.indexOf(pais.nombre);
+    const indice = paisesSeleccionados.indexOf(pais);
     const estaSeleccionado = indice !== -1;
 
     if (estaSeleccionado) {
@@ -23,7 +15,7 @@ function gestionarSeleccion(pais) {
         }
     } else {
         if (paisesSeleccionados.length < 2) {
-            paisesSeleccionados.push(pais.nombre);
+            paisesSeleccionados.push(pais)
             pais.seleccionado = true;
             console.log(`${pais.nombre} ha sido seleccionado.`);
             if (paisesSeleccionados === null) {
@@ -32,7 +24,7 @@ function gestionarSeleccion(pais) {
             }
             if (paisesSeleccionados !== null) {
                 paisAtacado = paisesSeleccionados[1];
-                paisAtacado.fichas = paisesSeleccionados[1].fichas;
+                paisAtacado.fichas = parseInt(paisesSeleccionados[1].fichas);
             }
         } else {
             console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
@@ -41,6 +33,14 @@ function gestionarSeleccion(pais) {
     console.log("Países seleccionados:", paisesSeleccionados);
 }
 
+let paisAtacante = {
+    nombre: null,
+    fichas: paisesSeleccionados[0].fichas
+}
+let paisAtacado = {
+    nombre: null,
+    fichas: paisesSeleccionados[1].fichas
+}
 
 if (paisesSeleccionados.length === 2) {
     paisAtacante = paisesSeleccionados[0];
