@@ -13,7 +13,7 @@
   /* O puedes usar: border: 2px solid black; */
 }
 body {
-background-color: #ffffff;
+background-color: #1ABFED;
 }
 
 .americadelsur {
@@ -80,9 +80,13 @@ border-radius: 5rem;
   top: 290px;
   left: 201px;
 }
-/*.Menu{
-
-}*/
+.Menu{
+ width: 315px;
+ height: 137px;
+ position: absolute;
+ top: 427px;
+ left: 18px;
+display: flex;}
 .Parar{
   border-radius: 5rem;
   background-color: #fff;
@@ -102,16 +106,30 @@ border-radius: 5rem;
   left: 206px;
 }
 .Tirar1{
-
+  width: 113px;
+  height: 49px;
+  position: absolute;
+  top: 717px;
+ left: 34px;
 }
 .Tirar2{
-    
+  width: 113px;
+  height: 49px;
+  position: absolute;
+  top: 717px;
+  left: 251px;   
+}
+.linea-medio{
+  width: 5px;
+  height: 0%;
+  position: absolute;
+  top: 0%;
+  left: 396px;
 }
 .japon{
   width: 96px;
   height: 89px;
   position: absolute;
-  background-color: var(--colorasia);
 }
 .china{
  width: 283px;
@@ -186,56 +204,76 @@ position: absolute;
 
 
 .java{
-  width: 74px;
-  height: 172px;
+  width: 59.34px;
+  height: 124.71px;
   position: absolute;
+  top: 589.64px;
+  left: 1854.64px;
 }
 .australia{
   width: 218px;
   height: 239px;
   position: absolute;
+  left: 1747.19px;
+  top: 719.73px;
 }
 .borneo{
-  width: 92px;
-  height: 174px;
+  width: 73.78px;
+  height: 118.55px;
   position: absolute;
+  top: 591.95px;
+  left: 1779.26px;
 }
 .sumatra{
-  width: 98px;
-  height: 108px;
+  width: 88.39px;
+  height: 99.83x;
   position: absolute;
+  top: 678.67px;
+  left: 1662.9px;
 } 
 
 
 .argentina{
-width: 133px;
-height: 234px;
+width: 106.14px;
+height: 196.68px;
 position: absolute;
+top: 748.99px;
+left: 859.47px;
 }
 .uruguay{
-width: 124px;
-height: 122px;
-position: absolute;
+ width: 98.07px;
+ height: 101.54px;
+ position: absolute;
+ top: 748.22px;
+ left: 940.46px;
 }
 .peru{
-width: 155px;
-height: 112px;
-position: absolute;
+ width: 123.49px;
+ height: 93.26px;
+ position: absolute;
+ top: 674.32px;
+ left: 818.58px;
 }
 .colombia{
-width: 172px;
-height: 130px;
+width: 136.32px;
+height: 108.27px;
 position: absolute;
+ top: 592.34px;
+ left: 802.14px;
 }
 .brasil{
-width: 248px;
-height: 212px;
+width: 197.67px;
+height: 177.49px;
 position: absolute;
+ top: 603.88px;
+ left: 905.18px;
 }
 .chile{
-width: 64px;
-height: 216px;
+width: 47.63px;
+height: 182.88px;
 position: absolute;
+top: 752.07px;
+left: 841.43px;
 }
 
 .canada{
@@ -292,44 +330,68 @@ position: absolute;
 }
 
 .españa{
- width: 160px;
- height: 157px;
+ width: 128.3px;
+ height: 133.29px;
  position: absolute;
+ top: 563.47px;
+ left: 1139.34px;
 }
 .francia{
- width: 168px;
- height: 202px;
+ width: 129.91px;
+ height: 171.26px;
  position: absolute;
+ top: 464.17px;
+ left: 1228.35px;
 }
 .alemania{
- width: 158px;
- height: 213px;
+ width: 130.12px;
+ height: 176.69px;
  position: absolute;
+ top: 426.44px;
+ left: 1327.8px;
 }
 .polonia{
- width: 203px;
- height: 205px;
+ width: 164.95px;
+ height: 177.28px;
  position: absolute;
+ top: 410.28px;
+ left: 1364.67px;
 }
 .granbretaña{
- width: px;
- height: px;
+  width: 113.87px;
+  height: 148.57px;
+  position:absolute;
+  top: 363.32px;
+  left: 1165px;
+}
+.islandia{
+ width: 125.9px;
+ height: 150.88px;
   position: absolute;
+  top: 343.3px;
+  left: 1007.83px;
 }
 .italia{
- width: 168px;
- height: 177px;
+ width: 134.32px;
+ height: 149.58px;
  position: absolute;
+ top: 554.96px;
+ left: 1335.23px;
 }
 .ruisia{
- width: 292px;
- height: 384px;
+ width: 230.55px;
+ height: 325.36px;
  position: absolute;
+ top: 200.89px;
+ left: 1377.5px;
+
 }
 .suecia{
- width: 163px;
- height: 171px;
+ width: 131.67px;
+ height: 146.81px;
  position: absolute;
+ top: 216.19;
+ left: 1272.46px;
 }
 
 .sahara{
