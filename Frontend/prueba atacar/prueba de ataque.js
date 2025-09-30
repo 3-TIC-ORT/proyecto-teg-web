@@ -789,68 +789,56 @@ if (mongolia.mapa) {
 }
 
 let paisesSeleccionados = [];
+
+let paisAtacante = { nombre: null, fichas: null };
+let paisAtacado = { nombre: null, fichas: null };
+
 function gestionarSeleccion(pais) {
     const indice = paisesSeleccionados.indexOf(pais);
     const estaSeleccionado = indice !== -1;
 
     if (estaSeleccionado) {
+        // Deseleccionar
         paisesSeleccionados.splice(indice, 1);
         pais.seleccionado = false;
         console.log(`${pais.nombre} ha sido deseleccionado.`);
-        if (paisesSeleccionados.length === 1) {
-            paisesSeleccionados.splice[0];
+
+        // Si era el atacante, lo libero
+        if (paisAtacante.nombre === pais.nombre) {
+            paisAtacante = { nombre: null, fichas: null };
         }
-        else if (paisesSeleccionados.length === 2) {
-            paisAtacado = paisesSeleccionados[1];
+
+        // Si era el atacado, lo libero
+        if (paisAtacado.nombre === pais.nombre) {
+            paisAtacado = { nombre: null, fichas: null };
         }
     } else {
+        // Seleccionar
         if (paisesSeleccionados.length < 2) {
-            paisesSeleccionados.push(pais)
+            paisesSeleccionados.push(pais);
             pais.seleccionado = true;
             console.log(`${pais.nombre} ha sido seleccionado.`);
-            if (paisesSeleccionados === null) {
-                paisAtacante = paisesSeleccionados[0];
-                paisAtacante.fichas = paisesSeleccionados[0].fichas;
-            }
-            if (paisesSeleccionados !== null) {
-                paisAtacado = paisesSeleccionados[1];
-                paisAtacado.fichas = parseInt(paisesSeleccionados[1].fichas);
+
+            // Asignar rol si corresponde
+            if (!paisAtacante.nombre) {
+                paisAtacante = {
+                    nombre: pais.nombre,
+                    fichas: pais.fichas
+                };
+            } else if (!paisAtacado.nombre) {
+                paisAtacado = {
+                    nombre: pais.nombre,
+                    fichas: pais.fichas
+                };
             }
         } else {
             console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
         }
     }
+
     console.log("Países seleccionados:", paisesSeleccionados);
-}
-
-let paisAtacante = null
-
-if (paisesSeleccionados.length >= 1) {
-    paisAtacante = {
-        nombre: paisesSeleccionados[0].nombre,
-        fichas: paisesSeleccionados[0].fichas
-    }
-}
-
-let paisAtacado = null
-if (paisesSeleccionados === 2) {
-    paisAtacante = {
-        nombre: paisesSeleccionados[0].nombre,
-        fichas: paisesSeleccionados[0].fichas
-    }
-    paisAtacado = {
-        nombre: paisesSeleccionados[1].nombre,
-        fichas: paisesSeleccionados[1].fichas
-    }
-}
-if (paisesSeleccionados.length === 2) {
-    paisAtacante = paisesSeleccionados[0];
-    paisAtacado = paisesSeleccionados[1];
-
-    console.log(`País atacante: ${paisAtacante}`);
-    console.log(`País atacado: ${paisAtacado}`);
-} else {
-    console.log("Aún no se han seleccionado 2 países.");
+    console.log("Atacante:", paisAtacante);
+    console.log("Atacado:", paisAtacado);
 }
 
 const botonAtacar = document.getElementById("atacar");
@@ -929,7 +917,7 @@ if (paisAtacante.fichas === 2) {
     }
     console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
 }
-if (paisAtacante.fichas === 1) {
+if (paisAtacante.fichas === null) {
     console.log("Ejércitos insuficientes")
 }
 
