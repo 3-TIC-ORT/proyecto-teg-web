@@ -61,7 +61,7 @@ class fasesMachine {
         constructor() {
             this.state = 'fase de ataque';
             this.cambioDeFaseTurnos = 0;
-            this.reposicionesHechas = 0;
+            this.reposicionesHechas = 1;
         }
     
         transition(event) {
@@ -94,7 +94,7 @@ class fasesMachine {
                     else  if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
                         console.log('Cambio de fase de reposición a fase de ataque');
                         this.state = 'fase de ataque';
-                        this.reposicionesHechas = 0;
+                        this.reposicionesHechas = 1;
                     }
                     break;
                 default:
