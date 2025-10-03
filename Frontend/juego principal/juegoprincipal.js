@@ -52,7 +52,7 @@ function nombre (){
 let objetivos =document.getElementById ("objetivos")
 
 // La Maquina de Estados Finitos
-let cantidadJugadores = prompt("¿Cuántos jugadores?");
+//let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('faseActual');
 const botonPararAtacar = document.getElementById('botonPararAtacar');
