@@ -10,28 +10,18 @@
     <div class="game-container">
         <h1>Selección de Jugadores - TEG</h1>
 
-        <!-- Selección de cantidad de jugadores -->
-        <div class="player-selection">
-            <label for="playerCount">Selecciona la cantidad de jugadores (3 a 6):</label>
-            <select id="playerCount" onchange="updatePlayerSelection()">
-                <option value="3">3 Jugadores</option>
-                <option value="4">4 Jugadores</option>
-                <option value="5">5 Jugadores</option>
-                <option value="6">6 Jugadores</option>
-            </select>
-        </div>
 
-        <!-- Selección de colores -->
-        <div id="colorSelection" class="player-selection">
-            <h2>Selecciona los colores para los jugadores</h2>
-            <div id="colorButtons">
-                <!-- Los botones de colores serán insertados dinámicamente -->
-            </div>
-        </div>
+       <h2>Configuración de jugadores para TEG</h2>
 
-        <!-- Botón para avanzar al siguiente paso -->
-        <button id="nextButton" class="next-button" onclick="startGame()" disabled>Empezar juego</button>
+
+  <label for="numPlayers">Cantidad de jugadores (3 a 6):</label>
+  <input type="number" id="numPlayers" min="3" max="6" value="3">
+  <button onclick="generateSelectors()">Confirmar</button>
+
+
+  <div id="selectors"></div>
     </div>
     </div>
+    <a href="../juego%20principal/juegoprincipal.html">Empieza el juego!!</a>
 </body>
 </html>

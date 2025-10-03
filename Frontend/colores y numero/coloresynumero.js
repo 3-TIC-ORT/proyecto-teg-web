@@ -1,65 +1,65 @@
-const colors = ['azul', 'rojo', 'amarillo', 'verde', 'rosa', 'negro'];
-        
-        let playerCount = 3; // Número inicial de jugadores (mínimo 3)
-        let selectedColors = []; // Colores seleccionados por los jugadores
+const allColors = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 
-        // Actualiza la cantidad de jugadores y los colores disponibles
-        function updatePlayerSelection() {
-            // Obtener el número de jugadores seleccionado
-            playerCount = parseInt(document.getElementById('playerCount').value);
 
-            // Resetear la lista de colores seleccionados
-            selectedColors = [];
+function generateSelectors() {
+  const numPlayers = parseInt(document.getElementById("numPlayers").value);
+  const container = document.getElementById("selectors");
+  container.innerHTML = "";
 
-            // Limpiar la selección de colores
-            const colorButtonsContainer = document.getElementById('colorButtons');
-            colorButtonsContainer.innerHTML = '';
 
-            // Mostrar los botones de colores según la cantidad de jugadores
-            for (let i = 0; i < playerCount; i++) {
-                const colorButton = document.createElement('button');
-                colorButton.classList.add('color-button');
-                colorButton.textContent = colors[i];
-                colorButton.style.backgroundColor = colors[i];
-                colorButton.onclick = () => selectColor(i);
-                colorButtonsContainer.appendChild(colorButton);
-            }
+  const selectedColors = [];
 
-            // Deshabilitar el botón de siguiente si no hay suficientes colores seleccionados
-            document.getElementById('nextButton').disabled = selectedColors.length !== playerCount;
-        }
 
-        // Selecciona un color para un jugador
-        function selectColor(playerIndex) {
-            const colorButton = document.getElementsByClassName('color-button')[playerIndex];
-            const selectedColor = colorButton.textContent;
+  for (let i = 0; i < numPlayers; i++) {
+    const div = document.createElement("div");
+    div.className = "player-select";
 
-            // Si el color ya está seleccionado, lo deseleccionamos
-            if (selectedColors.includes(selectedColor)) {
-                const colorIndex = selectedColors.indexOf(selectedColor);
-                selectedColors.splice(colorIndex, 1);
-                colorButton.classList.remove('selected');
-            } else {
-                // Si el color no está seleccionado, lo agregamos a la lista
-                if (selectedColors.length < playerCount) {
-                    selectedColors.push(selectedColor);
-                    colorButton.classList.add('selected');
-                }
-            }
 
-            // Deshabilitar el botón de siguiente si no hay suficientes colores seleccionados
-            document.getElementById('nextButton').disabled = selectedColors.length !== playerCount;
-        }
+    const label = document.createElement("label");
+    label.textContent = `Jugador ${i + 1}:`;
 
-        // Comienza el juego con los jugadores y sus colores seleccionados
-        function startGame() {
-            if (selectedColors.length === playerCount) {
-                alert(`Juego iniciado con ${playerCount} jugadores: ${selectedColors.join(', ')}`);
-                // Aquí puedes agregar la lógica para comenzar el juego
-            } else {
-                alert("Debes seleccionar un color para cada jugador.");
-            }
-        }
 
-        // Inicializa el juego con 3 jugadores y colores
-        updatePlayerSelection();
+    const select = document.createElement("select");
+    select.id = `player${i}`;
+    select.onchange = () => updateOptions();
+
+
+    div.appendChild(label);
+    div.appendChild(select);
+    container.appendChild(div);
+  }
+
+
+  updateOptions();
+}
+
+
+function updateOptions() {
+  const numPlayers = parseInt(document.getElementById("numPlayers").value);
+  const selectedColors = [];
+
+
+  for (let i = 0; i < numPlayers; i++) {
+    const select = document.getElementById(`player${i}`);
+    if (select.value) selectedColors.push(select.value);
+  }
+
+
+  for (let i = 0; i < numPlayers; i++) {
+    const select = document.getElementById(`player${i}`);
+    const currentValue = select.value;
+    select.innerHTML = "";
+
+
+    const availableColors = allColors.filter(color => !selectedColors.includes(color) || color === currentValue);
+
+
+    availableColors.forEach(color => {
+      const option = document.createElement("option");
+      option.value = color;
+      option.textContent = color;
+      if (color === currentValue) option.selected = true;
+      select.appendChild(option);
+    });
+  }
+}
