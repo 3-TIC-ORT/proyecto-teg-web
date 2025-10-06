@@ -12,13 +12,13 @@ body {
 background-color: #1ABFED;
 width: 100%;
 }
-.foto{
+/*.foto{
 width: 1072px;
 height: 100%;
 position: absolute;
 left: 280px;
 top: 0px;
-}
+}*/
 .americadelsur {
 background-color: var(--coloramericadelsur);
 }
@@ -42,8 +42,8 @@ background-color: var(--coloramericanorte);
 .timer{
 display: flexbox;
 position: absolute;
-left: 1000px;
-top: 100px;
+left: 780px;
+top: 40px;
 width: 154px;
 height: 58px;
 }
@@ -419,59 +419,57 @@ left: 830px;
 width: 129.91px;
 height: 171.26px;
 position: absolute;
-top: 400px;
+top: 320px;
 left: 900px;
 }
 .alemania{
 width: 130.12px;
 height: 176.69px;
 position: absolute;
-top: 426.44px;
-left: 1327.8px;
+top: 310px;
+left: 970px;
 }
 .polonia{
 width: 164.95px;
 height: 177.28px;
 position: absolute;
-top: 410.28px;
-left: 1364.67px;
+top: 280px;
+left: 1013px;
 }
 .granbretaña{
 width: 113.87px;
 height: 148.57px;
 position:absolute;
-top: 363.32px;
-left: 1165px;
+top: 260px;
+left: 840px;
 }
 .islandia{
 width: 125.9px;
 height: 150.88px;
 position: absolute;
-top: 343.3px;
-left: 1007.83px;
+top: 230px;
+left: 735px;
 }
 .italia{
 width: 134.32px;
 height: 149.58px;
 position: absolute;
-top: 554.96px;
-left: 1335.23px;
+top: 380px;
+left: 965px;
 }
-.ruisia{
+.rusia{
 width: 230.55px;
 height: 325.36px;
 position: absolute;
-top: 200.89px;
-left: 1377.5px;
-
-
+top: 195px;
+left: 1015px;
 }
 .suecia{
 width: 131.67px;
 height: 146.81px;
 position: absolute;
-top: 216.19;
-left: 1272.46px;
+top: 140px;
+left: 940px;
 }
 
 
@@ -479,29 +477,41 @@ left: 1272.46px;
 width: 222px;
 height: 192px;
 position: absolute;
+top: 480px;
+left: 930px;
 }
 .madagascar{
 width: px;
 height: px;
 position: absolute;
+top: 520px;
+left: 1110px;
 }
 .sudafrica{
 width: 162px;
 height: 163px;
 position: absolute;
+top: 550px;
+left: 1020px;
 }
 .egipto{
 width: 285px;
 height: 145px;
 position: absolute;
+top: 445px;
+left: 1055px;
 }
 .etiopia{
  width: 230px;
  height: 198px;
  position: absolute;
+ top: 485px;
+left: 1030px;
 }
 .zaire{
   width: 192px;
   height: 141px;
   position: absolute;
+  top: 520px;
+  left: 990px;
 }
