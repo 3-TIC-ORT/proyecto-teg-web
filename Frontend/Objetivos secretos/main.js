@@ -15,7 +15,6 @@ const objectives = [
   "Ocupar América del Norte, 2 países de Oceanía y 4 de Asia",
   "Ocupar 2 países de Oceanía, 2 países de África, 2 países de América del Sur, 3 países de Europa, 4 países de África y 3 de Asia"
 ];
-
 let selectedPlayers = [];
 let playerObjectives = {};
 let currentIndex = 0;
@@ -58,5 +57,6 @@ function showObjective() {
       document.getElementById("overlay").style.display = "none";
       alert("Todos los objetivos fueron revelados. ¡A jugar!");
     }
-  }, 8000);
+  },);
 }
+
