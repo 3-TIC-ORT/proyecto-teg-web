@@ -12,13 +12,13 @@ body {
 background-color: #1ABFED;
 width: 100%;
 }
-/*.foto{
+.foto{
 width: 1072px;
 height: 100%;
 position: absolute;
 left: 280px;
 top: 0px;
-}*/
+}
 .americadelsur {
 background-color: var(--coloramericadelsur);
 }
@@ -284,7 +284,7 @@ left: 1270px;
 width: 88.39px;
 height: 99.83x;
 position: absolute;
-top: 400px;
+top: 445px;
 left: 1200px;
 }
 

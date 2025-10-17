@@ -35,6 +35,7 @@ let tirar1 = document.getElementById("tirar1")
 tirar1.addEventListener("click", tirarDado) 
 function tirarDado() {
   let numeroAleatorio = Math.round((Math.random() * 5) + 1)*3;
+
   console.log (numeroAleatorio) 
 }
 let tirar2 = document.getElementById("tirar2") 
