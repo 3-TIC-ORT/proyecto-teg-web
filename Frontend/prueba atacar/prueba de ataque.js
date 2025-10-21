@@ -2,7 +2,7 @@
 let argentina = {
     nombre: "Argentina",
     mapa: document.getElementById("argentina"),
-    fichas: 1,
+    fichas: 3,
     seleccionado: false
 };
 let fichasArgentinaElemento = document.getElementById("fichas-argentina");
@@ -841,44 +841,22 @@ function gestionarSeleccion(pais) {
     console.log("Atacado:", paisAtacado);
 }
 
-const botonAtacar = document.getElementById("atacar");
-if (botonAtacar) {
-    botonAtacar.addEventListener('click', atacar);
-}
-
-function atacar(paisAtacante, paisAtacado, cantidad) {
-    if (!paisAtacante || !paisAtacado || cantidad <= 0 || !Number.isInteger(cantidad)) {
-        console.log("Ataque inválido.");
-        return;
-    }
-
-    if (paisAtacante.fichas - cantidad >= 1 && paisAtacante.fichas > 1) {
-        paisAtacante.fichas -= cantidad;
-        paisAtacado.fichas += cantidad;
-
-        document.getElementById(`fichas-${paisAtacante.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisAtacante.fichas;
-        document.getElementById(`fichas-${paisAtacado.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisAtacado.fichas;
-
-        console.log(`Se han movido ${cantidad} fichas de ${paisAtacante.nombre} a ${paisAtacado.nombre}.`);
-    } else {
-        console.log(`Error: ${paisAtacante.nombre} debe conservar al menos una ficha.`);
-    }
-}
 
 function tirarDadoAtacante1() {
-    let numeroAleatorio1 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio1 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio1)
 }
 function tirarDadoAtacante2() {
-    let numeroAleatorio2 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio2 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio2)
 }
 function tirarDadoAtacante3() {
-    let numeroAleatorio3 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio3 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio3)
 }
 let tirarDadosAtacante = document.getElementById("tirar1")
 tirarDadosAtacante.addEventListener("click", tirarDadoAtacante1, tirarDadoAtacante2, tirarDadoAtacante3)
+
 
 const resultadoAtacante1 = tirarDadoAtacante1();
 const resultadoAtacante2 = tirarDadoAtacante2();
@@ -886,56 +864,61 @@ const resultadoAtacante3 = tirarDadoAtacante3();
 const dadosAtacante = [resultadoAtacante1, resultadoAtacante2, resultadoAtacante3]
 const numeroDadosAtacante = dadosAtacante.length
 
-if (paisAtacante.fichas >= 4) {
-    if (numeroDadosAtacante === 3) {
-        dadosAtacante.push(resultadoAtacante3)
+function ValoresAtacante() {
+
+    if (paisAtacante.fichas >= 4) {
+        if (numeroDadosAtacante === 3) {
+            dadosAtacante.push(resultadoAtacante3)
+        }
+        if (numeroDadosAtacante === 2) {
+            dadosAtacante.push(resultadoAtacante2)
+            dadosAtacante.push(resultadoAtacante3)
+        }
+        console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
+        console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
+        console.log("Dados del atacante: dado 3:" + dadosAtacante.resultadoAtacante3)
     }
-    if (numeroDadosAtacante === 2) {
-        dadosAtacante.push(resultadoAtacante2)
-        dadosAtacante.push(resultadoAtacante3)
+    if (paisAtacante.fichas === 3) {
+        if (numeroDadosAtacante.length === 3) {
+            dadosAtacante.splice(2, 1)
+        }
+        if (numeroDadosAtacante === 1) {
+            dadosAtacante.push(resultadoAtacante2)
+        }
+        console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
+        console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
     }
-    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1) 
-    console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
-    console.log("Dados del atacante: dado 3:" + dadosAtacante.resultadoAtacante3)
-}
-if (paisAtacante.fichas === 3) {
-    if (numeroDadosAtacante.length === 3) {
-        dadosAtacante.splice(2, 1)
+    if (paisAtacante.fichas === 2) {
+        if (numeroDadosAtacante.length === 3) {
+            dadosAtacante.splice(2, 1)
+            dadosAtacante.splice(1, 1)
+        }
+        if (numeroDadosAtacante.length === 2) {
+            dadosAtacante.splice(1, 1)
+        }
+        console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
     }
-    if (numeroDadosAtacante === 1) {
-        dadosAtacante.push(resultadoAtacante2)
+    if (paisAtacante.fichas === 0) {
+        console.log("Ejércitos insuficientes")
     }
-    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
-    console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
-}
-if (paisAtacante.fichas === 2) {
-    if (numeroDadosAtacante.length === 3) {
-        dadosAtacante.splice(2, 1)
-        dadosAtacante.splice(1, 1)
-    }
-    if (numeroDadosAtacante.length === 2) {
-        dadosAtacante.splice(1, 1)
-    }
-    console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
-}
-if (paisAtacante.fichas === null) {
-    console.log("Ejércitos insuficientes")
 }
 
 function tirarDadoAtacado1() {
-    let numeroAleatorio1 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio1 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio1)
 }
 function tirarDadoAtacado2() {
-    let numeroAleatorio2 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio2 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio2)
 }
 function tirarDadoAtacado3() {
-    let numeroAleatorio3 = Math.round((Math.random() * 5) + 1) * 3;
+    let numeroAleatorio3 = Math.round((Math.random() * 5) + 1);
     console.log(numeroAleatorio3)
 }
 let tirarDadosAtacado = document.getElementById("tirar2")
 tirarDadosAtacado.addEventListener("click", tirarDadoAtacado1, tirarDadoAtacado2, tirarDadoAtacado3)
+
+
 
 const resultadoAtacado1 = tirarDadoAtacado1();
 const resultadoAtacado2 = tirarDadoAtacado2();
@@ -943,38 +926,51 @@ const resultadoAtacado3 = tirarDadoAtacado3();
 const dadosAtacado = [resultadoAtacado1, resultadoAtacado2, resultadoAtacado3]
 const numeroDadosAtacado = dadosAtacado.length
 
-if (paisAtacado.fichas >= 4) {
-    if (numeroDadosAtacado === 3) {
-        dadosAtacado.push(resultadoAtacado3)
+function ValoresAtacado() {
+
+    if (paisAtacado.fichas >= 3) {
+        if (numeroDadosAtacado === 2) {
+            dadosAtacado.push(resultadoAtacado3)
+        }
+        if (numeroDadosAtacado === 1) {
+            dadosAtacado.push(resultadoAtacado2)
+            dadosAtacado.push(resultadoAtacado3)
+        }
+        console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
+        console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
+        console.log("Dados del Atacado: dado 3:" + dadosAtacado.resultadoAtacado3)
     }
-    if (numeroDadosAtacado === 2) {
-        dadosAtacado.push(resultadoAtacado2)
-        dadosAtacado.push(resultadoAtacado3)
+    if (paisAtacado.fichas === 2) {
+        if (numeroDadosAtacado.length === 3) {
+            dadosAtacado.splice(2, 1)
+        }
+        if (numeroDadosAtacado === 1) {
+            dadosAtacado.push(resultadoAtacado2)
+        }
+        console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
+        console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
     }
-    console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1) 
-    console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
-    console.log("Dados del Atacado: dado 3:" + dadosAtacado.resultadoAtacado3)
+    if (paisAtacado.fichas === 1) {
+        if (numeroDadosAtacado.length === 3) {
+            dadosAtacado.splice(2, 1)
+            dadosAtacado.splice(1, 1)
+        }
+        if (numeroDadosAtacado.length === 2) {
+            dadosAtacado.splice(1, 1)
+        }
+        console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
+    }
+    if (paisAtacado.fichas >= 0) {
+        console.log("El país fué conquistado por el atacante")
+    }
 }
-if (paisAtacado.fichas === 3) {
-    if (numeroDadosAtacado.length === 3) {
-        dadosAtacado.splice(2, 1)
-    }
-    if (numeroDadosAtacado === 1) {
-        dadosAtacado.push(resultadoAtacado2)
-    }
-    console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
-    console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
+
+const botonAtacar = document.getElementById("atacar");
+if (botonAtacar) {
+    botonAtacar.addEventListener('click', atacar,);
 }
-if (paisAtacado.fichas === 2) {
-    if (numeroDadosAtacado.length === 3) {
-        dadosAtacado.splice(2, 1)
-        dadosAtacado.splice(1, 1)
-    }
-    if (numeroDadosAtacado.length === 2) {
-        dadosAtacado.splice(1, 1)
-    }
-    console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
+
+function atacar () {
+    
 }
-if (paisAtacado.fichas === null) {
-    console.log("El país fué conquistado por el atacante")
-}
+
