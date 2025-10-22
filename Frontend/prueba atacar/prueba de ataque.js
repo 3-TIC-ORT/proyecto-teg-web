@@ -841,7 +841,6 @@ function gestionarSeleccion(pais) {
 
 function tirarDadoAtacante() {
     let numeroAleatorio = Math.round((Math.random() * 5) + 1);
-    console.log(numeroAleatorio)
     return numeroAleatorio
 }
 let tirarDadosAtacante = document.getElementById("tirar1")
@@ -893,7 +892,6 @@ function ValoresAtacante() {
 
 function tirarDadoAtacado() {
     let numeroAleatorio = Math.round((Math.random() * 5) + 1);
-    console.log(numeroAleatorio)
     return numeroAleatorio
 }
 let tirarDadosAtacado = document.getElementById("tirar2")
