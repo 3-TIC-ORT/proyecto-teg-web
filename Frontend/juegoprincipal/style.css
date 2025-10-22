@@ -170,7 +170,13 @@ height: 89px;
 position: absolute;
 top: 135px;
 left: 1285px;
-
+}
+.japon-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .china{
 width: 283px;
@@ -179,12 +185,26 @@ position: absolute;
 top: 237px;
 left: 1250px;
 }
+.china-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .kamchatka{
 width: 131px;
 height: 126px;
 position: absolute;
 top: 100px;
 left: 1180px;
+}
+.kamchatka-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .mongolia{
 position: absolute;
@@ -193,12 +213,26 @@ height: 164px;
 top: 190px;
 left: 1140px;
 }
+.mongolia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .israel{
 width: 180px;
 height: 119px ;
 position: absolute;
 top: 350px;
 left: 1105px;
+}
+.israel-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .aral{
 width: 123px;
@@ -207,12 +241,26 @@ position: absolute;
 top: 135px;
 left: 1065px;
 }
+.aral-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .turquia{
 width: 262px;
 height: 145px;
 position: absolute;
 top: 310px;
 left: 1100px;
+}
+.turquia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .arabia{
 width: 145px;
@@ -221,6 +269,13 @@ position: absolute;
 top: 380px;
 left: 1127.5px;
 }
+.arabia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .india{
 width: 142px;
 height: 190px;
@@ -228,12 +283,26 @@ position: absolute;
 top:345px;
 left: 1220px;
 }
-.gobi{
+.india-foto{
+position: absolute;
+top: px;
+left: px;
 width: px;
 height: px;
+}
+.gobi{
+width: 100px;
+height: 100px;
 position: absolute;
 top: 240px;
 left: 1180px;
+}
+.gobi-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .malasia{
 width: 135px;
@@ -242,12 +311,26 @@ position: absolute;
 top: 300px;
 left: 1295px;
 }
+.malasia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .iran{
 width: 220px;
 height: 308px;
 position: absolute;
 top: 230px;
 left: 1130px;
+}
+.iran-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .siberia{
 width: 225px;
@@ -256,12 +339,26 @@ position: absolute;
 top: 140px;
 left: 1133px;
 }
+.siberia-foto{
+  position: absolute;
+  top: px;
+left: px;
+width: px;
+height: px;
+}
 .taimir{
 width: 109px;
 height: 133px;
 position: absolute;
 top: 100px;
 left: 1125px;
+}
+.taimir-foto{
+  position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .tartaria{
 width: 114px;
@@ -270,9 +367,13 @@ position: absolute;
 top: 90px;
 left: 1100px;
 }
-
-
-
+.tartaria-foto{
+ position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 
 .java{
 width: 59.34px;
@@ -333,15 +434,19 @@ left: 1270px;
   width: 70px;
 }
 
-
-
-
 .argentina{
 width: 106.14px;
 height: 196.68px;
 position: absolute;
 top: 500px;
 left: 620px;
+}
+.argentina-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .uruguay{
 width: 98.07px;
@@ -350,12 +455,26 @@ position: absolute;
 top: 490px;
 left: 660px;
 }
+.uruguay-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .peru{
 width: 123.49px;
 height: 93.26px;
 position: absolute;
 top: 440px;
 left: 600px;
+}
+.peru-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .colombia{
 width: 136.32px;
@@ -364,12 +483,26 @@ position: absolute;
 top: 385px;
 left: 580px;
 }
+.colombia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .brasil{
 width: 197.67px;
 height: 177.49px;
 position: absolute;
 top: 420px;
 left: 680px;
+}
+.brasil-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .chile{
 width: 47.63px;
@@ -378,7 +511,13 @@ position: absolute;
 top: 500px;
 left: 585px;
 }
-
+.chile-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 
 .canada{
 width: 253px;
@@ -387,6 +526,13 @@ position: absolute;
 top: 140px;
 left: 420px;
 }
+.canada-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .california{
 width: 283px;
 height: 218px;
@@ -394,13 +540,26 @@ position: absolute;
 top: 300px;
 left: 410px;
 }
+  .california-foto{
+    position: absolute;
+  top: px;
+left: px;
+width: px;
+height: px; 
+  }
 .terranova{
 width: 218x;
 height: 156px;
 position: absolute;
 top: 220px;
 left: 497px;
-
+}
+.terranova-foto{
+ position: absolute;
+ top: px;
+left: px;
+width: px;
+height: px;
 }
 .mexico{
 width: 234px;
@@ -409,12 +568,26 @@ position: absolute;
 top: 330px;
 left: 485px;
 }
+.mexico-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+} 
 .yukon{
 width: 178px;
 height: 249px;
 position: absolute;
 top: 210px;
 left: 350px;
+}
+.yukon-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .alaska{
 width: 117px;
@@ -423,12 +596,26 @@ position: absolute;
 top: 250px;
 left: 300px;
 }
+.alaska-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .nuevayork{
 width: 274px;
 height: 213px;
 position: absolute;
 top: 240px;
 left: 470px;
+}
+.nuevayork-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .oregon{
 width: 300px;
@@ -437,6 +624,13 @@ position: absolute;
 top: 260px;
 left: 380px;
 }
+.oregon-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .labrador{
 width: 136px;
 height: 128px;
@@ -444,12 +638,26 @@ position: absolute;
 top: 180px;
 left: 530px;
 }
+.labrador-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .groenlandia{
 width: 178px;
 height: 227px;
 position: absolute ;
 top: 110px;
 left: 610px;
+}
+.groenlandia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 
 
@@ -460,12 +668,27 @@ position: absolute;
 top: 370px;
 left: 830px;
 }
+.españa-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+
+}
 .francia{
 width: 129.91px;
 height: 171.26px;
 position: absolute;
 top: 320px;
 left: 900px;
+}
+.francia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .alemania{
 width: 130.12px;
@@ -474,12 +697,26 @@ position: absolute;
 top: 310px;
 left: 970px;
 }
+.alemania-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .polonia{
 width: 164.95px;
 height: 177.28px;
 position: absolute;
 top: 280px;
 left: 1013px;
+}
+.polonia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .granbretaña{
 width: 113.87px;
@@ -488,12 +725,26 @@ position:absolute;
 top: 260px;
 left: 840px;
 }
+.granbretaña-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .islandia{
 width: 125.9px;
 height: 150.88px;
 position: absolute;
 top: 230px;
 left: 735px;
+}
+.islandia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .italia{
 width: 134.32px;
@@ -502,6 +753,13 @@ position: absolute;
 top: 380px;
 left: 965px;
 }
+.italia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .rusia{
 width: 230.55px;
 height: 325.36px;
@@ -509,12 +767,26 @@ position: absolute;
 top: 195px;
 left: 1015px;
 }
+.rusia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .suecia{
 width: 131.67px;
 height: 146.81px;
 position: absolute;
 top: 140px;
 left: 940px;
+}
+.suecia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 
 
@@ -525,12 +797,26 @@ position: absolute;
 top: 480px;
 left: 930px;
 }
+.sahara-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .madagascar{
 width: px;
 height: px;
 position: absolute;
 top: 520px;
 left: 1110px;
+}
+.madagascar-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .sudafrica{
 width: 162px;
@@ -539,12 +825,26 @@ position: absolute;
 top: 550px;
 left: 1020px;
 }
+.sudafrica-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .egipto{
 width: 285px;
 height: 145px;
 position: absolute;
 top: 445px;
 left: 1055px;
+}
+.egipto-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
 }
 .etiopia{
  width: 230px;
@@ -553,10 +853,24 @@ left: 1055px;
  top: 485px;
 left: 1030px;
 }
+.etiopia-foto{
+position: absolute;
+top: px;
+left: px;
+width: px;
+height: px;
+}
 .zaire{
   width: 192px;
   height: 141px;
   position: absolute;
   top: 520px;
   left: 990px;
+}
+.zaire-foto{
+ position: absolute;
+ top: px;
+ left: px;
+ width: px;
+ height: px;
 }
