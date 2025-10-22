@@ -149,6 +149,21 @@ left: 0%;
 display: inline-block;
 border-right: 5px solid black;
 }
+.linea-conector{
+  border-left: 100%;
+  
+}
+.lineas-conectoras1{
+  border-left:dashed .2rem black;
+  rotate: -70deg;/*rotacion*/
+  height: 12rem;/*cantidad  de puntos*/
+ width: 200px;/*ancho determinaque tan larga*/
+ left: 760px;
+ top: 290px;
+ position: absolute;
+ 
+}
+pai
 .japon{
 width: 96px;
 height: 89px;
