@@ -163,7 +163,7 @@ border-right: 5px solid black;
  position: absolute;
  
 }
-pai
+
 .japon{
 width: 96px;
 height: 89px;
@@ -281,12 +281,28 @@ position: absolute;
 left: 1320px;
 top: 380px;
 }
+.java-foto{
+  position: absolute;
+  left: 1320px;
+  top: 350px;
+  height: 90px;
+  width: 30px;
+}
 .australia{
-width: 218px;
-height: 239px;
+  width: 218px;
+  height: 239px;
+  position: absolute;
+  left: 1280px;
+  top: 487px;
+}
+.australia-foto{
+  width: 120px;
+  height: 120px;
 position: absolute;
-left: 1280px;
-top: 487px;
+left: 1240px;
+top: 445px;
+display: flex;
+align-items: center;
 }
 .borneo{
 width: 73.78px;
@@ -295,12 +311,26 @@ position: absolute;
 top: 390px;
 left: 1270px;
 }
+.borneo-foto{
+  position: absolute;
+  top: 358px;
+  left: 1265px;
+  width: 40px;
+  height: 90px;
+}
 .sumatra{
-width: 88.39px;
-height: 99.83x;
-position: absolute;
-top: 445px;
-left: 1200px;
+  width: 88.39px;
+  height: 99.83x;
+  position: absolute;
+  top: 445px;
+  left: 1200px;
+}
+.sumatra-foto{
+  position: absolute;
+  top: 420px;
+  left: 1175px;
+  height: 70px;
+  width: 70px;
 }
 
 
