@@ -867,38 +867,40 @@ const numeroDadosAtacante = dadosAtacante.length
 function ValoresAtacante() {
 
     if (paisAtacante.fichas >= 4) {
-        if (numeroDadosAtacante === 3) {
+        if (numeroDadosAtacante === 2) {
             dadosAtacante.push(resultadoAtacante3)
         }
-        if (numeroDadosAtacante === 2) {
+        if (numeroDadosAtacante === 1) {
             dadosAtacante.push(resultadoAtacante2)
             dadosAtacante.push(resultadoAtacante3)
         }
+        dadosAtacante.sort((a, b) => b - a);
         console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
         console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
         console.log("Dados del atacante: dado 3:" + dadosAtacante.resultadoAtacante3)
     }
     if (paisAtacante.fichas === 3) {
-        if (numeroDadosAtacante.length === 3) {
+        if (numeroDadosAtacante === 3) {
             dadosAtacante.splice(2, 1)
         }
         if (numeroDadosAtacante === 1) {
             dadosAtacante.push(resultadoAtacante2)
         }
+        dadosAtacante.sort((a, b) => b - a);
         console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
         console.log("Dados del atacante: dado 2:" + dadosAtacante.resultadoAtacante2)
     }
     if (paisAtacante.fichas === 2) {
-        if (numeroDadosAtacante.length === 3) {
+        if (numeroDadosAtacante === 3) {
             dadosAtacante.splice(2, 1)
             dadosAtacante.splice(1, 1)
         }
-        if (numeroDadosAtacante.length === 2) {
+        if (numeroDadosAtacante === 2) {
             dadosAtacante.splice(1, 1)
         }
         console.log("Dados del atacante: dado 1:" + dadosAtacante.resultadoAtacante1)
     }
-    if (paisAtacante.fichas === 0) {
+    if (paisAtacante.fichas <= 1) {
         console.log("Ejércitos insuficientes")
     }
 }
@@ -936,26 +938,28 @@ function ValoresAtacado() {
             dadosAtacado.push(resultadoAtacado2)
             dadosAtacado.push(resultadoAtacado3)
         }
+        dadosAtacado.sort((a, b) => b - a);
         console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
         console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
         console.log("Dados del Atacado: dado 3:" + dadosAtacado.resultadoAtacado3)
     }
     if (paisAtacado.fichas === 2) {
-        if (numeroDadosAtacado.length === 3) {
+        if (numeroDadosAtacado === 3) {
             dadosAtacado.splice(2, 1)
         }
         if (numeroDadosAtacado === 1) {
             dadosAtacado.push(resultadoAtacado2)
         }
+        dadosAtacado.sort((a, b) => b - a);
         console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
         console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
     }
     if (paisAtacado.fichas === 1) {
-        if (numeroDadosAtacado.length === 3) {
+        if (numeroDadosAtacado === 3) {
             dadosAtacado.splice(2, 1)
             dadosAtacado.splice(1, 1)
         }
-        if (numeroDadosAtacado.length === 2) {
+        if (numeroDadosAtacado === 2) {
             dadosAtacado.splice(1, 1)
         }
         console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
@@ -965,12 +969,58 @@ function ValoresAtacado() {
     }
 }
 
-const botonAtacar = document.getElementById("atacar");
-if (botonAtacar) {
-    botonAtacar.addEventListener('click', atacar,);
-}
 
 function atacar () {
-    
+  
 }
 
+let estadoAtaque = "esperando";
+
+const botonAtacar = document.getElementById("atacar");
+const botonDadosAtacante = document.getElementById("tirar1");
+const botonDadosAtacado = document.getElementById("tirar2");
+
+botonDadosAtacante.disabled = true;
+botonDadosAtacado.disabled = true;
+
+botonAtacar.addEventListener("click", () => {
+  if (paisAtacante && paisAtacado) {
+    estadoAtaque = "dadosAtacante";
+    console.log("Ataque iniciado. Turno del atacante.");
+    botonDadosAtacante.disabled = false;
+    botonDadosAtacado.disabled = true;
+  } else {
+    console.log("Falta seleccionar países atacante y atacado.");
+  }
+});
+
+botonDadosAtacante.addEventListener("click", () => {
+  if (estadoAtaque !== "dadosAtacante") {
+    console.log("No es el turno del atacante.");
+    return;
+  }
+
+  ValoresAtacante();
+
+  estadoAtaque = "dadosAtacado";
+  botonDadosAtacante.disabled = true;
+  botonDadosAtacado.disabled = false;
+  console.log("Turno del defensor.");
+});
+
+botonDadosAtacado.addEventListener("click", () => {
+  if (estadoAtaque !== "dadosAtacado") {
+    console.log("Todavía no tiró el atacante.");
+    return;
+  }
+
+  ValoresAtacado();
+
+  estadoAtaque = "resolviendo";
+  atacar(); 
+  console.log("Resolviendo combate...");
+
+  estadoAtaque = "esperando";
+  botonDadosAtacante.disabled = true;
+  botonDadosAtacado.disabled = true;
+});
