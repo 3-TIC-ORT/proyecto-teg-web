@@ -844,7 +844,6 @@ function tirarDadoAtacante() {
     return numeroAleatorio
 }
 let tirarDadosAtacante = document.getElementById("tirar1")
-tirarDadosAtacante.addEventListener("click", ValoresAtacante)
 
 function ValoresAtacante() {
 
@@ -864,8 +863,7 @@ function ValoresAtacante() {
         }
         dadosAtacante.sort((a, b) => b - a);
         console.log("Dados del atacante: " + dadosAtacante)
-    }
-    if (paisAtacante.fichas === 3) {
+    } else if (paisAtacante.fichas === 3) {
         if (numeroDadosAtacante === 3) {
             dadosAtacante.splice(2, 1)
         }
@@ -874,8 +872,7 @@ function ValoresAtacante() {
         }
         dadosAtacante.sort((a, b) => b - a);
         console.log("Dados del atacante: " + dadosAtacante)
-    }
-    if (paisAtacante.fichas === 2) {
+    } else if (paisAtacante.fichas === 2) {
         if (numeroDadosAtacante === 3) {
             dadosAtacante.splice(2, 1)
             dadosAtacante.splice(1, 1)
@@ -884,10 +881,12 @@ function ValoresAtacante() {
             dadosAtacante.splice(1, 1)
         }
         console.log("Dados del atacante: dado 1: " + dadosAtacante)
-    }
-    if (paisAtacante.fichas <= 1) {
+    } else if (paisAtacante.fichas <= 1) {
         console.log("Ejércitos insuficientes")
+    } else {
+        console.log("Error desconocido");
     }
+    return(dadosAtacante);
 }
 
 function tirarDadoAtacado() {
@@ -895,7 +894,7 @@ function tirarDadoAtacado() {
     return numeroAleatorio
 }
 let tirarDadosAtacado = document.getElementById("tirar2")
-tirarDadosAtacado.addEventListener("click", ValoresAtacado)
+
 
 
 function ValoresAtacado() {
@@ -942,11 +941,19 @@ function ValoresAtacado() {
     if (paisAtacado.fichas <= 0) {
         console.log("El país fué conquistado por el atacante")
     }
+    return(dadosAtacado);
 }
 
 
 function ataqueResolucion() {
-    console.log("a")
+    let i = 0;
+    while(dadosAtacante.length > i && dadosAtacado.length > i){
+    if (dadosAtacante[i] > dadosAtacado[i]) {
+        paisAtacado.fichas = paisAtacado.fichas - 1
+    } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+        paisAtacante.fichas = paisAtacante.fichas - 1
+    }
+};
 }
 
 let estadoAtaque = "esperando";
@@ -958,26 +965,31 @@ const botonDadosAtacado = document.getElementById("tirar2");
 botonDadosAtacante.disabled = true;
 botonDadosAtacado.disabled = true;
 
-function puedeIniciarAtaque() {
-    if (paisesSeleccionados.length !== 2) {
-        console.log("Debes seleccionar exactamente 2 países para iniciar un ataque.");
+function puedeAtacar() {
+    if (!paisAtacante || !paisAtacante.fichas) {
+        console.log("No hay país atacante seleccionado.");
         return false;
     }
-    if (!paisAtacante.nombre || !paisAtacado.nombre) {
-        console.log("Debe haber un país atacante y otro atacado seleccionados.");
+
+    if (paisAtacante.fichas <= 1) {
+        console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
         return false;
     }
+
+    console.log(`${paisAtacante.nombre} puede atacar (tiene ${paisAtacante.fichas} fichas).`);
     return true;
 }
 
+
 botonAtacar.addEventListener("click", () => {
-    if (!puedeIniciarAtaque()) return;
+    if (!puedeAtacar()) return;
 
     estadoAtaque = "dadosAtacante";
     console.log("Ataque iniciado. Turno del atacante.");
     botonDadosAtacante.disabled = false;
     botonDadosAtacado.disabled = true;
 });
+
 
 botonDadosAtacante.addEventListener("click", () => {
     if (estadoAtaque !== "dadosAtacante") {
@@ -990,7 +1002,7 @@ botonDadosAtacante.addEventListener("click", () => {
     estadoAtaque = "dadosAtacado";
     botonDadosAtacante.disabled = true;
     botonDadosAtacado.disabled = false;
-    console.log("Turno del defensor.");
+    console.log("Turno del atacado.");
 });
 
 botonDadosAtacado.addEventListener("click", () => {
@@ -1003,7 +1015,7 @@ botonDadosAtacado.addEventListener("click", () => {
 
     estadoAtaque = "resolviendo";
     ataqueResolucion();
-    console.log("Resolviendo combate...");
+    console.log("Resolviendo combate");
 
     estadoAtaque = "esperando";
     botonDadosAtacante.disabled = true;
