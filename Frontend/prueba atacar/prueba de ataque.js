@@ -954,6 +954,7 @@ function ValoresAtacado() {
         console.log("Dados del Atacado: dado 1:" + dadosAtacado.resultadoAtacado1)
         console.log("Dados del Atacado: dado 2:" + dadosAtacado.resultadoAtacado2)
     }
+    
     if (paisAtacado.fichas === 1) {
         if (numeroDadosAtacado === 3) {
             dadosAtacado.splice(2, 1)
