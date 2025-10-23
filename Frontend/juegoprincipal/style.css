@@ -53,6 +53,13 @@ gap: 15px;
 justify-content: center;
 align-items: center;
 }
+.color-jugador{
+  position: absolute;
+  top: 40px;
+  left:5px;
+  width: 200px;
+  height: 75px;
+}
 .atacar{
 height: 75px;
 width: 90px;
