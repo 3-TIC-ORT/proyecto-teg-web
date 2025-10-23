@@ -886,7 +886,7 @@ function ValoresAtacante() {
     } else {
         console.log("Error desconocido");
     }
-    return(dadosAtacante);
+    return (dadosAtacante);
 }
 
 function tirarDadoAtacado() {
@@ -941,19 +941,38 @@ function ValoresAtacado() {
     if (paisAtacado.fichas <= 0) {
         console.log("El país fué conquistado por el atacante")
     }
-    return(dadosAtacado);
+    return (dadosAtacado);
 }
 
 
 function ataqueResolucion() {
     let i = 0;
-    while(dadosAtacante.length > i && dadosAtacado.length > i){
-    if (dadosAtacante[i] > dadosAtacado[i]) {
-        paisAtacado.fichas = paisAtacado.fichas - 1
-    } else if (dadosAtacante[i] <= dadosAtacado[i]) {
-        paisAtacante.fichas = paisAtacante.fichas - 1
-    }
-};
+    while (dadosAtacante.length > i && dadosAtacado.length > i) {
+        if (dadosAtacante[i] > dadosAtacado[i]) {
+            paisAtacado.fichas = paisAtacado.fichas - 1
+            i = i + 1
+        } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+            paisAtacante.fichas = paisAtacante.fichas - 1
+            i = i + 1
+        }
+        while (dadosAtacante.length > i && dadosAtacado.length > i) {
+            if (dadosAtacante[i] > dadosAtacado[i]) {
+                paisAtacado.fichas = paisAtacado.fichas - 1
+                i = i + 1
+            } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+                paisAtacante.fichas = paisAtacante.fichas - 1
+                i = i + 1
+            }
+            while (dadosAtacante.length > i && dadosAtacado.length > i) {
+                if (dadosAtacante[i] > dadosAtacado[i]) {
+                    paisAtacado.fichas = paisAtacado.fichas - 1
+                } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+                    paisAtacante.fichas = paisAtacante.fichas - 1
+                }
+            }
+        }
+    };
+    i = 0
 }
 
 let estadoAtaque = "esperando";
