@@ -1000,15 +1000,34 @@ function puedeAtacar() {
     return true;
 }
 
-
 botonAtacar.addEventListener("click", () => {
-    if (!puedeAtacar()) return;
+    if (paisesSeleccionados.length !== 2) {
+        console.log("Debes seleccionar exactamente 2 países para iniciar el ataque.");
+        return;
+    }
+
+    if (!paisAtacante || !paisAtacante.nombre) {
+        console.log("No hay país atacante seleccionado.");
+        return;
+    }
+
+    if (!paisAtacado || !paisAtacado.nombre) {
+        console.log("No hay país atacado seleccionado.");
+        return;
+    }
+
+    if (paisAtacante.fichas <= 1) {
+        console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
+        return;
+    }
+
     botonAtacar.disabled = true;
     estadoAtaque = "dadosAtacante";
     console.log("Ataque iniciado. Turno del atacante.");
     botonDadosAtacante.disabled = false;
     botonDadosAtacado.disabled = true;
 });
+
 
 
 botonDadosAtacante.addEventListener("click", () => {
