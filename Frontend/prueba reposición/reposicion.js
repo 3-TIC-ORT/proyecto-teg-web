@@ -19,6 +19,7 @@ let chile = {
     nombre: "Chile",
     mapa: document.getElementById("chile"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasChileElemento = document.getElementById("fichas-chile");
@@ -35,6 +36,7 @@ let uruguay = {
     nombre: "Uruguay",
     mapa: document.getElementById("uruguay"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasUruguayElemento = document.getElementById("fichas-uruguay");
@@ -51,6 +53,7 @@ let brasil = {
     nombre: "Brasil",
     mapa: document.getElementById("brasil"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasBrasilElemento = document.getElementById("fichas-brasil");
@@ -67,6 +70,7 @@ let peru = {
     nombre: "Perú",
     mapa: document.getElementById("peru"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasPeruElemento = document.getElementById("fichas-peru");
@@ -83,6 +87,7 @@ let colombia = {
     nombre: "Colombia",
     mapa: document.getElementById("colombia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasColombiaElemento = document.getElementById("fichas-colombia");
@@ -100,6 +105,7 @@ let islandia = {
     nombre: "Islandia",
     mapa: document.getElementById("islandia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasIslandiaElemento = document.getElementById("fichas-islandia");
@@ -116,6 +122,7 @@ let bretana = {
     nombre: "Bretaña",
     mapa: document.getElementById("inglaterra"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasBretanaElemento = document.getElementById("fichas-bretana");
@@ -132,6 +139,7 @@ let espana = {
     nombre: "España",
     mapa: document.getElementById("espana"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasEspanaElemento = document.getElementById("fichas-espana");
@@ -148,6 +156,7 @@ let francia = {
     nombre: "Francia",
     mapa: document.getElementById("francia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasFranciaElemento = document.getElementById("fichas-francia");
@@ -164,6 +173,7 @@ let alemania = {
     nombre: "Alemania",
     mapa: document.getElementById("alemania"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasAlemaniaElemento = document.getElementById("fichas-alemania");
@@ -180,6 +190,7 @@ let italia = {
     nombre: "Italia",
     mapa: document.getElementById("italia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasItaliaElemento = document.getElementById("fichas-italia");
@@ -196,6 +207,7 @@ let polonia = {
     nombre: "Polonia",
     mapa: document.getElementById("polonia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasPoloniaElemento = document.getElementById("fichas-polonia");
@@ -212,6 +224,7 @@ let rusia = {
     nombre: "Rusia",
     mapa: document.getElementById("rusia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasRusiaElemento = document.getElementById("fichas-rusia");
@@ -229,6 +242,7 @@ let australia = {
     nombre: "Australia",
     mapa: document.getElementById("australia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasAustraliaElemento = document.getElementById("fichas-australia");
@@ -245,6 +259,7 @@ let sumatra = {
     nombre: "Sumatra",
     mapa: document.getElementById("sumatra"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasSumatraElemento = document.getElementById("fichas-sumatra");
@@ -261,6 +276,7 @@ let java = {
     nombre: "Java",
     mapa: document.getElementById("java"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasJavaElemento = document.getElementById("fichas-java");
@@ -277,6 +293,7 @@ let borneo = {
     nombre: "Borneo",
     mapa: document.getElementById("borneo"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasBorneoElemento = document.getElementById("fichas-borneo");
@@ -294,6 +311,7 @@ let sahara = {
     nombre: "Sahara",
     mapa: document.getElementById("sahara"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasSaharaElemento = document.getElementById("fichas-sahara");
@@ -310,6 +328,7 @@ let egipto = {
     nombre: "Egipto",
     mapa: document.getElementById("egipto"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasEgiptoElemento = document.getElementById("fichas-egipto");
@@ -326,6 +345,7 @@ let etiopia = {
     nombre: "Etiopía",
     mapa: document.getElementById("etiopia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasEtiopiaElemento = document.getElementById("fichas-etiopia");
@@ -342,6 +362,7 @@ let zaire = {
     nombre: "Zaire",
     mapa: document.getElementById("zaire"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasZaireElemento = document.getElementById("fichas-zaire");
@@ -358,6 +379,7 @@ let sudafrica = {
     nombre: "Sudáfrica",
     mapa: document.getElementById("sudafrica"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasSudafricaElemento = document.getElementById("fichas-sudafrica");
@@ -374,6 +396,7 @@ let madagascar = {
     nombre: "Madagascar",
     mapa: document.getElementById("madagascar"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasMadagascarElemento = document.getElementById("fichas-madagascar");
@@ -391,6 +414,7 @@ let alaska = {
     nombre: "Alaska",
     mapa: document.getElementById("alaska"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasAlaskaElemento = document.getElementById("fichas-alaska");
@@ -407,6 +431,7 @@ let canada = {
     nombre: "Canadá",
     mapa: document.getElementById("canada"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasCanadaElemento = document.getElementById("fichas-canada");
@@ -423,6 +448,7 @@ let groenlandia = {
     nombre: "Groenlandia",
     mapa: document.getElementById("groenlandia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasGroenlandiaElemento = document.getElementById("fichas-groenlandia");
@@ -439,6 +465,7 @@ let terranova = {
     nombre: "Terranova",
     mapa: document.getElementById("terranova"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasTerranovaElemento = document.getElementById("fichas-terranova");
@@ -455,6 +482,7 @@ let mexico = {
     nombre: "México",
     mapa: document.getElementById("mexico"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasMexicoElemento = document.getElementById("fichas-mexico");
@@ -471,6 +499,7 @@ let california = {
     nombre: "California",
     mapa: document.getElementById("california"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasCaliforniaElemento = document.getElementById("fichas-california");
@@ -487,6 +516,7 @@ let labrador = {
     nombre: "Labrador",
     mapa: document.getElementById("labrador"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasLabradorElemento = document.getElementById("fichas-labrador");
@@ -503,6 +533,7 @@ let oregon = {
     nombre: "Oregón",
     mapa: document.getElementById("oregon"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasOregonElemento = document.getElementById("fichas-oregon");
@@ -519,6 +550,7 @@ let nuevaYork = {
     nombre: "Nueva York",
     mapa: document.getElementById("nuevaYork"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasNuevaYorkElemento = document.getElementById("fichas-nuevaYork");
@@ -535,6 +567,7 @@ let yukon = {
     nombre: "Yukón",
     mapa: document.getElementById("yukon"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasYukonElemento = document.getElementById("fichas-yukon");
@@ -552,6 +585,7 @@ let china = {
     nombre: "China",
     mapa: document.getElementById("china"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasChinaElemento = document.getElementById("fichas-china");
@@ -568,6 +602,7 @@ let japon = {
     nombre: "Japón",
     mapa: document.getElementById("japon"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasJaponElemento = document.getElementById("fichas-japon");
@@ -584,6 +619,7 @@ let iran = {
     nombre: "Irán",
     mapa: document.getElementById("iran"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasIranElemento = document.getElementById("fichas-iran");
@@ -600,6 +636,7 @@ let israel = {
     nombre: "Israel",
     mapa: document.getElementById("israel"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasIsraelElemento = document.getElementById("fichas-israel");
@@ -616,6 +653,7 @@ let arabia = {
     nombre: "Arabia",
     mapa: document.getElementById("arabia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasArabiaElemento = document.getElementById("fichas-arabia");
@@ -632,6 +670,7 @@ let turquia = {
     nombre: "Turquía",
     mapa: document.getElementById("turquia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasTurquiaElemento = document.getElementById("fichas-turquia");
@@ -648,6 +687,7 @@ let tartaria = {
     nombre: "Tartaria",
     mapa: document.getElementById("tartaria"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasTartariaElemento = document.getElementById("fichas-tartaria");
@@ -664,6 +704,7 @@ let kamchatka = {
     nombre: "Kamchatka",
     mapa: document.getElementById("kamchatka"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasKamchatkaElemento = document.getElementById("fichas-kamchatka");
@@ -680,6 +721,7 @@ let taimir = {
     nombre: "Taimir",
     mapa: document.getElementById("taimir"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasTaimirElemento = document.getElementById("fichas-taimir");
@@ -696,6 +738,7 @@ let gobi = {
     nombre: "Gobi",
     mapa: document.getElementById("gobi"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasGobiElemento = document.getElementById("fichas-gobi");
@@ -712,6 +755,7 @@ let india = {
     nombre: "India",
     mapa: document.getElementById("india"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasIndiaElemento = document.getElementById("fichas-india");
@@ -728,6 +772,7 @@ let malasia = {
     nombre: "Malasia",
     mapa: document.getElementById("malasia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasMalasiaElemento = document.getElementById("fichas-malasia");
@@ -744,6 +789,7 @@ let siberia = {
     nombre: "Siberia",
     mapa: document.getElementById("siberia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasSiberiaElemento = document.getElementById("fichas-siberia");
@@ -760,6 +806,7 @@ let aral = {
     nombre: "Aral",
     mapa: document.getElementById("aral"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasAralElemento = document.getElementById("fichas-aral");
@@ -776,6 +823,7 @@ let mongolia = {
     nombre: "Mongolia",
     mapa: document.getElementById("mongolia"),
     fichas: 1,
+    color: null,
     seleccionado: false
 };
 let fichasMongoliaElemento = document.getElementById("fichas-mongolia");
@@ -825,3 +873,37 @@ function gestionarSeleccion(pais) {
         console.log("País a reponer:", paisAReponer);
     }
 } 
+
+let jugador1 = {
+    color: verde,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+let jugador2 = {
+    color: azul,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+let jugador3 = {
+    color: rojo,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+let jugador4 = {
+    color: amarillo,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+let jugador5 = {
+    color: rosa,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+let jugador6 = {
+    color: negro,
+    fichasDisponibles: 0,
+    paisesConquistados: []
+}
+
+let numero = document.getElementById("numero")
+let numeroMax = 
