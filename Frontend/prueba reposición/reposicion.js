@@ -790,8 +790,8 @@ if (mongolia.mapa) {
 
 let paisesSeleccionados = [];
 
-let paisAtacante = { nombre: null, fichas: null };
-let paisAtacado = { nombre: null, fichas: null };
+let paisAReponer = { nombre: null, fichas: null };
+
 
 function gestionarSeleccion(pais) {
     const indice = paisesSeleccionados.indexOf(pais);
@@ -803,241 +803,25 @@ function gestionarSeleccion(pais) {
         pais.seleccionado = false;
         console.log(`${pais.nombre} ha sido deseleccionado.`);
 
-        if (paisAtacante.nombre === pais.nombre) {
-            paisAtacante = { nombre: null, fichas: null };
-        }
-
-        if (paisAtacado.nombre === pais.nombre) {
-            paisAtacado = { nombre: null, fichas: null };
+        if (paisAReponer.nombre === pais.nombre) {
+            paisAReponer = { nombre: null, fichas: null };
         }
     } else {
 
-        if (paisesSeleccionados.length < 2) {
+        if (paisesSeleccionados.length < 1) {
             paisesSeleccionados.push(pais);
             pais.seleccionado = true;
             console.log(`${pais.nombre} ha sido seleccionado.`);
 
-            if (!paisAtacante.nombre) {
-                paisAtacante = {
+            if (!paisAReponer.nombre) {
+                paisAReponer = {
                     nombre: pais.nombre,
                     fichas: pais.fichas
                 };
-            } else if (!paisAtacado.nombre) {
-                paisAtacado = {
-                    nombre: pais.nombre,
-                    fichas: pais.fichas
-                };
-            }
-        } else {
-            console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
-        }
-    }
-
-    console.log("Países seleccionados:", paisesSeleccionados);
-    console.log("Atacante:", paisAtacante);
-    console.log("Atacado:", paisAtacado);
-}
-
-
-function tirarDadoAtacante() {
-    let numeroAleatorio = Math.round((Math.random() * 5) + 1);
-    return numeroAleatorio
-}
-let tirarDadosAtacante = document.getElementById("tirar1")
-
-
-const resultadoAtacante1 = tirarDadoAtacante();
-const resultadoAtacante2 = tirarDadoAtacante();
-const resultadoAtacante3 = tirarDadoAtacante();
-const dadosAtacante = [resultadoAtacante1, resultadoAtacante2, resultadoAtacante3]
-const numeroDadosAtacante = dadosAtacante.length
-
-function ValoresAtacante() {
-
-    if (paisAtacante.fichas >= 4) {
-        if (numeroDadosAtacante === 2) {
-            dadosAtacante.push(resultadoAtacante3)
-        }
-        else if (numeroDadosAtacante === 1) {
-            dadosAtacante.push(resultadoAtacante2)
-            dadosAtacante.push(resultadoAtacante3)
-        }
-        dadosAtacante.sort((a, b) => b - a);
-        console.log("Dados del atacante: " + dadosAtacante)
-    } else if (paisAtacante.fichas === 3) {
-        if (numeroDadosAtacante === 3) {
-            dadosAtacante.splice(2, 1)
-        }
-        else if (numeroDadosAtacante === 1) {
-            dadosAtacante.push(resultadoAtacante2)
-        }
-        dadosAtacante.sort((a, b) => b - a);
-        console.log("Dados del atacante: " + dadosAtacante)
-    } else if (paisAtacante.fichas === 2) {
-        if (numeroDadosAtacante === 3) {
-            dadosAtacante.splice(2, 1)
-            dadosAtacante.splice(1, 1)
-        }
-        else if (numeroDadosAtacante === 2) {
-            dadosAtacante.splice(1, 1)
-        }
-        console.log("Dados del atacante: dado 1: " + dadosAtacante)
-    } else if (paisAtacante.fichas <= 1) {
-        console.log("Ejércitos insuficientes")
-    } else {
-        console.log("Error desconocido");
-    }
-    return (dadosAtacante);
-}
-
-function tirarDadoAtacado() {
-    let numeroAleatorio = Math.round((Math.random() * 5) + 1);
-    return numeroAleatorio
-}
-let tirarDadosAtacado = document.getElementById("tirar2")
-
-const resultadoAtacado1 = tirarDadoAtacado();
-const resultadoAtacado2 = tirarDadoAtacado();
-const resultadoAtacado3 = tirarDadoAtacado();
-const dadosAtacado = [resultadoAtacado1, resultadoAtacado2, resultadoAtacado3]
-const numeroDadosAtacado = dadosAtacado.length
-
-
-function ValoresAtacado() {
-
-
-    if (paisAtacado.fichas >= 3) {
-        if (numeroDadosAtacado === 2) {
-            dadosAtacado.push(resultadoAtacado3)
-        }
-        else if (numeroDadosAtacado === 1) {
-            dadosAtacado.push(resultadoAtacado2)
-            dadosAtacado.push(resultadoAtacado3)
-        }
-        dadosAtacado.sort((a, b) => b - a);
-        console.log("Dados del Atacado: " + dadosAtacado)
-    }
-    if (paisAtacado.fichas === 2) {
-        if (numeroDadosAtacado === 3) {
-            dadosAtacado.splice(2, 1)
-        }
-        else if (numeroDadosAtacado === 1) {
-            dadosAtacado.push(resultadoAtacado2)
-        }
-        dadosAtacado.sort((a, b) => b - a);
-        console.log("Dados del Atacado: " + dadosAtacado)
-    }
-
-    if (paisAtacado.fichas === 1) {
-        if (numeroDadosAtacado === 3) {
-            dadosAtacado.splice(2, 1)
-            dadosAtacado.splice(1, 1)
-        }
-        else if (numeroDadosAtacado === 2) {
-            dadosAtacado.splice(1, 1)
-        }
-        console.log("Dado del Atacado: " + dadosAtacado)
-    }
-    if (paisAtacado.fichas <= 0) {
-        console.log("El país fué conquistado por el atacante")
-    }
-    return (dadosAtacado);
-}
-
-
-function ataqueResolucion() {
-    let i = 0;
-    while (dadosAtacante.length > i && dadosAtacado.length > i) {
-        if (dadosAtacante[i] > dadosAtacado[i]) {
-            paisAtacado.fichas = paisAtacado.fichas - 1
-            i = i + 1
-        } else if (dadosAtacante[i] <= dadosAtacado[i]) {
-            paisAtacante.fichas = paisAtacante.fichas - 1
-            i = i + 1
-        }
-        while (dadosAtacante.length > i && dadosAtacado.length > i) {
-            if (dadosAtacante[i] > dadosAtacado[i]) {
-                paisAtacado.fichas = paisAtacado.fichas - 1
-                i = i + 1
-            } else if (dadosAtacante[i] <= dadosAtacado[i]) {
-                paisAtacante.fichas = paisAtacante.fichas - 1
-                i = i + 1
-            }
-            while (dadosAtacante.length > i && dadosAtacado.length > i) {
-                if (dadosAtacante[i] > dadosAtacado[i]) {
-                    paisAtacado.fichas = paisAtacado.fichas - 1
-                } else if (dadosAtacante[i] <= dadosAtacado[i]) {
-                    paisAtacante.fichas = paisAtacante.fichas - 1
-                }
+            } else {
+                console.log("Ya tienes 1 país seleccionados. Por favor, deselecciona uno para elegir otro.");
             }
         }
-    };
-    i = 0
-    botonAtacar.disabled = false;
-}
-
-let estadoAtaque = "esperando";
-
-const botonAtacar = document.getElementById("atacar");
-const botonDadosAtacante = document.getElementById("tirar1");
-const botonDadosAtacado = document.getElementById("tirar2");
-
-botonDadosAtacante.disabled = true;
-botonDadosAtacado.disabled = true;
-
-function puedeAtacar() {
-    if (!paisAtacante || !paisAtacante.fichas) {
-        console.log("No hay país atacante seleccionado.");
-        return false;
+        console.log("País a reponer:", paisAReponer);
     }
-
-    if (paisAtacante.fichas <= 1) {
-        console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
-        return false;
-    }
-
-    console.log(`${paisAtacante.nombre} puede atacar (tiene ${paisAtacante.fichas} fichas).`);
-    return true;
-}
-
-
-botonAtacar.addEventListener("click", () => {
-    if (!puedeAtacar()) return;
-    botonAtacar.disabled = true;
-    estadoAtaque = "dadosAtacante";
-    console.log("Ataque iniciado. Turno del atacante.");
-    botonDadosAtacante.disabled = false;
-    botonDadosAtacado.disabled = true;
-});
-
-
-botonDadosAtacante.addEventListener("click", () => {
-    if (estadoAtaque !== "dadosAtacante") {
-        console.log("No es el turno del atacante.");
-        return;
-    }
-
-    ValoresAtacante();
-
-    estadoAtaque = "dadosAtacado";
-    botonDadosAtacante.disabled = true;
-    botonDadosAtacado.disabled = false;
-    console.log("Turno del atacado.");
-});
-
-botonDadosAtacado.addEventListener("click", () => {
-    if (estadoAtaque !== "dadosAtacado") {
-        console.log("Todavía no tiró el atacante.");
-        return;
-    }
-
-    ValoresAtacado();
-
-    estadoAtaque = "resolviendo";
-    ataqueResolucion();
-    console.log("Resolviendo combate");
-
-    estadoAtaque = "esperando";
-    botonDadosAtacante.disabled = true;
-    botonDadosAtacado.disabled = true;
-});
+} 

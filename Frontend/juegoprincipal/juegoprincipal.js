@@ -138,6 +138,8 @@ function terminarTurno() {
 }
 botonTerminarTurno.addEventListener('click', terminarTurno);
 
+
+
 let paisesSeleccionados = [];
 function gestionarSeleccion(pais) {
   const indice = paisesSeleccionados.indexOf(pais.nombre);
