@@ -15,7 +15,7 @@ width: 100%;
 .foto{
 width: 1072px;
 height: 100%;
-position: relative;
+position: absolute;
 left: 280px;
 top: 0px;
 }
@@ -158,19 +158,109 @@ border-right: 5px solid black;
 }
 .linea-conector{
   border-left: 100%;
-  
+  border-left:dashed .2rem black;
 }
 .lineas-conectoras1{
   border-left:dashed .2rem black;
-  rotate: -70deg;/*rotacion*/
-  height: 12rem;/*cantidad  de puntos*/
+  rotate: -75deg;/*rotacion*/
+  height: 8.5rem;/*cantidad  de puntos*/
  width: 200px;/*ancho determinaque tan larga*/
  left: 760px;
  top: 290px;
  position: absolute;
  
 }
+.lineas-conectoras2{
+  border-left:dashed .2rem black;
+ rotate: -42deg;
+ height: 3rem;
+ width:300px ;
+ left: 855px;
+ top: 300px;
+position: absolute;
+}
+.lineas-conectoras3{
+  border-left:dashed .2rem black;
+  rotate: 40deg;
+  height: 5.5rem;
+  width: 250px;
+  left: 580px;
+  top: 260px;
+  position: absolute;
 
+}
+.lineas-conectoras4{
+  border-left:dashed .2rem black;
+  rotate: 45deg;
+  height: 3.1rem;
+  width: 330px;
+  left: 560px;
+  top: 230px;
+  position: absolute;
+}
+.lineas-conectoras5{
+  border-left:dashed .2rem black;
+  rotate: -50deg;
+  height: 3.7rem;
+  width: 200px;
+  left: 660px;
+  top: 110px;
+  position: absolute;
+}
+.lineas-conectoras6{
+  border-left:dashed .2rem black;
+  rotate: 65deg;
+  height: 9.2rem; 
+  width: 300px;
+  left: 770px;
+  top: 275px;
+  position: absolute;
+}
+.lineas-conectoras7{
+  border-left:dashed .2rem black;
+  rotate: 100deg;
+  height: 3.5rem;
+  width: 200px;
+  left: 700px;
+  top: 340px;
+  position: absolute;
+}
+.lineas-conectoras8{
+  border-left:dashed .2rem black;
+  rotate: 11deg;
+  height: 2.5rem;
+  width: 200px;
+  left: 853px;
+  top: 320px;
+  position: absolute;
+}
+.lineas-conectoras9{
+  border-left:dashed .2rem black;
+  rotate: 100deg;
+  height: 2.9rem;
+  width: 200px;
+  left: 810px;
+  top: 340px;
+  position: absolute;
+}
+.lineas-conectoras10{
+  border-left:dashed .2rem black;
+  rotate: 95deg;
+  height: 1.6rem;
+  width: 2px;
+  left: 1260px;
+  top: 110px;
+  position: absolute;
+}
+.lineas-conectoras11{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: 2px;
+  left: 1245px;
+  top: 100px;
+  position: absolute;
+}
 .japon{
 width: 96px;
 height: 89px;
