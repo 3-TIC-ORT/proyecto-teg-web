@@ -1,10 +1,10 @@
 :root {
-  --coloramericadelsur: #C9CF9A ;
-  --coloramericanorte: #EEBD88 ;
-  --coloreuropa: #F2DCE8;
-  --colorafrica: #FBBF7E ;
-  --colorasia: #CCCEAD ;
-  --coloroceania: #C2E0D4 ;
+  --coloramericadelsur: #858489 ;
+  --coloramericanorte: #CD8A6D ;
+  --coloreuropa: #B4A7B3;
+  --colorafrica: #B99682 ;
+  --colorasia: #7E7882 ;
+  --coloroceania: #6AB0CA ;
 }
 
 
@@ -256,9 +256,99 @@ position: absolute;
   border-left:dashed .2rem black;
   rotate: deg;
   height: rem;
-  width: 2px;
-  left: 1245px;
-  top: 100px;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras12{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras13{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras14{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras15{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras16{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras17{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras18{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras19{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras20{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
+  position: absolute;
+}
+.lineas-conectoras21{
+  border-left:dashed .2rem black;
+  rotate: deg;
+  height: rem;
+  width: px;
+  left: px;
+  top: px;
   position: absolute;
 }
 .japon{
