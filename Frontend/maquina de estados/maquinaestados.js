@@ -782,227 +782,438 @@ let fichasMongoliaElemento = document.getElementById("fichas-mongolia");
 if (fichasMongoliaElemento) {
     fichasMongoliaElemento.textContent = mongolia.fichas;
 }
-if (mongolia.mapa) {
+if (mongolia.mapa && maquinaDeFases.state === "fase de ataque") {
     mongolia.mapa.addEventListener('click', function () {
-        gestionarSeleccion(mongolia);
+        gestionarSeleccionAtaque(mongolia);
+    });
+} else if (mongolia.mapa && maquinaDeFases.state === "fase de reagrupación") {
+    mongolia.mapa.addEventListener('click', function () {
+        gestionarSeleccionReagrupacion(mongolia);
     });
 }
 
-// =======================
-// CONFIGURACIÓN INICIAL
-// =======================
-let cantidadJugadores = Math.max(3, Math.min(6, parseInt(prompt("¿Cuántos jugadores?") || 3)));
+//Maquina de estados finitos
 
+let cantidadJugadores = prompt("¿Cuántos jugadores?");
+cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('faseActual');
 const botonPararAtacar = document.getElementById('botonPararAtacar');
-const botonTerminarTurno = document.getElementById("terminarTurno");
+const botonTerminarTurno = document.getElementById("terminarTurno")
+
+class fasesMachine {
+        constructor() {
+            this.state = 'fase de ataque';
+            this.cambioDeFaseTurnos = 0;
+            this.reposicionesHechas = 0;
+        }
+    
+        transition(event) {
+            const estadoAnterior = this.state;
+            switch (this.state) {
+                case 'fase de ataque':
+                    if (event === 'click') {
+                        console.log('Cambio de fase de ataque a fase de reagrupación');
+                        this.state = 'fase de reagrupación';
+                    }
+                    break;
+                case 'fase de reagrupación':
+                    if (event === 'click' && this.cambioDeFaseTurnos < cantidadJugadores * 2) {
+                        console.log('Cambio de fase de reagrupacion a fase de ataque');
+                        this.state = 'fase de ataque';
+                        this.cambioDeFaseTurnos++
+                    }
+                    else if (event === 'click' && this.cambioDeFaseTurnos >= cantidadJugadores * 2) {
+                        console.log('Cambio de fase de reagrupación a fase de reposición');
+                        this.state = 'fase de reposición';
+                        this.cambioDeFaseTurnos = 0;
+                    }
+                    break;
+                case 'fase de reposición':
+                    if (event === 'click' && this.reposicionesHechas < cantidadJugadores) {
+                        console.log('Repone el siguiente jugador');
+                        this.state = 'fase de reposición';
+                        this.reposicionesHechas++
+                    }
+                    else  if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
+                        console.log('Cambio de fase de reposición a fase de ataque');
+                        this.state = 'fase de ataque';
+                        this.reposicionesHechas = 0;
+                    }
+                    break;
+                default:
+                    console.log(`No se puede manejar el evento "${event}" en el estado "${this.state}".`);
+            }
+    
+            if (this.state !== estadoAnterior) {
+                this.cambioDeFaseTurnos++;
+            }
+            if (this.state === this.estadoAnterior) {
+                this.reposicionesHechas++;
+            }
+            return this.state;
+        }
+    }
+
+const maquinaDeFases = new fasesMachine(cantidadJugadores);
+
+function actualizarFase() {
+    faseActual.textContent = `Fase actual: ${maquinaDeFases.state}`;
+}
+
+function pararAtaque() {
+    if (maquinaDeFases.state === 'fase de ataque') {
+        maquinaDeFases.transition('click');
+        actualizarFase();
+    } else {
+        console.log("Este botón no tiene efecto en la fase actual.");
+    }
+}
+botonPararAtacar.addEventListener('click', pararAtaque);
+
+function terminarTurno() {
+    if (maquinaDeFases.state === 'fase de reagrupación' || maquinaDeFases.state === 'fase de reposición') {
+        maquinaDeFases.transition('click');
+        actualizarFase();
+    } else {
+        console.log("Este botón no tiene efecto en la fase actual.");
+    }
+}
+botonTerminarTurno.addEventListener('click', terminarTurno);
+
+//
+//ATAQUE
+//
+let paisesSeleccionados = [];
+
+let paisAtacante = { nombre: null, fichas: null };
+let paisAtacado = { nombre: null, fichas: null };
+
+function gestionarSeleccionAtaque(pais) {
+    const indice = paisesSeleccionados.indexOf(pais);
+    const estaSeleccionado = indice !== -1;
+
+    if (estaSeleccionado) {
+
+        paisesSeleccionados.splice(indice, 1);
+        pais.seleccionado = false;
+        console.log(`${pais.nombre} ha sido deseleccionado.`);
+
+        if (paisAtacante.nombre === pais.nombre) {
+            paisAtacante = { nombre: null, fichas: null };
+        }
+
+        if (paisAtacado.nombre === pais.nombre) {
+            paisAtacado = { nombre: null, fichas: null };
+        }
+    } else {
+
+        if (paisesSeleccionados.length < 2) {
+            paisesSeleccionados.push(pais);
+            pais.seleccionado = true;
+            console.log(`${pais.nombre} ha sido seleccionado.`);
+
+            if (!paisAtacante.nombre) {
+                paisAtacante = {
+                    nombre: pais.nombre,
+                    fichas: pais.fichas
+                };
+            } else if (!paisAtacado.nombre) {
+                paisAtacado = {
+                    nombre: pais.nombre,
+                    fichas: pais.fichas
+                };
+            }
+        } else {
+            console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
+        }
+    }
+
+    console.log("Países seleccionados:", paisesSeleccionados);
+    console.log("Atacante:", paisAtacante);
+    console.log("Atacado:", paisAtacado);
+}
+
+
+function tirarDadoAtacante() {
+    let numeroAleatorio = Math.round((Math.random() * 5) + 1);
+    return numeroAleatorio
+}
+let tirarDadosAtacante = document.getElementById("tirar1")
+
+
+const resultadoAtacante1 = tirarDadoAtacante();
+const resultadoAtacante2 = tirarDadoAtacante();
+const resultadoAtacante3 = tirarDadoAtacante();
+const dadosAtacante = [resultadoAtacante1, resultadoAtacante2, resultadoAtacante3]
+const numeroDadosAtacante = dadosAtacante.length
+
+function ValoresAtacante() {
+
+    if (paisAtacante.fichas >= 4) {
+        if (numeroDadosAtacante === 2) {
+            dadosAtacante.push(resultadoAtacante3)
+        }
+        else if (numeroDadosAtacante === 1) {
+            dadosAtacante.push(resultadoAtacante2)
+            dadosAtacante.push(resultadoAtacante3)
+        }
+        dadosAtacante.sort((a, b) => b - a);
+        console.log("Dados del atacante: " + dadosAtacante)
+    } else if (paisAtacante.fichas === 3) {
+        if (numeroDadosAtacante === 3) {
+            dadosAtacante.splice(2, 1)
+        }
+        else if (numeroDadosAtacante === 1) {
+            dadosAtacante.push(resultadoAtacante2)
+        }
+        dadosAtacante.sort((a, b) => b - a);
+        console.log("Dados del atacante: " + dadosAtacante)
+    } else if (paisAtacante.fichas === 2) {
+        if (numeroDadosAtacante === 3) {
+            dadosAtacante.splice(2, 1)
+            dadosAtacante.splice(1, 1)
+        }
+        else if (numeroDadosAtacante === 2) {
+            dadosAtacante.splice(1, 1)
+        }
+        console.log("Dados del atacante: dado 1: " + dadosAtacante)
+    } else if (paisAtacante.fichas <= 1) {
+        console.log("Ejércitos insuficientes")
+    } else {
+        console.log("Error desconocido");
+    }
+    return (dadosAtacante);
+}
+
+function tirarDadoAtacado() {
+    let numeroAleatorio = Math.round((Math.random() * 5) + 1);
+    return numeroAleatorio
+}
+let tirarDadosAtacado = document.getElementById("tirar2")
+
+const resultadoAtacado1 = tirarDadoAtacado();
+const resultadoAtacado2 = tirarDadoAtacado();
+const resultadoAtacado3 = tirarDadoAtacado();
+const dadosAtacado = [resultadoAtacado1, resultadoAtacado2, resultadoAtacado3]
+const numeroDadosAtacado = dadosAtacado.length
+
+
+function ValoresAtacado() {
+
+
+    if (paisAtacado.fichas >= 3) {
+        if (numeroDadosAtacado === 2) {
+            dadosAtacado.push(resultadoAtacado3)
+        }
+        else if (numeroDadosAtacado === 1) {
+            dadosAtacado.push(resultadoAtacado2)
+            dadosAtacado.push(resultadoAtacado3)
+        }
+        dadosAtacado.sort((a, b) => b - a);
+        console.log("Dados del Atacado: " + dadosAtacado)
+    }
+    if (paisAtacado.fichas === 2) {
+        if (numeroDadosAtacado === 3) {
+            dadosAtacado.splice(2, 1)
+        }
+        else if (numeroDadosAtacado === 1) {
+            dadosAtacado.push(resultadoAtacado2)
+        }
+        dadosAtacado.sort((a, b) => b - a);
+        console.log("Dados del Atacado: " + dadosAtacado)
+    }
+
+    if (paisAtacado.fichas === 1) {
+        if (numeroDadosAtacado === 3) {
+            dadosAtacado.splice(2, 1)
+            dadosAtacado.splice(1, 1)
+        }
+        else if (numeroDadosAtacado === 2) {
+            dadosAtacado.splice(1, 1)
+        }
+        console.log("Dado del Atacado: " + dadosAtacado)
+    }
+    if (paisAtacado.fichas <= 0) {
+        console.log("El país fué conquistado por el atacante")
+    }
+    return (dadosAtacado);
+}
+
+
+function ataqueResolucion() {
+    let i = 0;
+    while (dadosAtacante.length > i && dadosAtacado.length > i) {
+        if (dadosAtacante[i] > dadosAtacado[i]) {
+            paisAtacado.fichas = paisAtacado.fichas - 1
+            i = i + 1
+        } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+            paisAtacante.fichas = paisAtacante.fichas - 1
+            i = i + 1
+        }
+        while (dadosAtacante.length > i && dadosAtacado.length > i) {
+            if (dadosAtacante[i] > dadosAtacado[i]) {
+                paisAtacado.fichas = paisAtacado.fichas - 1
+                i = i + 1
+            } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+                paisAtacante.fichas = paisAtacante.fichas - 1
+                i = i + 1
+            }
+            while (dadosAtacante.length > i && dadosAtacado.length > i) {
+                if (dadosAtacante[i] > dadosAtacado[i]) {
+                    paisAtacado.fichas = paisAtacado.fichas - 1
+                } else if (dadosAtacante[i] <= dadosAtacado[i]) {
+                    paisAtacante.fichas = paisAtacante.fichas - 1
+                }
+            }
+        }
+    };
+    i = 0
+    botonAtacar.disabled = false;
+}
+
+let estadoAtaque = "esperando";
+
 const botonAtacar = document.getElementById("atacar");
 const botonDadosAtacante = document.getElementById("tirar1");
 const botonDadosAtacado = document.getElementById("tirar2");
-const botonMoverFichas = document.getElementById("mover-fichas-btn");
 
-// =======================
-// MÁQUINA DE ESTADOS
-// =======================
-class FasesMachine {
-  constructor() {
-    this.state = 'fase de ataque';
-    this.cambioDeFaseTurnos = 0;
-    this.reposicionesHechas = 0;
-  }
+botonDadosAtacante.disabled = true;
+botonDadosAtacado.disabled = true;
 
-  transition(event) {
-    const anterior = this.state;
-    if (this.state === 'fase de ataque' && event === 'click') {
-      this.state = 'fase de reagrupación';
-    } else if (this.state === 'fase de reagrupación' && event === 'click') {
-      this.cambioDeFaseTurnos++;
-      if (this.cambioDeFaseTurnos < cantidadJugadores * 2) {
-        this.state = 'fase de ataque';
-      } else {
-        this.state = 'fase de reposición';
-        this.cambioDeFaseTurnos = 0;
-      }
-    } else if (this.state === 'fase de reposición' && event === 'click') {
-      if (this.reposicionesHechas < cantidadJugadores) {
-        this.reposicionesHechas++;
-      } else {
-        this.state = 'fase de ataque';
-        this.reposicionesHechas = 0;
-      }
+function puedeAtacar() {
+    if (!paisAtacante || !paisAtacante.fichas) {
+        console.log("No hay país atacante seleccionado.");
+        return false;
     }
-    actualizarFaseUI();
-    actualizarBotonesPorFase();
-    return this.state;
-  }
-}
 
-const maquinaDeFases = new FasesMachine();
-
-function enFase(fase) {
-  return maquinaDeFases.state === fase;
-}
-
-function actualizarFaseUI() {
-  if (faseActual) faseActual.textContent = `Fase actual: ${maquinaDeFases.state}`;
-}
-
-function actualizarBotonesPorFase() {
-  const enAtaque = enFase('fase de ataque');
-  const enReagrupacion = enFase('fase de reagrupación');
-
-  if (botonAtacar) botonAtacar.disabled = !enAtaque;
-  if (botonDadosAtacante) botonDadosAtacante.disabled = true;
-  if (botonDadosAtacado) botonDadosAtacado.disabled = true;
-  if (botonMoverFichas) botonMoverFichas.disabled = !enReagrupacion;
-}
-
-actualizarFaseUI();
-actualizarBotonesPorFase();
-
-if (botonPararAtacar) {
-  botonPararAtacar.addEventListener('click', () => {
-    maquinaDeFases.transition('click');
-  });
-}
-
-if (botonTerminarTurno) {
-  botonTerminarTurno.addEventListener('click', () => {
-    maquinaDeFases.transition('click');
-  });
-}
-
-// =======================
-// SELECCIÓN DE PAÍSES
-// =======================
-let paisesSeleccionados = [];
-let paisAtacante = { nombre: null, fichas: null, ref: null };
-let paisAtacado = { nombre: null, fichas: null, ref: null };
-
-function gestionarSeleccion(pais) {
-  const indice = paisesSeleccionados.indexOf(pais);
-  const estaSeleccionado = indice !== -1;
-
-  if (estaSeleccionado) {
-    paisesSeleccionados.splice(indice, 1);
-    pais.seleccionado = false;
-    if (paisAtacante.ref === pais) paisAtacante = { nombre: null, fichas: null, ref: null };
-    if (paisAtacado.ref === pais) paisAtacado = { nombre: null, fichas: null, ref: null };
-  } else {
-    if (paisesSeleccionados.length < 2) {
-      paisesSeleccionados.push(pais);
-      pais.seleccionado = true;
-      if (!paisAtacante.ref) {
-        paisAtacante = { nombre: pais.nombre, fichas: pais.fichas, ref: pais };
-      } else if (!paisAtacado.ref) {
-        paisAtacado = { nombre: pais.nombre, fichas: pais.fichas, ref: pais };
-      }
+    if (paisAtacante.fichas <= 1) {
+        console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
+        return false;
     }
-  }
+
+    console.log(`${paisAtacante.nombre} puede atacar (tiene ${paisAtacante.fichas} fichas).`);
+    return true;
 }
 
-// =======================
-// MOVIMIENTO DE FICHAS
-// =======================
-function moverFichas(paisOrigen, paisDestino, cantidad) {
-  if (!enFase('fase de reagrupación')) {
-    console.log("Solo puedes mover fichas en la fase de reagrupación.");
-    return;
-  }
-  if (paisOrigen.fichas - cantidad >= 1) {
-    paisOrigen.fichas -= cantidad;
-    paisDestino.fichas += cantidad;
-    actualizarFichasEnDOM(paisOrigen);
-    actualizarFichasEnDOM(paisDestino);
-  }
-}
-
-if (botonMoverFichas) {
-  botonMoverFichas.addEventListener('click', () => {
-    if (paisAtacante.ref && paisAtacado.ref) {
-      moverFichas(paisAtacante.ref, paisAtacado.ref, 1);
+botonAtacar.addEventListener("click", () => {
+    if (paisesSeleccionados.length !== 2) {
+        console.log("Debes seleccionar exactamente 2 países para iniciar el ataque.");
+        return;
     }
-  });
-}
 
-// =======================
-// ATAQUE Y DADOS
-// =======================
-let estadoAtaque = "esperando";
-
-function tirarDado() {
-  return Math.floor(Math.random() * 6) + 1;
-}
-
-function tirarDados(n) {
-  const resultados = [];
-  for (let i = 0; i < n; i++) resultados.push(tirarDado());
-  return resultados.sort((a, b) => b - a);
-}
-
-function ataqueResolucion() {
-  if (!enFase('fase de ataque')) return;
-
-  const dadosAtacante = window._combate.dadosAtacante || [];
-  const dadosAtacado = window._combate.dadosAtacado || [];
-
-  for (let i = 0; i < Math.min(dadosAtacante.length, dadosAtacado.length); i++) {
-    if (dadosAtacante[i] > dadosAtacado[i]) {
-      paisAtacado.ref.fichas = Math.max(0, paisAtacado.ref.fichas - 1);
-    } else {
-      paisAtacante.ref.fichas = Math.max(1, paisAtacante.ref.fichas - 1);
+    if (!paisAtacante || !paisAtacante.nombre) {
+        console.log("No hay país atacante seleccionado.");
+        return;
     }
-  }
 
-  actualizarFichasEnDOM(paisAtacante.ref);
-  actualizarFichasEnDOM(paisAtacado.ref);
+    if (!paisAtacado || !paisAtacado.nombre) {
+        console.log("No hay país atacado seleccionado.");
+        return;
+    }
 
-  estadoAtaque = "esperando";
-  actualizarBotonesPorFase();
-}
+    if (paisAtacante.fichas <= 1) {
+        console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
+        return;
+    }
 
-if (botonAtacar) {
-  botonAtacar.addEventListener("click", () => {
-    if (!enFase('fase de ataque')) return;
-    if (paisesSeleccionados.length !== 2 || !paisAtacante.ref || !paisAtacado.ref) return;
-    if (paisAtacante.ref.fichas <= 1) return;
-
-    estadoAtaque = "dadosAtacante";
-    botonDadosAtacante.disabled = false;
     botonAtacar.disabled = true;
-  });
-}
+    estadoAtaque = "dadosAtacante";
+    console.log("Ataque iniciado. Turno del atacante.");
+    botonDadosAtacante.disabled = false;
+    botonDadosAtacado.disabled = true;
+});
 
-if (botonDadosAtacante) {
-  botonDadosAtacante.addEventListener("click", () => {
-    if (!enFase('fase de ataque') || estadoAtaque !== "dadosAtacante") return;
 
-    const n = paisAtacante.ref.fichas >= 4 ? 3 : paisAtacante.ref.fichas - 1;
-    window._combate = { dadosAtacante: tirarDados(n) };
+
+botonDadosAtacante.addEventListener("click", () => {
+    if (estadoAtaque !== "dadosAtacante") {
+        console.log("No es el turno del atacante.");
+        return;
+    }
+
+    ValoresAtacante();
+
     estadoAtaque = "dadosAtacado";
     botonDadosAtacante.disabled = true;
     botonDadosAtacado.disabled = false;
-  });
-}
+    console.log("Turno del atacado.");
+});
 
-if (botonDadosAtacado) {
-  botonDadosAtacado.addEventListener("click", () => {
-    if (!enFase('fase de ataque') || estadoAtaque !== "dadosAtacado") return;
+botonDadosAtacado.addEventListener("click", () => {
+    if (estadoAtaque !== "dadosAtacado") {
+        console.log("Todavía no tiró el atacante.");
+        return;
+    }
 
-    const n = paisAtacado.ref.fichas >= 2 ? 2 : paisAtacado.ref.fichas;
-    window._combate.dadosAtacado = tirarDados(n);
+    ValoresAtacado();
+
+    estadoAtaque = "resolviendo";
     ataqueResolucion();
-  });
-}
+    console.log("Resolviendo combate");
 
-// =======================
-// ACTUALIZACIÓN DE DOM
-// =======================
-function actualizarFichasEnDOM(pais) {
-  const id = `fichas-${pais.nombre.toLowerCase().replace(/\s/g, "")}`;
-  const el = document.getElementById(id);
-  if (el) el.textContent = pais.fichas;
-}
+    estadoAtaque = "esperando";
+    botonDadosAtacante.disabled = true;
+    botonDadosAtacado.disabled = true;
+});
 
-// =======================
-// INICIAL
+//
+//REAGRUPACION
+//
+function gestionarSeleccionReagrupacion(pais) {
+    const indice = paisesSeleccionados.indexOf(pais.nombre);
+    const estaSeleccionado = indice !== -1;
+  
+    if (estaSeleccionado) {
+      paisesSeleccionados.splice(indice, 1);
+      pais.seleccionado = false;
+      console.log(`${pais.nombre} ha sido deseleccionado.`);
+    } else {
+      if (paisesSeleccionados.length < 2) {
+        paisesSeleccionados.push(pais.nombre);
+        pais.seleccionado = true;
+        console.log(`${pais.nombre} ha sido seleccionado.`);
+      } else {
+        console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
+      }
+    }
+    console.log("Países seleccionados:", paisesSeleccionados);
+  }
+  
+  let paisEmisor = null;
+  
+  let paisReceptor = null;
+  
+  if (paisesSeleccionados.length === 2) {
+    paisEmisor = paisesSeleccionados[0];
+    paisReceptor = paisesSeleccionados[1];
+  
+    console.log(`País Emisor: ${paisEmisor}`);
+    console.log(`País Receptor: ${paisReceptor}`);
+  } else {
+    console.log("Aún no se han seleccionado 2 países.");
+  }
+  
+  function moverFichas(paisOrigen, paisDestino, cantidad) {
+    if (!paisOrigen || !paisDestino || cantidad <= 0 || !Number.isInteger(cantidad)) {
+      console.log("Movimiento de fichas inválido.");
+      return;
+    }
+  
+    if (paisOrigen.fichas - cantidad >= 1) {
+      paisOrigen.fichas -= cantidad;
+      paisDestino.fichas += cantidad;
+  
+      document.getElementById(`fichas-${paisOrigen.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisOrigen.fichas;
+      document.getElementById(`fichas-${paisDestino.nombre.toLowerCase().replace(/\s/g, "")}`).textContent = paisDestino.fichas;
+  
+      console.log(`Se han movido ${cantidad} fichas de ${paisOrigen.nombre} a ${paisDestino.nombre}.`);
+    } else {
+      console.log(`Error: ${paisOrigen.nombre} debe conservar al menos una ficha.`);
+    }
+  }
+  
+  const botonMoverFichas = document.getElementById("mover-fichas-btn");
+  if (botonMoverFichas) {
+    botonMoverFichas.addEventListener('click', moverFichas);
+  }
+  
