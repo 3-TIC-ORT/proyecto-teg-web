@@ -3,41 +3,24 @@ import fs from "fs"
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 
 
-export function inicializarEventosJuego() {
-  
-  subscribePOSTEvent("colocarTropas", (data) => {
-   
-    let resultado = {
-      ok: true,
-      estado: {},
-    };
-    return resultado;
+subscribePOSTEvent("guardar", (data) =>{
+let joaco = fs.readFileSync("./joaco.json","utf-8")
+joaco.push(data)
+fs.writeFileSync("./joaco.json",joaco)
+})
+
+let estadoActual = "colocacion";
+
+subscribeGETEvent("obtenerEstado", () => {
+    return { estado: estadoActual };
   });
 
-  
-  subscribePOSTEvent("atacar", (data) => {
-    let resultado = {
-      ok: true,
-      cambio: {},  
-      estado: {}, 
-    };
-    return resultado;
-  });
-
- 
-  subscribePOSTEvent("moverTropas", (data) => {
-    return { ok: true, estado: {} };
+  subscribePOSTEvent("cambiarEstado", (data) => {
+    let nuevoEstado = data.nuevo;
+    console.log("cambiando estado: "+ estadoActual + " a "+ nuevoEstado);
+    estadoActual = nuevoEstado;
+    return { ok: true, estado: estadoActual };
   });
 
 
-  subscribePOSTEvent("terminarTurno", (data) => {
-    let estadoNuevo = {};
-    realTimeEvent("turnoCambiado", { partidaId: data.partidaId, estado: estadoNuevo });
-    return { ok: true, estado: estadoNuevo };
-  });
-
- }
-  subscribeGETEvent("informacionJugador", (data) => {
-    return { jugador: {} };
-  });
-startServer (3000, true);
+  startServer(3000, true);
