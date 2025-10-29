@@ -13,11 +13,12 @@ background-color: #1ABFED;
 width: 100%;
 }
 .foto{
-width: 1072px;
+width: 1071.7px;
 height: 100%;
-position: absolute;
-left: 280px;
-top: 0px;
+position: relative;
+left: 270px;
+top: 0%;
+ 
 }
 .americadelsur {
 background-color: var(--coloramericadelsur);
@@ -254,47 +255,47 @@ position: absolute;
 }
 .lineas-conectoras11{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: 10deg;
+  height: 2rem;
+  width: 2px;
+  left: 1100px;
+  top: 420px;
   position: absolute;
 }
 .lineas-conectoras12{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: 12.5deg;
+  height: 3rem;
+  width: 2px;
+  left: 1070px;
+  top: 405px;
   position: absolute;
 }
 .lineas-conectoras13{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: -2.4deg;
+  height: 6rem;
+  width: 2px;
+  left: 1045px;
+  top: 366px;
   position: absolute;
 }
 .lineas-conectoras14{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: -85deg;
+  height: 1.6rem;
+  width: 2px;
+  left: 1130px;
+  top: 510px;
   position: absolute;
 }
 .lineas-conectoras15{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: -20deg;
+  height: 1.5rem;
+  width: 2px;
+  left: 1250px;
+  top: 500px;
   position: absolute;
 }
 .lineas-conectoras16{
@@ -352,8 +353,6 @@ position: absolute;
   position: absolute;
 }
 .japon{
-width: 96px;
-height: 89px;
 position: absolute;
 top: 135px;
 left: 1285px;
@@ -366,8 +365,6 @@ width: px;
 height: px;
 }
 .china{
-width: 283px;
-height:  334px;
 position: absolute;
 top: 237px;
 left: 1250px;
