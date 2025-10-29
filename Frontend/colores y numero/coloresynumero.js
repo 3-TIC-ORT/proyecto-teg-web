@@ -38,6 +38,13 @@ function actualizarOpciones() {
     const valorActual = selector.value;
     selector.innerHTML = "";
 
+    const opcionVacia = document.createElement("option");
+    opcionVacia.value = "";
+    opcionVacia.textContent = "Seleccione un color...";
+    opcionVacia.disabled = true;
+    if (!valorActual) opcionVacia.selected = true;
+    selector.appendChild(opcionVacia);
+
     const coloresDisponibles = todosLosColores.filter(
       color => !coloresSeleccionados.includes(color) || color === valorActual
     );
@@ -51,3 +58,18 @@ function actualizarOpciones() {
     });
   }
 }
+
+function verificarColoresSeleccionados() {
+  const cantidadJugadores = parseInt(document.getElementById("cantidadJugadores").value);
+  for (let i = 0; i < cantidadJugadores; i++) {
+    const selector = document.getElementById(`jugador${i}`);
+    if (!selector.value) {
+      alert(`El Jugador ${i + 1} debe seleccionar un color.`);
+      return false;
+    }
+  }
+  alert("Todos los jugadores tienen un color asignado");
+  window.location.href = "../juego%20principal/juegoprincipal.html";
+  return true;
+}
+
