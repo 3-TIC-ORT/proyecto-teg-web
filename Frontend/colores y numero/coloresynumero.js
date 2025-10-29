@@ -1,65 +1,53 @@
-const allColors = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
+const todosLosColores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 
+function generarSelectores() {
+  const cantidadJugadores = parseInt(document.getElementById("cantidadJugadores").value);
+  const contenedor = document.getElementById("selectores");
+  contenedor.innerHTML = "";
 
-function generateSelectors() {
-  const numPlayers = parseInt(document.getElementById("numPlayers").value);
-  const container = document.getElementById("selectors");
-  container.innerHTML = "";
-
-
-  const selectedColors = [];
-
-
-  for (let i = 0; i < numPlayers; i++) {
+  for (let i = 0; i < cantidadJugadores; i++) {
     const div = document.createElement("div");
-    div.className = "player-select";
+    div.className = "seleccion-jugador";
 
+    const etiqueta = document.createElement("label");
+    etiqueta.textContent = `Jugador ${i + 1}:`;
 
-    const label = document.createElement("label");
-    label.textContent = `Jugador ${i + 1}:`;
+    const selector = document.createElement("select");
+    selector.id = `jugador${i}`;
+    selector.onchange = () => actualizarOpciones();
 
-
-    const select = document.createElement("select");
-    select.id = `player${i}`;
-    select.onchange = () => updateOptions();
-
-
-    div.appendChild(label);
-    div.appendChild(select);
-    container.appendChild(div);
+    div.appendChild(etiqueta);
+    div.appendChild(selector);
+    contenedor.appendChild(div);
   }
 
-
-  updateOptions();
+  actualizarOpciones();
 }
 
+function actualizarOpciones() {
+  const cantidadJugadores = parseInt(document.getElementById("cantidadJugadores").value);
+  const coloresSeleccionados = [];
 
-function updateOptions() {
-  const numPlayers = parseInt(document.getElementById("numPlayers").value);
-  const selectedColors = [];
-
-
-  for (let i = 0; i < numPlayers; i++) {
-    const select = document.getElementById(`player${i}`);
-    if (select.value) selectedColors.push(select.value);
+  for (let i = 0; i < cantidadJugadores; i++) {
+    const selector = document.getElementById(`jugador${i}`);
+    if (selector.value) coloresSeleccionados.push(selector.value);
   }
 
+  for (let i = 0; i < cantidadJugadores; i++) {
+    const selector = document.getElementById(`jugador${i}`);
+    const valorActual = selector.value;
+    selector.innerHTML = "";
 
-  for (let i = 0; i < numPlayers; i++) {
-    const select = document.getElementById(`player${i}`);
-    const currentValue = select.value;
-    select.innerHTML = "";
+    const coloresDisponibles = todosLosColores.filter(
+      color => !coloresSeleccionados.includes(color) || color === valorActual
+    );
 
-
-    const availableColors = allColors.filter(color => !selectedColors.includes(color) || color === currentValue);
-
-
-    availableColors.forEach(color => {
-      const option = document.createElement("option");
-      option.value = color;
-      option.textContent = color;
-      if (color === currentValue) option.selected = true;
-      select.appendChild(option);
+    coloresDisponibles.forEach(color => {
+      const opcion = document.createElement("option");
+      opcion.value = color;
+      opcion.textContent = color;
+      if (color === valorActual) opcion.selected = true;
+      selector.appendChild(opcion);
     });
   }
 }
