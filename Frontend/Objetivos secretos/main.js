@@ -1,5 +1,5 @@
 
-const objectives = [
+let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
   "Destruir al ejército rojo",
@@ -27,9 +27,9 @@ function startSequence() {
   }
 
   // Asignar objetivos aleatorios únicos
-  const shuffledObjectives = objectives.sort(() => 0.5 - Math.random());
+  let mezcla = objectives.sort(() => 0.5 - Math.random());
   selectedPlayers.forEach((player, i) => {
-    playerObjectives[player] = shuffledObjectives[i % objectives.length];
+    playerObjectives[player] = mezcla[i % objectives.length];
   });
 
   currentIndex = 0;
@@ -37,7 +37,7 @@ function startSequence() {
 }
 
 function showNextPlayer() {
-  const player = selectedPlayers[currentIndex];
+  let player = selectedPlayers[currentIndex];
   document.getElementById("reveal-instructions").innerHTML =
     `EXCEPTO EL JUGADOR ${player.toUpperCase()}<br>CUANDO TODOS CIERREN LOS OJOS,<br>EL JUGADOR ${player.toUpperCase()} DEBE APRETAR EL BOTÓN DE REVELAR OBJETIVO SECRETO`;
   document.getElementById("objective").style.display = "none";
@@ -45,7 +45,7 @@ function showNextPlayer() {
 }
 
 function showObjective() {
-  const player = selectedPlayers[currentIndex];
+  let player = selectedPlayers[currentIndex];
   document.getElementById("objective").innerText = `Objetivo secreto del jugador ${player.toUpperCase()}:\n\n${playerObjectives[player]}`;
   document.getElementById("objective").style.display = "block";
 

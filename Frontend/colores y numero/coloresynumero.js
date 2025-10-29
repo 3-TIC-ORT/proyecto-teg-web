@@ -69,7 +69,7 @@ function verificarColoresSeleccionados() {
     }
   }
   alert("Todos los jugadores tienen un color asignado");
-  window.location.href = "../juego%20principal/juegoprincipal.html";
+  window.location.href = "../Objetivos%20secretos/objetivos.html";
   return true;
 }
 

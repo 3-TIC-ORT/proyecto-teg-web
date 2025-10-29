@@ -1,5 +1,5 @@
 .body{
-    backdrop-filter: blur(100%);
+   /* backdrop-filter: blur(70%);*/
     background-color: #1abfed11;
     width: 100%;
 }
