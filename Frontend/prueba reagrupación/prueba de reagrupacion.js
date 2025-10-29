@@ -1,5 +1,5 @@
 let paisesSeleccionados = [];
-function gestionarSeleccion(pais) {
+function gestionarSeleccionReagrupacion(pais) {
   const indice = paisesSeleccionados.indexOf(pais.nombre);
   const estaSeleccionado = indice !== -1;
 
@@ -70,7 +70,7 @@ if (fichasArgentinaElemento) {
 }
 if (argentina.mapa) {
   argentina.mapa.addEventListener('click', function() {
-    gestionarSeleccion(argentina);
+    gestionarSeleccionReagrupacion(argentina);
   });
 }
 
@@ -86,7 +86,7 @@ if (fichasChileElemento) {
 }
 if (chile.mapa) {
   chile.mapa.addEventListener('click', function() {
-    gestionarSeleccion(chile);
+    gestionarSeleccionReagrupacion(chile);
   });
 }
 
@@ -102,7 +102,7 @@ if (fichasUruguayElemento) {
 }
 if (uruguay.mapa) {
   uruguay.mapa.addEventListener('click', function() {
-    gestionarSeleccion(uruguay);
+    gestionarSeleccionReagrupacion(uruguay);
   });
 }
 
@@ -118,7 +118,7 @@ if (fichasBrasilElemento) {
 }
 if (brasil.mapa) {
   brasil.mapa.addEventListener('click', function() {
-    gestionarSeleccion(brasil);
+    gestionarSeleccionReagrupacion(brasil);
   });
 }
 
@@ -134,7 +134,7 @@ if (fichasPeruElemento) {
 }
 if (peru.mapa) {
   peru.mapa.addEventListener('click', function() {
-    gestionarSeleccion(peru);
+    gestionarSeleccionReagrupacion(peru);
   });
 }
 
@@ -150,7 +150,7 @@ if (fichasColombiaElemento) {
 }
 if (colombia.mapa) {
   colombia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(colombia);
+    gestionarSeleccionReagrupacion(colombia);
   });
 }
 
@@ -167,7 +167,7 @@ if (fichasIslandiaElemento) {
 }
 if (islandia.mapa) {
   islandia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(islandia);
+    gestionarSeleccionReagrupacion(islandia);
   });
 }
 
@@ -183,7 +183,7 @@ if (fichasBretanaElemento) {
 }
 if (bretana.mapa) {
   bretana.mapa.addEventListener('click', function() {
-    gestionarSeleccion(bretana);
+    gestionarSeleccionReagrupacion(bretana);
   });
 }
 
@@ -199,7 +199,7 @@ if (fichasEspanaElemento) {
 }
 if (espana.mapa) {
   espana.mapa.addEventListener('click', function() {
-    gestionarSeleccion(espana);
+    gestionarSeleccionReagrupacion(espana);
   });
 }
 
@@ -215,7 +215,7 @@ if (fichasFranciaElemento) {
 }
 if (francia.mapa) {
   francia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(francia);
+    gestionarSeleccionReagrupacion(francia);
   });
 }
 
@@ -231,7 +231,7 @@ if (fichasAlemaniaElemento) {
 }
 if (alemania.mapa) {
   alemania.mapa.addEventListener('click', function() {
-    gestionarSeleccion(alemania);
+    gestionarSeleccionReagrupacion(alemania);
   });
 }
 
@@ -247,7 +247,7 @@ if (fichasItaliaElemento) {
 }
 if (italia.mapa) {
   italia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(italia);
+    gestionarSeleccionReagrupacion(italia);
   });
 }
 
@@ -263,7 +263,7 @@ if (fichasPoloniaElemento) {
 }
 if (polonia.mapa) {
   polonia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(polonia);
+    gestionarSeleccionReagrupacion(polonia);
   });
 }
 
@@ -279,7 +279,7 @@ if (fichasRusiaElemento) {
 }
 if (rusia.mapa) {
   rusia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(rusia);
+    gestionarSeleccionReagrupacion(rusia);
   });
 }
 
@@ -296,7 +296,7 @@ if (fichasAustraliaElemento) {
 }
 if (australia.mapa) {
   australia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(australia);
+    gestionarSeleccionReagrupacion(australia);
   });
 }
 
@@ -312,7 +312,7 @@ if (fichasSumatraElemento) {
 }
 if (sumatra.mapa) {
   sumatra.mapa.addEventListener('click', function() {
-    gestionarSeleccion(sumatra);
+    gestionarSeleccionReagrupacion(sumatra);
   });
 }
 
@@ -328,7 +328,7 @@ if (fichasJavaElemento) {
 }
 if (java.mapa) {
   java.mapa.addEventListener('click', function() {
-    gestionarSeleccion(java);
+    gestionarSeleccionReagrupacion(java);
   });
 }
 
@@ -344,7 +344,7 @@ if (fichasBorneoElemento) {
 }
 if (borneo.mapa) {
   borneo.mapa.addEventListener('click', function() {
-    gestionarSeleccion(borneo);
+    gestionarSeleccionReagrupacion(borneo);
   });
 }
 
@@ -361,7 +361,7 @@ if (fichasSaharaElemento) {
 }
 if (sahara.mapa) {
   sahara.mapa.addEventListener('click', function() {
-    gestionarSeleccion(sahara);
+    gestionarSeleccionReagrupacion(sahara);
   });
 }
 
@@ -377,7 +377,7 @@ if (fichasEgiptoElemento) {
 }
 if (egipto.mapa) {
   egipto.mapa.addEventListener('click', function() {
-    gestionarSeleccion(egipto);
+    gestionarSeleccionReagrupacion(egipto);
   });
 }
 
@@ -393,7 +393,7 @@ if (fichasEtiopiaElemento) {
 }
 if (etiopia.mapa) {
   etiopia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(etiopia);
+    gestionarSeleccionReagrupacion(etiopia);
   });
 }
 
@@ -409,7 +409,7 @@ if (fichasZaireElemento) {
 }
 if (zaire.mapa) {
   zaire.mapa.addEventListener('click', function() {
-    gestionarSeleccion(zaire);
+    gestionarSeleccionReagrupacion(zaire);
   });
 }
 
@@ -425,7 +425,7 @@ if (fichasSudafricaElemento) {
 }
 if (sudafrica.mapa) {
   sudafrica.mapa.addEventListener('click', function() {
-    gestionarSeleccion(sudafrica);
+    gestionarSeleccionReagrupacion(sudafrica);
   });
 }
 
@@ -441,7 +441,7 @@ if (fichasMadagascarElemento) {
 }
 if (madagascar.mapa) {
   madagascar.mapa.addEventListener('click', function() {
-    gestionarSeleccion(madagascar);
+    gestionarSeleccionReagrupacion(madagascar);
   });
 }
 
@@ -458,7 +458,7 @@ if (fichasAlaskaElemento) {
 }
 if (alaska.mapa) {
   alaska.mapa.addEventListener('click', function() {
-    gestionarSeleccion(alaska);
+    gestionarSeleccionReagrupacion(alaska);
   });
 }
 
@@ -474,7 +474,7 @@ if (fichasCanadaElemento) {
 }
 if (canada.mapa) {
   canada.mapa.addEventListener('click', function() {
-    gestionarSeleccion(canada);
+    gestionarSeleccionReagrupacion(canada);
   });
 }
 
@@ -490,7 +490,7 @@ if (fichasGroenlandiaElemento) {
 }
 if (groenlandia.mapa) {
   groenlandia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(groenlandia);
+    gestionarSeleccionReagrupacion(groenlandia);
   });
 }
 
@@ -506,7 +506,7 @@ if (fichasTerranovaElemento) {
 }
 if (terranova.mapa) {
   terranova.mapa.addEventListener('click', function() {
-    gestionarSeleccion(terranova);
+    gestionarSeleccionReagrupacion(terranova);
   });
 }
 
@@ -522,7 +522,7 @@ if (fichasMexicoElemento) {
 }
 if (mexico.mapa) {
   mexico.mapa.addEventListener('click', function() {
-    gestionarSeleccion(mexico);
+    gestionarSeleccionReagrupacion(mexico);
   });
 }
 
@@ -538,7 +538,7 @@ if (fichasCaliforniaElemento) {
 }
 if (california.mapa) {
   california.mapa.addEventListener('click', function() {
-    gestionarSeleccion(california);
+    gestionarSeleccionReagrupacion(california);
   });
 }
 
@@ -554,7 +554,7 @@ if (fichasLabradorElemento) {
 }
 if (labrador.mapa) {
   labrador.mapa.addEventListener('click', function() {
-    gestionarSeleccion(labrador);
+    gestionarSeleccionReagrupacion(labrador);
   });
 }
 
@@ -570,7 +570,7 @@ if (fichasOregonElemento) {
 }
 if (oregon.mapa) {
   oregon.mapa.addEventListener('click', function() {
-    gestionarSeleccion(oregon);
+    gestionarSeleccionReagrupacion(oregon);
   });
 }
 
@@ -586,7 +586,7 @@ if (fichasNuevaYorkElemento) {
 }
 if (nuevaYork.mapa) {
   nuevaYork.mapa.addEventListener('click', function() {
-    gestionarSeleccion(nuevaYork);
+    gestionarSeleccionReagrupacion(nuevaYork);
   });
 }
 
@@ -602,7 +602,7 @@ if (fichasYukonElemento) {
 }
 if (yukon.mapa) {
   yukon.mapa.addEventListener('click', function() {
-    gestionarSeleccion(yukon);
+    gestionarSeleccionReagrupacion(yukon);
   });
 }
 
@@ -619,7 +619,7 @@ if (fichasChinaElemento) {
 }
 if (china.mapa) {
   china.mapa.addEventListener('click', function() {
-    gestionarSeleccion(china);
+    gestionarSeleccionReagrupacion(china);
   });
 }
 
@@ -635,7 +635,7 @@ if (fichasJaponElemento) {
 }
 if (japon.mapa) {
   japon.mapa.addEventListener('click', function() {
-    gestionarSeleccion(japon);
+    gestionarSeleccionReagrupacion(japon);
   });
 }
 
@@ -651,7 +651,7 @@ if (fichasIranElemento) {
 }
 if (iran.mapa) {
   iran.mapa.addEventListener('click', function() {
-    gestionarSeleccion(iran);
+    gestionarSeleccionReagrupacion(iran);
   });
 }
 
@@ -667,7 +667,7 @@ if (fichasIsraelElemento) {
 }
 if (israel.mapa) {
   israel.mapa.addEventListener('click', function() {
-    gestionarSeleccion(israel);
+    gestionarSeleccionReagrupacion(israel);
   });
 }
 
@@ -683,7 +683,7 @@ if (fichasArabiaElemento) {
 }
 if (arabia.mapa) {
   arabia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(arabia);
+    gestionarSeleccionReagrupacion(arabia);
   });
 }
 
@@ -699,7 +699,7 @@ if (fichasTurquiaElemento) {
 }
 if (turquia.mapa) {
   turquia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(turquia);
+    gestionarSeleccionReagrupacion(turquia);
   });
 }
 
@@ -715,7 +715,7 @@ if (fichasTartariaElemento) {
 }
 if (tartaria.mapa) {
   tartaria.mapa.addEventListener('click', function() {
-    gestionarSeleccion(tartaria);
+    gestionarSeleccionReagrupacion(tartaria);
   });
 }
 
@@ -731,7 +731,7 @@ if (fichasKamchatkaElemento) {
 }
 if (kamchatka.mapa) {
   kamchatka.mapa.addEventListener('click', function() {
-    gestionarSeleccion(kamchatka);
+    gestionarSeleccionReagrupacion(kamchatka);
   });
 }
 
@@ -747,7 +747,7 @@ if (fichasTaimirElemento) {
 }
 if (taimir.mapa) {
   taimir.mapa.addEventListener('click', function() {
-    gestionarSeleccion(taimir);
+    gestionarSeleccionReagrupacion(taimir);
   });
 }
 
@@ -763,7 +763,7 @@ if (fichasGobiElemento) {
 }
 if (gobi.mapa) {
   gobi.mapa.addEventListener('click', function() {
-    gestionarSeleccion(gobi);
+    gestionarSeleccionReagrupacion(gobi);
   });
 }
 
@@ -779,7 +779,7 @@ if (fichasIndiaElemento) {
 }
 if (india.mapa) {
   india.mapa.addEventListener('click', function() {
-    gestionarSeleccion(india);
+    gestionarSeleccionReagrupacion(india);
   });
 }
 
@@ -795,7 +795,7 @@ if (fichasMalasiaElemento) {
 }
 if (malasia.mapa) {
   malasia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(malasia);
+    gestionarSeleccionReagrupacion(malasia);
   });
 }
 
@@ -811,7 +811,7 @@ if (fichasSiberiaElemento) {
 }
 if (siberia.mapa) {
   siberia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(siberia);
+    gestionarSeleccionReagrupacion(siberia);
   });
 }
 
@@ -827,7 +827,7 @@ if (fichasAralElemento) {
 }
 if (aral.mapa) {
   aral.mapa.addEventListener('click', function() {
-    gestionarSeleccion(aral);
+    gestionarSeleccionReagrupacion(aral);
   });
 }
 
@@ -843,6 +843,6 @@ if (fichasMongoliaElemento) {
 }
 if (mongolia.mapa) {
   mongolia.mapa.addEventListener('click', function() {
-    gestionarSeleccion(mongolia);
+    gestionarSeleccionReagrupacion(mongolia);
   });
 }
