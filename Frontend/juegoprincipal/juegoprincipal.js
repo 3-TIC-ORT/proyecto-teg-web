@@ -8,29 +8,29 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
-const targetDate = new Date();
+let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
 
 function updateTimer() {
-  const now = new Date();
-  const diff = targetDate - now;
+  let now = new Date();
+  let diff = targetDate - now;
 
   if (diff <= 0) {
     document.getElementById("timer").textContent = "¡Tiempo terminado!";
     clearInterval(timerInterval);
     return;
   }
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
   document.getElementById("timer").textContent =
     String(minutes).padStart(2, '0') + ":" +
     String(seconds).padStart(2, '0');
 
 }
-const timerInterval = setInterval(updateTimer, 1000);
+let timerInterval = setInterval(updateTimer, 1000);
 //termine el  timer
-const resultado1 = tirarDado(); 
+let resultado1 = tirarDado(); 
 let tirar1 = document.getElementById("tirar1") 
 tirar1.addEventListener("click", tirarDado) 
 function tirarDado() {
@@ -41,17 +41,6 @@ function tirarDado() {
 let tirar2 = document.getElementById("tirar2") 
 tirar2.addEventListener("click", tirarDado) 
 //esta es la función de tirar dados y también hice que se ejecute cuando apretamos los botones de tirar. 
-//cantidad de jugadores
-let botoncantidadjugadores = document.getElementById ("botoncantdadjugadores")
-let numerodejugadores =document.getElementById ("numerodejugadores")
-let numero = []
-function nombre (){
-  numero.push (numerodejugadores.value)
-  console.log (numero)
-}
-
-let objetivos =document.getElementById ("objetivos")
-
 // La Maquina de Estados Finitos
 let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))

@@ -291,56 +291,56 @@ position: absolute;
 }
 .lineas-conectoras15{
   border-left:dashed .2rem black;
-  rotate: -20deg;
+  rotate: -40deg;
   height: 1.5rem;
   width: 2px;
-  left: 1250px;
+  left: 1245px;
   top: 500px;
   position: absolute;
 }
 .lineas-conectoras16{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: -10deg;
+  height: 1.5rem;
+  width: 2px;
+  left: 1300px;
+  top: 460px;
   position: absolute;
 }
 .lineas-conectoras17{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: 50deg;
+  height: 2rem;
+  width: 2px;
+  left: 1280px;
+  top: 170px;
   position: absolute;
 }
 .lineas-conectoras18{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: -10deg;
+  height: 1.5rem;
+  width: 2px;
+  left: 1330px;
+  top: 450px;
   position: absolute;
 }
 .lineas-conectoras19{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: 40deg;
+  height: 1.3rem;
+  width: 2px;
+  left: 1210px;
+  top: 420px;
   position: absolute;
 }
 .lineas-conectoras20{
   border-left:dashed .2rem black;
-  rotate: deg;
-  height: rem;
-  width: px;
-  left: px;
-  top: px;
+  rotate: 40deg;
+  height: 1.3rem;
+  width: 2px;
+  left: 1290px;
+  top: 370px;
   position: absolute;
 }
 .lineas-conectoras21{
