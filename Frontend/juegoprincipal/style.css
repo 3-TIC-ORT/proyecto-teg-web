@@ -359,10 +359,11 @@ left: 1285px;
 }
 .japon-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 120px;
+left: 1265px;
+width: 90px;
+height: 90px;
+rotate: 2deg;
 }
 .china{
 position: absolute;
@@ -371,29 +372,25 @@ left: 1250px;
 }
 .china-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 140px;
+left: 1150px;
+width: 225px;
+height: 200px;
 }
 .kamchatka{
-width: 131px;
-height: 126px;
 position: absolute;
 top: 100px;
 left: 1180px;
 }
 .kamchatka-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 77px;
+left: 1170px;
+width: 92px;
+height: 90px;
 }
 .mongolia{
 position: absolute;
-width: 190px;
-height: 164px;
 top: 190px;
 left: 1140px;
 }
@@ -405,74 +402,64 @@ width: px;
 height: px;
 }
 .israel{
-width: 180px;
-height: 119px ;
 position: absolute;
 top: 350px;
 left: 1105px;
 }
 .israel-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 332px;
+left: 1060px;
+width: 110px;
+height: 110px;
 }
 .aral{
-width: 123px;
-height: 178px;
 position: absolute;
 top: 135px;
 left: 1065px;
 }
 .aral-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 87px;
+left: 1025px;
+width: 100px;
+height: 110px;
 }
 .turquia{
-width: 262px;
-height: 145px;
 position: absolute;
 top: 310px;
 left: 1100px;
 }
 .turquia-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 275px;
+left: 1045px;
+width: 145px;
+height: 120px;
 }
 .arabia{
-width: 145px;
-height: 128px;
 position: absolute;
 top: 380px;
 left: 1127.5px;
 }
 .arabia-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 363px;
+left: 1100px;
+width: 90px;
+height: 90px;
 }
 .india{
-width: 142px;
-height: 190px;
 position: absolute;
 top:345px;
 left: 1220px;
 }
 .india-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 215px;
+left: 1201px;
+width: 76px;
+height: 330px;
 }
 .gobi{
 width: 100px;
