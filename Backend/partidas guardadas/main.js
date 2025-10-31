@@ -22,5 +22,31 @@ subscribeGETEvent("obtenerEstado", () => {
     return { ok: true, estado: estadoActual };
   });
 
+// cambiar el timer
+let segundosRestantes = 120;
+
+let intervalo = null;
+
+function IniciarTimer() {
+  clearInterval(intervalo);
+  intervalo = setInterval(() => {
+    segundosRestantes--;
+    realTimeEvent("tick", {segundos: segundosrRestantes});
+    if (segundosRestantes <= 0 ){
+      clearInterval(intervalo);
+      realTimeEvent("Tiempo Terminado", {});
+    }
+  }, 1000);
+}
+subscribeGETEvent("obtenerTimer", () => { segundos: segundosRestantes});
+
+subscribePOSTEvent("reiniciarTimer", () => {
+segundosRestantes = 120;
+IniciarTimer();
+return {ok: true};
+});
+
+
+
 
   startServer(3000, true);
