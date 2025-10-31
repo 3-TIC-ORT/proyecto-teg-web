@@ -384,8 +384,8 @@ left: 1180px;
 }
 .kamchatka-foto{
 position: absolute;
-top: 80px;
-left: 1110px;
+top: 75px;
+left: 1109px;
 width: 230px;
 height: 85px;
 }
@@ -421,8 +421,8 @@ left: 1065px;
 .aral-foto{
 position: absolute;
 top: 87px;
-left: 1025px;
-width: 100px;
+left: 1020px;
+width: 110px;
 height: 110px;
 }
 .turquia{
@@ -456,10 +456,10 @@ left: 1220px;
 }
 .india-foto{
 position: absolute;
-top: 166.5px;
-left: 1201px;
-width: 76px;
-height: 420px;
+top: 185px;
+left: 1195px;
+width: 82px;
+height: 385px;
 }
 .gobi{
 position: absolute;
@@ -469,7 +469,7 @@ left: 1180px;
 .gobi-foto{
 position: absolute;
 top: 250px;
-left: 1100px;
+left: 1170px;
 width: 50px;
 height: 50px;
 }
@@ -504,7 +504,7 @@ left: 1133px;
 }
 .siberia-foto{
   position: absolute;
-  top: 83px;
+  top: 84px;
   left: 1095px;
   width: 125px;
   height: 115px;
@@ -516,9 +516,9 @@ left: 1125px;
 }
 .taimir-foto{
   position: absolute;
-top: 80px;
-left: 1110px;
-width: 90px;
+top: 79px;
+left: 1081.5px;
+width: 142px;
 height: 70px;
 }
 .tartaria{
@@ -529,8 +529,8 @@ left: 1100px;
 .tartaria-foto{
  position: absolute;
  top: 65px;
-  left: 835px;
-  width: 550px;
+  left: 982px;
+  width: 250px;
   height: 95px;
 }
 
@@ -549,63 +549,54 @@ top: 380px;
 .australia{
   position: absolute;
   left: 1280px;
-  top: 487px;
+  top: 510px;
 }
 .australia-foto{
-  width: 120px;
-  height: 120px;
-position: absolute;
-left: 1240px;
-top: 445px;
-display: flex;
-align-items: center;
+  width: 110px;
+  height: 150px;
+ position: absolute;
+ left: 1240px;
+ top: 452px;
+
 }
 .borneo{
-width: 73.78px;
-height: 118.55px;
 position: absolute;
 top: 390px;
 left: 1270px;
 }
 .borneo-foto{
+  width: 50px;
+  height: 170px;
   position: absolute;
-  top: 358px;
-  left: 1265px;
-  width: 40px;
-  height: 90px;
+  top: 340px;
+  left: 1255px;
 }
 .sumatra{
-  width: 88.39px;
-  height: 99.83x;
   position: absolute;
   top: 445px;
   left: 1200px;
 }
 .sumatra-foto{
   position: absolute;
-  top: 420px;
+  top: 436px;
   left: 1175px;
   height: 70px;
   width: 70px;
 }
 
 .argentina{
-width: 106.14px;
-height: 196.68px;
 position: absolute;
 top: 500px;
 left: 620px;
 }
 .argentina-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 470px;
+left: 600px;
+width: 100px;
+height: 100px;
 }
 .uruguay{
-width: 98.07px;
-height: 101.54px;
 position: absolute;
 top: 490px;
 left: 660px;
