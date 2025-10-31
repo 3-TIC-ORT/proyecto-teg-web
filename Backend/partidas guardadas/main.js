@@ -22,31 +22,29 @@ subscribeGETEvent("obtenerEstado", () => {
     return { ok: true, estado: estadoActual };
   });
 
-// cambiar el timer
-let segundosRestantes = 120;
+// timer cambiado
+let segundosRestantes = 330;
+let intervalo;
 
-let intervalo = null;
-
-function IniciarTimer() {
+function iniciarTimer() {
   clearInterval(intervalo);
+  segundosRestantes = 330;
+
   intervalo = setInterval(() => {
     segundosRestantes--;
-    realTimeEvent("tick", {segundos: segundosrRestantes});
-    if (segundosRestantes <= 0 ){
+    realTimeEvent("tick", { segundos: segundosRestantes }); 
+
+    if (segundosRestantes <= 0) {
       clearInterval(intervalo);
-      realTimeEvent("Tiempo Terminado", {});
+      realTimeEvent("tiempoTerminado", {}); 
+
+     
+      maquinaDeFases.transition("click");  
+
+  
+      iniciarTimer();
     }
   }, 1000);
 }
-subscribeGETEvent("obtenerTimer", () => { segundos: segundosRestantes});
 
-subscribePOSTEvent("reiniciarTimer", () => {
-segundosRestantes = 120;
-IniciarTimer();
-return {ok: true};
-});
-
-
-
-
-  startServer(3000, true);
+startServer(3000, true);
