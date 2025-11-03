@@ -12,14 +12,14 @@ body {
 background-color: #1ABFED;
 width: 100%;
 }
-.foto{
+/*.foto{
 width: 1071.7px;
 height: 100%;
 position: relative;
 left: 270px;
 top: 0%;
  
-}
+}*/
 .americadelsur {
 background-color: var(--coloramericadelsur);
 }
@@ -165,9 +165,9 @@ border-right: 5px solid black;
   border-left:dashed .2rem black;
   rotate: -75deg;/*rotacion*/
   height: 8.5rem;/*cantidad  de puntos*/
- width: 200px;/*ancho determinaque tan larga*/
- left: 760px;
- top: 290px;
+ width: 1px;
+ left: 840px;
+ top: 400px;
  position: absolute;
  
 }
@@ -183,10 +183,10 @@ position: absolute;
 .lineas-conectoras3{
   border-left:dashed .2rem black;
   rotate: 40deg;
-  height: 5.5rem;
-  width: 250px;
-  left: 580px;
-  top: 260px;
+  height: 6.3rem;
+  width: 2px;
+  left: 600px;
+  top: 190px;
   position: absolute;
 
 }
@@ -194,18 +194,18 @@ position: absolute;
   border-left:dashed .2rem black;
   rotate: 45deg;
   height: 3.1rem;
-  width: 330px;
-  left: 560px;
-  top: 230px;
+  width: 1px;
+  left: 590px;
+  top: 120px;
   position: absolute;
 }
 .lineas-conectoras5{
   border-left:dashed .2rem black;
   rotate: -50deg;
-  height: 3.7rem;
-  width: 200px;
-  left: 660px;
-  top: 110px;
+  height: 4rem;
+  width: 1px;
+  left: 690px;
+  top: 200px;
   position: absolute;
 }
 .lineas-conectoras6{
@@ -239,9 +239,9 @@ position: absolute;
   border-left:dashed .2rem black;
   rotate: 100deg;
   height: 2.9rem;
-  width: 200px;
-  left: 810px;
-  top: 340px;
+  width: 1px;
+  left: 923px;
+  top: 260px;
   position: absolute;
 }
 .lineas-conectoras10{
@@ -664,10 +664,10 @@ left: 420px;
 }
 .canada-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 67px;
+left: 363px;
+width: 180px;
+height: 180px;
 }
 .california{
 position: absolute;
@@ -676,10 +676,10 @@ left: 410px;
 }
   .california-foto{
   position: absolute;
-  top: 270px;
+  top: 262px;
   left: 375px;
   width: 165px;
-  height: 135px; 
+  height: 150px; 
   }
 .terranova{
 position: absolute;
@@ -712,10 +712,10 @@ left: 350px;
 }
 .yukon-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 130px;
+left: 288px;
+width: 170px;
+height: 140px;
 }
 .alaska{
 position: absolute;
@@ -724,22 +724,22 @@ left: 300px;
 }
 .alaska-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 185px;
+left: 245px;
+width: 150px;
+height: 135px;
 }
 .nuevayork{
 position: absolute;
 top: 240px;
 left: 470px;
 }
-.nuevayork-foto{
+.nuevaYork-foto{
 position: absolute;
-top: 350px;
-left: 500px;
-width: 100px;
-height: 50px;
+top: 172.5px;
+left: 427px;
+width: 150px;
+height: 145px;
 }
 .oregon{
 position: absolute;
@@ -748,10 +748,10 @@ left: 380px;
 }
 .oregon-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 231px;
+left: 290px;
+width: 180px;
+height: 145px;
 }
 .labrador{
 position: absolute;
@@ -793,8 +793,6 @@ height: px;
 
 }
 .francia{
-width: 129.91px;
-height: 171.26px;
 position: absolute;
 top: 320px;
 left: 900px;
@@ -807,8 +805,6 @@ width: px;
 height: px;
 }
 .alemania{
-width: 130.12px;
-height: 176.69px;
 position: absolute;
 top: 310px;
 left: 970px;
@@ -821,8 +817,6 @@ width: px;
 height: px;
 }
 .polonia{
-width: 164.95px;
-height: 177.28px;
 position: absolute;
 top: 280px;
 left: 1013px;
@@ -835,8 +829,6 @@ width: px;
 height: px;
 }
 .granbretaña{
-width: 113.87px;
-height: 148.57px;
 position:absolute;
 top: 260px;
 left: 840px;
@@ -849,8 +841,6 @@ width: px;
 height: px;
 }
 .islandia{
-width: 125.9px;
-height: 150.88px;
 position: absolute;
 top: 230px;
 left: 735px;
@@ -863,8 +853,6 @@ width: px;
 height: px;
 }
 .italia{
-width: 134.32px;
-height: 149.58px;
 position: absolute;
 top: 380px;
 left: 965px;
@@ -877,8 +865,6 @@ width: px;
 height: px;
 }
 .rusia{
-width: 230.55px;
-height: 325.36px;
 position: absolute;
 top: 195px;
 left: 1015px;
@@ -891,8 +877,6 @@ width: px;
 height: px;
 }
 .suecia{
-width: 131.67px;
-height: 146.81px;
 position: absolute;
 top: 140px;
 left: 940px;
@@ -907,8 +891,6 @@ height: px;
 
 
 .sahara{
-width: 222px;
-height: 192px;
 position: absolute;
 top: 480px;
 left: 930px;
@@ -921,8 +903,6 @@ width: px;
 height: px;
 }
 .madagascar{
-width: px;
-height: px;
 position: absolute;
 top: 520px;
 left: 1110px;
@@ -935,8 +915,6 @@ width: px;
 height: px;
 }
 .sudafrica{
-width: 162px;
-height: 163px;
 position: absolute;
 top: 550px;
 left: 1020px;
@@ -949,8 +927,6 @@ width: px;
 height: px;
 }
 .egipto{
-width: 285px;
-height: 145px;
 position: absolute;
 top: 445px;
 left: 1055px;
@@ -963,8 +939,6 @@ width: px;
 height: px;
 }
 .etiopia{
- width: 230px;
- height: 198px;
  position: absolute;
  top: 485px;
 left: 1030px;
@@ -977,8 +951,6 @@ width: px;
 height: px;
 }
 .zaire{
-  width: 192px;
-  height: 141px;
   position: absolute;
   top: 520px;
   left: 990px;
