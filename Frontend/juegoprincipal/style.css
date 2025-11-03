@@ -12,7 +12,7 @@ body {
 background-color: #1ABFED;
 width: 100%;
 }
-/*.foto{
+.foto{
 width: 1071.7px;
 height: 100%;
 position: relative;
@@ -658,9 +658,9 @@ height: 130px;
 }
 
 .canada{
-position: absolute;
-top: 140px;
-left: 420px;
+  position: absolute;
+  top: 140px;
+  left: 420px;
 }
 .canada-foto{
 position: absolute;
@@ -772,10 +772,10 @@ left: 610px;
 }
 .groenlandia-foto{
 position: absolute;
-top: px;
-left: px;
-width: px;
-height: px;
+top: 70px;
+left: 550px;
+width: 160px;
+height: 160px;
 }
 
 

@@ -8,7 +8,6 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
-function temporizador(){
 let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
 
@@ -29,7 +28,7 @@ function updateTimer() {
     String(seconds).padStart(2, '0');
 
 }
-let timerInterval = setInterval(updateTimer, 1000);}
+let timerInterval = setInterval(updateTimer, 1000);
 //termine el  timer
 let resultado1 = tirarDado(); 
 let tirar1 = document.getElementById("tirar1") 
