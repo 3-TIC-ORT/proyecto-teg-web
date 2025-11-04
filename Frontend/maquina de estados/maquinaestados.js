@@ -1,5 +1,5 @@
 // Maquina de estados finitos
-let cantidadJugadores = prompt("¿Cuántos jugadores?");
+let cantidadJugadores = prompt("¿Cuantos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
 const faseActual = document.getElementById('faseActual');
 const botonPararAtacar = document.getElementById('botonPararAtacar');
@@ -104,6 +104,9 @@ if (botonPararAtacar) botonPararAtacar.addEventListener('click', pararAtaque);
 function terminarTurno() {
   if (maquinaDeFases.state === 'fase de reagrupación' || maquinaDeFases.state === 'fase de reposición') {
     maquinaDeFases.transition('click');
+    Object.values(paises).forEach(pais => {
+      pais.fichasRecibidas = 0; 
+    });
     actualizarFase();
   } else {
     console.log("Este botón no tiene efecto en la fase actual.");
@@ -204,8 +207,11 @@ function ataqueResolucion() {
   } catch (e) {
   }
 
-  botonAtacar.disabled = false;
-  estadoAtaque = "esperando";
+    if (botonDadosAtacante) botonDadosAtacante.disabled = true;
+    if (botonDadosAtacado) botonDadosAtacado.disabled = true;
+    if (botonAtacar) botonAtacar.disabled = false;
+    estadoAtaque = "esperando";
+  
 }
 
 // Estado y botones
@@ -237,6 +243,13 @@ if (botonAtacar) {
       console.log("Debes seleccionar exactamente 2 países para iniciar el ataque.");
       return;
     }
+    const pais1 = paises[paisesSeleccionados[0]];
+    const pais2 = paises[paisesSeleccionados[1]];
+    if (!pais1.paisesLimitrofes.includes(pais2.nombre)) {
+      console.log(`${pais2.nombre} no es limítrofe con ${pais1.nombre}. No se puede atacar.`);
+      return;
+    }
+
     if (!paisAtacante || !paisAtacante.nombre) {
       console.log("No hay país atacante seleccionado.");
       return;
@@ -264,7 +277,7 @@ if (botonDadosAtacante) {
       console.log("No es el turno del atacante.");
       return;
     }
-    ValoresAtacante(); 
+    ValoresAtacante();
     estadoAtaque = "dadosAtacado";
     if (botonDadosAtacante) botonDadosAtacante.disabled = true;
     if (botonDadosAtacado) botonDadosAtacado.disabled = false;
@@ -278,12 +291,17 @@ if (botonDadosAtacado) {
       console.log("Todavía no tiró el atacante.");
       return;
     }
-    ValoresAtacado(); 
-    estadoAtaque = "resolviendo";
+    if (botonDadosAtacado) botonDadosAtacado.disabled = true;
+    if (botonDadosAtacante) botonDadosAtacante.disabled = true;
+
+    ValoresAtacado();
+
+    estadoAtaque = "resuelto";
     ataqueResolucion();
-    console.log("Resolviendo combate");
+    console.log("combate resuelto");
   });
 }
+
 //
 //reagrupacion
 //
@@ -307,38 +325,34 @@ function gestionarSeleccionReagrupacion(pais) {
   console.log("Países seleccionados:", paisesSeleccionados);
 }
 
-function moverFichas() {
-  if (paisesSeleccionados.length !== 2) {
-    console.log("Debes seleccionar dos países para mover fichas.");
+function moverFichas(paisEmisor, paisReceptor, cantidad) {
+  if (!paisEmisor.paisesLimitrofes.includes(paisReceptor.nombre)) {
+    console.log(`${paisReceptor.nombre} no es limítrofe con ${paisEmisor.nombre}.`);
     return;
   }
 
-  let paisEmisor = paises[paisesSeleccionados[0]];
-  let paisReceptor = paises[paisesSeleccionados[1]];
-  let cantidad = parseInt(prompt("¿Cuántas fichas querés mover?"), 10);
+  const maximoMovible = paisEmisor.fichas - paisEmisor.fichasRecibidas - 1;
 
-  if (isNaN(cantidad) || cantidad <= 0) {
-    console.log("Movimiento inválido.");
+  if (cantidad > maximoMovible) {
+    console.log(`${paisEmisor.nombre} solo puede mover ${maximoMovible} fichas este turno (las demas estan bloqueadas).`);
     return;
   }
-  if (paisEmisor.fichas - cantidad < 1) {
-    console.log(`Error: ${paisEmisor.nombre} debe conservar al menos una ficha.`);
+
+  if (cantidad <= 0) {
+    console.log("Debes mover al menos una ficha valida.");
     return;
   }
 
   paisEmisor.fichas -= cantidad;
   paisReceptor.fichas += cantidad;
+  paisReceptor.fichasRecibidas += cantidad; 
 
-  const idEm = paisEmisor.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
-  const idRe = paisReceptor.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+  document.getElementById("fichas-" + paisEmisor.nombre.toLowerCase()).textContent = paisEmisor.fichas;
+  document.getElementById("fichas-" + paisReceptor.nombre.toLowerCase()).textContent = paisReceptor.fichas;
 
-  const elEm = document.getElementById(`fichas-${idEm}`);
-  const elRe = document.getElementById(`fichas-${idRe}`);
-  if (elEm) elEm.textContent = paisEmisor.fichas;
-  if (elRe) elRe.textContent = paisReceptor.fichas;
-
-  console.log(`Se movieron ${cantidad} fichas de ${paisEmisor.nombre} a ${paisReceptor.nombre}.`);
+  console.log(`${paisEmisor.nombre} movió ${cantidad} fichas a ${paisReceptor.nombre}. (${paisReceptor.fichasRecibidas} fichas bloqueadas en ${paisReceptor.nombre})`);
 }
+
 
 const botonMoverFichas = document.getElementById("mover-fichas-btn");
 if (botonMoverFichas) botonMoverFichas.addEventListener('click', moverFichas);
@@ -358,24 +372,39 @@ const nombresPaises = [
   // América del Sur
   "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
   // América del Norte
-  "México", "California", "Canadá", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregón", "Nueva York", "Yukón",
+  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregón", "Nueva York", "Yukón",
   // Europa
   "Islandia", "Gran Bretaña", "Francia", "Alemania", "Italia", "España", "Polonia", "Suecia", "Rusia",
-  // África
-  "Sahara", "Egipto", "Zaire", "Etiopía", "Sudáfrica", "Madagascar",
+  // africa
+  "Sahara", "Egipto", "Zaire", "Etiopía", "Sudafrica", "Madagascar",
   // Asia
-  "Arabia", "Turquía", "Israel", "Irán", "India", "Siberia", "Mongolia", "China", "Japón", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
+  "Arabia", "Turquía", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japón", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
   // Oceanía
   "Australia", "Nueva Zelanda", "Sumatra", "Java"
 ];
 
 const fronteras = {
+  //América del sur
   Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
   Chile: ["Argentina", "Perú"],
-  Uruguay: ["Argentina", "Brasil"],
-  Brasil: ["Uruguay", "Argentina","Perú"],
-  Perú: ["Chile","Brasil", "Colombia", "Argentina"],
-  Colombia: ["Brasil", "Perú"],
+  Uruguay: ["Australia", "Argentina", "Brasil"],
+  Brasil: ["Uruguay", "Argentina", "Perú", "Colombia", "Sahara"],
+  Peru: ["Chile", "Brasil", "Colombia", "Argentina"],
+  Colombia: ["Brasil", "Perú", "México"],
+  //América del Norte
+  Mexico: ["Colombia", "California"],
+  California: ["México", "Nueva York", "Oregon"],
+  Oregon: ["California", "Nueva York", "Canada", "Yukon", "Alaska"],
+  NuevaYork: ["California", "Oregon", "Canada", "Terranova", "Groenlandia"],
+  Alaska: ["Kamchatka", "Oregon", "Yukon"],
+  Yukon: ["Alaska", "Oregon", "Canada"],
+  Canada: ["Yukon", "Oregon", "Nueva York", "Terranova"],
+  Terranova: ["Nueva York", "Canada", "Labrador"],
+  Labrador: ["Terranova", "Groenlandia"],
+  Groenlandia: ["Nueva York", "Labrador", "Islandia"],
+  //Europa
+  Islandia: ["Groenlandia", "Gran Bretaña", "Suecia"],
+  GranBretana: ["Islandia", "España", "Alemania", "Suecia"], 
 };
 
 nombresPaises.forEach(nombre => {
@@ -389,8 +418,9 @@ nombresPaises.forEach(nombre => {
     nombre,
     mapa: document.getElementById(idHTML),
     fichas: 1,
+    fichasRecibidas: 0,
     seleccionado: false,
-    paisesLimitrofes: fronteras[nombre] || [] 
+    paisesLimitrofes: fronteras[nombre] || []
   };
 
   pais.handlers = crearHandlers(pais);
