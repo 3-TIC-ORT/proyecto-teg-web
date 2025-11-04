@@ -1,4 +1,4 @@
-
+connect2Server()
 let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
