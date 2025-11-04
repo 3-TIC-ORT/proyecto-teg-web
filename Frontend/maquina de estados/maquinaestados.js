@@ -80,7 +80,6 @@ function actualizarListeners() {
     if (!pais.mapa) return;
     const { clickAtaque, clickReagrupacion } = pais.handlers;
 
-    // Quitamos ambos antes para evitar duplicados
     pais.mapa.removeEventListener("click", clickAtaque);
     pais.mapa.removeEventListener("click", clickReagrupacion);
 
@@ -403,3 +402,5 @@ if (paises["Argentina"]) {
 }
 
 actualizarFase();
+
+let jugadores = [ jugadorRojo, jugadorAzul, jugadorVerde, JugadorAmarillo, ju ]
