@@ -7,6 +7,7 @@ let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
+connect2Server()
 // timer
 let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
