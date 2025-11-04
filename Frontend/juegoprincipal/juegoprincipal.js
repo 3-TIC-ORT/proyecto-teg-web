@@ -1,3 +1,5 @@
+PostEvent("Numero",{},)
+
 let atacar = document.getElementById("Atacar")
 let reagrupar = document.getElementById("Reagrupar")
 let reponer = document.getElementById ("Reponer")
@@ -437,3 +439,4 @@ if (paises["Argentina"]) {
 }
 
 actualizarFase();
+
