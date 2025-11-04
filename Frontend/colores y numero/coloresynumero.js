@@ -1,3 +1,4 @@
+connect2Server()
 const todosLosColores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 
 function generarSelectores() {
