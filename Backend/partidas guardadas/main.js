@@ -4,9 +4,9 @@ import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } fro
 
 
 subscribePOSTEvent("guardar", (data) =>{
-let joaco = fs.readFileSync("./joaco.json","utf-8")
+let joaco = fs.readFileSync("joaco.json","utf-8")
 joaco.push(data)
-fs.writeFileSync("./joaco.json",joaco)
+fs.writeFileSync("joaco.json",joaco)
 })
 
 let estadoActual = "colocacion";
