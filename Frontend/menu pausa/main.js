@@ -1,3 +1,4 @@
+connect2Server()
 let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
 
