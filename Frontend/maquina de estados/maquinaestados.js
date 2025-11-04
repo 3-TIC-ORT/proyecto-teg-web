@@ -80,7 +80,6 @@ function actualizarListeners() {
     if (!pais.mapa) return;
     const { clickAtaque, clickReagrupacion } = pais.handlers;
 
-    // Quitamos ambos antes para evitar duplicados
     pais.mapa.removeEventListener("click", clickAtaque);
     pais.mapa.removeEventListener("click", clickReagrupacion);
 
@@ -370,6 +369,15 @@ const nombresPaises = [
   "Australia", "Nueva Zelanda", "Sumatra", "Java"
 ];
 
+const fronteras = {
+  Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
+  Chile: ["Argentina", "Perú"],
+  Uruguay: ["Argentina", "Brasil"],
+  Brasil: ["Uruguay", "Argentina","Perú"],
+  Perú: ["Chile","Brasil", "Colombia", "Argentina"],
+  Colombia: ["Brasil", "Perú"],
+};
+
 nombresPaises.forEach(nombre => {
   const idHTML = nombre
     .toLowerCase()
@@ -381,7 +389,8 @@ nombresPaises.forEach(nombre => {
     nombre,
     mapa: document.getElementById(idHTML),
     fichas: 1,
-    seleccionado: false
+    seleccionado: false,
+    paisesLimitrofes: fronteras[nombre] || [] 
   };
 
   pais.handlers = crearHandlers(pais);
@@ -393,6 +402,7 @@ nombresPaises.forEach(nombre => {
 
   paises[nombre] = pais;
 });
+
 
 console.log("Países TEG inicializados correctamente:", paises);
 
