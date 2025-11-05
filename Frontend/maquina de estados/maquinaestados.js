@@ -114,6 +114,91 @@ function terminarTurno() {
 }
 if (botonTerminarTurno) botonTerminarTurno.addEventListener('click', terminarTurno);
 
+//
+//paises
+//
+let paises = {};
+
+function crearHandlers(pais) {
+  return {
+    clickAtaque: () => gestionarSeleccionAtaque(pais),
+    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais)
+  };
+}
+
+const nombresPaises = [
+  // América del Sur
+  "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
+  // América del Norte
+  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregón", "Nueva York", "Yukón",
+  // Europa
+  "Islandia", "GranBretana", "Francia", "Alemania", "Italia", "Espana", "Polonia", "Suecia", "Rusia",
+  // africa
+  "Sahara", "Egipto", "Zaire", "Etiopía", "Sudafrica", "Madagascar",
+  // Asia
+  "Arabia", "Turquía", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japón", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
+  // Oceanía
+  "Australia", "Nueva Zelanda", "Sumatra", "Java"
+];
+
+const fronteras = {
+  //América del sur
+  Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
+  Chile: ["Argentina", "Perú"],
+  Uruguay: ["Australia", "Argentina", "Brasil"],
+  Brasil: ["Uruguay", "Argentina", "Perú", "Colombia", "Sahara"],
+  Peru: ["Chile", "Brasil", "Colombia", "Argentina"],
+  Colombia: ["Brasil", "Perú", "México"],
+  //América del Norte
+  Mexico: ["Colombia", "California"],
+  California: ["México", "Nueva York", "Oregon"],
+  Oregon: ["California", "Nueva York", "Canada", "Yukon", "Alaska"],
+  NuevaYork: ["California", "Oregon", "Canada", "Terranova", "Groenlandia"],
+  Alaska: ["Kamchatka", "Oregon", "Yukon"],
+  Yukon: ["Alaska", "Oregon", "Canada"],
+  Canada: ["Yukon", "Oregon", "Nueva York", "Terranova"],
+  Terranova: ["Nueva York", "Canada", "Labrador"],
+  Labrador: ["Terranova", "Groenlandia"],
+  Groenlandia: ["Nueva York", "Labrador", "Islandia"],
+  //Europa
+  Islandia: ["Groenlandia", "GranBretana", "Suecia"],
+  GranBretana: ["Islandia", "Espana", "Alemania", "Suecia"], 
+};
+
+nombresPaises.forEach(nombre => {
+  const idHTML = nombre
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+
+  let pais = {
+    nombre,
+    mapa: document.getElementById(idHTML),
+    fichas: 1,
+    fichasRecibidas: 0,
+    seleccionado: false,
+    paisesLimitrofes: fronteras[nombre] || []
+  };
+
+  pais.handlers = crearHandlers(pais);
+
+  let fichasElemento = document.getElementById("fichas-" + idHTML);
+  if (fichasElemento) {
+    fichasElemento.textContent = pais.fichas;
+  }
+
+  paises[nombre] = pais;
+});
+
+
+console.log("Países TEG inicializados correctamente:", paises);
+
+if (paises["Argentina"]) {
+  paises["Argentina"].fichas = 10;
+  const el = document.getElementById("fichas-argentina");
+  if (el) el.textContent = 10;
+}
 // 
 // ataque
 // 
@@ -347,6 +432,17 @@ function moverFichas(paisEmisor, paisReceptor, cantidad) {
   paisReceptor.fichas += cantidad;
   paisReceptor.fichasRecibidas += cantidad; 
 
+  function idFromName(nombre) {
+    return nombre.toLowerCase()
+                 .normalize("NFD")
+                 .replace(/[\u0300-\u036f]/g, "")
+                 .replace(/\s+/g, "-");
+  }
+  const idEm = document.getElementById("fichas-" + idFromName(paisEmisor.nombre));
+  if (idEm) idEm.textContent = paisEmisor.fichas;
+  const idRec = document.getElementById("fichas-" + idFromName(paisReceptor.nombre));
+  if (idRec) idRec.textContent = paisReceptor.fichas;
+  
   document.getElementById("fichas-" + paisEmisor.nombre.toLowerCase()).textContent = paisEmisor.fichas;
   document.getElementById("fichas-" + paisReceptor.nombre.toLowerCase()).textContent = paisReceptor.fichas;
 
@@ -354,92 +450,31 @@ function moverFichas(paisEmisor, paisReceptor, cantidad) {
 }
 
 
-const botonMoverFichas = document.getElementById("mover-fichas-btn");
-if (botonMoverFichas) botonMoverFichas.addEventListener('click', moverFichas);
-//
-//paises
-//
-let paises = {};
-
-function crearHandlers(pais) {
-  return {
-    clickAtaque: () => gestionarSeleccionAtaque(pais),
-    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais)
-  };
-}
-
-const nombresPaises = [
-  // América del Sur
-  "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
-  // América del Norte
-  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregón", "Nueva York", "Yukón",
-  // Europa
-  "Islandia", "Gran Bretaña", "Francia", "Alemania", "Italia", "España", "Polonia", "Suecia", "Rusia",
-  // africa
-  "Sahara", "Egipto", "Zaire", "Etiopía", "Sudafrica", "Madagascar",
-  // Asia
-  "Arabia", "Turquía", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japón", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
-  // Oceanía
-  "Australia", "Nueva Zelanda", "Sumatra", "Java"
-];
-
-const fronteras = {
-  //América del sur
-  Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
-  Chile: ["Argentina", "Perú"],
-  Uruguay: ["Australia", "Argentina", "Brasil"],
-  Brasil: ["Uruguay", "Argentina", "Perú", "Colombia", "Sahara"],
-  Peru: ["Chile", "Brasil", "Colombia", "Argentina"],
-  Colombia: ["Brasil", "Perú", "México"],
-  //América del Norte
-  Mexico: ["Colombia", "California"],
-  California: ["México", "Nueva York", "Oregon"],
-  Oregon: ["California", "Nueva York", "Canada", "Yukon", "Alaska"],
-  NuevaYork: ["California", "Oregon", "Canada", "Terranova", "Groenlandia"],
-  Alaska: ["Kamchatka", "Oregon", "Yukon"],
-  Yukon: ["Alaska", "Oregon", "Canada"],
-  Canada: ["Yukon", "Oregon", "Nueva York", "Terranova"],
-  Terranova: ["Nueva York", "Canada", "Labrador"],
-  Labrador: ["Terranova", "Groenlandia"],
-  Groenlandia: ["Nueva York", "Labrador", "Islandia"],
-  //Europa
-  Islandia: ["Groenlandia", "Gran Bretaña", "Suecia"],
-  GranBretana: ["Islandia", "España", "Alemania", "Suecia"], 
-};
-
-nombresPaises.forEach(nombre => {
-  const idHTML = nombre
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "-");
-
-  let pais = {
-    nombre,
-    mapa: document.getElementById(idHTML),
-    fichas: 1,
-    fichasRecibidas: 0,
-    seleccionado: false,
-    paisesLimitrofes: fronteras[nombre] || []
-  };
-
-  pais.handlers = crearHandlers(pais);
-
-  let fichasElemento = document.getElementById("fichas-" + idHTML);
-  if (fichasElemento) {
-    fichasElemento.textContent = pais.fichas;
+const botonMoverFichas = document.getElementById("moverfichas");
+if (botonMoverFichas) botonMoverFichas.addEventListener('click', () => {
+  if (paisesSeleccionados.length !== 2) {
+    console.log("Selecciona exactamente 2 países para mover fichas (emisor y receptor).");
+    return;
   }
 
-  paises[nombre] = pais;
+  const paisEmisor = paises[paisesSeleccionados[0]];
+  const paisReceptor = paises[paisesSeleccionados[1]];
+
+  if (!paisEmisor || !paisReceptor) {
+    console.log("Error: no se pudieron encontrar los países seleccionados.");
+    return;
+  }
+
+  const cantidadStr = prompt(`¿Cuántas fichas quieres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}?`);
+  const cantidad = parseInt(cantidadStr, 10);
+
+  if (!Number.isFinite(cantidad) || cantidad <= 0) {
+    console.log("Cantidad inválida.");
+    return;
+  }
+
+  moverFichas(paisEmisor, paisReceptor, cantidad);
 });
 
-
-console.log("Países TEG inicializados correctamente:", paises);
-
-if (paises["Argentina"]) {
-  paises["Argentina"].fichas = 10;
-  const el = document.getElementById("fichas-argentina");
-  if (el) el.textContent = 10;
-}
-
 actualizarFase();
+
