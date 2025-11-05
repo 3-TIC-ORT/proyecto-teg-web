@@ -1,5 +1,10 @@
 //connect2Server()
 //PostEvent("timer",{},)
+let cantidadJugadores =localStorage.getItem("lsnumerojugadores")
+console.log (cantidadJugadores)
+
+let coloresjugadores=localStorage.getItem("lscolores")
+console.log(coloresjugadores)
 
 let atacar = document.getElementById("Atacar")
 let reagrupar = document.getElementById("Reagrupar")
@@ -38,7 +43,7 @@ localStorage.setItem("lstimer", timerInterval);
 //
 // Maquina de estados finitos
 //
-let cantidadJugadores = prompt("¿Cuántos jugadores?");
+//let cantidadJugadores = prompt("¿Cuántos jugadores?");
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
 const faseActual = document.getElementById('faseActual');
 const botonPararAtacar = document.getElementById('botonPararAtacar');

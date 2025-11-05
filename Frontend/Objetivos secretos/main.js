@@ -1,4 +1,4 @@
-connect2Server()
+
 let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
@@ -17,7 +17,7 @@ let objectives = [
 ];
 let selectedPlayers = [];
 let playerObjectives = {};
-let currentIndex = 0;
+let i = 0;
 
 function startSequence() {
   selectedPlayers = Array.from(document.querySelectorAll('.selector input[type="checkbox"]:checked')).map(cb => cb.value);
@@ -32,12 +32,12 @@ function startSequence() {
     playerObjectives[player] = mezcla[i % objectives.length];
   });
 
-  currentIndex = 0;
+  i = 0;
   showNextPlayer();
 }
 
 function showNextPlayer() {
-  let player = selectedPlayers[currentIndex];
+  let player = selectedPlayers[i];
   document.getElementById("reveal-instructions").innerHTML =
     `EXCEPTO EL JUGADOR ${player.toUpperCase()}<br>CUANDO TODOS CIERREN LOS OJOS,<br>EL JUGADOR ${player.toUpperCase()} DEBE APRETAR EL BOTÓN DE REVELAR OBJETIVO SECRETO`;
   document.getElementById("objective").style.display = "none";
@@ -45,13 +45,13 @@ function showNextPlayer() {
 }
 
 function showObjective() {
-  let player = selectedPlayers[currentIndex];
+  let player = selectedPlayers[i];
   document.getElementById("objective").innerText = `Objetivo secreto del jugador ${player.toUpperCase()}:\n\n${playerObjectives[player]}`;
   document.getElementById("objective").style.display = "block";
 
   setTimeout(() => {
-    currentIndex++;
-    if (currentIndex < selectedPlayers.length) {
+    i++;
+    if (i < selectedPlayers.length) {
       showNextPlayer();
     } else {
       document.getElementById("overlay").style.display = "none";
