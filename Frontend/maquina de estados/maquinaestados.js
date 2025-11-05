@@ -17,14 +17,14 @@ class fasesMachine {
     switch (this.state) {
       case 'fase de ataque':
         if (event === 'click') {
-          console.log('Cambio de fase de ataque a fase de reagrupación');
-          this.state = 'fase de reagrupación';
+          console.log('Cambio de fase de ataque a fase de reagrupacion');
+          this.state = 'fase de reagrupacion';
           paisesSeleccionados.length = 0;
           actualizarListeners();
         }
         break;
 
-      case 'fase de reagrupación':
+      case 'fase de reagrupacion':
         if (event === 'click' && this.cambioDeFaseTurnos < cantidadJugadores * 2) {
           console.log('Cambio de fase de reagrupacion a fase de ataque');
           this.state = 'fase de ataque';
@@ -32,23 +32,23 @@ class fasesMachine {
           paisesSeleccionados.length = 0;
           actualizarListeners();
         } else if (event === 'click' && this.cambioDeFaseTurnos >= cantidadJugadores * 2) {
-          console.log('Cambio de fase de reagrupación a fase de reposición');
-          this.state = 'fase de reposición';
+          console.log('Cambio de fase de reagrupacion a fase de reposicion');
+          this.state = 'fase de reposicion';
           this.cambioDeFaseTurnos = 0;
           paisesSeleccionados.length = 0;
           actualizarListeners();
         }
         break;
 
-      case 'fase de reposición':
+      case 'fase de reposicion':
         if (event === 'click' && this.reposicionesHechas < cantidadJugadores) {
           console.log('Repone el siguiente jugador');
-          this.state = 'fase de reposición';
+          this.state = 'fase de reposicion';
           this.reposicionesHechas++;
           paisesSeleccionados.length = 0;
           actualizarListeners();
         } else if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
-          console.log('Cambio de fase de reposición a fase de ataque');
+          console.log('Cambio de fase de reposicion a fase de ataque');
           this.state = 'fase de ataque';
           this.reposicionesHechas = 0;
           paisesSeleccionados.length = 0;
@@ -85,7 +85,7 @@ function actualizarListeners() {
 
     if (maquinaDeFases.state === "fase de ataque") {
       pais.mapa.addEventListener("click", clickAtaque);
-    } else if (maquinaDeFases.state === "fase de reagrupación") {
+    } else if (maquinaDeFases.state === "fase de reagrupacion") {
       pais.mapa.addEventListener("click", clickReagrupacion);
     }
   });
@@ -96,20 +96,20 @@ function pararAtaque() {
     maquinaDeFases.transition('click');
     actualizarFase();
   } else {
-    console.log("Este botón no tiene efecto en la fase actual.");
+    console.log("Este boton no tiene efecto en la fase actual.");
   }
 }
 if (botonPararAtacar) botonPararAtacar.addEventListener('click', pararAtaque);
 
 function terminarTurno() {
-  if (maquinaDeFases.state === 'fase de reagrupación' || maquinaDeFases.state === 'fase de reposición') {
+  if (maquinaDeFases.state === 'fase de reagrupacion' || maquinaDeFases.state === 'fase de reposicion') {
     maquinaDeFases.transition('click');
     Object.values(paises).forEach(pais => {
       pais.fichasRecibidas = 0; 
     });
     actualizarFase();
   } else {
-    console.log("Este botón no tiene efecto en la fase actual.");
+    console.log("Este boton no tiene efecto en la fase actual.");
   }
 }
 if (botonTerminarTurno) botonTerminarTurno.addEventListener('click', terminarTurno);
@@ -130,15 +130,15 @@ const nombresPaises = [
   // América del Sur
   "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
   // América del Norte
-  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregón", "Nueva York", "Yukón",
+  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregon", "Nueva York", "Yukon",
   // Europa
   "Islandia", "GranBretana", "Francia", "Alemania", "Italia", "Espana", "Polonia", "Suecia", "Rusia",
   // africa
-  "Sahara", "Egipto", "Zaire", "Etiopía", "Sudafrica", "Madagascar",
+  "Sahara", "Egipto", "Zaire", "Etiopia", "Sudafrica", "Madagascar",
   // Asia
-  "Arabia", "Turquía", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japón", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
-  // Oceanía
-  "Australia", "Nueva Zelanda", "Sumatra", "Java"
+  "Arabia", "Turquia", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japon", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
+  // Oceania
+  "Australia", "NuevaZelanda", "Sumatra", "Java"
 ];
 
 const fronteras = {
@@ -163,6 +163,27 @@ const fronteras = {
   //Europa
   Islandia: ["Groenlandia", "GranBretana", "Suecia"],
   GranBretana: ["Islandia", "Espana", "Alemania", "Suecia"], 
+  Espana: ["GranBretana", "Francia", "Sahara"],
+  Francia: ["Espana", "Alemania", "Italia"],
+  Italia: ["Francia", "Alemania"],
+  Alemania: ["GranBretana", "Francia", "Italia", "Polonia"],
+  Suecia: ["Islandia", "Rusia"],
+  Polonia: ["Alemania", "Egipto", "Rusia", "Turquia"],
+  Rusia: ["Suecia", "Polonia", "Turquia", "Iran", "Aral"],
+  //Africa
+  Sahara: ["Brasil", "Espana", "Zaire", "Etiopia", "Egipto"],
+  Zaire: ["Sahara", "Etiopia", "Sudafrica", "Madagascar"],
+  Egipto: ["Sahara", "Etiopia", "Polonia", "Turquia", "Israel", "Madagascar"],
+  Etiopia: ["Sahara", "Egipto", "Zaire", "Sudafrica"],
+  Sudafrica: ["Zaire", "Etiopia"],
+  Madagascar: ["Zaire", "Egipto"],
+  //Asia
+  Turquia: ["Polonia", "Egipto", "Israel", "Rusia", "Iran", "Arabia"],
+  Israel: ["Turquia", "Egipto", "Arabia"],
+  Aral: ["Rusia", "Iran", "Tartaria", "Siberia", "Mongolia"],
+  Iran: ["Rusia", "Turquia", "Aral", "Mongolia", "Gobi", "China"],
+  Arabia: ["Israel", "Turquia"],
+  India: ["Iran", "China", "Sumatra", "Malasia",],
 };
 
 nombresPaises.forEach(nombre => {
@@ -192,8 +213,9 @@ nombresPaises.forEach(nombre => {
 });
 
 
-console.log("Países TEG inicializados correctamente:", paises);
+console.log("Paises TEG inicializados correctamente:", paises);
 
+// Le doy ficahas de mas a argentina para hacer pruebas
 if (paises["Argentina"]) {
   paises["Argentina"].fichas = 10;
   const el = document.getElementById("fichas-argentina");
@@ -235,11 +257,11 @@ function gestionarSeleccionAtaque(pais) {
         paisAtacado = { nombre: pais.nombre, fichas: pais.fichas };
       }
     } else {
-      console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
+      console.log("Ya tienes 2 paises seleccionados. Por favor, deselecciona uno para elegir otro.");
     }
   }
 
-  console.log("Países seleccionados:", paisesSeleccionados);
+  console.log("Paises seleccionados:", paisesSeleccionados);
   console.log("Atacante:", paisAtacante);
   console.log("Atacado:", paisAtacado);
 }
@@ -311,7 +333,7 @@ if (botonDadosAtacado) botonDadosAtacado.disabled = true;
 
 function puedeAtacar() {
   if (!paisAtacante || !paisAtacante.fichas) {
-    console.log("No hay país atacante seleccionado.");
+    console.log("No hay pais atacante seleccionado.");
     return false;
   }
   if (paisAtacante.fichas <= 1) {
@@ -325,22 +347,22 @@ function puedeAtacar() {
 if (botonAtacar) {
   botonAtacar.addEventListener("click", () => {
     if (paisesSeleccionados.length !== 2) {
-      console.log("Debes seleccionar exactamente 2 países para iniciar el ataque.");
+      console.log("Debes seleccionar exactamente 2 paises para iniciar el ataque.");
       return;
     }
     const pais1 = paises[paisesSeleccionados[0]];
     const pais2 = paises[paisesSeleccionados[1]];
     if (!pais1.paisesLimitrofes.includes(pais2.nombre)) {
-      console.log(`${pais2.nombre} no es limítrofe con ${pais1.nombre}. No se puede atacar.`);
+      console.log(`${pais2.nombre} no es limitrofe con ${pais1.nombre}. No se puede atacar.`);
       return;
     }
 
     if (!paisAtacante || !paisAtacante.nombre) {
-      console.log("No hay país atacante seleccionado.");
+      console.log("No hay pais atacante seleccionado.");
       return;
     }
     if (!paisAtacado || !paisAtacado.nombre) {
-      console.log("No hay país atacado seleccionado.");
+      console.log("No hay pais atacado seleccionado.");
       return;
     }
     if (paisAtacante.fichas <= 1) {
@@ -373,7 +395,7 @@ if (botonDadosAtacante) {
 if (botonDadosAtacado) {
   botonDadosAtacado.addEventListener("click", () => {
     if (estadoAtaque !== "dadosAtacado") {
-      console.log("Todavía no tiró el atacante.");
+      console.log("Todavia no tiro el atacante.");
       return;
     }
     if (botonDadosAtacado) botonDadosAtacado.disabled = true;
@@ -404,15 +426,15 @@ function gestionarSeleccionReagrupacion(pais) {
       pais.seleccionado = true;
       console.log(`${pais.nombre} ha sido seleccionado.`);
     } else {
-      console.log("Ya tienes 2 países seleccionados. Por favor, deselecciona uno para elegir otro.");
+      console.log("Ya tienes 2 paises seleccionados. Por favor, deselecciona uno para elegir otro.");
     }
   }
-  console.log("Países seleccionados:", paisesSeleccionados);
+  console.log("Paises seleccionados:", paisesSeleccionados);
 }
 
 function moverFichas(paisEmisor, paisReceptor, cantidad) {
   if (!paisEmisor.paisesLimitrofes.includes(paisReceptor.nombre)) {
-    console.log(`${paisReceptor.nombre} no es limítrofe con ${paisEmisor.nombre}.`);
+    console.log(`${paisReceptor.nombre} no es limitrofe con ${paisEmisor.nombre}.`);
     return;
   }
 
@@ -446,14 +468,14 @@ function moverFichas(paisEmisor, paisReceptor, cantidad) {
   document.getElementById("fichas-" + paisEmisor.nombre.toLowerCase()).textContent = paisEmisor.fichas;
   document.getElementById("fichas-" + paisReceptor.nombre.toLowerCase()).textContent = paisReceptor.fichas;
 
-  console.log(`${paisEmisor.nombre} movió ${cantidad} fichas a ${paisReceptor.nombre}. (${paisReceptor.fichasRecibidas} fichas bloqueadas en ${paisReceptor.nombre})`);
+  console.log(`${paisEmisor.nombre} movio ${cantidad} fichas a ${paisReceptor.nombre}. (${paisReceptor.fichasRecibidas} fichas bloqueadas en ${paisReceptor.nombre})`);
 }
 
 
 const botonMoverFichas = document.getElementById("moverfichas");
 if (botonMoverFichas) botonMoverFichas.addEventListener('click', () => {
   if (paisesSeleccionados.length !== 2) {
-    console.log("Selecciona exactamente 2 países para mover fichas (emisor y receptor).");
+    console.log("Selecciona exactamente 2 paises para mover fichas (emisor y receptor).");
     return;
   }
 
@@ -461,12 +483,11 @@ if (botonMoverFichas) botonMoverFichas.addEventListener('click', () => {
   const paisReceptor = paises[paisesSeleccionados[1]];
 
   if (!paisEmisor || !paisReceptor) {
-    console.log("Error: no se pudieron encontrar los países seleccionados.");
+    console.log("Error: no se pudieron encontrar los paises seleccionados.");
     return;
   }
-
-  const cantidadStr = prompt(`¿Cuántas fichas quieres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}?`);
-  const cantidad = parseInt(cantidadStr, 10);
+ 
+  const cantidad = parseInt(prompt(`¿Cuántas fichas quieres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}?`), 10);
 
   if (!Number.isFinite(cantidad) || cantidad <= 0) {
     console.log("Cantidad inválida.");
