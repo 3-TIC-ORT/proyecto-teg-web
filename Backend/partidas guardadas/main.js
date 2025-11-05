@@ -1,14 +1,22 @@
-import fs from "fs"
- 
+import fs from "fs";
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 
+startServer();
+
+function leerPartidas() {
+  try {
+    return JSON.parse(fs.readFileSync("./joaco.json", "utf-8"));
+  } catch {
+    return []; // si no existe o está vacío
+  }
+}
 
 subscribePOSTEvent("guardarPartida", (data) => {
-  let partidas = JSON.parse(fs.readFileSync("./joaco.json", "utf-8"));
+  let partidas = leerPartidas();
 
   partidas.push({
     fecha: new Date().toISOString(),
-    partida: data, 
+    partida: data,
   });
 
   fs.writeFileSync("./joaco.json", JSON.stringify(partidas, null, 2));
@@ -16,26 +24,14 @@ subscribePOSTEvent("guardarPartida", (data) => {
   return { ok: true, mensaje: "Partida guardada correctamente" };
 });
 
-//timer 
+// timer 
 let segundosrestantes = 240;
 
-subscribeGETEvent("ObtenerTimer",() =>{
-return{ segundos: segundosrestantes};
+subscribeGETEvent("ObtenerTimer", () => {
+  return { segundos: segundosrestantes };
 });
 
-subscribePOSTEvent("ActualizarTimer", (data) =>{
+subscribePOSTEvent("ActualizarTimer", (data) => {
   segundosrestantes = data.segundos;
-  return{ok: true};
+  return { ok: true };
 });
-
-let contenido = JSON.parse(fs.readFileSync("./joaco.json","utf-8"));
-
-contenido.push({
-  segundos: segundosrestantes
-});
-
-fs.writeFileSync("./joaco.json", JSON.stringify(contenido, null, 2));
-
-return{ok: true, mensaje: "Timer guardado"};
-
-startServer(3000, true);
