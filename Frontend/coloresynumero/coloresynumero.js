@@ -1,4 +1,3 @@
-connect2Server()
 const todosLosColores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 
 function generarSelectores() {
@@ -74,9 +73,3 @@ function verificarColoresSeleccionados() {
   return true;
 }
 
-function coloresback(){
-  postEvent("numero", {select,value}, cantidadJugadores);
-  postEvent("colores", {label,value},  coloresSeleccionados);
-}
-
-coloresback();
