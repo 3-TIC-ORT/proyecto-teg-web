@@ -1,5 +1,5 @@
-connect2Server()
-PostEvent("Numero",{},)
+//connect2Server()
+//PostEvent("timer",{},)
 
 let atacar = document.getElementById("Atacar")
 let reagrupar = document.getElementById("Reagrupar")
@@ -12,27 +12,27 @@ let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
 let targetDate = new Date();
-targetDate.setSeconds(targetDate.getSeconds() + 120); 
+targetDate.setSeconds(targetDate.getSeconds() + 240)
 
 function updateTimer() {
   let now = new Date();
   let diff = targetDate - now;
 
   if (diff <= 0) {
-    document.getElementById("timer").textContent = "¡Tiempo terminado!";
-    clearInterval(timerInterval);
+    document.getElementById("timer").textContent = "¡Tiempo terminado!"
+    clearInterval(timerInterval)
     return;
   }
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
   document.getElementById("timer").textContent =
     String(minutes).padStart(2, '0') + ":" +
-    String(seconds).padStart(2, '0');
-
-}
+    String(seconds).padStart(2, '0')
+    
+  }
+  let timerInterval = setInterval(updateTimer, 1000);
 //ejemplo de local storage
-let timerInterval = setInterval(updateTimer, 1000);
 localStorage.setItem("lstimer", timerInterval);
 //termine el  timer
 //
