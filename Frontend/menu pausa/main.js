@@ -23,3 +23,6 @@ function detenerTemporizador() {
   clearInterval(timerInterval);
   document.getElementById("timer").textContent = "Temporizador detenido";
 }
+//ejemplo de local storage
+let timerpausa = localStorage.getItem("lstimer");
+console.log(timerpausa);

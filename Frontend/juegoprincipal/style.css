@@ -126,8 +126,8 @@ border-right: 5px solid black;
 
 .japon{
 position: absolute;
-top: 135px;
-left: 1285px;
+top: 110px;
+left: 1337px;
 rotate: 50.284deg;
 }
 #fichas-japon{
@@ -438,8 +438,8 @@ rotate: -11.932deg;
 }
 .francia{
 position: absolute;
-top: 320px;
-left: 900px;
+top: 310px;
+left: 920px;
 rotate: -27.8deg;
 }
 #fichas-francia{
@@ -447,8 +447,8 @@ rotate: -27.8deg;
 }
 .alemania{
 position: absolute;
-top: 310px;
-left: 970px;
+top: 290px;
+left: 985px;
 rotate: 40.75deg;
 }
 #fichas-alemania{
@@ -456,8 +456,8 @@ rotate: 40.75deg;
 }
 .polonia{
 position: absolute;
-top: 280px;
-left: 1013px;
+top: 260px;
+left: 1045px;
 rotate: -2.959deg;
 }
 #fichas-polonia{
@@ -465,8 +465,8 @@ rotate: -2.959deg;
 }
 .granbretaña{
 position:absolute;
-top: 260px;
-left: 840px;
+top: 240px;
+left: 860px;
 rotate: -26.93deg;
 }
 #fichas-granbretaña{
@@ -474,8 +474,8 @@ rotate: -26.93deg;
 }
 .islandia{
 position: absolute;
-top: 230px;
-left: 735px;
+top: 215px;
+left: 745px;
 rotate: -34.832deg;
 }
 #fichas-islandia{
@@ -483,8 +483,8 @@ rotate: -34.832deg;
 }
 .italia{
 position: absolute;
-top: 380px;
-left: 965px;
+top: 370px;
+left:  995px;
 rotate: 64.444deg;
 }
 #fichas-italia{
@@ -492,16 +492,16 @@ rotate: 64.444deg;
 }
 .rusia{
 position: absolute;
-top: 195px;
-left: 1015px;
+top: 180px;
+left: 1050px;
 }
 #fichas-rusia{
  
 }
 .suecia{
 position: absolute;
-top: 140px;
-left: 940px;
+top: 110px;
+left: 950px;
 rotate: -34.433deg;
 }
 #fichas-suecia{
@@ -510,8 +510,8 @@ rotate: -34.433deg;
 
 .sahara{
 position: absolute;
-top: 480px;
-left: 930px;
+top: 460px;
+left: 940px;
 rotate: -17.162deg;
 }
 #fichas-sahara{
@@ -520,7 +520,7 @@ rotate: -17.162deg;
 .madagascar{
 position: absolute;
 top: 520px;
-left: 1110px;
+left: 1145px;
 rotate: -76.904deg;
 }
 #fichas-madagascar{
@@ -529,7 +529,7 @@ rotate: -76.904deg;
 .sudafrica{
 position: absolute;
 top: 550px;
-left: 1020px;
+left: 1050px;
 rotate: -42.892deg;
 }
 #fichas-sudafrica{
@@ -537,8 +537,8 @@ rotate: -42.892deg;
 }
 .egipto{
 position: absolute;
-top: 445px;
-left: 1055px;
+top: 430px;
+left: 1085px;
 rotate: 15.172deg;
 }
 #fichas-egipto{
@@ -546,8 +546,8 @@ rotate: 15.172deg;
 }
 .etiopia{
  position: absolute;
- top: 485px;
-left: 1030px;
+ top: 470px;
+left: 1050px;
 rotate: 15.878deg;
 }
 #fichas-etiopia{

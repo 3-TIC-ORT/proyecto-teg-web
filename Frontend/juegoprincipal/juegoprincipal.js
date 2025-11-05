@@ -1,3 +1,4 @@
+connect2Server()
 PostEvent("Numero",{},)
 
 let atacar = document.getElementById("Atacar")
@@ -9,7 +10,6 @@ let parar = document.getElementById ("Parar de atacar")
 let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
-connect2Server()
 // timer
 let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 120); 
@@ -31,7 +31,9 @@ function updateTimer() {
     String(seconds).padStart(2, '0');
 
 }
+//ejemplo de local storage
 let timerInterval = setInterval(updateTimer, 1000);
+localStorage.setItem("lstimer", timerInterval);
 //termine el  timer
 //
 // Maquina de estados finitos
