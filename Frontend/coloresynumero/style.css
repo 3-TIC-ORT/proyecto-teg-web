@@ -1,0 +1,35 @@
+h1{
+    position: absolute;
+    left: 1300px;
+    top: 50px;
+}
+.botones{
+  
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    border-radius: 25px;
+    background-color: #000;
+    border-color: #BC9720;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-width: 5px;
+}
+.boton3{
+    top:120px;
+    left: 300px;
+}
+.boton4{
+    top: 120px;
+    left: 700px;
+}
+.boton5{
+    top: 400px;
+    left: 300px;
+}
+.boton6{
+    top: 400px;
+    left: 700px;
+}
