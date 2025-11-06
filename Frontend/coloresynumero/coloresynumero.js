@@ -22,6 +22,7 @@ function generarSelectores() {
   }
 
   actualizarOpciones();
+  localStorage.setItem("lsnumeroJugadores", cantidadJugadores.value)
 }
 
 let coloresDisponibles =  new Array(5).fill("");
@@ -30,16 +31,23 @@ function actualizarOpciones() {
   let cantidadJugadores = parseInt(document.getElementById("cantidadJugadores").value);
   let coloresSeleccionados = [];
 
+  // Recoger los colores seleccionados
   for (let i = 0; i < cantidadJugadores; i++) {
     let selector = document.getElementById(`jugador${i}`);
     if (selector.value) coloresSeleccionados.push(selector.value);
   }
 
+  // Actualizar las opciones de cada selector
   for (let i = 0; i < cantidadJugadores; i++) {
     let selector = document.getElementById(`jugador${i}`);
     let valorActual = selector.value;
-    selector.innerHTML = "";
 
+    // Limpiar las opciones del selector
+    while (selector.options.length > 0) {
+      selector.remove(0);
+    }
+
+    // Agregar la opción "Seleccione un color..."
     let opcionVacia = document.createElement("option");
     opcionVacia.value = "";
     opcionVacia.textContent = "Seleccione un color...";
@@ -47,10 +55,12 @@ function actualizarOpciones() {
     if (!valorActual) opcionVacia.selected = true;
     selector.appendChild(opcionVacia);
 
-    coloresDisponibles = todosLosColores.filter(
+    // Filtrar colores disponibles
+    let coloresDisponibles = todosLosColores.filter(
       color => !coloresSeleccionados.includes(color) || color === valorActual
     );
 
+    // Agregar las opciones de colores disponibles
     coloresDisponibles.forEach(color => {
       let opcion = document.createElement("option");
       opcion.value = color;
@@ -60,8 +70,10 @@ function actualizarOpciones() {
     });
   }
 
-  localStorage.setItem("lscolores", coloresDisponibles);
+  // Guardar el estado de los colores seleccionados en localStorage
+  localStorage.setItem("lscolores", coloresSeleccionados);
 }
+
 
 function verificarColoresSeleccionados() {
   const cantidadJugadores = parseInt(document.getElementById("cantidadJugadores").value);
@@ -77,5 +89,5 @@ function verificarColoresSeleccionados() {
   return true;
 }
 
-localStorage.setItem("lscolores", coloresDisponibles)
+
 localStorage.setItem("lsnumeroJugadores", cantidadJugadores)
