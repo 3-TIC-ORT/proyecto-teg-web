@@ -87,9 +87,25 @@ function actualizarListeners() {
       pais.mapa.addEventListener("click", clickAtaque);
     } else if (maquinaDeFases.state === "fase de reagrupacion") {
       pais.mapa.addEventListener("click", clickReagrupacion);
+    } else {
     }
   });
+
+  if (typeof botonMoverFichas !== "undefined" && botonMoverFichas) {
+    botonMoverFichas.disabled = maquinaDeFases.state !== "fase de reagrupacion";
+  }
+
+  if (typeof botonAtacar !== "undefined" && botonAtacar) {
+    botonAtacar.disabled = maquinaDeFases.state !== "fase de ataque";
+  }
+  if (typeof botonDadosAtacante !== "undefined" && botonDadosAtacante) {
+    botonDadosAtacante.disabled = true; 
+    }
+  if (typeof botonDadosAtacado !== "undefined" && botonDadosAtacado) {
+    botonDadosAtacado.disabled = true;
+  }
 }
+
 
 function pararAtaque() {
   if (maquinaDeFases.state === 'fase de ataque') {
@@ -184,6 +200,19 @@ const fronteras = {
   Iran: ["Rusia", "Turquia", "Aral", "Mongolia", "Gobi", "China"],
   Arabia: ["Israel", "Turquia"],
   India: ["Iran", "China", "Sumatra", "Malasia",],
+  Malasia: ["India", "China", "Borneo"], 
+  Gobi: ["Iran", "China", "Mongolia"], 
+  Mongolia: ["Aral", "Iran", "Siberia", "Gobi", "China"], 
+  Tartaria: ["Taimir", "Aral", "Siberia"], 
+  Siberia: ["Aral", "Tartraria", "Mongolia", "Taimir", "China", "Kamchatka"], 
+  Kamchatka: ["Siberia", "China", "Japon"], 
+  China: ["Siberia", "Mongolia", "Gobi", "Iran", "Kamchatka", "India", "Malasia", "Japon"], 
+  Japon: ["China", "Kamchatka"], 
+  //oceania 
+  Sumatra: ["India", "Australia"], 
+  Australia: ["Sumatra", "Borneo", "Java", "Chile"], 
+  Borneo: ["Malasia", "Australia"], 
+  Java: ["Australia"]
 };
 
 nombresPaises.forEach(nombre => {
@@ -498,4 +527,3 @@ if (botonMoverFichas) botonMoverFichas.addEventListener('click', () => {
 });
 
 actualizarFase();
-
