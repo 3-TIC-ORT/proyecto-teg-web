@@ -13,15 +13,18 @@
 <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>-->
 </head>
 <body>
-  <h2>Configuración de jugadores</h2>
+  <h1>Selecciona la cantidad de jugadores</h1>
 
-  <label for="cantidadJugadores">Cantidad de jugadores:</label>
-  <input type="number" id="cantidadJugadores" min="3" max="6" value="3">
-  <button onclick="generarSelectores()">Generar selectores</button>
+  <div class="botones-jugadores">
+    <button onclick="generarSelectores(3)">3 Jugadores</button>
+    <button onclick="generarSelectores(4)">4 Jugadores</button>
+    <button onclick="generarSelectores(5)">5 Jugadores</button>
+    <button onclick="generarSelectores(6)">6 Jugadores</button>
+  </div>
 
   <div id="selectores"></div>
-  
-    <button onclick="verificarColoresSeleccionados()">Comenzar juego</button>
+
+  <button onclick="verificarColoresSeleccionados()">Continuar</button>
 </body>
 </html>
 
