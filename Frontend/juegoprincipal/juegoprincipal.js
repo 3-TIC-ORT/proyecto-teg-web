@@ -38,7 +38,7 @@ function updateTimer() {
   }
   let timerInterval = setInterval(updateTimer, 1000);
 //ejemplo de local storage
-localStorage.setItem("lstimer", timerInterval);
+localStorage.setItem("lstimer", targetDate);
 //termine el  timer
 //
 // Maquina de estados finitos
