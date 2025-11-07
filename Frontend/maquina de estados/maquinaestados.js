@@ -23,29 +23,23 @@ class Jugador {
   }
 }
 function repartirPaises() {
-  // Creamos un array con todos los nombres de países
   let paisesDisponibles = Object.keys(paises);
 
-  // Los mezclamos aleatoriamente (algoritmo Fisher–Yates)
   for (let i = paisesDisponibles.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]];
   }
 
-  // Repartimos uno a uno entre los jugadores
   let indiceJugador = 0;
   while (paisesDisponibles.length > 0) {
     const pais = paisesDisponibles.pop();
     const jugador = jugadores[indiceJugador % jugadores.length];
 
-    // Asignamos el país al jugador
     jugador.agregarPais(pais);
-    paises[pais].duenio = jugador; // 🔹 guardamos el dueño en el país
+    paises[pais].duenio = jugador;
 
-    // Podés darle una ficha inicial
     paises[pais].fichas = 1;
 
-    // Actualizamos en el HTML si existe el contador visual
     const idHTML = pais.toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
@@ -61,8 +55,18 @@ function repartirPaises() {
     console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
   });
 }
-let cantidadJugadores = prompt("¿Cuántos jugadores?");
-cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
+let cantidadJugadores
+
+do {
+  cantidadJugadores = prompt("¿Cuántos jugadores? (mínimo 3, máximo 6)");
+  cantidadJugadores = Number(cantidadJugadores);
+} while (
+  isNaN(cantidadJugadores) || cantidadJugadores < 3 || cantidadJugadores > 6 ||
+  !Number.isInteger(cantidadJugadores)
+);
+
+console.log(`Se jugará con ${cantidadJugadores} jugadores.`);
+
 
 const colores = ["rojo", "azul", "verde", "amarillo", "rosa", "negro"];
 
@@ -89,13 +93,15 @@ function siguienteJugador() {
 function terminarTurno() {
   if (maquinaDeFases.state === 'fase de reagrupacion' || maquinaDeFases.state === 'fase de reposicion') {
     maquinaDeFases.transition('click');
-    siguienteJugador();
-    Object.values(paises).forEach(pais => {
-      pais.fichasRecibidas = 0;
-    });
+    function siguienteJugador() {
+      turnoActual = (turnoActual + 1) % cantidadJugadores;
+      paisesBloqueados.clear();
+      console.log(`Turno del siguiente jugador: ${jugadorActual().nombre}`);
+    }
+    
     actualizarFase();
   } else {
-    console.log("Este botón no tiene efecto en la fase actual.");
+    console.log("Este boton no tiene efecto en la fase actual.");
   }
 }
 const jugadorActualElemento = document.getElementById("jugadorActual");
@@ -372,7 +378,7 @@ function repartirPaises() {
     const jugador = jugadores[indiceJugador % jugadores.length];
 
     jugador.agregarPais(pais);
-    paises[pais].duenio = jugador; 
+    paises[pais].duenio = jugador;
 
     paises[pais].fichas = 1;
 
@@ -413,6 +419,12 @@ let dadosAtacante = [];
 let dadosAtacado = [];
 
 function gestionarSeleccionAtaque(pais) {
+  if (maquinaDeFases.state !== "fase de ataque") {
+    console.log("No podes seleccionar para atacar en esta fase.");
+    return;
+  }
+
+  const jugador = jugadorActual();
   const indice = paisesSeleccionados.indexOf(pais.nombre);
   const estaSeleccionado = indice !== -1;
 
@@ -423,27 +435,54 @@ function gestionarSeleccionAtaque(pais) {
 
     if (paisAtacante.nombre === pais.nombre) paisAtacante = { nombre: null, fichas: null };
     if (paisAtacado.nombre === pais.nombre) paisAtacado = { nombre: null, fichas: null };
+    return;
+  }
 
-  } else {
-    if (paisesSeleccionados.length < 2) {
-      paisesSeleccionados.push(pais.nombre);
-      pais.seleccionado = true;
-      console.log(`${pais.nombre} ha sido seleccionado.`);
-
-      if (!paisAtacante.nombre) {
-        paisAtacante = { nombre: pais.nombre, fichas: pais.fichas };
-      } else if (!paisAtacado.nombre) {
-        paisAtacado = { nombre: pais.nombre, fichas: pais.fichas };
-      }
-    } else {
-      console.log("Ya tienes 2 paises seleccionados. Por favor, deselecciona uno para elegir otro.");
+  if (paisesSeleccionados.length === 0) {
+    if (pais.duenio !== jugador) {
+      console.log("Solo podes seleccionar como atacante un país que te pertenezca.");
+      return;
     }
+    if (pais.fichas <= 1) {
+      console.log(`${pais.nombre} no puede atacar (solo tiene ${pais.fichas} ficha(s)).`);
+      return;
+    }
+
+    paisesSeleccionados.push(pais.nombre);
+    pais.seleccionado = true;
+    paisAtacante = { nombre: pais.nombre, fichas: pais.fichas };
+    console.log(`${pais.nombre} seleccionado como atacante.`);
+
+  } else if (paisesSeleccionados.length === 1) {
+    const nombreAtacante = paisesSeleccionados[0];
+    const paisAt = paises[nombreAtacante];
+
+    if (pais.duenio && pais.duenio.id === jugador.id) {
+      console.log("No podes atacar a un país aliado.");
+      return;
+    }
+
+    if (!paisAt.paisesLimitrofes.includes(pais.nombre)) {
+      console.log(`${pais.nombre} no es limitrofe de ${paisAt.nombre}. No se puede atacar.`);
+      return;
+    }
+
+    paisesSeleccionados.push(pais.nombre);
+    pais.seleccionado = true;
+    paisAtacado = { nombre: pais.nombre, fichas: pais.fichas };
+    console.log(`${pais.nombre} seleccionado como defensor.`);
+  } else {
+    console.log("Ya tienes 2 paises seleccionados. Deselecciona uno para elegir otro.");
   }
 
   console.log("Paises seleccionados:", paisesSeleccionados);
   console.log("Atacante:", paisAtacante);
   console.log("Atacado:", paisAtacado);
 }
+
+console.log("Paises seleccionados:", paisesSeleccionados);
+console.log("Atacante:", paisAtacante);
+console.log("Atacado:", paisAtacado);
 
 function tirarDados(cantidad) {
   const resultados = [];
@@ -500,7 +539,6 @@ function ataqueResolucion() {
 
 }
 
-// Estado y botones
 let estadoAtaque = "esperando";
 
 const botonAtacar = document.getElementById("atacar");
@@ -529,25 +567,36 @@ if (botonAtacar) {
       console.log("Debes seleccionar exactamente 2 paises para iniciar el ataque.");
       return;
     }
-    const pais1 = paises[paisesSeleccionados[0]];
-    const pais2 = paises[paisesSeleccionados[1]];
+
+    const atacanteNombre = paisesSeleccionados[0];
+    const atacadoNombre = paisesSeleccionados[1];
+    const pais1 = paises[atacanteNombre];
+    const pais2 = paises[atacadoNombre];
+    const jugador = jugadorActual();
+
+    if (!pais1 || !pais2) {
+      console.log("Error interno: país no encontrado.");
+      return;
+    }
+    if (pais1.duenio !== jugador) {
+      console.log("El país atacante no es tuyo.");
+      return;
+    }
+    if (pais2.duenio && pais2.duenio.id === jugador.id) {
+      console.log("No podes atacar a un país aliado.");
+      return;
+    }
     if (!pais1.paisesLimitrofes.includes(pais2.nombre)) {
       console.log(`${pais2.nombre} no es limitrofe con ${pais1.nombre}. No se puede atacar.`);
       return;
     }
+    if (pais1.fichas <= 1) {
+      console.log(`${pais1.nombre} no puede atacar (solo tiene ${pais1.fichas} ficha(s)).`);
+      return;
+    }
 
-    if (!paisAtacante || !paisAtacante.nombre) {
-      console.log("No hay pais atacante seleccionado.");
-      return;
-    }
-    if (!paisAtacado || !paisAtacado.nombre) {
-      console.log("No hay pais atacado seleccionado.");
-      return;
-    }
-    if (paisAtacante.fichas <= 1) {
-      console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
-      return;
-    }
+    paisAtacante = { nombre: pais1.nombre, fichas: pais1.fichas };
+    paisAtacado = { nombre: pais2.nombre, fichas: pais2.fichas };
 
     botonAtacar.disabled = true;
     estadoAtaque = "dadosAtacante";
@@ -556,6 +605,7 @@ if (botonAtacar) {
     if (botonDadosAtacado) botonDadosAtacado.disabled = true;
   });
 }
+
 
 if (botonDadosAtacante) {
   botonDadosAtacante.addEventListener("click", () => {
@@ -591,89 +641,157 @@ if (botonDadosAtacado) {
 //
 //reagrupacion
 //
+let paisSeleccionado = null;
+
+let paisesBloqueados = new Set();
+
 function gestionarSeleccionReagrupacion(pais) {
-  const indice = paisesSeleccionados.indexOf(pais.nombre);
-  const estaSeleccionado = indice !== -1;
+  if (maquinaDeFases.state !== "fase de reagrupacion") {
+    console.log("No podés mover fichas en esta fase.");
+    return;
+  }
 
-  if (estaSeleccionado) {
-    paisesSeleccionados.splice(indice, 1);
-    pais.seleccionado = false;
-    console.log(`${pais.nombre} ha sido deseleccionado.`);
-  } else {
-    if (paisesSeleccionados.length < 2) {
-      paisesSeleccionados.push(pais.nombre);
-      pais.seleccionado = true;
-      console.log(`${pais.nombre} ha sido seleccionado.`);
-    } else {
-      console.log("Ya tienes 2 paises seleccionados. Por favor, deselecciona uno para elegir otro.");
+  if (paisesBloqueados.has(pais.nombre)) {
+    console.log(`${pais.nombre} no puede mover fichas este turno (recibió fichas recientemente).`);
+    return;
+  }
+
+  const jugador = jugadorActual(); 
+
+  if (!paisSeleccionado) {
+    if (!pais.duenio || pais.duenio.id !== jugador.id) {
+      console.log("Solo podés mover fichas de tus países.");
+      return;
     }
-  }
-  console.log("Paises seleccionados:", paisesSeleccionados);
-}
 
-function moverFichas(paisEmisor, paisReceptor, cantidad) {
-  if (!paisEmisor.paisesLimitrofes.includes(paisReceptor.nombre)) {
-    console.log(`${paisReceptor.nombre} no es limitrofe con ${paisEmisor.nombre}.`);
+    if (pais.fichas <= 1) {
+      console.log(`${pais.nombre} no tiene fichas suficientes para mover.`);
+      return;
+    }
+
+    paisSeleccionado = pais;
+    console.log(`Seleccionaste ${pais.nombre} como origen.`);
     return;
   }
 
-  const maximoMovible = paisEmisor.fichas - paisEmisor.fichasRecibidas - 1;
-
-  if (cantidad > maximoMovible) {
-    console.log(`${paisEmisor.nombre} solo puede mover ${maximoMovible} fichas este turno (las demas estan bloqueadas).`);
+  if (pais.duenio && pais.duenio.id !== jugador.id) {
+    console.log("Solo podés mover fichas hacia tus propios países.");
+    paisSeleccionado = null;
     return;
   }
 
-  if (cantidad <= 0) {
-    console.log("Debes mover al menos una ficha valida.");
+  if (!paisSeleccionado.paisesLimitrofes.includes(pais.nombre)) {
+    console.log(`${pais.nombre} no es limítrofe con ${paisSeleccionado.nombre}.`);
+    paisSeleccionado = null;
     return;
   }
 
-  paisEmisor.fichas -= cantidad;
-  paisReceptor.fichas += cantidad;
-  paisReceptor.fichasRecibidas += cantidad;
-
-  function idFromName(nombre) {
-    return nombre.toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
+  const maxMover = paisSeleccionado.fichas - 1;
+  if (maxMover <= 0) {
+    console.log(`${paisSeleccionado.nombre} no tiene fichas para mover.`);
+    paisSeleccionado = null;
+    return;
   }
-  const idEm = document.getElementById("fichas-" + idFromName(paisEmisor.nombre));
-  if (idEm) idEm.textContent = paisEmisor.fichas;
-  const idRec = document.getElementById("fichas-" + idFromName(paisReceptor.nombre));
-  if (idRec) idRec.textContent = paisReceptor.fichas;
 
-  document.getElementById("fichas-" + paisEmisor.nombre.toLowerCase()).textContent = paisEmisor.fichas;
-  document.getElementById("fichas-" + paisReceptor.nombre.toLowerCase()).textContent = paisReceptor.fichas;
+  const cantidad = parseInt(prompt(`¿Cuántas fichas querés mover? (${maxMover} disponibles)`), 10);
 
-  console.log(`${paisEmisor.nombre} movio ${cantidad} fichas a ${paisReceptor.nombre}. (${paisReceptor.fichasRecibidas} fichas bloqueadas en ${paisReceptor.nombre})`);
+  if (isNaN(cantidad) || cantidad <= 0 || cantidad > maxMover) {
+    console.log("Cantidad inválida.");
+    paisSeleccionado = null;
+    return;
+  }
+
+  paisSeleccionado.fichas -= cantidad;
+  pais.fichas += cantidad;
+
+  paisesBloqueados.add(pais.nombre);
+
+  try {
+    const idOrigen = paisSeleccionado.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+    const idDestino = pais.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+    const elOrigen = document.getElementById(`fichas-${idOrigen}`);
+    const elDestino = document.getElementById(`fichas-${idDestino}`);
+    if (elOrigen) elOrigen.textContent = paisSeleccionado.fichas;
+    if (elDestino) elDestino.textContent = pais.fichas;
+  } catch (e) {}
+
+  console.log(`Moviste ${cantidad} fichas de ${paisSeleccionado.nombre} a ${pais.nombre}.`);
+  console.log(`${pais.nombre} queda bloqueado este turno (no puede re-mover esas fichas).`);
+
+  paisSeleccionado = null;
 }
 
 
 const botonMoverFichas = document.getElementById("moverfichas");
-if (botonMoverFichas) botonMoverFichas.addEventListener('click', () => {
-  if (paisesSeleccionados.length !== 2) {
-    console.log("Selecciona exactamente 2 paises para mover fichas (emisor y receptor).");
-    return;
-  }
+if (botonMoverFichas) {
+  botonMoverFichas.addEventListener("click", () => {
+    if (maquinaDeFases.state !== "fase de reagrupacion") {
+      console.log("Solo podes mover fichas en la fase de reagrupacion.");
+      return;
+    }
+    if (paisesSeleccionados.length !== 2) {
+      console.log("Debes seleccionar exactamente 2 países aliados y limítrofes.");
+      return;
+    }
 
-  const paisEmisor = paises[paisesSeleccionados[0]];
-  const paisReceptor = paises[paisesSeleccionados[1]];
+    const [nombreOrigen, nombreDestino] = paisesSeleccionados;
+    const paisOrigen = paises[nombreOrigen];
+    const paisDestino = paises[nombreDestino];
+    const jugador = jugadorActual();
 
-  if (!paisEmisor || !paisReceptor) {
-    console.log("Error: no se pudieron encontrar los paises seleccionados.");
-    return;
-  }
+    if (!paisOrigen || !paisDestino) {
+      console.log("Error interno: país no encontrado.");
+      return;
+    }
+    if (
+      !paisOrigen.duenio || !paisDestino.duenio ||
+      paisOrigen.duenio.id !== jugador.id ||
+      paisDestino.duenio.id !== jugador.id
+    ) {
+      console.log("Solo podes mover fichas entre países aliados.");
+      return;
+    }    
+    if (!paisOrigen.paisesLimitrofes.includes(paisDestino.nombre)) {
+      console.log(`${paisDestino.nombre} no es limítrofe con ${paisOrigen.nombre}.`);
+      return;
+    }
+    if (paisOrigen.fichas <= 1) {
+      console.log(`${paisOrigen.nombre} no tiene fichas suficientes para mover.`);
+      return;
+    }
 
-  const cantidad = parseInt(prompt(`¿Cuántas fichas quieres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}?`), 10);
+    const cantidad = parseInt(
+      prompt(`¿Cuántas fichas quieres mover de ${paisOrigen.nombre} a ${paisDestino.nombre}?`)
+    );
 
-  if (!Number.isFinite(cantidad) || cantidad <= 0) {
-    console.log("Cantidad inválida.");
-    return;
-  }
+    if (
+      isNaN(cantidad) ||
+      cantidad <= 0 ||
+      cantidad >= paisOrigen.fichas
+    ) {
+      console.log("Cantidad no válida.");
+      return;
+    }
 
-  moverFichas(paisEmisor, paisReceptor, cantidad);
-});
+    paisOrigen.fichas -= cantidad;
+    paisDestino.fichas += cantidad;
 
-actualizarFase();
+    const idOrigen = "fichas-" + nombreOrigen.toLowerCase().replace(/\s+/g, "-");
+    const idDestino = "fichas-" + nombreDestino.toLowerCase().replace(/\s+/g, "-");
+    const elOrigen = document.getElementById(idOrigen);
+    const elDestino = document.getElementById(idDestino);
+    if (elOrigen) elOrigen.textContent = paisOrigen.fichas;
+    if (elDestino) elDestino.textContent = paisDestino.fichas;
+
+    console.log(
+      `Moviste ${cantidad} ficha(s) de ${paisOrigen.nombre} a ${paisDestino.nombre}.`
+    );
+
+    paisesSeleccionados.forEach(n => paises[n].seleccionado = false);
+    paisesSeleccionados = [];
+  });
+}
+
+actualizarFase(); 
+
+siguienteJugador
