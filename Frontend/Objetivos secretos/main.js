@@ -1,4 +1,3 @@
-
 let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
@@ -15,12 +14,17 @@ let objectives = [
   "Ocupar América del Norte, 2 países de Oceanía y 4 de Asia",
   "Ocupar 2 países de Oceanía, 2 países de África, 2 países de América del Sur, 3 países de Europa, 4 países de África y 3 de Asia"
 ];
+
 let selectedPlayers = [];
 let playerObjectives = {};
 let i = 0;
+let timeoutId = null; // ← guarda el temporizador activo
 
 function startSequence() {
-  selectedPlayers = Array.from(document.querySelectorAll('.selector input[type="checkbox"]:checked')).map(cb => cb.value);
+  selectedPlayers = Array.from(
+    document.querySelectorAll('.selector input[type="checkbox"]:checked')
+  ).map(cb => cb.value);
+
   if (selectedPlayers.length === 0) {
     alert("Seleccioná al menos un jugador.");
     return;
@@ -46,17 +50,28 @@ function showNextPlayer() {
 
 function showObjective() {
   let player = selectedPlayers[i];
-  document.getElementById("objective").innerText = `Objetivo secreto del jugador ${player.toUpperCase()}:\n\n${playerObjectives[player]}`;
+  document.getElementById("objective").innerText =
+    `Objetivo secreto del jugador ${player.toUpperCase()}:\n\n${playerObjectives[player]}`;
   document.getElementById("objective").style.display = "block";
 
-  setTimeout(() => {
-    i++;
-    if (i < selectedPlayers.length) {
-      showNextPlayer();
-    } else {
-      document.getElementById("overlay").style.display = "none";
-      alert("Todos los objetivos fueron revelados. ¡A jugar!");
-    }
-  },);
+  // Cancelar cualquier temporizador previo
+  if (timeoutId) clearTimeout(timeoutId);
+
+  // Mostrar el objetivo durante 5 segundos (5000 ms)
+  timeoutId = setTimeout(nextObjective, 5000);
+}
+
+function nextObjective() {
+  // Cancelar el temporizador si se pasa manualmente
+  if (timeoutId) clearTimeout(timeoutId);
+  timeoutId = null;
+
+  i++;
+  if (i < selectedPlayers.length) {
+    showNextPlayer();
+  } else {
+    document.getElementById("overlay").style.display = "none";
+    alert("Todos los objetivos fueron revelados. ¡A jugar!");
+  }
 }
 
