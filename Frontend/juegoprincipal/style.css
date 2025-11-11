@@ -59,17 +59,17 @@ line-height: normal;
 }
 
 .foto{
-width: 92%;
+width: 80%;
 height: 100%;
 position: absolute;
-left: 240px;
+left: 280px;
 top: 0%;
  
 }
 .timer{
 display: flexbox;
 position: absolute;
-left: 780px;
+left: 730px;
 top: 40px;
 width: 154px;
 height: 58px;
@@ -202,7 +202,7 @@ border-right: 5px solid black;
 .japon{
 position: absolute;
 top: 110px;
-left: 1337px;
+left: 1285px;
 rotate: 50.284deg;
 }
 .fichas-japon{
@@ -216,15 +216,15 @@ rotate: 50.284deg;
 .china{
 position: absolute;
 top: 200px;
-left: 1280px;
+left: 1240px;
 }
 .fichas-china{
  
 }
 .kamchatka{
 position: absolute;
-top: 70px;
-left: 1240px;
+top: 75px;
+left: 1182px;
 font-size: 10px;
 rotate: -20.974deg;
 }
@@ -234,7 +234,7 @@ rotate: -20.974deg;
 .mongolia{
 position: absolute;
 top: 160px;
-left: 1170px;
+left: 1125px;
 rotate: -12.689deg;
 }
 .fichas-mongolia{
@@ -243,7 +243,7 @@ rotate: -12.689deg;
 .israel{
 position: absolute;
 top: 335px;
-left: 1120px;
+left: 1080px;
 rotate: -26.584deg;
 }
 .fichas-israel{
@@ -252,7 +252,7 @@ rotate: -26.584deg;
 .aral{
 position: absolute;
 top: 100px;
-left: 1100px;
+left: 1055px;
 rotate: -39.729deg;
 }
 .fichas-aral{
@@ -260,8 +260,8 @@ rotate: -39.729deg;
 }
 .turquia{
 position: absolute;
-top: 290px;
-left: 1130px;
+top: 280px;
+left: 1085px;
 rotate: -2.959deg;
 }
 .fichas-turquia{
@@ -270,7 +270,7 @@ rotate: -2.959deg;
 .arabia{
 position: absolute;
 top: 360px;
-left: 1160px;
+left: 1120px;
 rotate: -26.584deg;
 }
 .fichas-arabia{
@@ -279,15 +279,15 @@ rotate: -26.584deg;
 .india{
 position: absolute;
 top:310px;
-left: 1265px;
+left: 1213px;
 }
 .fichas-india{
  
 }
 .gobi{
 position: absolute;
-top: 225px;
-left: 1215px;
+top: 215px;
+left: 1165px;
 rotate: -31.864deg;
 }
 .fichas-gobi{
@@ -296,7 +296,7 @@ rotate: -31.864deg;
 .malasia{
 position: absolute;
 top: 280px;
-left: 1330px;
+left: 1275px;
 rotate: -62.915deg;
 }
 .fichas-malasia{
@@ -305,7 +305,7 @@ rotate: -62.915deg;
 .iran{
 position: absolute;
 top: 230px;
-left: 1160px;
+left: 1120px;
 rotate: 36.548deg;
 }
 .fichas-iran{
@@ -314,7 +314,7 @@ rotate: 36.548deg;
 .siberia{
 position: absolute;
 top: 110px;
-left: 1170px;
+left: 1130px;
 }
 .fichas-siberia{
  
@@ -322,7 +322,7 @@ left: 1170px;
 .taimir{
 position: absolute;
 top: 70px;
-left: 1170px;
+left: 1120px;
 rotate: -34.79deg;
 }
 .fichas-taimir{
@@ -331,7 +331,7 @@ rotate: -34.79deg;
 .tartaria{
 position: absolute;
 top: 60px;
-left: 1125px;
+left: 1080px;
 rotate: -69.709deg;
 }
 .fichas-tartaria{
@@ -340,8 +340,8 @@ rotate: -69.709deg;
 
 .java{
 position: absolute;
-left: 1360px;
-top: 380px;
+left: 1300px;
+top: 370px;
 rotate: -55.576deg;
 }
 .fichas-java{
@@ -349,16 +349,16 @@ rotate: -55.576deg;
 }
 .australia{
   position: absolute;
-  left: 1320px;
-  top: 490px;
+  left: 1275px;
+  top: 480px;
 }
 .fichas-australia{
  
 }
 .borneo{
 position: absolute;
-top: 380px;
-left: 1302px;
+top: 365px;
+left: 1245px;
 rotate: 86.094deg;
 }
 .fichas-borneo{
@@ -366,8 +366,8 @@ rotate: 86.094deg;
 }
 .sumatra{
   position: absolute;
-  top: 430px;
-  left: 1220px;
+  top: 415px;
+  left: 1167px;
   rotate: 53.626deg;
 }
 .fichas-sumatra{
@@ -376,8 +376,8 @@ rotate: 86.094deg;
 
 .argentina{
 position: absolute;
-top: 500px;
-left: 630px;
+top: 497px;
+left: 605px;
 rotate: -54.494deg;
 }
 .fichas-argentina{
@@ -385,8 +385,8 @@ rotate: -54.494deg;
 }
 .uruguay{
 position: absolute;
-top: 470px;
-left: 690px;
+top: 460px;
+left: 665px;
 rotate: -25.885deg;
 }
 .fichas-uruguay{
@@ -419,16 +419,18 @@ left: 60px;
 .chile{
 position: absolute;
 top: 500px;
-left: 610px;
+left: 588px;
 rotate: -80.741deg;
 }
 .fichas-chile{
- 
+ position: absolute;
+ top: 510px;
+ left: 600px;
 }
 
 .canada{
   position: absolute;
-  top: 110px;
+  top: 90px;
   left: 440px;
 }
 .fichas-canada{
@@ -437,7 +439,7 @@ rotate: -80.741deg;
 .california{
 position: absolute;
 top: 260px;
-left: 440px;
+left: 420px;
 }
 .fichas-california{
  
@@ -452,32 +454,32 @@ left: 510px;
 }
 .mexico{
 position: absolute;
-top: 330px;
-left: 525px;
+top: 320px;
+left: 520px;
 }
 .fichas-mexico{
  
 }
 .yukon{
 position: absolute;
-top: 170px;
-left: 370px;
+top: 160px;
+left: 360px;
 }
 .fichas-yukon{
  
 }
 .alaska{
 position: absolute;
-top: 200px;
-left: 299px;
+top: 210px;
+left: 300px;
 }
 .fichas-alaska{
  
 }
 .nuevayork{
 position: absolute;
-top: 220px;
-left: 490px;
+top: 219px;
+left: 475px;
 }
 .fichas-nuevayork{
  
@@ -485,23 +487,23 @@ left: 490px;
 .oregon{
 position: absolute;
 top: 240px;
-left: 380px;
+left: 360px;
 }
 .fichas-oregon{
  
 }
 .labrador{
 position: absolute;
-top: 140px;
-left: 550px;
+top: 132px;
+left: 540px;
 }
 .fichas-labrador{
  
 }
 .groenlandia{
 position: absolute ;
-top: 50px;
-left: 620px;
+top: 63px;
+left: 600px;
 }
 .fichas-groenlandia{
  
@@ -509,8 +511,8 @@ left: 620px;
 
 .españa{
 position: absolute;
-top: 355px;
-left: 850px;
+top: 350px;
+left: 820px;
 rotate: -11.932deg;
 }
 .fichas-españa{
@@ -518,8 +520,8 @@ rotate: -11.932deg;
 }
 .francia{
 position: absolute;
-top: 310px;
-left: 920px;
+top: 300px;
+left: 890px;
 rotate: -27.8deg;
 }
 .fichas-francia{
@@ -527,8 +529,8 @@ rotate: -27.8deg;
 }
 .alemania{
 position: absolute;
-top: 290px;
-left: 985px;
+top: 280px;
+left: 955px;
 rotate: 40.75deg;
 }
 .fichas-alemania{
@@ -537,7 +539,7 @@ rotate: 40.75deg;
 .polonia{
 position: absolute;
 top: 260px;
-left: 1045px;
+left: 1010px;
 rotate: -2.959deg;
 }
 .fichas-polonia{
@@ -546,7 +548,7 @@ rotate: -2.959deg;
 .granbretaña{
 position:absolute;
 top: 240px;
-left: 860px;
+left: 835px;
 rotate: -26.93deg;
 }
 .fichas-granbretaña{
@@ -555,7 +557,7 @@ rotate: -26.93deg;
 .islandia{
 position: absolute;
 top: 215px;
-left: 745px;
+left: 725px;
 rotate: -34.832deg;
 }
 .fichas-islandia{
@@ -563,8 +565,8 @@ rotate: -34.832deg;
 }
 .italia{
 position: absolute;
-top: 370px;
-left:  995px;
+top: 350px;
+left:  960px;
 rotate: 64.444deg;
 }
 .fichas-italia{
@@ -573,15 +575,15 @@ rotate: 64.444deg;
 .rusia{
 position: absolute;
 top: 180px;
-left: 1050px;
+left: 1020px;
 }
 .fichas-rusia{
  
 }
 .suecia{
 position: absolute;
-top: 110px;
-left: 950px;
+top: 120px;
+left: 910px;
 rotate: -34.433deg;
 }
 .fichas-suecia{
@@ -591,7 +593,7 @@ rotate: -34.433deg;
 .sahara{
 position: absolute;
 top: 460px;
-left: 940px;
+left: 910px;
 rotate: -17.162deg;
 }
 .fichas-sahara{
@@ -599,8 +601,8 @@ rotate: -17.162deg;
 }
 .madagascar{
 position: absolute;
-top: 520px;
-left: 1145px;
+top: 510px;
+left: 1095px;
 rotate: -76.904deg;
 }
 .fichas-madagascar{
@@ -608,8 +610,8 @@ rotate: -76.904deg;
 }
 .sudafrica{
 position: absolute;
-top: 550px;
-left: 1050px;
+top: 525px;
+left: 1010px;
 rotate: -42.892deg;
 }
 .fichas-sudafrica{
@@ -617,8 +619,8 @@ rotate: -42.892deg;
 }
 .egipto{
 position: absolute;
-top: 430px;
-left: 1085px;
+top: 420px;
+left: 1045px;
 rotate: 15.172deg;
 }
 .fichas-egipto{
@@ -626,8 +628,8 @@ rotate: 15.172deg;
 }
 .etiopia{
  position: absolute;
- top: 470px;
-left: 1050px;
+ top: 460px;
+left: 1020px;
 rotate: 15.878deg;
 }
 .fichas-etiopia{
@@ -635,8 +637,8 @@ rotate: 15.878deg;
 }
 .zaire{
   position: absolute;
-  top: 510px;
-  left: 1010px;
+  top: 490px;
+  left: 970px;
 }
 .fichas-zaire{
  
