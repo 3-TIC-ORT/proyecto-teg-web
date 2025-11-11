@@ -394,7 +394,7 @@ rotate: -25.885deg;
 }
 .peru{
 position: absolute;
-top: 440px;
+top: 360px;
 left: 600px;
 }
 .fichas-peru{
@@ -402,16 +402,16 @@ left: 600px;
 }
 .colombia{
 position: absolute;
-top: 200px;
-left: 580px;
+top: 410px;
+left: 585px;
 }
 .fichas-colombia{
  
 }
 .brasil{
 position: absolute;
-top: 200px;
-left: 60px;
+top: 400px;
+left: 700px;
 }
 .fichas-brasil{
  
