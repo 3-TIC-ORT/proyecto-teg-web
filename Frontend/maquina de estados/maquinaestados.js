@@ -438,7 +438,7 @@ function gestionarSeleccionAtaque(pais) {
   if (estaSeleccionado) {
     paisesSeleccionados.splice(indice, 1);
     pais.seleccionado = false;
-    console.log(`${pais.nombre} ha sido deseleccionado.`);
+    console.log(`${pais.nombre} ha sido deseleccionado.`, paisesSeleccionados);
 
     if (paisAtacante.nombre === pais.nombre) paisAtacante = { nombre: null, fichas: null };
     if (paisAtacado.nombre === pais.nombre) paisAtacado = { nombre: null, fichas: null };
@@ -644,7 +644,6 @@ if (botonDadosAtacado) {
 //
 //reagrupacion
 //
-let paisSeleccionado = null;
 
 let paisesBloqueados = new Set();
 
@@ -657,6 +656,12 @@ function gestionarSeleccionReagrupacion(pais) {
     return;
   }
 
+  if (paisesSeleccionados.includes(pais.nombre)) {
+    paisesSeleccionados = paisesSeleccionados.filter(p => p !== pais.nombre);
+    console.log(`Deseleccionaste ${pais.nombre}. Array:`, paisesSeleccionados);
+    return;
+  }
+
   if (paisesSeleccionados.length === 0) {
     paisesSeleccionados.push(pais.nombre);
     console.log("País de origen seleccionado:", paisesSeleccionados);
@@ -664,38 +669,33 @@ function gestionarSeleccionReagrupacion(pais) {
   }
 
   if (paisesSeleccionados.length === 1) {
-    const paisOrigen = paises[paisesSeleccionados[0]];
+    const paisEmisor = paises[paisesSeleccionados[0]];
 
-    if (paisOrigen.nombre === pais.nombre) {
-      paisesSeleccionados = [];
-      console.log("Deseleccionaste todo. Array:", paisesSeleccionados);
-      return;
-    }
-
-    if (!paisOrigen.paisesLimitrofes.includes(pais.nombre)) {
-      console.log(` ${pais.nombre} no es limítrofe con ${paisOrigen.nombre}`);
+    if (!paisEmisor.paisesLimitrofes.includes(pais.nombre)) {
+      console.log(`${pais.nombre} no es limítrofe con ${paisEmisor.nombre}`);
       return;
     }
 
     if (pais.duenio.id !== jugador.id) {
-      console.log(` ${pais.nombre} no pertenece al jugador actual.`);
+      console.log(`${pais.nombre} no pertenece al jugador actual.`);
       return;
     }
 
     paisesSeleccionados.push(pais.nombre);
     console.log("Países seleccionados para reagrupación:", paisesSeleccionados);
     console.log("Datos actuales:", [
-      { nombre: paisOrigen.nombre, fichas: paisOrigen.fichas },
+      { nombre: paisEmisor.nombre, fichas: paisEmisor.fichas },
       { nombre: pais.nombre, fichas: pais.fichas }
     ]);
     return;
   }
 
   if (paisesSeleccionados.length === 2) {
-    paisesSeleccionados = [pais.nombre]
+    paisesSeleccionados = [pais.nombre];
     console.log("Reiniciaste la selección. Nuevo array:", paisesSeleccionados);
   }
 }
+
 
 
 if (botonMoverFichas) {
@@ -711,45 +711,54 @@ if (botonMoverFichas) {
     }
 
     const [nombreOrigen, nombreDestino] = paisesSeleccionados;
-    const paisOrigen = paises[nombreOrigen];
-    const paisDestino = paises[nombreDestino];
+    const paisEmisor = paises[nombreOrigen];
+    const paisReceptor = paises[nombreDestino];
 
-    if (paisOrigen.fichas <= 1) {
-      console.log(`${paisOrigen.nombre} no tiene fichas suficientes para mover.`);
+    paisEmisor.fichasRecibidas = paisEmisor.fichasRecibidas || 0;
+    paisReceptor.fichasRecibidas = paisReceptor.fichasRecibidas || 0;
+
+    const fichasDisponibles = paisEmisor.fichas - paisEmisor.fichasRecibidas;
+    if (fichasDisponibles <= 1) {
+      console.log(`${paisEmisor.nombre} no tiene fichas libres para mover (fichas bloqueadas: ${paisEmisor.fichasRecibidas}).`);
       return;
     }
 
     const cantidad = parseInt(
-      prompt(`¿Cuántas fichas querés mover de ${paisOrigen.nombre} a ${paisDestino.nombre}? (máx ${paisOrigen.fichas - 1})`),
+      prompt(`¿Cuántas fichas querés mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}? (máx ${fichasDisponibles - 1})`),
       10
     );
 
-    if (isNaN(cantidad) || cantidad <= 0 || cantidad >= paisOrigen.fichas) {
+    if (isNaN(cantidad) || cantidad <= 0 || cantidad >= fichasDisponibles) {
       console.log("Cantidad inválida.");
       return;
     }
 
-    paisOrigen.fichas -= cantidad;
-    paisDestino.fichas += cantidad;
+    paisEmisor.fichas -= cantidad;
+    paisReceptor.fichas += cantidad;
 
-    const idOrigen = paisOrigen.nombre.toLowerCase().replace(/\s+/g, "-");
-    const idDestino = paisDestino.nombre.toLowerCase().replace(/\s+/g, "-");
-    document.getElementById(`fichas-${idOrigen}`).textContent = paisOrigen.fichas;
-    document.getElementById(`fichas-${idDestino}`).textContent = paisDestino.fichas;
+    paisReceptor.fichasRecibidas += cantidad;
+
+    const idOrigen = paisEmisor.nombre.toLowerCase().replace(/\s+/g, "-");
+    const idDestino = paisReceptor.nombre.toLowerCase().replace(/\s+/g, "-");
+    document.getElementById(`fichas-${idOrigen}`).textContent = paisEmisor.fichas;
+    document.getElementById(`fichas-${idDestino}`).textContent = paisReceptor.fichas;
 
     console.log("Movimiento de fichas realizado:", {
-      origen: paisOrigen.nombre,
-      destino: paisDestino.nombre,
-      cantidad
+      origen: paisEmisor.nombre,
+      destino: paisReceptor.nombre,
+      cantidad,
+      bloqueadasEnDestino: paisReceptor.fichasRecibidas
     });
+
     console.log("Estado actualizado:", [
-      { nombre: paisOrigen.nombre, fichas: paisOrigen.fichas },
-      { nombre: paisDestino.nombre, fichas: paisDestino.fichas }
+      { nombre: paisEmisor.nombre, fichas: paisEmisor.fichas, bloqueadas: paisEmisor.fichasRecibidas },
+      { nombre: paisReceptor.nombre, fichas: paisReceptor.fichas, bloqueadas: paisReceptor.fichasRecibidas }
     ]);
 
     paisesSeleccionados = [];
   });
 }
+
 
 actualizarFase(); 
 siguienteJugador
