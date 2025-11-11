@@ -69,7 +69,7 @@ if (fichasArgentinaElemento) {
   fichasArgentinaElemento.textContent = argentina.fichas;
 }
 if (argentina.mapa) {
-  argentina.mapa.addEventListener('click', function() {
+  argentina.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(argentina);
   });
 }
@@ -85,7 +85,7 @@ if (fichasChileElemento) {
   fichasChileElemento.textContent = chile.fichas;
 }
 if (chile.mapa) {
-  chile.mapa.addEventListener('click', function() {
+  chile.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(chile);
   });
 }
@@ -101,7 +101,7 @@ if (fichasUruguayElemento) {
   fichasUruguayElemento.textContent = uruguay.fichas;
 }
 if (uruguay.mapa) {
-  uruguay.mapa.addEventListener('click', function() {
+  uruguay.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(uruguay);
   });
 }
@@ -117,7 +117,7 @@ if (fichasBrasilElemento) {
   fichasBrasilElemento.textContent = brasil.fichas;
 }
 if (brasil.mapa) {
-  brasil.mapa.addEventListener('click', function() {
+  brasil.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(brasil);
   });
 }
@@ -133,7 +133,7 @@ if (fichasPeruElemento) {
   fichasPeruElemento.textContent = peru.fichas;
 }
 if (peru.mapa) {
-  peru.mapa.addEventListener('click', function() {
+  peru.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(peru);
   });
 }
@@ -149,7 +149,7 @@ if (fichasColombiaElemento) {
   fichasColombiaElemento.textContent = colombia.fichas;
 }
 if (colombia.mapa) {
-  colombia.mapa.addEventListener('click', function() {
+  colombia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(colombia);
   });
 }
@@ -166,7 +166,7 @@ if (fichasIslandiaElemento) {
   fichasIslandiaElemento.textContent = islandia.fichas;
 }
 if (islandia.mapa) {
-  islandia.mapa.addEventListener('click', function() {
+  islandia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(islandia);
   });
 }
@@ -182,7 +182,7 @@ if (fichasBretanaElemento) {
   fichasBretanaElemento.textContent = bretana.fichas;
 }
 if (bretana.mapa) {
-  bretana.mapa.addEventListener('click', function() {
+  bretana.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(bretana);
   });
 }
@@ -198,7 +198,7 @@ if (fichasEspanaElemento) {
   fichasEspanaElemento.textContent = espana.fichas;
 }
 if (espana.mapa) {
-  espana.mapa.addEventListener('click', function() {
+  espana.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(espana);
   });
 }
@@ -214,7 +214,7 @@ if (fichasFranciaElemento) {
   fichasFranciaElemento.textContent = francia.fichas;
 }
 if (francia.mapa) {
-  francia.mapa.addEventListener('click', function() {
+  francia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(francia);
   });
 }
@@ -230,7 +230,7 @@ if (fichasAlemaniaElemento) {
   fichasAlemaniaElemento.textContent = alemania.fichas;
 }
 if (alemania.mapa) {
-  alemania.mapa.addEventListener('click', function() {
+  alemania.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(alemania);
   });
 }
@@ -246,7 +246,7 @@ if (fichasItaliaElemento) {
   fichasItaliaElemento.textContent = italia.fichas;
 }
 if (italia.mapa) {
-  italia.mapa.addEventListener('click', function() {
+  italia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(italia);
   });
 }
@@ -262,7 +262,7 @@ if (fichasPoloniaElemento) {
   fichasPoloniaElemento.textContent = polonia.fichas;
 }
 if (polonia.mapa) {
-  polonia.mapa.addEventListener('click', function() {
+  polonia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(polonia);
   });
 }
@@ -278,7 +278,7 @@ if (fichasRusiaElemento) {
   fichasRusiaElemento.textContent = rusia.fichas;
 }
 if (rusia.mapa) {
-  rusia.mapa.addEventListener('click', function() {
+  rusia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(rusia);
   });
 }
@@ -295,7 +295,7 @@ if (fichasAustraliaElemento) {
   fichasAustraliaElemento.textContent = australia.fichas;
 }
 if (australia.mapa) {
-  australia.mapa.addEventListener('click', function() {
+  australia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(australia);
   });
 }
@@ -311,7 +311,7 @@ if (fichasSumatraElemento) {
   fichasSumatraElemento.textContent = sumatra.fichas;
 }
 if (sumatra.mapa) {
-  sumatra.mapa.addEventListener('click', function() {
+  sumatra.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(sumatra);
   });
 }
@@ -327,7 +327,7 @@ if (fichasJavaElemento) {
   fichasJavaElemento.textContent = java.fichas;
 }
 if (java.mapa) {
-  java.mapa.addEventListener('click', function() {
+  java.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(java);
   });
 }
@@ -343,7 +343,7 @@ if (fichasBorneoElemento) {
   fichasBorneoElemento.textContent = borneo.fichas;
 }
 if (borneo.mapa) {
-  borneo.mapa.addEventListener('click', function() {
+  borneo.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(borneo);
   });
 }
@@ -360,7 +360,7 @@ if (fichasSaharaElemento) {
   fichasSaharaElemento.textContent = sahara.fichas;
 }
 if (sahara.mapa) {
-  sahara.mapa.addEventListener('click', function() {
+  sahara.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(sahara);
   });
 }
@@ -376,7 +376,7 @@ if (fichasEgiptoElemento) {
   fichasEgiptoElemento.textContent = egipto.fichas;
 }
 if (egipto.mapa) {
-  egipto.mapa.addEventListener('click', function() {
+  egipto.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(egipto);
   });
 }
@@ -392,7 +392,7 @@ if (fichasEtiopiaElemento) {
   fichasEtiopiaElemento.textContent = etiopia.fichas;
 }
 if (etiopia.mapa) {
-  etiopia.mapa.addEventListener('click', function() {
+  etiopia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(etiopia);
   });
 }
@@ -408,7 +408,7 @@ if (fichasZaireElemento) {
   fichasZaireElemento.textContent = zaire.fichas;
 }
 if (zaire.mapa) {
-  zaire.mapa.addEventListener('click', function() {
+  zaire.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(zaire);
   });
 }
@@ -424,7 +424,7 @@ if (fichasSudafricaElemento) {
   fichasSudafricaElemento.textContent = sudafrica.fichas;
 }
 if (sudafrica.mapa) {
-  sudafrica.mapa.addEventListener('click', function() {
+  sudafrica.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(sudafrica);
   });
 }
@@ -440,7 +440,7 @@ if (fichasMadagascarElemento) {
   fichasMadagascarElemento.textContent = madagascar.fichas;
 }
 if (madagascar.mapa) {
-  madagascar.mapa.addEventListener('click', function() {
+  madagascar.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(madagascar);
   });
 }
@@ -457,7 +457,7 @@ if (fichasAlaskaElemento) {
   fichasAlaskaElemento.textContent = alaska.fichas;
 }
 if (alaska.mapa) {
-  alaska.mapa.addEventListener('click', function() {
+  alaska.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(alaska);
   });
 }
@@ -473,7 +473,7 @@ if (fichasCanadaElemento) {
   fichasCanadaElemento.textContent = canada.fichas;
 }
 if (canada.mapa) {
-  canada.mapa.addEventListener('click', function() {
+  canada.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(canada);
   });
 }
@@ -489,7 +489,7 @@ if (fichasGroenlandiaElemento) {
   fichasGroenlandiaElemento.textContent = groenlandia.fichas;
 }
 if (groenlandia.mapa) {
-  groenlandia.mapa.addEventListener('click', function() {
+  groenlandia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(groenlandia);
   });
 }
@@ -505,7 +505,7 @@ if (fichasTerranovaElemento) {
   fichasTerranovaElemento.textContent = terranova.fichas;
 }
 if (terranova.mapa) {
-  terranova.mapa.addEventListener('click', function() {
+  terranova.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(terranova);
   });
 }
@@ -521,7 +521,7 @@ if (fichasMexicoElemento) {
   fichasMexicoElemento.textContent = mexico.fichas;
 }
 if (mexico.mapa) {
-  mexico.mapa.addEventListener('click', function() {
+  mexico.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(mexico);
   });
 }
@@ -537,7 +537,7 @@ if (fichasCaliforniaElemento) {
   fichasCaliforniaElemento.textContent = california.fichas;
 }
 if (california.mapa) {
-  california.mapa.addEventListener('click', function() {
+  california.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(california);
   });
 }
@@ -553,7 +553,7 @@ if (fichasLabradorElemento) {
   fichasLabradorElemento.textContent = labrador.fichas;
 }
 if (labrador.mapa) {
-  labrador.mapa.addEventListener('click', function() {
+  labrador.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(labrador);
   });
 }
@@ -569,7 +569,7 @@ if (fichasOregonElemento) {
   fichasOregonElemento.textContent = oregon.fichas;
 }
 if (oregon.mapa) {
-  oregon.mapa.addEventListener('click', function() {
+  oregon.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(oregon);
   });
 }
@@ -585,7 +585,7 @@ if (fichasNuevaYorkElemento) {
   fichasNuevaYorkElemento.textContent = nuevaYork.fichas;
 }
 if (nuevaYork.mapa) {
-  nuevaYork.mapa.addEventListener('click', function() {
+  nuevaYork.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(nuevaYork);
   });
 }
@@ -601,7 +601,7 @@ if (fichasYukonElemento) {
   fichasYukonElemento.textContent = yukon.fichas;
 }
 if (yukon.mapa) {
-  yukon.mapa.addEventListener('click', function() {
+  yukon.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(yukon);
   });
 }
@@ -618,7 +618,7 @@ if (fichasChinaElemento) {
   fichasChinaElemento.textContent = china.fichas;
 }
 if (china.mapa) {
-  china.mapa.addEventListener('click', function() {
+  china.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(china);
   });
 }
@@ -634,7 +634,7 @@ if (fichasJaponElemento) {
   fichasJaponElemento.textContent = japon.fichas;
 }
 if (japon.mapa) {
-  japon.mapa.addEventListener('click', function() {
+  japon.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(japon);
   });
 }
@@ -650,7 +650,7 @@ if (fichasIranElemento) {
   fichasIranElemento.textContent = iran.fichas;
 }
 if (iran.mapa) {
-  iran.mapa.addEventListener('click', function() {
+  iran.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(iran);
   });
 }
@@ -666,7 +666,7 @@ if (fichasIsraelElemento) {
   fichasIsraelElemento.textContent = israel.fichas;
 }
 if (israel.mapa) {
-  israel.mapa.addEventListener('click', function() {
+  israel.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(israel);
   });
 }
@@ -682,7 +682,7 @@ if (fichasArabiaElemento) {
   fichasArabiaElemento.textContent = arabia.fichas;
 }
 if (arabia.mapa) {
-  arabia.mapa.addEventListener('click', function() {
+  arabia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(arabia);
   });
 }
@@ -698,7 +698,7 @@ if (fichasTurquiaElemento) {
   fichasTurquiaElemento.textContent = turquia.fichas;
 }
 if (turquia.mapa) {
-  turquia.mapa.addEventListener('click', function() {
+  turquia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(turquia);
   });
 }
@@ -714,7 +714,7 @@ if (fichasTartariaElemento) {
   fichasTartariaElemento.textContent = tartaria.fichas;
 }
 if (tartaria.mapa) {
-  tartaria.mapa.addEventListener('click', function() {
+  tartaria.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(tartaria);
   });
 }
@@ -730,7 +730,7 @@ if (fichasKamchatkaElemento) {
   fichasKamchatkaElemento.textContent = kamchatka.fichas;
 }
 if (kamchatka.mapa) {
-  kamchatka.mapa.addEventListener('click', function() {
+  kamchatka.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(kamchatka);
   });
 }
@@ -746,7 +746,7 @@ if (fichasTaimirElemento) {
   fichasTaimirElemento.textContent = taimir.fichas;
 }
 if (taimir.mapa) {
-  taimir.mapa.addEventListener('click', function() {
+  taimir.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(taimir);
   });
 }
@@ -762,7 +762,7 @@ if (fichasGobiElemento) {
   fichasGobiElemento.textContent = gobi.fichas;
 }
 if (gobi.mapa) {
-  gobi.mapa.addEventListener('click', function() {
+  gobi.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(gobi);
   });
 }
@@ -778,7 +778,7 @@ if (fichasIndiaElemento) {
   fichasIndiaElemento.textContent = india.fichas;
 }
 if (india.mapa) {
-  india.mapa.addEventListener('click', function() {
+  india.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(india);
   });
 }
@@ -794,7 +794,7 @@ if (fichasMalasiaElemento) {
   fichasMalasiaElemento.textContent = malasia.fichas;
 }
 if (malasia.mapa) {
-  malasia.mapa.addEventListener('click', function() {
+  malasia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(malasia);
   });
 }
@@ -810,7 +810,7 @@ if (fichasSiberiaElemento) {
   fichasSiberiaElemento.textContent = siberia.fichas;
 }
 if (siberia.mapa) {
-  siberia.mapa.addEventListener('click', function() {
+  siberia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(siberia);
   });
 }
@@ -826,7 +826,7 @@ if (fichasAralElemento) {
   fichasAralElemento.textContent = aral.fichas;
 }
 if (aral.mapa) {
-  aral.mapa.addEventListener('click', function() {
+  aral.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(aral);
   });
 }
@@ -842,7 +842,7 @@ if (fichasMongoliaElemento) {
   fichasMongoliaElemento.textContent = mongolia.fichas;
 }
 if (mongolia.mapa) {
-  mongolia.mapa.addEventListener('click', function() {
+  mongolia.mapa.addEventListener('click', function () {
     gestionarSeleccionReagrupacion(mongolia);
   });
 }
