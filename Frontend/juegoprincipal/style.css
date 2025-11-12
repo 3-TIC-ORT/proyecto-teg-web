@@ -66,13 +66,58 @@ left: 280px;
 top: -30%;
  
 }
-.timer{
-display: flexbox;
+
+#timer {
+  display: flexbox;
 position: absolute;
 left: 730px;
 top: 40px;
 width: 154px;
 height: 58px;
+
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#pauseBtn {
+  background-color: #f39c12;
+  color: white;
+}
+
+/* 🔒 Overlay oscuro cuando se pausa */
+#pauseOverlay {
+  display: none; /* empieza oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton {
+  background-color: #ffffff;
+  color: #222;
+  font-weight: bold;
+  width: 200px;
+  margin: 10px;
+  padding: 10px 0;
+}
+
+.boton:hover {
+  background-color: #ddd;
 }
 .todo{
 display: flex;
