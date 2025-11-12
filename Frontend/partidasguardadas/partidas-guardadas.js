@@ -1,4 +1,4 @@
-connect2Server
+connect2Server()
 let cantidadJugadores=localStorage.getItem("cantidad")
 PostEvent ("cantidadJugadores",{cantidadJugadores})
 

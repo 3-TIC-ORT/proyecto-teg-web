@@ -7,7 +7,7 @@ function leerPartidas() {
   try {
     return JSON.parse(fs.readFileSync("./joaco.json", "utf-8"));
   } catch {
-    return []; // si no existe o está vacío
+    return [];
   }
 }
 
@@ -15,7 +15,6 @@ subscribePOSTEvent("guardarPartida", (data) => {
   let partidas = leerPartidas();
 
   partidas.push({
-    fecha: new Date().toISOString(),
     partida: data,
   });
 
