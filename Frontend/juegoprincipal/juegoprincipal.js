@@ -1,5 +1,3 @@
-//connect2Server()
-//PostEvent("timer",{},)
 let cantidadJugadores =localStorage.getItem("lsnumeroJugadores")
 console.log (cantidadJugadores)
 
