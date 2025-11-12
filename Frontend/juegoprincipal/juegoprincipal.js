@@ -819,3 +819,7 @@ Array con todos los jugadores actuales: jugadores
 (Si por ejemplo hace falta que paises tiene el jugador 2, poné jugadores[1].paises)
 Objeto con todos los paises: paises 
 */
+localStorage.setItem("lsfase",maquinaDeFases)
+localStorage.setItem("cantidad",cantidadJugadores)
+localStorage.setItem("jugador",jugador)
+localStorage.setItem("lsjugadores",jugadores)
