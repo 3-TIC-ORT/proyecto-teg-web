@@ -1,15 +1,22 @@
 .todo{
   color: #000;
-
+  z-index: 5;
  font-family: "Inknut Antiqua";
  font-size: 12px;
  font-style: normal;
  font-weight: 700;
  line-height: normal;
 }
+.logo{
+  z-index: 5;
+  position: absolute;
+  top: 560px;
+  left: 1270px;
+  width: 100px;
+  height: 100px;
+}
 .paises{
   color: #000;
-
 font-family: "Inknut Antiqua";
 font-size: 12px;
 font-style: normal;
