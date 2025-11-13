@@ -1,8 +1,6 @@
 import fs from "fs";
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 
-startServer();
-
 function leerPartidas() {
   try {
     return JSON.parse(fs.readFileSync("./joaco.json", "utf-8"));
@@ -34,3 +32,6 @@ subscribePOSTEvent("ActualizarTimer", (data) => {
   segundosrestantes = data.segundos;
   return { ok: true };
 });
+
+
+startServer(3000);
