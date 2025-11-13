@@ -85,10 +85,28 @@ button {
   border-radius: 8px;
   cursor: pointer;
 }
-
+ .relleno1{
+  background-color:#1ABFED ;
+  position: absolute;
+  top: 610px;
+  left: 275px;
+  width: 1070px;
+  height: 30px;
+ }
+ .relleno2{
+  background-color:#1ABFED ;
+  position: absolute;
+  top: 0px;
+  left: 275px;
+  width: 1070px;
+  height: 30px;
+ }
 #pauseBtn {
-  background-color: #f39c12;
   color: white;
+  position: absolute;
+
+top: 580px;
+left: 5px;
 }
 
 /* 🔒 Overlay oscuro cuando se pausa */
@@ -215,11 +233,6 @@ position: absolute;
 top: 500px;
 left: 120px;
 }
-.pausar-partida{
-position: absolute;
-top: 100%;
-left: 5px;
-}
 .linea-medio{
 width: 275px;
 height: 100%;
@@ -245,9 +258,10 @@ border-right: 5px solid black;
   justify-content: center;
 }
 .japon{
+  font-size: 9px;
 position: absolute;
 top: 110px;
-left: 1285px;
+left: 1291px;
 rotate: 50.284deg;
 }
 .fichas-japon{
@@ -259,6 +273,7 @@ rotate: 50.284deg;
   left: 90px;
 }
 .china{
+  font-size: 11px;
 position: absolute;
 top: 200px;
 left: 1240px;
@@ -270,9 +285,9 @@ left: 1240px;
 }
 .kamchatka{
 position: absolute;
-top: 75px;
-left: 1182px;
-font-size: 10px;
+top: 71px;
+left: 1185px;
+font-size: 9px;
 rotate: -20.974deg;
 }
 .fichas-kamchatka{
@@ -281,6 +296,7 @@ rotate: -20.974deg;
   left: px;
 }
 .mongolia{
+  font-size: 11px;
 position: absolute;
 top: 160px;
 left: 1125px;
@@ -292,6 +308,7 @@ rotate: -12.689deg;
   left: 1140px;
 }
 .israel{
+  font-size: 11px;
 position: absolute;
 top: 330px;
 left: 1070px;
@@ -303,6 +320,7 @@ rotate: -26.584deg;
   left: 1110px;
 }
 .aral{
+  font-size: 11px;
 position: absolute;
 top: 100px;
 left: 1055px;
@@ -314,6 +332,7 @@ rotate: -39.729deg;
   left: 1070px;
 }
 .turquia{
+  font-size: 11px;
 position: absolute;
 top: 280px;
 left: 1085px;
@@ -325,6 +344,7 @@ rotate: -2.959deg;
  left: 1145px;
 }
 .arabia{
+  font-size: 11px;
 position: absolute;
 top: 340px;
 left: 1120px;
@@ -339,6 +359,7 @@ rotate: -26.584deg;
 position: absolute;
 top:290px;
 left: 1213px;
+font-size: 11px;
 }
 .fichas-india{
   position: absolute;
@@ -346,6 +367,7 @@ left: 1213px;
   left: 1213px;
 }
 .gobi{
+  font-size: 11px;
 position: absolute;
 top: 215px;
 left: 1165px;
@@ -357,6 +379,7 @@ rotate: -31.864deg;
   left: 1170px;
 }
 .malasia{
+  font-size: 11px;
 position: absolute;
 top: 280px;
 left: 1275px;
@@ -368,7 +391,8 @@ rotate: -62.915deg;
   left: 1270px;
 }
 .iran{
-position: absolute;
+  font-size: 11px;
+  position: absolute;
 top: 230px;
 left: 1120px;
 rotate: 36.548deg;
@@ -379,7 +403,8 @@ rotate: 36.548deg;
   left: 1155px; 
 }
 .siberia{
-position: absolute;
+  font-size: 11px;
+  position: absolute;
 top: 110px;
 left: 1130px;
 }
@@ -389,6 +414,7 @@ left: 1130px;
   left: 1105px;
 }
 .taimir{
+  font-size: 11px;
 position: absolute;
 top: 70px;
 left: 1120px;
@@ -400,6 +426,7 @@ rotate: -34.79deg;
   left: 1130px;
 }
 .tartaria{
+  font-size: 11px;
 position: absolute;
 top: 60px;
 left: 1080px;
@@ -412,6 +439,7 @@ rotate: -69.709deg;
 }
 
 .java{
+  font-size: 11px;
 position: absolute;
 left: 1300px;
 top: 370px;
@@ -423,6 +451,7 @@ rotate: -55.576deg;
   left: px;
 }
 .australia{
+  font-size: 11px;
   position: absolute;
   left: 1275px;
   top: 480px;
@@ -433,6 +462,7 @@ rotate: -55.576deg;
  left: 480px;
 }
 .borneo{
+  font-size: 11px;
 position: absolute;
 top: 365px;
 left: 1245px;
@@ -444,10 +474,12 @@ rotate: 86.094deg;
  left: 1250px;
 }
 .sumatra{
+  font-size: 9px;
   position: absolute;
   top: 415px;
-  left: 1167px;
+  left: 1175px;
   rotate: 53.626deg;
+  font-size: px;
 }
 .fichas-sumatra{
   position: absolute;
@@ -460,6 +492,7 @@ position: absolute;
 top: 497px;
 left: 605px;
 rotate: -54.494deg;
+font-size: 11px;
 }
 .fichas-argentina{
   position: absolute;
@@ -467,9 +500,10 @@ rotate: -54.494deg;
  left: 650px;
 }
 .uruguay{
+  font-size: 11px;
 position: absolute;
-top: 460px;
-left: 665px;
+top: 450px;
+left: 670px;
 rotate: -25.885deg;
 }
 .fichas-uruguay{
@@ -481,6 +515,7 @@ rotate: -25.885deg;
 position: absolute;
 top: 360px;
 left: 600px;
+font-size: 11px;
 }
 .fichas-peru{
   position: absolute;
@@ -491,6 +526,7 @@ left: 600px;
 position: absolute;
 top: 410px;
 left: 585px;
+font-size: 11px;
 }
 .fichas-colombia{
   position: absolute;
@@ -501,6 +537,7 @@ left: 585px;
 position: absolute;
 top: 400px;
 left: 690px;
+font-size: 11px;
 }
 .fichas-brasil{
  position: absolute;
@@ -513,6 +550,7 @@ position: absolute;
 top: 500px;
 left: 588px;
 rotate: -80.741deg;
+font-size: 11px;
 }
 .fichas-chile{
  position: absolute;
@@ -521,6 +559,7 @@ rotate: -80.741deg;
 }
 
 .canada{
+  font-size: 11px;
   position: absolute;
   top: 90px;
   left: 440px;
@@ -531,6 +570,7 @@ rotate: -80.741deg;
   left: 420px;
 }
 .california{
+  font-size: 11px;
 position: absolute;
 top: 260px;
 left: 420px;
@@ -544,6 +584,7 @@ left: 420px;
 position: absolute;
 top: 180px;
 left: 510px;
+font-size: 11px;
 }
 .fichas-terranova{
   position: absolute;
@@ -551,6 +592,7 @@ left: 510px;
   left: 560px;
 }
 .mexico{
+  font-size: 11px;
 position: absolute;
 top: 320px;
 left: 520px;
@@ -561,6 +603,7 @@ left: 520px;
   left: 490px;
 }
 .yukon{
+  font-size: 11px;
 position: absolute;
 top: 160px;
 left: 360px;
@@ -571,6 +614,7 @@ left: 360px;
   left: 390px;
 }
 .alaska{
+  font-size: 11px;
 position: absolute;
 top: 210px;
 left: 300px;
@@ -581,8 +625,9 @@ left: 300px;
   left: 305px;
 }
 .nuevaYork{
+  font-size: 11px;
 position: absolute;
-top: 219px;
+top: 210px;
 left: 475px;
 }
 .fichas-nuevayork{
@@ -591,6 +636,7 @@ left: 475px;
   left: 480px;
 }
 .oregon{
+  font-size: 11px;
 position: absolute;
 top: 240px;
 left: 360px;
@@ -601,9 +647,10 @@ left: 360px;
   left: 350px;
 }
 .labrador{
+  font-size: 10px;
 position: absolute;
-top: 132px;
-left: 540px;
+top: 135px;
+left: 537px;
 }
 .fichas-labrador{
   position: absolute;
@@ -611,6 +658,7 @@ left: 540px;
   left: 540px;
 }
 .groenlandia{
+  font-size: 11px;
 position: absolute ;
 top: 53px;
 left: 600px;
@@ -622,6 +670,7 @@ left: 600px;
 }
 
 .espana{
+  font-size: 11px;
 position: absolute;
 top: 350px;
 left: 820px;
@@ -637,6 +686,7 @@ position: absolute;
 top: 280px;
 left: 890px;
 rotate: -27.8deg;
+font-size: 11px;
 }
 .fichas-francia{
   position: absolute;
@@ -644,6 +694,7 @@ rotate: -27.8deg;
   left: 910px;
 }
 .alemania{
+  font-size: 11px;
 position: absolute;
 top: 280px;
 left: 955px;
@@ -659,6 +710,7 @@ position: absolute;
 top: 250px;
 left: 1005px;
 rotate: -2.959deg;
+font-size: 11px;
 }
 .fichas-polonia{
   position: absolute;
@@ -670,6 +722,7 @@ position:absolute;
 top: 230px;
 left: 835px;
 rotate: -26.93deg;
+font-size: 11px;
 }
 .fichas-bretana{
   position: absolute;
@@ -677,6 +730,7 @@ rotate: -26.93deg;
   left: 850px;
 }
 .islandia{
+  font-size: 11px;
 position: absolute;
 top: 200px;
 left: 725px;
@@ -692,6 +746,7 @@ position: absolute;
 top: 350px;
 left:  960px;
 rotate: 64.444deg;
+font-size: 11px;
 }
 .fichas-italia{
   position: absolute;
@@ -702,6 +757,7 @@ rotate: 64.444deg;
 position: absolute;
 top: 180px;
 left: 1020px;
+font-size: 11px;
 }
 .fichas-rusia{
   position: absolute;
@@ -709,6 +765,7 @@ left: 1020px;
   left: 1060px;
 }
 .suecia{
+  font-size: 11px;
 position: absolute;
 top: 120px;
 left: 910px;
@@ -725,6 +782,7 @@ position: absolute;
 top: 420px;
 left: 910px;
 rotate: -17.162deg;
+font-size: 11px;
 }
 .fichas-sahara{
   position: absolute;
@@ -736,6 +794,7 @@ position: absolute;
 top: 505px;
 left: 1095px;
 rotate: -76.904deg;
+font-size: 11px;
 }
 .fichas-madagascar{
   position: absolute;
@@ -743,6 +802,7 @@ rotate: -76.904deg;
   left: 1090px;
 }
 .sudafrica{
+  font-size: 11px;
 position: absolute;
 top: 525px;
 left: 1010px;
@@ -754,6 +814,7 @@ rotate: -42.892deg;
   left: 1045px;
 }
 .egipto{
+  font-size: 11px;
 position: absolute;
 top: 420px;
 left: 1045px;
@@ -765,6 +826,7 @@ rotate: 15.172deg;
   left: 1070px;
 }
 .etiopia{
+  font-size: 11px;
  position: absolute;
  top: 460px;
 left: 1020px;
@@ -779,6 +841,7 @@ rotate: 15.878deg;
   position: absolute;
   top: 480px;
   left: 970px;
+  font-size: 11px;
 }
 .fichas-zaire{
   position: absolute;
