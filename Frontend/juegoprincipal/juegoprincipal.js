@@ -82,7 +82,7 @@ botonGuardar.addEventListener("click", function () {
 });
 
 //ejemplo de get event
-GetEvent("timer", targetDate)
+getEvent ("timer", targetDate)
 //termine el  timer
 //
 // Maquina de estados finitos

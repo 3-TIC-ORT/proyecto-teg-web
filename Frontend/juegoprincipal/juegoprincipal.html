@@ -17,6 +17,9 @@
 <!--inknut antiqua--><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
   <body>
+<img class="logo" src="../imagenes/logo.svg" alt="logo">
+    <div class="relleno1"></div>
+    <div class="relleno2"></div>
    <img src="../imagenes/MAPA PAra fronts.svg" alt="foto"class="foto">
     <div class="color-jugador" id="color-jugador"></div>
   <button class="Reponer todo" id="Reponer"  > Reponer fichas</button>
@@ -86,7 +89,7 @@
     <div class="tirar1 todo" id="tirar1"  >tirar</div>
     <div class="tirar2 todo" id="tirar2"  >tirar</div>
     <h1 id="timer">04:00</h1>
-    <button id="pauseBtn">Pausar</button>
+    
   
     <!-- 🕹️ Overlay de pausa -->
     <div id="pauseOverlay">
@@ -94,14 +97,14 @@
       <button id="boton2" class="boton boton2">Reanudar</button>
       <button id="boton3" class="boton boton3">Guardar y salir</button>
     </div>
-    <a class="pausar-partida" href="../menu%20pausa/pausa.html">
+    <button class="pausar-partida" id="pauseBtn">
       ⏸️
-  </a>
+    </button>
    <div id="paisselecionado" class="paises">
       <button id="mover-fichas-btn">Mover Fichas</button>
       <div class="linea-medio"></div>
-      <!-- <img src="../imagenes/fondo del costado.svg" alt="fondo del costado" class="fondo-costado"></img> -->
-
+      <img src="../imagenes/fondo del costado.svg" alt="fondo del costado" class="fondo-costado"></img>
+    
 
   <div class="americadelsur">
     <div class="argentina" id="argentina">Argentina</div><span class="fichas fichas-argentina" id="fichas-argentina"></span>
@@ -165,7 +168,7 @@
     <div id="arabia" class="arabia">Arabia</div><span id="fichas-arabia" class="fichas fichas-arabia"></span>
     <div id="turquia" class="turquia">Turquía</div><span id="fichas-turquia" class="fichas fichas-turquia"></span>
     <div id="tartaria" class="tartaria">Tartaria</div><span id="fichas-tartaria" class="fichas fichas-tartaria"></span>
-    <div id="kamchatka" class="kamchatka>Kamchatka</div><span id="fichas-kamchatka" class="fichas fichas-kamchatka"></span>
+    <div id="kamchatka" class="kamchatka">Kamchatka</div><span id="fichas-kamchatka" class="fichas fichas-kamchatka"></span>
     <div id="taimir" class="taimir">Taymir</div><span id="fichas-taimir" class="fichas fichas-taimir"></span>
     <div id="gobi" class="gobi">Gobi</div><span id="fichas-gobi" class="fichas fichas-gobi"></span>
     <div id="india" class="india">India</div><span id="fichas-india" class="fichas fichas-india"></span>
