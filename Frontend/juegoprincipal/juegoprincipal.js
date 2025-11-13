@@ -61,6 +61,15 @@ pauseBtn.addEventListener("click", function () {
   clearInterval(timerInterval);
   remainingTime = targetDate - new Date();
   overlay.style.display = "flex";
+  if(pauseBtn===true){
+  PostEvent ("cantidadJugadores",{cantidadJugadores})
+    
+    PostEvent ("faseDeEstados",{fase})
+    
+    PostEvent("jugador",{jugador})
+    
+    PostEvent("jugadores", {jugadores})
+  }
 });
 
 // 🟢 Botón de Reanudar
@@ -73,7 +82,7 @@ botonReanudar.addEventListener("click", function () {
 
 // 📘 Botón de Reglamento
 botonReglamento.addEventListener("click", function () {
-  alert("Aquí podrías mostrar el reglamento o abrir una nueva ventana con él.");
+  window.open("reglamento.html");
 });
 
 // 💾 Botón Guardar y salir
@@ -863,14 +872,3 @@ Array con todos los jugadores actuales: jugadores
 (Si por ejemplo hace falta que paises tiene el jugador 2, poné jugadores[1].paises)
 Objeto con todos los paises: paises 
 */
-localStorage.setItem("lsfase",maquinaDeFases)
-localStorage.setItem("cantidad",cantidadJugadores)
-localStorage.setItem("jugador",jugador)
-localStorage.setItem("lsjugadores",jugadores)
-PostEvent ("cantidadJugadores",{cantidadJugadores})
-
-PostEvent ("faseDeEstados",{fase})
-
-PostEvent("jugador",{jugador})
-
-PostEvent("jugadores", {jugadores})
