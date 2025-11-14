@@ -93,10 +93,25 @@ botonGuardar.addEventListener("click", function () {
 //ejemplo de get event
 getEvent ("timer", targetDate)
 //termine el  timer
-//
-// Maquina de estados finitos
-//
-//let cantidadJugadores = prompt("¿Cuántos jugadores?");
+//esto es para estandarizar los nombres de cosas
+function idFromName(nombre) {
+  return nombre
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+}
+
+function getPaisByNameFlexible(nombre) {
+  if (paises[nombre]) return paises[nombre];
+  const objetivo = idFromName(nombre);
+  for (const key of Object.keys(paises)) {
+    if (idFromName(key) === objetivo) return paises[key];
+  }
+  return null;
+}
+
+
 const botonAtacar = document.getElementById("atacar");
 const botonDadosAtacante = document.getElementById("tirar1");
 const botonDadosAtacado = document.getElementById("tirar2");
@@ -161,7 +176,6 @@ function repartirPaises() {
     console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
   });
 }
-//este cantidadJugadores lo uso para hacer pruebas
 /*
 let cantidadJugadores
 
@@ -172,8 +186,9 @@ do {
   isNaN(cantidadJugadores) || cantidadJugadores < 3 || cantidadJugadores > 6 ||
   !Number.isInteger(cantidadJugadores)
 );
-console.log(`Se jugará con ${cantidadJugadores} jugadores.`);
 */
+console.log(`Se jugará con ${cantidadJugadores} jugadores.`);
+
 
 const colores = ["rojo", "azul", "verde", "amarillo", "rosa", "negro"];
 
@@ -205,7 +220,7 @@ function terminarTurno() {
       paisesBloqueados.clear();
       console.log(`Turno del siguiente jugador: ${jugadorActual().nombre}`);
     }
-    
+
     actualizarFase();
   } else {
     console.log("Este boton no tiene efecto en la fase actual.");
@@ -365,13 +380,13 @@ function crearHandlers(pais) {
 }
 
 const nombresPaises = [
-  // América del Sur
-  "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
-  // América del Norte
-  "México", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregon", "Nueva York", "Yukon",
+  // America del Sur
+  "Argentina", "Brasil", "Chile", "Uruguay", "Peru", "Colombia",
+  // America del Norte
+  "Mexico", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregon", "Nueva York", "Yukon",
   // Europa
   "Islandia", "GranBretana", "Francia", "Alemania", "Italia", "Espana", "Polonia", "Suecia", "Rusia",
-  // africa
+  // Africa
   "Sahara", "Egipto", "Zaire", "Etiopia", "Sudafrica", "Madagascar",
   // Asia
   "Arabia", "Turquia", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japon", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
@@ -380,24 +395,24 @@ const nombresPaises = [
 ];
 
 const fronteras = {
-  //América del sur
-  Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
-  Chile: ["Argentina", "Perú", "Australia"],
+  //America del sur
+  Argentina: ["Chile", "Uruguay", "Brasil", "Peru"],
+  Chile: ["Argentina", "Peru", "Australia"],
   Uruguay: ["Argentina", "Brasil"],
-  Brasil: ["Uruguay", "Argentina", "Perú", "Colombia", "Sahara"],
+  Brasil: ["Uruguay", "Argentina", "Peru", "Colombia", "Sahara"],
   Peru: ["Chile", "Brasil", "Colombia", "Argentina"],
-  Colombia: ["Brasil", "Perú", "México"],
-  //América del Norte
+  Colombia: ["Brasil", "Peru", "Mexico"],
+  //America del Norte
   Mexico: ["Colombia", "California"],
-  California: ["México", "Nueva York", "Oregon"],
-  Oregon: ["California", "Nueva York", "Canada", "Yukon", "Alaska"],
+  California: ["Mexico", "NuevaYork", "Oregon"],
+  Oregon: ["California", "NuevaYork", "Canada", "Yukon", "Alaska"],
   NuevaYork: ["California", "Oregon", "Canada", "Terranova", "Groenlandia"],
   Alaska: ["Kamchatka", "Oregon", "Yukon"],
   Yukon: ["Alaska", "Oregon", "Canada"],
   Canada: ["Yukon", "Oregon", "Nueva York", "Terranova"],
-  Terranova: ["Nueva York", "Canada", "Labrador"],
+  Terranova: ["NuevaYork", "Canada", "Labrador"],
   Labrador: ["Terranova", "Groenlandia"],
-  Groenlandia: ["Nueva York", "Labrador", "Islandia"],
+  Groenlandia: ["NuevaYork", "Labrador", "Islandia"],
   //Europa
   Islandia: ["Groenlandia", "GranBretana", "Suecia"],
   GranBretana: ["Islandia", "Espana", "Alemania", "Suecia"],
@@ -438,13 +453,8 @@ const fronteras = {
 };
 
 nombresPaises.forEach(nombre => {
-  const idHTML = nombre
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "-");
-
-  let pais = {
+  const idHTML = idFromName(nombre);
+  const pais = {
     nombre,
     mapa: document.getElementById(idHTML),
     fichas: 1,
@@ -452,10 +462,9 @@ nombresPaises.forEach(nombre => {
     seleccionado: false,
     paisesLimitrofes: fronteras[nombre] || []
   };
-
   pais.handlers = crearHandlers(pais);
 
-  let fichasElemento = document.getElementById("fichas-" + idHTML);
+  const fichasElemento = document.getElementById("fichas-" + idHTML);
   if (fichasElemento) {
     fichasElemento.textContent = pais.fichas;
   }
@@ -463,46 +472,11 @@ nombresPaises.forEach(nombre => {
   paises[nombre] = pais;
 });
 
-
 console.log("Paises TEG inicializados correctamente:", paises);
-
-function repartirPaises() {
-  let paisesDisponibles = Object.keys(paises);
-
-  for (let i = paisesDisponibles.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]];
-  }
-
-  let indiceJugador = 0;
-  while (paisesDisponibles.length > 0) {
-    const pais = paisesDisponibles.pop();
-    const jugador = jugadores[indiceJugador % jugadores.length];
-
-    jugador.agregarPais(pais);
-    paises[pais].duenio = jugador;
-
-    paises[pais].fichas = 1;
-
-    const idHTML = pais.toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
-    const fichasEl = document.getElementById("fichas-" + idHTML);
-    if (fichasEl) fichasEl.textContent = paises[pais].fichas;
-
-    indiceJugador++;
-  }
-
-  console.log("Paises repartidos entre los jugadores:");
-  jugadores.forEach(j => {
-    console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
-  });
-}
 
 repartirPaises();
 
-// Le doy ficahas de mas a argentina y chile para hacer pruebas
+// Le doy ficahas de mas a argentina  y chile para hacer pruebas
 if (paises["Argentina"]) {
   paises["Argentina"].fichas = 10;
   const el = document.getElementById("fichas-argentina");
@@ -618,33 +592,64 @@ function ataqueResolucion() {
   console.log("Resolviendo combate...");
   console.log("Dados Atacante:", dadosAtacante, "Dados Atacado:", dadosAtacado);
 
+  const atacanteObj = getPaisByNameFlexible(paisAtacante.nombre);
+  const atacadoObj = getPaisByNameFlexible(paisAtacado.nombre);
+
   while (dadosAtacante.length > i && dadosAtacado.length > i) {
     if (dadosAtacante[i] > dadosAtacado[i]) {
-      paisAtacado.fichas--;
-      console.log(`El atacado pierde 1 ficha. (${paisAtacado.nombre}: ${paisAtacado.fichas})`);
+      atacadoObj.fichas--;
+      console.log(`El atacado pierde 1 ficha. (${atacadoObj.nombre}: ${atacadoObj.fichas})`);
     } else {
-      paisAtacante.fichas--;
-      console.log(`El atacante pierde 1 ficha. (${paisAtacante.nombre}: ${paisAtacante.fichas})`);
+      atacanteObj.fichas--;
+      console.log(`El atacante pierde 1 ficha. (${atacanteObj.nombre}: ${atacanteObj.fichas})`);
     }
     i++;
   }
 
   try {
-    const idAt = paisAtacante.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
-    const idDef = paisAtacado.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+    const idAt = idFromName(atacanteObj.nombre);
+    const idDef = idFromName(atacadoObj.nombre);
     const elAt = document.getElementById(`fichas-${idAt}`);
     const elDef = document.getElementById(`fichas-${idDef}`);
-    if (elAt) elAt.textContent = paisAtacante.fichas;
-    if (elDef) elDef.textContent = paisAtacado.fichas;
+    if (elAt) elAt.textContent = atacanteObj.fichas;
+    if (elDef) elDef.textContent = atacadoObj.fichas;
   } catch (e) {
+    console.error(e);
+  }
+
+  if (atacadoObj.fichas <= 0) {
+    console.log(`${atacanteObj.nombre} conquistó ${atacadoObj.nombre}!`);
+
+    const nuevoDuenio = atacanteObj.duenio;
+    atacadoObj.duenio = nuevoDuenio;
+
+    nuevoDuenio.agregarPais(atacadoObj.nombre);
+
+    const atacado = jugadores.find(j => j.paises.includes(atacadoObj.nombre) && j !== nuevoDuenio);
+    if (atacado) atacado.quitarPais(atacadoObj.nombre);
+
+    const maxMovibles = atacanteObj.fichas - 1;
+    let mover = parseInt(prompt(`Conquistaste ${atacadoObj.nombre}! ¿Cuántas fichas querés mover desde ${atacanteObj.nombre}? (1-${maxMovibles})`), 10);
+
+    if (isNaN(mover) || mover < 1 || mover > maxMovibles) mover = 1; 
+
+    atacanteObj.fichas -= mover;
+    atacadoObj.fichas = mover;
+
+    const elAt = document.getElementById(`fichas-${idFromName(atacanteObj.nombre)}`);
+    const elDef = document.getElementById(`fichas-${idFromName(atacadoObj.nombre)}`);
+    if (elAt) elAt.textContent = atacanteObj.fichas;
+    if (elDef) elDef.textContent = atacadoObj.fichas;
+
+    console.log(`${nuevoDuenio.nombre} ahora posee ${atacadoObj.nombre} con ${mover} fichas.`);
   }
 
   if (botonDadosAtacante) botonDadosAtacante.disabled = true;
   if (botonDadosAtacado) botonDadosAtacado.disabled = true;
   if (botonAtacar) botonAtacar.disabled = false;
   estadoAtaque = "esperando";
-
 }
+
 
 let estadoAtaque = "esperando";
 
@@ -801,18 +806,18 @@ function gestionarSeleccionReagrupacion(pais) {
 if (botonMoverFichas) {
   botonMoverFichas.addEventListener("click", () => {
     if (maquinaDeFases.state !== "fase de reagrupacion") {
-      console.log("Solo podés mover fichas en la fase de reagrupación.");
+      console.log("Solo podes mover fichas en la fase de reagrupación.");
       return;
     }
 
     if (paisesSeleccionados.length !== 2) {
-      console.log("Tenés que seleccionar 2 países aliados y limítrofes primero.");
+      console.log("Tenes que seleccionar 2 países aliados y limítrofes primero.");
       return;
     }
 
-    const [nombreOrigen, nombreDestino] = paisesSeleccionados;
+    const [nombreOrigen, nombreReceptor] = paisesSeleccionados;
     const paisEmisor = paises[nombreOrigen];
-    const paisReceptor = paises[nombreDestino];
+    const paisReceptor = paises[nombreReceptor];
 
     paisEmisor.fichasRecibidas = paisEmisor.fichasRecibidas || 0;
     paisReceptor.fichasRecibidas = paisReceptor.fichasRecibidas || 0;
@@ -824,7 +829,7 @@ if (botonMoverFichas) {
     }
 
     const cantidad = parseInt(
-      prompt(`¿Cuántas fichas querés mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}? (máx ${fichasDisponibles - 1})`),
+      prompt(`¿Cuántas fichas queres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}? (máx ${fichasDisponibles - 1})`),
       10
     );
 
@@ -838,16 +843,20 @@ if (botonMoverFichas) {
 
     paisReceptor.fichasRecibidas += cantidad;
 
-    const idOrigen = paisEmisor.nombre.toLowerCase().replace(/\s+/g, "-");
-    const idDestino = paisReceptor.nombre.toLowerCase().replace(/\s+/g, "-");
-    document.getElementById(`fichas-${idOrigen}`).textContent = paisEmisor.fichas;
-    document.getElementById(`fichas-${idDestino}`).textContent = paisReceptor.fichas;
+    const idOrigen = idFromName(paisEmisor.nombre);
+    const idReceptor = idFromName(paisReceptor.nombre);
+
+    const elOrigen = document.getElementById(`fichas-${idOrigen}`);
+    const elReceptor = document.getElementById(`fichas-${idReceptor}`);
+
+    if (elOrigen) elOrigen.textContent = paisEmisor.fichas;
+    if (elReceptor) elReceptor.textContent = paisReceptor.fichas;
 
     console.log("Movimiento de fichas realizado:", {
       origen: paisEmisor.nombre,
-      destino: paisReceptor.nombre,
+      receptor: paisReceptor.nombre,
       cantidad,
-      bloqueadasEnDestino: paisReceptor.fichasRecibidas
+      bloqueadasEnReceptor: paisReceptor.fichasRecibidas
     });
 
     console.log("Estado actualizado:", [
@@ -859,9 +868,12 @@ if (botonMoverFichas) {
   });
 }
 
+//
+//reposicion
+//
 
 actualizarFase(); 
-siguienteJugador
+
 
 /*
 Variables que necesita el back (Joaco más te vale hacer algo con esto)
