@@ -3,6 +3,10 @@ h1{
     left: 1300px;
     top: 50px;
 }
+.imagen{
+    width:100%;
+    height:100%;
+    position: absolute;
 .botones{
   
     position: absolute;
