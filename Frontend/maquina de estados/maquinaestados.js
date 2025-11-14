@@ -1,3 +1,4 @@
+//esto es para estandarizar los nombres de cosas
 function idFromName(nombre) {
   return nombre
     .toLowerCase()
@@ -284,7 +285,7 @@ function crearHandlers(pais) {
 
 const nombresPaises = [
   // America del Sur
-  "Argentina", "Brasil", "Chile", "Uruguay", "Perú", "Colombia",
+  "Argentina", "Brasil", "Chile", "Uruguay", "Peru", "Colombia",
   // America del Norte
   "Mexico", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregon", "Nueva York", "Yukon",
   // Europa
@@ -299,12 +300,12 @@ const nombresPaises = [
 
 const fronteras = {
   //America del sur
-  Argentina: ["Chile", "Uruguay", "Brasil", "Perú"],
-  Chile: ["Argentina", "Perú", "Australia"],
+  Argentina: ["Chile", "Uruguay", "Brasil", "Peru"],
+  Chile: ["Argentina", "Peru", "Australia"],
   Uruguay: ["Argentina", "Brasil"],
-  Brasil: ["Uruguay", "Argentina", "Perú", "Colombia", "Sahara"],
+  Brasil: ["Uruguay", "Argentina", "Peru", "Colombia", "Sahara"],
   Peru: ["Chile", "Brasil", "Colombia", "Argentina"],
-  Colombia: ["Brasil", "Perú", "Mexico"],
+  Colombia: ["Brasil", "Peru", "Mexico"],
   //America del Norte
   Mexico: ["Colombia", "California"],
   California: ["Mexico", "NuevaYork", "Oregon"],
@@ -805,6 +806,9 @@ if (botonMoverFichas) {
   });
 }
 
+//
+//reposicion
+//
 
 actualizarFase(); 
 
