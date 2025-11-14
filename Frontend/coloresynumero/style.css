@@ -1,3 +1,7 @@
+body{
+    width: 100%;
+    height: 100%;
+}
 h1{
     position: absolute;
     left: 1300px;
@@ -5,8 +9,11 @@ h1{
 }
 .imagen{
     width:100%;
-    height:100%;
-    position: absolute;
+   height: -10%;
+   position:absolute;
+   top: 0px;
+   left: 0px;
+    
 }
 .botones{
   
@@ -38,3 +45,37 @@ h1{
     top: 400px;
     left: 700px;
 }
+/* Contenedor general de los selectores */
+#selectores {
+    background-color: #f0f0f0; /* Fondo claro */
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Cada bloque de jugador */
+  .seleccion-jugador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  /* Etiqueta del jugador */
+  .seleccion-jugador label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  /* Selector de color */
+  .seleccion-jugador select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 14px;
+    width: 150px;
+  }
+  
