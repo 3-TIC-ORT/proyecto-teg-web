@@ -361,7 +361,7 @@ nombresPaises.forEach(nombre => {
   const pais = {
     nombre,
     mapa: document.getElementById(idHTML),
-    fichas: 1,
+    fichas: 2,
     fichasRecibidas: 0,
     seleccionado: false,
     paisesLimitrofes: fronteras[nombre] || []
@@ -377,40 +377,6 @@ nombresPaises.forEach(nombre => {
 });
 
 console.log("Paises TEG inicializados correctamente:", paises);
-
-function repartirPaises() {
-  let paisesDisponibles = Object.keys(paises);
-
-  for (let i = paisesDisponibles.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]];
-  }
-
-  let indiceJugador = 0;
-  while (paisesDisponibles.length > 0) {
-    const pais = paisesDisponibles.pop();
-    const jugador = jugadores[indiceJugador % jugadores.length];
-
-    jugador.agregarPais(pais);
-    paises[pais].duenio = jugador;
-
-    paises[pais].fichas = 1;
-
-    const idHTML = pais.toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
-    const fichasEl = document.getElementById("fichas-" + idHTML);
-    if (fichasEl) fichasEl.textContent = paises[pais].fichas;
-
-    indiceJugador++;
-  }
-
-  console.log("Paises repartidos entre los jugadores:");
-  jugadores.forEach(j => {
-    console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
-  });
-}
 
 repartirPaises();
 
