@@ -71,6 +71,7 @@ height: 1000px;
 position: absolute;
 left: 280px;
 top: -30%;
+z-index: 3;
  
 }
 
@@ -99,8 +100,10 @@ button {
   left: 275px;
   width: 1070px;
   height: 30px;
+  z-index: 4;
  }
  .relleno2{
+   z-index: 4;
   background-color:#1ABFED ;
   position: absolute;
   top: 0px;
@@ -242,12 +245,13 @@ left: 120px;
 }
 .linea-medio{
 width: 275px;
-height: 100%;
+height: 640px;
 position: absolute;
 top: 0%;
 left: 0%;
 display: inline-block;
 border-right: 5px solid black;
+z-index: 7;
 }
 .fondo-costado{
   left: 0%;
