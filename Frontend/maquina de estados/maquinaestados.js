@@ -858,3 +858,4 @@ function asignarFicha(pais) {
 
 actualizarFase() 
 
+//commit de prueba
