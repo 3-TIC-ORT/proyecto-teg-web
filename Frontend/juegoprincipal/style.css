@@ -268,6 +268,67 @@ z-index: 7;
   align-items: center;
   justify-content: center;
 }
+.fichas-amrillas{
+    width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+}
+.fichas-rojas{
+      width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+.fichas-azules{}
+    width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+}
+.fichas-rosas{
+      width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+}
+.fichas-negras{
+      width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.fichas-verdes{
+      width: 20px; /* Ancho del círculo */
+  height: 20px; /* Altura del círculo */
+  border-radius: 50%; /* Esto lo convierte en un círculo */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+
 .japon{
   font-size: 9px;
 position: absolute;
