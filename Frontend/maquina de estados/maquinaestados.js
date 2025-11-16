@@ -1,3 +1,5 @@
+let paises = {}
+let paisSeleccionadoReposicion = null;
 //esto es para estandarizar los nombres de cosas
 function idFromName(nombre) {
   return nombre
@@ -51,10 +53,12 @@ class Jugador {
 function repartirPaises() {
   let paisesDisponibles = Object.keys(paises)
 
-  for (let i = paisesDisponibles.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]]
-  }
+for (let i = paisesDisponibles.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1)); 
+  const tmp = paisesDisponibles[i];
+  paisesDisponibles[i] = paisesDisponibles[j];
+  paisesDisponibles[j] = tmp;
+}
 
   let indiceJugador = 0
   while (paisesDisponibles.length > 0) {
@@ -119,19 +123,18 @@ function siguienteJugador() {
 function terminarTurno() {
   if (maquinaDeFases.state === 'fase de reagrupacion' || maquinaDeFases.state === 'fase de reposicion') {
     maquinaDeFases.transition('click')
-    function siguienteJugador() {
-      turnoActual = (turnoActual + 1) % cantidadJugadores
-      paisesBloqueados.clear()
-      console.log(`Turno del siguiente jugador: ${jugadorActual().nombre}`)
-    }
-
+    siguienteJugador()
+    if (typeof paisesBloqueados !== 'undefined' && paisesBloqueados.clear) paisesBloqueados.clear()
     actualizarFase()
   } else {
     console.log("Este boton no tiene efecto en la fase actual.")
   }
 }
-const jugadorActualElemento = document.getElementById("jugadorActual")
 
+const jugadorActualElemento = document.getElementById("jugadorActual")
+if (!jugadorActualElemento) {
+  console.warn('No se encontró el elemento #jugadorActual — asegurate que exista en el HTML antes de ejecutar este script.')
+}
 function actualizarJugadorActual() {
   const jugador = jugadorActual()
   jugadorActualElemento.textContent = `Turno de: ${jugador.nombre.toUpperCase()} (${jugador.color})`
@@ -140,6 +143,9 @@ function actualizarJugadorActual() {
 // Maquina de estados finitos
 cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3))
 const faseActual = document.getElementById('faseActual')
+if (!faseActual) {
+  console.warn('No se encontró el elemento #faseActual')
+}
 
 class fasesMachine {
   constructor() {
@@ -229,9 +235,9 @@ function actualizarListeners() {
 
     if (maquinaDeFases.state === "fase de ataque") {
       pais.mapa.addEventListener("click", clickAtaque)
-    } else if (maquinaDeFases.state === "fase de reagrupacion") {
-      pais.mapa.addEventListener("click", clickReagrupacion)
-    } else {
+    } else if (maquinaDeFases.state === "fase de reposicion") {
+    pais.mapa.addEventListener("click", pais.handlers.clickReposicion);
+} else {
     }
   })
 
@@ -247,7 +253,9 @@ function actualizarListeners() {
   }
   if (typeof botonDadosAtacado !== "undefined" && botonDadosAtacado) {
     botonDadosAtacado.disabled = true
-  }
+  } else if (maquinaDeFases.state === "fase de reposicion") {
+    pais.mapa.addEventListener("click", pais.handlers.clickReposicion)
+}
 }
 
 
@@ -274,14 +282,26 @@ if (botonTerminarTurno) botonTerminarTurno.addEventListener('click', terminarTur
 //
 //paises
 //
-let paises = {}
 
 function crearHandlers(pais) {
   return {
     clickAtaque: () => gestionarSeleccionAtaque(pais),
-    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais)
+    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais),
+    clickReposicion: () => {
+    if (maquinaDeFases.state !== "fase de reposicion") return;
+
+    if (pais.duenio !== jugadorActual()) {
+        console.log("Solo podés poner fichas en tus países.");
+        return;
+    }
+
+    paisSeleccionadoReposicion = pais;
+    console.log("Seleccionaste " + pais.nombre);
+}
+
   }
 }
+
 
 const continentes = {
   "america-del-norte": {
@@ -802,60 +822,114 @@ if (botonMoverFichas) {
 //
 //reposicion
 //
+const botonReponer = document.getElementById("botonReponer");
+const menuReponer = document.getElementById("menuReponer");
+const selectReponer = document.getElementById("selectReponer");
+const botonAgregarFichas = document.getElementById("botonAgregarFichas");
+botonAgregarFichas.addEventListener("click", () => {
+    const jugador = jugadorActual();
+    const pais = paisSeleccionadoReposicion;
+    const cant = Number(selectReponer.value);
 
-function calcularfichasDisponibles(jugadorId) {
-  let paisesDelJugador = Object.values(paises).filter(
-    p => p.ocupadoPor === jugadorId
-  );
+    let restante = cant;
 
-  let cantidadPaises = paisesDelJugador.length;
+    // Usar bonus primero
+    const usarBonus = Math.min(jugador.fichasBonus, restante);
+    jugador.fichasBonus -= usarBonus;
+    restante -= usarBonus;
 
-  let fichasDisponibles = Math.floor(cantidadPaises / 2);
-  if (fichasDisponibles < 3) fichasDisponibles = 3; 
+    // Luego base
+    jugador.fichasBase -= restante;
 
-  for (const [nombreContinente, data] of Object.entries(continentes)) {
-    let controlaTodo = data.paises.every(nombrePais => {
-      return paises[nombrePais].ocupadoPor === jugadorId;
-    });
+    pais.fichas += cant;
 
-    if (controlaTodo) {
-      fichasDisponibles += data.bonus;
-      console.log(`BONUS: ${jugadorId} controla ${nombreContinente} (+${data.bonus})`);
+    // actualizar UI
+    document.getElementById("fichas-" + idFromName(pais.nombre)).textContent = pais.fichas;
+
+    console.log(`+${cant} fichas en ${pais.nombre}`);
+
+    menuReponer.style.display = "none";
+
+    if (jugador.fichasBonus <= 0 && jugador.fichasBase <= 0) {
+        console.log("Reposición finalizada.");
+        botonReponer.disabled = true;
+        maquinaDeFases.transition("finReposicion");
     }
-  }
+});
 
-  return fichasDisponibles;
+botonReponer.addEventListener("click", () => {
+    if (maquinaDeFases.state !== "fase de reposicion") return;
+
+    if (!paisSeleccionadoReposicion) {
+        console.log("Seleccioná un país propio primero.");
+        return;
+    }
+
+    const jugador = jugadorActual();
+
+    let max = jugador.fichasBonus > 0 ? jugador.fichasBonus : jugador.fichasBase;
+
+    selectReponer.innerHTML = "";
+    for (let i = 1; i <= max; i++) {
+        const op = document.createElement("option");
+        op.value = i;
+        op.textContent = i;
+        selectReponer.appendChild(op);
+    }
+
+    menuReponer.style.display = "block";
+});
+
+if (this.state === "fase de reposicion") {
+    const jugador = jugadorActual();
+
+    jugador.fichasBase = calcularReposicionBase(jugador);
+    jugador.fichasBonus = calcularBonusContinentes(jugador);
+
+    console.log(`Reposición — Base: ${jugador.fichasBase}, Bonus: ${jugador.fichasBonus}`);
+
+    document.getElementById("botonReponer").disabled = false;
 }
 
-if (maquinaDeFases.state === "fase de reposicion") {
-  const jugadorActual = jugadores[turnoActual];
-  jugadorActual.fichasDisponibles = calcularfichasDisponibles(jugadorActual.id);
-  console.log(`El jugador ${jugadorActual.id} tiene ${jugadorActual.fichasDisponibles} fichas`);
+function gestionarReposicion(pais) {
+  const jugador = jugadorActual()
+
+  if (!jugador.fichasParaPoner || jugador.fichasParaPoner <= 0) {
+    console.log("No te quedan fichas para poner.")
+    return
+  }
+
+  if (pais.duenio !== jugador) {
+    console.log("Solo podes poner fichas en tus paises.")
+    return
+  }
+
+  pais.fichas++
+  jugador.fichasParaPoner--
+
+  const el = document.getElementById("fichas-" + idFromName(pais.nombre))
+  if (el) el.textContent = pais.fichas
+
+  console.log(`Pusiste 1 ficha en ${pais.nombre}. Quedan: ${jugador.fichasParaPoner}.`)
+
+  if (jugador.fichasParaPoner <= 0) {
+    console.log(`${jugador.nombre} terminó su reposición.`)
+  }
 }
-function asignarFicha(pais) {
-  const jugadorActual = jugadores[turnoActual];
 
-  if (maquinaDeFases.state !== "fase de reposicion") {
-    console.log("No estás en fase de reposición");
-    return;
-  }
-
-  if (pais.ocupadoPor !== jugadorActual.id) {
-    console.log("Solo podés reforzar tus propios países");
-    return;
-  }
-
-  if (jugadorActual.refuerzosDisponibles <= 0) {
-    console.log("No te quedan refuerzos");
-    return;
-  }
-
-  pais.fichas++;
-  jugadorActual.refuerzosDisponibles--;
-
-  console.log(`Reforzado ${pais.nombre}. Quedan ${jugadorActual.refuerzosDisponibles}`);
+function calcularReposicionBase(jugador) {
+  const cantidad = Math.floor(jugador.paises.length / 2);
+  return Math.max(1, cantidad); // mínimo 1
 }
+
+function calcularBonusContinentes(jugador) {
+  let bonus = 0;
+  for (const cont of Object.values(continentes)) {
+    const domina = cont.paises.every(p => paises[p].duenio === jugador);
+    if (domina) bonus += cont.bonus;
+  }
+  return bonus;
+}
+
 
 actualizarFase() 
-
-//commit de prueba
