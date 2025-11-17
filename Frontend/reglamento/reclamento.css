@@ -1,0 +1,38 @@
+ :root{--bg:#f7f7f8;--accent:#0b66ff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:var(--bg);color:#111}
+    .wrap{max-width:1100px;margin:28px auto;padding:18px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 6px 22px rgba(15,15,15,0.06);overflow:hidden}
+
+    /* MAIN VIEW */
+    .stage{position:relative}
+    .main-image{display:block;width:100%;height:auto}
+
+    /* Hotspot */
+    .interactive-hotspot{
+      position:absolute;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      padding:6px 10px;
+      cursor:pointer;
+      border:2px solid rgba(255,255,255,0.6);
+      font-weight:600;
+      background: rgba(255,255,255,0.06);
+    }
+    .interactive-hotspot:focus{outline:3px solid rgba(11,102,255,0.18)}
+    .hotspot-text{pointer-events:none}
+
+    /* Instructivo view */
+    .instruction-panel{display:none;padding:18px}
+    .instruction-panel.active{display:block}
+    .instruction-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .btn-back{background:#fff;border:1px solid #e6e6e9;padding:8px 10px;border-radius:8px;cursor:pointer}
+    .instruction-sections{margin-top:12px}
+    .instruction-section{padding:10px;border-radius:8px;background:#fcfcfe;margin-bottom:10px}
+
+    @media (max-width:600px){
+      .interactive-hotspot{padding:8px 12px;font-size:14px}
+    }
+    .hint{font-size:13px;color:#666;margin:10px 0}
