@@ -18,60 +18,56 @@ let objectives = [
 let selectedPlayers = [];
 let playerObjectives = {};
 let i = 0;
-let timeoutId = null; // ← guarda el temporizador activo
 
-function startSequence() {
-  selectedPlayers = Array.from(
-    document.querySelectorAll('.selector input[type="checkbox"]:checked')
-  ).map(cb => cb.value);
-
-  if (selectedPlayers.length === 0) {
-    alert("Seleccioná al menos un jugador.");
+window.onload = () => {
+  const data = localStorage.getItem("jugadoresSeleccionados");
+  if (!data) {
+    alert("No se encontraron jugadores seleccionados.");
+    window.location.href = "seleccion.html";
     return;
   }
 
-  // Asignar objetivos aleatorios únicos
+  selectedPlayers = JSON.parse(data);
   let mezcla = objectives.sort(() => 0.5 - Math.random());
-  selectedPlayers.forEach((player, i) => {
-    playerObjectives[player] = mezcla[i % objectives.length];
+  selectedPlayers.forEach((player, idx) => {
+    playerObjectives[player] = mezcla[idx % objectives.length];
   });
 
-  i = 0;
   showNextPlayer();
-}
+};
 
 function showNextPlayer() {
   let player = selectedPlayers[i];
   document.getElementById("reveal-instructions").innerHTML =
-    `EXCEPTO EL JUGADOR ${player.toUpperCase()}<br>CUANDO TODOS CIERREN LOS OJOS,<br>EL JUGADOR ${player.toUpperCase()} DEBE APRETAR EL BOTÓN DE REVELAR OBJETIVO SECRETO`;
+    `¡MÍRALO RÁPIDO Y NO LO COMPARTAS!<br>Y ¡ASEGÚRATE QUE NADIE ESTÉ VIENDO!<br><br>
+    TODOS CIERRAN LOS OJOS EXCEPTO <b>${player.toUpperCase()}</b><br>
+    CUANDO TODOS CIERREN LOS OJOS, <b>${player.toUpperCase()}</b> DEBE APRETAR EL BOTÓN`;
+
   document.getElementById("objective").style.display = "none";
+  const btn = document.getElementById("action-button");
+  btn.innerText = "REVELAR OBJETIVO SECRETO";
+  btn.onclick = showObjective;
   document.getElementById("overlay").style.display = "flex";
 }
 
 function showObjective() {
   let player = selectedPlayers[i];
   document.getElementById("objective").innerText =
-    `Objetivo secreto del jugador ${player.toUpperCase()}:\n\n${playerObjectives[player]}`;
+    `CONQUISTAR “${playerObjectives[player]}”`;
   document.getElementById("objective").style.display = "block";
 
-  // Cancelar cualquier temporizador previo
-  if (timeoutId) clearTimeout(timeoutId);
-
-  // Mostrar el objetivo durante 5 segundos (5000 ms)
-  timeoutId = setTimeout(nextObjective, 5000);
+  const btn = document.getElementById("action-button");
+  btn.innerText = "SIGUIENTE JUGADOR";
+  btn.onclick = nextObjective;
 }
 
 function nextObjective() {
-  // Cancelar el temporizador si se pasa manualmente
-  if (timeoutId) clearTimeout(timeoutId);
-  timeoutId = null;
-
   i++;
   if (i < selectedPlayers.length) {
     showNextPlayer();
   } else {
     document.getElementById("overlay").style.display = "none";
     alert("Todos los objetivos fueron revelados. ¡A jugar!");
+    localStorage.removeItem("jugadoresSeleccionados");
   }
 }
-
