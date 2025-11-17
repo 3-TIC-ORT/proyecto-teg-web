@@ -20,7 +20,7 @@ let playerObjectives = {};
 let i = 0;
 
 window.onload = () => {
-  const data = localStorage.getItem("jugadoresSeleccionados");
+  const data = localStorage.getItem("lsnumeroJugadores");
   if (!data) {
     alert("No se encontraron jugadores seleccionados.");
     window.location.href = "seleccion.html";
