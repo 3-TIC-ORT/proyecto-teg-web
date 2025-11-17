@@ -1,32 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-     <!-- Link al CSS -->
-     <link rel="stylesheet" href="style.css" />
-     <!-- Link al JS. El 'defer' hace que se ejecute AL FINAL, después de haber cargado el html inicial -->
-     <script src="main.js" defer ></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>objetivos secretos</title>
-    <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objetivos secretos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="selector">
-        <label>Seleccionar jugadores:</label>
-        <label><input type="checkbox" value="azul"> Azul</label>
-        <label><input type="checkbox" value="amarillo"> Amarillo</label>
-        <label><input type="checkbox" value="rojo"> Rojo</label>
-        <label><input type="checkbox" value="negro"> Negro</label>
-        <label><input type="checkbox" value="verde"> Verde</label>
-        <label><input type="checkbox" value="rosa"> Rosa</label>
-        <button onclick="startSequence()">Iniciar revelación</button>
-      </div>
-      
-      <div id="overlay" class="overlay" style="display:none;">
-        <h1 id="reveal-title">TODOS CIERRAN LOS OJOS</h1>
-        <p id="reveal-instructions"></p>
-        <button onclick="showObjective()">REVELAR OBJETIVO SECRETO</button>
-        <div id="objective" class="objective" style="display:none;"></div>
-      </div>
+  <div id="overlay" class="overlay" style="display:none;">
+    <div class="card">
+      <h1>OBJETIVO SECRETO</h1>
+      <p id="reveal-instructions"></p>
+      <button id="action-button">REVELAR OBJETIVO SECRETO</button>
+      <div id="objective" class="objective" style="display:none;"></div>
+    </div>
+  </div>
 </body>
 </html>
