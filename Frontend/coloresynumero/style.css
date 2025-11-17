@@ -1,4 +1,5 @@
 
+
 body{
     width: 100%;
     height: 100%;
@@ -10,12 +11,12 @@ h1{
 }
 .imagen{
     width:100%;
-    height: auto; /* corregido */
+    height: auto; 
     position:absolute;
     top: 0px;
     left: 0px;
-    z-index: -1; /* no tapa elementos interactivos */
-    pointer-events: none; /* clics pasan a elementos encima */
+    z-index: -1; 
+    pointer-events: none; 
 }
 .botones{
     position: absolute;
@@ -25,11 +26,13 @@ h1{
     background-color: #000;
     border-color: #BC9720;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start; 
+    align-items: center; 
+    padding-left: 12px; 
     color: #fff;
     border-width: 5px;
     z-index: 5;
+    text-align: left;
 }
 .boton3{
     top:120px;
@@ -52,15 +55,15 @@ h1{
   z-index: 5;
 }
 
-/* Contenedor general de los selectores */
+
 #selectores {
-    background-color: #f0f0f0; /* Fondo claro */
+    background-color: #f0f0f0; 
     padding: 20px;
     border-radius: 10px;
     width: 320px;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none; /* oculto hasta generar */
+    display: none; 
     position: absolute;
     top: 220px;
     left: 50%;
@@ -68,7 +71,7 @@ h1{
     z-index: 10;
   }
   
-  /* Cada bloque de jugador */
+
   .seleccion-jugador {
     display: flex;
     align-items: center;
@@ -76,13 +79,13 @@ h1{
     margin-bottom: 15px;
   }
   
-  /* Etiqueta del jugador */
+  
   .seleccion-jugador label {
     font-weight: bold;
     margin-right: 10px;
   }
   
-  /* Selector de color */
+ 
   .seleccion-jugador select {
     padding: 5px;
     border-radius: 5px;
@@ -90,6 +93,32 @@ h1{
     background-color: white;
     font-size: 14px;
     width: 160px;
+    height: 100px;
   }
+  .foto{  
+    width: 150px;
+    height: 150px;
+    z-index: 100;}
+  .foto3{
+    position: absolute;
+    top: 130px;
+    left: 390px;
+  }
+  .foto4{
+    position: absolute;
+    top: 130px;
+    left: 790px;
+  }
+  .foto5{
+    position: absolute;
+    top: 410px;
+    left: 390px;
+  }
+  .foto6{
+    position: absolute;
+    top: 410px;
+    left: 790px;
+  }
+
 
   

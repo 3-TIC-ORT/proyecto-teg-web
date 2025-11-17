@@ -1,3 +1,4 @@
+// ...existing code...
 let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
@@ -27,10 +28,21 @@ window.onload = () => {
     return;
   }
 
-  selectedPlayers = data;
-  let mezcla = objectives.sort(() => 0.5 - Math.random());
+  // data viene como cadena con la cantidad de jugadores; convertir y crear array de jugadores
+  const cantidad = parseInt(data, 10);
+  if (isNaN(cantidad) || cantidad <= 0) {
+    alert("Número de jugadores inválido.");
+    window.location.href = "seleccion.html";
+    return;
+  }
+
+  // Generar lista de jugadores: ["Jugador 1", "Jugador 2", ...]
+  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador color ${localStorage.getItem("lscolores").split(",")[idx]} ${idx + 1}`);
+
+  // mezclar objetivos sin mutar el array original
+  let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
   selectedPlayers.forEach((player, idx) => {
-    playerObjectives[player] = mezcla[idx % objectives.length];
+    playerObjectives[player] = mezcla[idx % mezcla.length];
   });
 
   showNextPlayer();
@@ -68,6 +80,8 @@ function nextObjective() {
   } else {
     document.getElementById("overlay").style.display = "none";
     alert("Todos los objetivos fueron revelados. ¡A jugar!");
-    localStorage.removeItem("jugadoresSeleccionados");
+    //postEvent ("objetivosJugadores", {playerObjectives});
+    // redirigir al juego principal
+    window.location.href = "../juegoprincipal/juegoprincipal.html";
   }
 }
