@@ -27,7 +27,7 @@ window.onload = () => {
     return;
   }
 
-  selectedPlayers = JSON.parse(data);
+  selectedPlayers = data;
   let mezcla = objectives.sort(() => 0.5 - Math.random());
   selectedPlayers.forEach((player, idx) => {
     playerObjectives[player] = mezcla[idx % objectives.length];
