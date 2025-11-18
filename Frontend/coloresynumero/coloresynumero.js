@@ -1,7 +1,5 @@
-// ...existing code...
 let todosLosColores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 
-// Mapa de nombres a colores CSS
 const colorMap = {
   "Azul": "blue",
   "Rojo": "red",
@@ -23,9 +21,13 @@ function aplicarColorAlSelect(selector) {
 function generarSelectores(cantidadJugadores) {
   let contenedor = document.getElementById("selectores");
   contenedor.innerHTML = "";
-  contenedor.style.display = "block"; // mostrar el contenedor
+  contenedor.style.display = "block";
 
-  // ocultar los botones al seleccionar cantidad de jugadores (si existe)
+  // Mostrar flechas
+  document.getElementById("flecha-izquierda").style.display = "block";
+  document.getElementById("flecha-derecha").style.display = "block";
+
+  // Ocultar botones de cantidad de jugadores
   const botonesCont = document.querySelector(".botones-jugadores");
   if (botonesCont) botonesCont.style.display = "none";
 
@@ -38,7 +40,6 @@ function generarSelectores(cantidadJugadores) {
 
     let selector = document.createElement("select");
     selector.id = `jugador${i}`;
-    // al cambiar, actualizar opciones y aplicar color
     selector.onchange = () => {
       actualizarOpciones(cantidadJugadores);
       aplicarColorAlSelect(selector);
@@ -51,7 +52,6 @@ function generarSelectores(cantidadJugadores) {
 
   actualizarOpciones(cantidadJugadores);
 
-  // Aplicar color inicial (si algún select ya tiene valor)
   for (let i = 0; i < cantidadJugadores; i++) {
     aplicarColorAlSelect(document.getElementById(`jugador${i}`));
   }
@@ -90,7 +90,6 @@ function actualizarOpciones(cantidadJugadores) {
       opcion.value = color;
       opcion.textContent = color;
 
-      // aplicar estilo a la opción (nota: algunos navegadores ignoran estilos en <option>)
       const cssColor = colorMap[color] || "";
       if (cssColor) {
         opcion.style.backgroundColor = cssColor;
@@ -102,7 +101,6 @@ function actualizarOpciones(cantidadJugadores) {
       selector.appendChild(opcion);
     });
 
-    // aplicar color al select mismo para que se vea el color seleccionado
     aplicarColorAlSelect(selector);
   }
 
@@ -123,3 +121,19 @@ function verificarColoresSeleccionados() {
   window.location.href = "../objetivos/objetivos.html";
   return true;
 }
+
+function volverASeleccionJugadores() {
+  // Ocultar el contenedor de selects
+  document.getElementById("selectores").style.display = "none";
+
+  // Ocultar flechas
+  document.getElementById("flecha-izquierda").style.display = "none";
+  document.getElementById("flecha-derecha").style.display = "none";
+
+  // Mostrar botones de cantidad de jugadores
+  const botonesCont = document.querySelector(".botones-jugadores");
+  if (botonesCont) botonesCont.style.display = "block";}
+  function volverAlMenuPrincipal() {
+    window.location.href = "../menu%20principal/menuprincipal.html";
+  }
+  

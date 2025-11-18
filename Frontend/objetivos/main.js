@@ -40,10 +40,37 @@ window.onload = () => {
   selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador color ${localStorage.getItem("lscolores").split(",")[idx]} ${idx + 1}`);
 
   // mezclar objetivos sin mutar el array original
-  let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
-  selectedPlayers.forEach((player, idx) => {
-    playerObjectives[player] = mezcla[idx % mezcla.length];
-  });
+  // mezclar objetivos sin mutar el array original
+let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
+
+// colores usados por los jugadores
+let coloresJugadores = localStorage.getItem("lscolores").split(",");
+
+// Asignar objetivos evitando que un jugador reciba "destruir su propio color"
+selectedPlayers.forEach((player, idx) => {
+
+  let colorJugador = coloresJugadores[idx]; // Azul, Rojo, Amarillo, etc.
+
+  // Objetivo prohibido para este jugador
+  let objetivoProhibido = `Destruir al ejército ${colorJugador.toLowerCase()}`;
+
+  // Buscar un objetivo válido
+  let objetivoAsignado = mezcla.find(obj => 
+    obj.toLowerCase() !== objetivoProhibido.toLowerCase()
+  );
+
+  // Si no se encuentra un objetivo válido (muy improbable), usar uno de dominio
+  if (!objetivoAsignado) {
+    objetivoAsignado = mezcla.find(obj => !obj.startsWith("Destruir"));
+  }
+
+  // Guardar el objetivo
+  playerObjectives[player] = objetivoAsignado;
+
+  // Sacarlo de la lista para evitar duplicados
+  mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
+});
+
 
   showNextPlayer();
 };
