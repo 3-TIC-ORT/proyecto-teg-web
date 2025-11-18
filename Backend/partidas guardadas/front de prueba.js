@@ -1,69 +1,95 @@
 const timerDisplay = document.getElementById("timer");
 const btnGuardar = document.getElementById("btn-guardar");
 const mensajeServidor = document.getElementById("mensaje-servidor");
-const elementosJugadores = document.querySelectorAll(".jugador");
+const elementosJugadores = document.querySelectorAll(".jugador-btn");
 
-// Conectarse al servidor
-connect2Server();
-
-// TIMER
-let segundosActuales = 270; // 4:30
+// --- Variables del Timer
+const TIEMPO_TOTAL_SEGUNDOS = 270; // 4 minutos y 30 segundos
+let segundosActuales = TIEMPO_TOTAL_SEGUNDOS;
 let timerInterval;
 
-// Formato mm:ss
+// Paso 1: Conexión al servidor
+// Es crucial usar el puerto 3000 para coincidir con tu startServer(3000).
+connect2Server(3000);
+
+
+// --- Lógica del Temporizador
+
 function formatoTiempo(segundos) {
-    const min = Math.floor(segundos / 60);
-    const sec = segundos % 60;
-    return `${min}:${sec < 10 ? "0" + sec : sec}`;
+    const minutos = Math.floor(segundos / 60);
+    const seg = segundos % 60;
+    const segFormato = seg < 10 ? `0${seg}` : seg;
+    return `${minutos}:${segFormato}`;
 }
 
 function actualizarTimer() {
     segundosActuales--;
     timerDisplay.innerText = formatoTiempo(segundosActuales);
 
-    // Enviar al backend
-    postEvent("ActualizarTimer", { segundos: segundosActuales });
-
     if (segundosActuales <= 0) {
         clearInterval(timerInterval);
-        mensajeServidor.innerText = "¡Tiempo agotado!";
+        mensajeServidor.innerText = "¡Tiempo de turno agotado!";
         btnGuardar.disabled = true;
     }
 }
 
 function iniciarTimer() {
-    // Pedir al backend el valor real del timer
-    getEvent("ObtenerTimer", (r) => {
-        segundosActuales = r.segundos;
-        timerDisplay.innerText = formatoTiempo(segundosActuales);
-
-        timerInterval = setInterval(actualizarTimer, 1000);
-    });
+    timerDisplay.innerText = formatoTiempo(segundosActuales);
+    // Usa setInterval para decrementar cada segundo
+    timerInterval = setInterval(actualizarTimer, 1000);
 }
 
-// GUARDAR PARTIDA
+
+// --- Manejador del Botón Guardar (Secuencia de POST)
+
 function handleGuardar() {
+    // 1. Detener el temporizador y deshabilitar el botón
+    // Se frena el contador y se captura el valor exacto (requisito)
     clearInterval(timerInterval);
+    btnGuardar.disabled = true;
 
-    const jugadores = Array.from(elementosJugadores).map(j => j.dataset.color);
+    // 2. Recolectar la data del frontend
+    const coloresJugadores = Array.from(elementosJugadores).map(el => el.getAttribute('data-color'));
 
-    const data = {
-        jugadores,
-        tiempoRestante: segundosActuales
-    };
+    // El backend almacena el timer en milisegundos (240000ms = 4 minutos), así que enviamos el dato en ese formato.
+    const tiempoRestanteMS = segundosActuales * 1000;
 
-    mensajeServidor.innerText = "Guardando...";
+    mensajeServidor.innerText = `Detenido en ${formatoTiempo(segundosActuales)}. Sincronizando estado en el backend...`;
 
-    postEvent("guardarPartida", data, (resp) => {
-        if (resp.ok) {
-            mensajeServidor.innerText = "✔ Partida guardada correctamente.";
-        } else {
-            mensajeServidor.innerText = "❌ Error al guardar.";
+    // 3. SECUENCIA DE COMUNICACIÓN CON EL BACKEND (Comunicación iniciada por el frontend)
+
+    // El orden de las llamadas es crucial para que el 'estadoActual' del backend se actualice correctamente.
+
+    // A. POST: Actualizar Jugadores
+    // Llama a subscribePOSTEvent("jugadores", ...)
+    postEvent("jugadores", { jugadores: coloresJugadores }, (resJugadores) => {
+        if (!resJugadores.ok) {
+            mensajeServidor.innerText = "❌ Error al sincronizar jugadores.";
+            return;
         }
+
+        // B. POST: Actualizar Timer
+        // Llama a subscribePOSTEvent("ActualizarTimer", ...)
+        postEvent("ActualizarTimer", { timer: tiempoRestanteMS }, (resTimer) => {
+            if (!resTimer.ok) {
+                mensajeServidor.innerText = "❌ Error al sincronizar timer.";
+                return;
+            }
+
+            // C. POST: Ejecutar el Guardado en Archivo
+            // Llama a subscribePOSTEvent("guardarPartida", ...)
+            // Esta función usa el 'estadoActual' que acabamos de construir.
+            postEvent("guardarPartida", null, (resGuardado) => {
+                if (resGuardado.ok) {
+                    mensajeServidor.innerText = `✅ ¡Partida Guardada! Datos enviados: ${coloresJugadores.join(', ')} y tiempo restante: ${formatoTiempo(segundosActuales)}.`;
+                } else {
+                    mensajeServidor.innerText = `❌ Error al guardar archivo.`;
+                }
+            });
+        });
     });
 }
 
+// --- Inicialización
 btnGuardar.addEventListener("click", handleGuardar);
-
-// Iniciar todo
 iniciarTimer();
