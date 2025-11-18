@@ -17,23 +17,24 @@
 </head>
 
 <body>
-  <button id="openCardsBtn">Ver cartas</button>
+   <button id="atacar">Atacar</button>
 
   <!-- Overlay -->
-  <div id="cardsOverlay" class="overlay" hidden></div>
+  <div id="overlay" class="overlay" hidden></div>
 
-  <!-- Dialog -->
-  <div id="cardsDialog" class="dialog" hidden>
+  <!-- Popup -->
+  <div id="popup" class="popup" hidden>
     <header>
-      <h2>Cartas</h2>
-      <button id="closeDialogBtn">&times;</button>
+      <h2>Carta obtenida</h2>
+      <button id="cerrar">&times;</button>
     </header>
-    <section id="cardsGrid" class="cards-grid">
-      <!-- Se inyectan las 3 cartas vía JS -->
-    </section>
+    <div id="popupContent" class="popup-content">
+      <!-- Aquí se inyecta la carta obtenida -->
+    </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Contenedor de todas las cartas acumuladas -->
+  <div id="cartasContainer" class="cartas-container"></div>
 </body>
 </html>
 

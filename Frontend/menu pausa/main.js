@@ -1,42 +1,59 @@
 // app.js
 
 const cartas = [
-  { nombre: "barco", src: "../imagenes/cartaBarco.svg" },
+ { nombre: "barco", src: "../imagenes/cartaBarco.svg" },
   { nombre: "cañon", src: "../imagenes/cartaCañon.svg" },
   { nombre: "globo", src: "../imagenes/cartaGlobo.svg" },
   { nombre: "todas", src: "../imagenes/cartaTodas.svg" }
 ];
 
-const openBtn = document.getElementById("openCardsBtn");
-const overlay = document.getElementById("cardsOverlay");
-const dialog = document.getElementById("cardsDialog");
-const closeBtn = document.getElementById("closeDialogBtn");
-const grid = document.getElementById("cardsGrid");
+const atacarBtn = document.getElementById("atacar");
+const overlay = document.getElementById("overlay");
+const popup = document.getElementById("popup");
+const cerrarBtn = document.getElementById("cerrar");
+const popupContent = document.getElementById("popupContent");
+const container = document.getElementById("cartasContainer");
 
-function renderCartas() {
-  grid.innerHTML = "";
-  cartas.forEach(c => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${c.src}" alt="${c.nombre}">
-      <p>${c.nombre}</p>
-    `;
-    grid.appendChild(card);
-  });
+let cartasObtenidas = [];
+
+function obtenerCartaRandom() {
+  const randomIndex = Math.floor(Math.random() * cartas.length);
+  return cartas[randomIndex];
 }
 
-function openDialog() {
-  renderCartas();
+function mostrarPopup(carta) {
+  popupContent.innerHTML = `
+    <img src="${carta.src}" alt="${carta.nombre}">
+    <p>${carta.nombre}</p>
+  `;
   overlay.hidden = false;
-  dialog.hidden = false;
+  popup.hidden = false;
 }
 
-function closeDialog() {
+function cerrarPopup() {
   overlay.hidden = true;
-  dialog.hidden = true;
+  popup.hidden = true;
 }
 
-openBtn.addEventListener("click", openDialog);
-overlay.addEventListener("click", closeDialog);
-closeBtn.addEventListener("click", closeDialog);
+function agregarCarta() {
+  const carta = obtenerCartaRandom();
+  cartasObtenidas.push(carta);
+
+  // Mostrar en el contenedor acumulado
+  const cardEl = document.createElement("div");
+  cardEl.className = "carta";
+  cardEl.innerHTML = `
+    <img src="${carta.src}" alt="${carta.nombre}">
+    <p>${carta.nombre}</p>
+  `;
+  container.appendChild(cardEl);
+
+  // Mostrar popup con la carta obtenida
+  mostrarPopup(carta);
+
+  console.log("Cartas obtenidas:", cartasObtenidas);
+}
+
+atacarBtn.addEventListener("click", agregarCarta);
+cerrarBtn.addEventListener("click", cerrarPopup);
+overlay.addEventListener("click", cerrarPopup);
