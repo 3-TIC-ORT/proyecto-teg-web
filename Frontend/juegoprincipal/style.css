@@ -288,7 +288,7 @@ z-index: 7;
   justify-content: center;
   background-color: red;
 }
-.fichas-azules{}
+.fichas-azules{
     width: 20px; /* Ancho del círculo */
   height: 20px; /* Altura del círculo */
   border-radius: 50%; /* Esto lo convierte en un círculo */
@@ -337,12 +337,12 @@ left: 1291px;
 rotate: 50.284deg;
 }
 .fichas-japon{
-  width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+  /* width: 20px; /* Ancho del círculo 
+  height: 20px; Altura del círculo 
+  border-radius: 50%; /* Esto lo convierte en un círculo 
   position: absolute;
   top: 5%;
-  left: 90px;
+  left: 90px; */
 }
 .china{
   font-size: 11px;
