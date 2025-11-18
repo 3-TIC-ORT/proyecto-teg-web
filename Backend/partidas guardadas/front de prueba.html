@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo TEG: Sistema de Guardado</title>
+    <title>Demo TEG: Guardado y Sincronización</title>
 
+    <!-- Scripts requeridos por SoqueTIC -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
 
-    <script defer src="front de prueba.js"></script>
-
+    <script defer src="script.js"></script>
     <style>
         body { font-family: sans-serif; padding: 20px; }
-        #timer { font-size: 2.5em; font-weight: bold; color: darkred; }
-        #btn-guardar { padding: 10px 20px; font-size: 1.2em; cursor: pointer; }
-        .jugador { padding: 5px; margin-bottom: 5px; border: 1px solid #ccc; }
+        .jugadores button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #333;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        #timer { font-size: 3em; font-weight: bold; color: darkred; }
+        #btn-guardar { padding: 15px 30px; font-size: 1.5em; background-color: #007bff; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 
 <body>
 
-    <h1>TEG (Dominación Mundial)</h1>
+    <h1>TEG - Sistema de Guardado</h1>
 
+    <!-- Display del Temporizador (4:30 = 270 segundos) -->
     <h2>Turno Actual</h2>
     <p>Tiempo Restante: <span id="timer">4:30</span></p>
 
-    <h2>Jugadores en Partida</h2>
-    <div class="jugador" data-color="Rojo">Jugador 1 (Rojo)</div>
-    <div class="jugador" data-color="Azul">Jugador 2 (Azul)</div>
-    <div class="jugador" data-color="Verde">Jugador 3 (Verde)</div>
+    <!-- Jugadores (Implementados como botones) -->
+    <section>
+        <h2>Jugadores en Partida</h2>
+        <div class="jugadores">
+            <!-- Usamos data-color para simular la información a guardar -->
+            <button class="jugador-btn" data-color="Rojo">Jugador 1 (Rojo)</button>
+            <button class="jugador-btn" data-color="Azul">Jugador 2 (Azul)</button>
+            <button class="jugador-btn" data-color="Verde">Jugador 3 (Verde)</button>
+            <button class="jugador-btn" data-color="Amarillo">Jugador 4 (Amarillo)</button>
+        </div>
+    </section>
 
     <hr>
 
-    <button id="btn-guardar">💾 GUARDAR PARTIDA</button>
+    <!-- Botón de Guardado -->
+    <button id="btn-guardar">💾 GUARDAR ESTADO ACTUAL</button>
 
-    <p>Estado del Guardado: <strong id="mensaje-servidor">Esperando acción...</strong></p>
+    <p>Estado del Guardado: <strong id="mensaje-servidor">Esperando conexión...</strong></p>
 
 </body>
+
 </html>
