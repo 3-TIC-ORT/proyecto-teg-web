@@ -1,110 +1,61 @@
-// Datos de hotspots (cada parte del reglamento)
-   const hotspotsData = [
-     { id: 'h1', label: 'Artículo 1', top: 12, left: 8, width: 18, height: 8,
-       sectionTitle: 'Artículo 1: Normas Generales',
-       sectionText: '<p>Este artículo establece las normas generales de convivencia y respeto entre los miembros.</p>' },
-     { id: 'h2', label: 'Artículo 2', top: 28, left: 50, width: 20, height: 8,
-       sectionTitle: 'Artículo 2: Derechos',
-       sectionText: '<p>Los miembros tienen derecho a participar en todas las actividades y recibir información clara.</p>' },
-     { id: 'h3', label: 'Artículo 3', top: 45, left: 30, width: 22, height: 9,
-       sectionTitle: 'Artículo 3: Obligaciones',
-       sectionText: '<p>Los miembros deben cumplir con las normas establecidas y respetar las decisiones del comité.</p>' },
-     { id: 'h4', label: 'Artículo 4', top: 62, left: 65, width: 20, height: 9,
-       sectionTitle: 'Artículo 4: Sanciones',
-       sectionText: '<p>El incumplimiento de las normas podrá derivar en sanciones proporcionales a la falta cometida.</p>' },
-     { id: 'h5', label: 'Artículo 5', top: 80, left: 20, width: 20, height: 9,
-       sectionTitle: 'Artículo 5: Disposiciones Finales',
-       sectionText: '<p>Este reglamento entra en vigor a partir de su aprobación y podrá ser modificado por mayoría.</p>' }
-   ];
+  const hotspotsData = [
+      { id: 'h1', label: 'Objetivo del juego', sectionTitle: 'Objetivo del juego', sectionText: '<p>El objetivo del juego es completar todas las misiones antes que los demás jugadores.</p>' },
+      { id: 'h2', label: 'Preparación', sectionTitle: 'Preparación', sectionText: '<p>Coloca el tablero en el centro, reparte las cartas y asigna los roles.</p>' },
+      { id: 'h3', label: 'Turno de un jugador', sectionTitle: 'Turno de un jugador', sectionText: '<p>En cada turno, un jugador puede moverse, usar habilidades o interactuar con el entorno.</p>' },
+      { id: 'h4', label: 'Fin de ronda', sectionTitle: 'Fin de ronda', sectionText: '<p>La ronda termina cuando todos los jugadores han completado su turno.</p>' },
+      { id: 'h5', label: 'Cómo ganar', sectionTitle: 'Cómo ganar', sectionText: '<p>Gana el jugador que logre completar todas sus misiones primero.</p>' },
+      { id: 'h6', label: 'Consejos', sectionTitle: 'Consejos', sectionText: '<p>Planifica tus movimientos, colabora con otros y aprovecha tus habilidades especiales.</p>' }
+    ];
 
-   const mainStageEl = document.getElementById('mainStage');
-   const instructionPanelEl = document.getElementById('instructionPanel');
-   const instructionSectionsEl = document.getElementById('instructionSections');
-   const backButtonEl = document.getElementById('backButton');
+    const mainStageEl = document.getElementById('mainStage');
+    const instructionPanelEl = document.getElementById('instructionPanel');
+    const instructionSectionsEl = document.getElementById('instructionSections');
+    const backButtonEl = document.getElementById('backButton');
 
-   function renderHotspots(){
-     while (mainStageEl.querySelector('.interactive-hotspot')) {
-       mainStageEl.querySelector('.interactive-hotspot').remove();
-     }
-     hotspotsData.forEach(h => {
-       const btn = document.createElement('button');
-       btn.className = 'interactive-hotspot';
-       btn.setAttribute('data-id', h.id);
-       btn.setAttribute('aria-label', h.label);
-       btn.tabIndex = 0;
-       btn.style.top = h.top + '%';
-       btn.style.left = h.left + '%';
-       btn.style.width = h.width + '%';
-       btn.style.height = h.height + '%';
-       const span = document.createElement('span');
-       span.className = 'hotspot-text';
-       span.innerText = h.label;
-       btn.appendChild(span);
-       btn.addEventListener('click', () => openInstructionForHotspot(h.id));
-       mainStageEl.appendChild(btn);
-     });
-   }
+    function renderHotspots() {
+      hotspotsData.forEach(h => {
+        const btn = document.createElement('button');
+        btn.className = 'interactive-hotspot';
+        btn.setAttribute('data-id', h.id);
+        btn.innerText = h.label;
+        btn.addEventListener('click', () => openInstructionForHotspot(h.id));
+        mainStageEl.appendChild(btn);
+      });
+    }
 
-   function renderInstructionSections(){
-     instructionSectionsEl.innerHTML = '';
-     hotspotsData.forEach(h => {
-       const section = document.createElement('div');
-       section.className = 'instruction-section';
-       section.id = 'section-' + h.id;
-       section.innerHTML = `<strong>${h.sectionTitle}</strong>${h.sectionText}<div style="margin-top:8px"><button type="button" data-target="${h.id}">Volver al botón</button></div>`;
-       instructionSectionsEl.appendChild(section);
-     });
-     instructionSectionsEl.querySelectorAll('button[data-target]').forEach(b=>{
-       b.addEventListener('click', (e)=>{
-         const targetId = e.currentTarget.dataset.target;
-         returnToMainAndFocus(targetId);
-       });
-     });
-   }
+    function renderInstructionSections() {
+      instructionSectionsEl.innerHTML = '';
+      hotspotsData.forEach(h => {
+        const section = document.createElement('div');
+        section.className = 'instruction-section';
+        section.id = 'section-' + h.id;
+        section.innerHTML = `<strong>${h.sectionTitle}</strong>${h.sectionText}`;
+        instructionSectionsEl.appendChild(section);
+      });
+    }
 
-   function openInstructionForHotspot(id){
-     instructionPanelEl.classList.add('active');
-     instructionPanelEl.setAttribute('aria-hidden','false');
-     mainStageEl.style.display = 'none';
-     const all = instructionSectionsEl.querySelectorAll('.instruction-section');
-     all.forEach(a => a.style.boxShadow = 'none');
-     const target = document.getElementById('section-' + id);
-     if(target){
-       target.style.boxShadow = '0 6px 20px rgba(11,102,255,0.12)';
-       target.scrollIntoView({behavior:'smooth', block:'center'});
-     }
-     history.pushState({view:'instruction', id}, '', '#instructivo-'+id);
-   }
+    function openInstructionForHotspot(id) {
+      instructionPanelEl.style.display = 'block';
+      const all = instructionSectionsEl.querySelectorAll('.instruction-section');
+      all.forEach(a => {
+        a.classList.remove('active');
+      });
 
-   function returnToMainAndFocus(id){
-     instructionPanelEl.classList.remove('active');
-     instructionPanelEl.setAttribute('aria-hidden','true');
-     mainStageEl.style.display = '';
-     history.pushState({view:'main'}, '', location.pathname);
-     if(id){
-       const hs = document.querySelector('.interactive-hotspot[data-id="'+id+'"]');
-       if(hs){ hs.focus(); }
-     }
-   }
+      const target = document.getElementById('section-' + id);
+      if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
 
-   backButtonEl.addEventListener('click', ()=> returnToMainAndFocus());
+      mainStageEl.style.display = 'none';
+    }
 
-   renderHotspots();
-   renderInstructionSections();
+    function returnToMainAndFocus() {
+      instructionPanelEl.style.display = 'none';
+      mainStageEl.style.display = 'grid';
+    }
 
-   window.addEventListener('popstate', (e)=>{
-     if(e.state && e.state.view === 'instruction'){
-       instructionPanelEl.classList.add('active');
-       mainStageEl.style.display = 'none';
-     } else {
-       instructionPanelEl.classList.remove('active');
-       mainStageEl.style.display = '';
-     }
-   });
+    backButtonEl.addEventListener('click', returnToMainAndFocus);
 
-   document.addEventListener('keydown', (e)=>{
-     if(e.key === 'Escape'){
-       if(instructionPanelEl.classList.contains('active')) returnToMainAndFocus();
-     }
-     }
-   );
+    renderHotspots();
+    renderInstructionSections();

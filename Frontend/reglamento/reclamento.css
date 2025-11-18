@@ -1,38 +1,90 @@
- :root{--bg:#f7f7f8;--accent:#0b66ff}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:var(--bg);color:#111}
-    .wrap{max-width:1100px;margin:28px auto;padding:18px}
-    .card{background:#fff;border-radius:12px;box-shadow:0 6px 22px rgba(15,15,15,0.06);overflow:hidden}
-
-    /* MAIN VIEW */
-    .stage{position:relative}
-    .main-image{display:block;width:100%;height:auto}
-
-    /* Hotspot */
-    .interactive-hotspot{
-      position:absolute;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:8px;
-      padding:6px 10px;
-      cursor:pointer;
-      border:2px solid rgba(255,255,255,0.6);
-      font-weight:600;
-      background: rgba(255,255,255,0.06);
+ * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .interactive-hotspot:focus{outline:3px solid rgba(11,102,255,0.18)}
-    .hotspot-text{pointer-events:none}
 
-    /* Instructivo view */
-    .instruction-panel{display:none;padding:18px}
-    .instruction-panel.active{display:block}
-    .instruction-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-    .btn-back{background:#fff;border:1px solid #e6e6e9;padding:8px 10px;border-radius:8px;cursor:pointer}
-    .instruction-sections{margin-top:12px}
-    .instruction-section{padding:10px;border-radius:8px;background:#fcfcfe;margin-bottom:10px}
-
-    @media (max-width:600px){
-      .interactive-hotspot{padding:8px 12px;font-size:14px}
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background-image: url('../imagenes/fondo-madera.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
     }
-    .hint{font-size:13px;color:#666;margin:10px 0}
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: #111;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #ffcc00;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .btn-back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      rotate: 180deg;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .interactive-hotspot {
+      background-color: #ffcc00;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .instruction-panel {
+      margin-top: 30px;
+    }
+
+    .instruction-section {
+      display: none;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .instruction-section.active {
+      display: block;
+    }
+
+    .instruction-section p {
+      color: #ddd;
+      font-size: 1rem;
+    }

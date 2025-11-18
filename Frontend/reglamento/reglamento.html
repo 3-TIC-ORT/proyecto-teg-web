@@ -8,28 +8,19 @@
     <script src="reglamento.js" defer></script>
 </head>
 <body>
-    <div class="wrap">
-    <div class="card">
-      <div id="mainStage" class="stage" aria-label="Imagen principal">
-        <!-- Imagen principal -->
-        <img id="primaryImage" src="first-image.jpg" alt="Imagen principal con botones" class="main-image">
-        <!-- Hotspots se inyectan por JS -->
-      </div>
+   <div class="container">
+   <img src="../imagenes/flechas.svg" alt="flechas" id="backButton" class="btn-back">
+    <h1>Instructivo</h1>
 
-      <div id="instructionPanel" class="instruction-panel" aria-hidden="true">
-        <div class="instruction-top">
-          <button id="backButton" class="btn-back" aria-label="Volver a la imagen principal">← Volver</button>
-          <div>
-            <strong>Reglamento</strong>
-            <div class="hint">Haz clic en una sección para ver el detalle. También puedes usar los botones de la imagen principal.</div>
-          </div>
-        </div>
+    <div id="mainStage" class="button-grid">
+      <!-- Botones generados por JS -->
+    </div>
 
-        <div id="instructionSections" class="instruction-sections" aria-live="polite">
-          <!-- Secciones generadas por JS -->
-        </div>
+    <div id="instructionPanel" class="instruction-panel">
+      <div id="instructionSections">
+        <!-- Secciones generadas por JS -->
       </div>
     </div>
-   </div>
+  </div>
 </body>
 </html>
