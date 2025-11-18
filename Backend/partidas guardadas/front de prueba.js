@@ -3,82 +3,67 @@ const btnGuardar = document.getElementById("btn-guardar");
 const mensajeServidor = document.getElementById("mensaje-servidor");
 const elementosJugadores = document.querySelectorAll(".jugador");
 
-// --- Variables del Timer
-const TIEMPO_TOTAL_SEGUNDOS = 270; // 4 minutos y 30 segundos
-let segundosActuales = TIEMPO_TOTAL_SEGUNDOS;
-let timerInterval;
-
-// Inicia la conexión al servidor SoqueTIC. Por defecto, usa el puerto 3000.
+// Conectarse al servidor
 connect2Server();
 
-// --- Funciones del Temporizador
+// TIMER
+let segundosActuales = 270; // 4:30
+let timerInterval;
 
-/**
- * Convierte segundos a formato MM:SS.
- * @param {number} segundos
- * @returns {string} Tiempo formateado.
- */
+// Formato mm:ss
 function formatoTiempo(segundos) {
-    const minutos = Math.floor(segundos / 60);
-    const seg = segundos % 60;
-    const segFormato = seg < 10 ? `0${seg}` : seg;
-    return `${minutos}:${segFormato}`;
+    const min = Math.floor(segundos / 60);
+    const sec = segundos % 60;
+    return `${min}:${sec < 10 ? "0" + sec : sec}`;
 }
 
-/**
- * Actualiza el temporizador cada segundo.
- */
 function actualizarTimer() {
     segundosActuales--;
     timerDisplay.innerText = formatoTiempo(segundosActuales);
 
+    // Enviar al backend
+    postEvent("ActualizarTimer", { segundos: segundosActuales });
+
     if (segundosActuales <= 0) {
         clearInterval(timerInterval);
-        mensajeServidor.innerText = "¡Tiempo de turno agotado!";
+        mensajeServidor.innerText = "¡Tiempo agotado!";
         btnGuardar.disabled = true;
     }
 }
 
-/**
- * Inicia el temporizador.
- */
 function iniciarTimer() {
-    timerDisplay.innerText = formatoTiempo(segundosActuales);
-    timerInterval = setInterval(actualizarTimer, 1000);
+    // Pedir al backend el valor real del timer
+    getEvent("ObtenerTimer", (r) => {
+        segundosActuales = r.segundos;
+        timerDisplay.innerText = formatoTiempo(segundosActuales);
+
+        timerInterval = setInterval(actualizarTimer, 1000);
+    });
 }
 
-
-// --- Manejador del Botón Guardar
-
+// GUARDAR PARTIDA
 function handleGuardar() {
-    // 1. Detener el temporizador y capturar el estado actual (requisito)
     clearInterval(timerInterval);
-    btnGuardar.disabled = true; // Previene doble clic
 
-    // 2. Recolectar la información que se enviará al backend
-    // Captura el color/nombre de cada jugador
-    const coloresJugadores = Array.from(elementosJugadores).map(el => el.getAttribute('data-color'));
+    const jugadores = Array.from(elementosJugadores).map(j => j.dataset.color);
 
-    // Objeto de datos que será enviado por POST
-    const estadoJuego = {
-        jugadores: coloresJugadores,
-        tiempoRestante: segundosActuales // El valor exacto en el que se frenó
+    const data = {
+        jugadores,
+        tiempoRestante: segundosActuales
     };
 
-    mensajeServidor.innerText = `Deteniendo en ${formatoTiempo(segundosActuales)}. Enviando datos al servidor...`;
+    mensajeServidor.innerText = "Guardando...";
 
-    // 3. Enviar la información al Backend usando postEvent de SoqueTIC
-    // Utilizamos "guardarPartida" para coincidir con tu subscribePOSTEvent
-    postEvent("guardarPartida", estadoJuego, (respuesta) => {
-        // Este callback recibe la respuesta que retorna el backend ({ ok: true, mensaje: ... })
-        if (respuesta.ok) {
-            mensajeServidor.innerText = `✅ ¡Guardado exitoso! ${respuesta.mensaje}`;
+    postEvent("guardarPartida", data, (resp) => {
+        if (resp.ok) {
+            mensajeServidor.innerText = "✔ Partida guardada correctamente.";
         } else {
-            mensajeServidor.innerText = `❌ Error al guardar: ${respuesta.mensaje}`;
+            mensajeServidor.innerText = "❌ Error al guardar.";
         }
     });
 }
 
-// --- Inicialización
 btnGuardar.addEventListener("click", handleGuardar);
+
+// Iniciar todo
 iniciarTimer();
