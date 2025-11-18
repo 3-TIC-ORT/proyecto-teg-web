@@ -15,14 +15,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
 </head>
-  <body>
-    <a href=""><button id="boton1" class="boton boton1">Reglamento</button></a>
-    <a href=""><button id="boton2" class="boton boton2">Reanudar</button></a>
-    <a href="."><button id="boton3" class="boton boton3">Guardar y salir</button></a>
-    <a href="../menu principal/menuprincipal.html"><button id="boton4" class="boton boton4">Salir sin guardar</button></a>
- <img class="fondopausa" src="../imagenes/menu pausa.svg" alt=" foto pausa">
+
+<body>
+  <button id="openCardsBtn">Ver cartas</button>
+
+  <!-- Overlay -->
+  <div id="cardsOverlay" class="overlay" hidden></div>
+
+  <!-- Dialog -->
+  <div id="cardsDialog" class="dialog" hidden>
+    <header>
+      <h2>Cartas</h2>
+      <button id="closeDialogBtn">&times;</button>
+    </header>
+    <section id="cardsGrid" class="cards-grid">
+      <!-- Se inyectan las 3 cartas vía JS -->
+    </section>
   </div>
-</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
   </body>
 </html>
 

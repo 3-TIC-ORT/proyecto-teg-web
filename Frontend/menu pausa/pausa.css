@@ -1,35 +1,53 @@
-.boton{
-  position: absolute;
-  width: 250px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  border: 5px solid #CFD2D3;
-  background: #373B3B;
-  left: 600px;
-}
-.boton1{
-  position: absolute;
-  top: 150px;
-}
-.boton2{
-  top: 270px;
-}
-.boton3{
-  top: 390px;
-}
-.boton4{
-top: 510px;
+body {
+  font-family: sans-serif;
+  background: #0b0d12;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  height: 100vh;
 }
 
-.fondopausa{
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.dialog {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1a1f29;
+  border-radius: 12px;
+  padding: 16px;
+  width: 400px;
+  max-width: 90vw;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.card {
+  background: #0f131a;
+  border: 1px solid #2a2e36;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card img {
   width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  position: absolute;
-  display: flex;
-  aspect-ratio: 1/1;
+  height: auto;
+  display: block;
 }

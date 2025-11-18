@@ -1,28 +1,42 @@
-connect2Server()
-let targetDate = new Date();
-targetDate.setSeconds(targetDate.getSeconds() + 120); 
+// app.js
 
-function updateTimer() {
-  let now = new Date();
-  let diff = targetDate - now;
+const cartas = [
+  { nombre: "barco", src: "../imagenes/cartaBarco.svg" },
+  { nombre: "cañon", src: "../imagenes/cartaCañon.svg" },
+  { nombre: "globo", src: "../imagenes/cartaGlobo.svg" },
+  { nombre: "todas", src: "../imagenes/cartaTodas.svg" }
+];
 
-  if (diff <= 0) {
-    document.getElementById("timer").textContent = "¡Tiempo terminado!";
-    clearInterval(timerInterval);
-    return;
-  }
+const openBtn = document.getElementById("openCardsBtn");
+const overlay = document.getElementById("cardsOverlay");
+const dialog = document.getElementById("cardsDialog");
+const closeBtn = document.getElementById("closeDialogBtn");
+const grid = document.getElementById("cardsGrid");
 
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById("timer").textContent =
-    String(minutes).padStart(2, '0') + ":" +
-    String(seconds).padStart(2, '0');
+function renderCartas() {
+  grid.innerHTML = "";
+  cartas.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${c.src}" alt="${c.nombre}">
+      <p>${c.nombre}</p>
+    `;
+    grid.appendChild(card);
+  });
 }
-function detenerTemporizador() {
-  clearInterval(timerInterval);
-  document.getElementById("timer").textContent = "Temporizador detenido";
+
+function openDialog() {
+  renderCartas();
+  overlay.hidden = false;
+  dialog.hidden = false;
 }
-//ejemplo de local storage
-let timerpausa = localStorage.getItem("lstimer");
-console.log(timerpausa);
+
+function closeDialog() {
+  overlay.hidden = true;
+  dialog.hidden = true;
+}
+
+openBtn.addEventListener("click", openDialog);
+overlay.addEventListener("click", closeDialog);
+closeBtn.addEventListener("click", closeDialog);
