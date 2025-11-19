@@ -137,9 +137,8 @@ const jugadorActualElemento = document.getElementById("jugadorActual");
 
 function actualizarJugadorActual() {
   const jugador = jugadorActual();
-  jugadorActualElemento.textContent = `Turno de: ${jugador.nombre.toUpperCase()} (${
-    jugador.color
-  })`;
+  jugadorActualElemento.textContent = `Turno de: ${jugador.nombre.toUpperCase()} (${jugador.color
+    })`;
 }
 
 // Maquina de estados finitos
@@ -955,8 +954,7 @@ if (botonMoverFichas) {
 
     const cantidad = parseInt(
       prompt(
-        `¿Cuántas fichas queres mover de ${paisEmisor.nombre} a ${
-          paisReceptor.nombre
+        `¿Cuántas fichas queres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre
         }? (máx ${fichasDisponibles - 1})`
       ),
       10
@@ -1018,22 +1016,15 @@ function gestionarSeleccionReposicion(pais) {
     return;
   }
 
-  // ─────────────────────────────────────────
-  // SELECCIÓN
-  // ─────────────────────────────────────────
   if (paisesSeleccionados.length === 0) {
     paisesSeleccionados.push(pais.nombre);
     console.log("País para reponer seleccionado:", paisesSeleccionados);
-
-    // 👉 MOSTRAR MENÚ LATERAL PARA ESTE PAÍS
+    
     actualizarMenuReponer(pais.nombre);
 
     return;
   }
 
-  // ─────────────────────────────────────────
-  // DESELECCIÓN
-  // ─────────────────────────────────────────
   if (paisesSeleccionados.includes(pais.nombre)) {
     paisesSeleccionados = paisesSeleccionados.filter((p) => p !== pais.nombre);
     console.log(
@@ -1041,7 +1032,6 @@ function gestionarSeleccionReposicion(pais) {
       paisesSeleccionados
     );
 
-    // 👉 SI NO QUEDA NINGÚN PAÍS, SE OCULTA EL MENÚ
     if (paisesSeleccionados.length === 0) {
       actualizarMenuReponer(null);
     }
@@ -1049,9 +1039,6 @@ function gestionarSeleccionReposicion(pais) {
     return;
   }
 
-  // ─────────────────────────────────────────
-  // YA HABÍA OTRO PAÍS SELECCIONADO
-  // ─────────────────────────────────────────
   if (paisesSeleccionados.length === 1) {
     console.log("Solo podes tener 1 país seleccionado:", paisesSeleccionados);
   }
@@ -1059,56 +1046,14 @@ function gestionarSeleccionReposicion(pais) {
   return;
 }
 
-
-// ----------------------
-// ELEMENTOS LATERAL (crea DOM si no existe)
-// ----------------------
-function asegurarMenuLateral() {
-  let aside = document.getElementById("lateralReponer");
-  if (!aside) {
-    aside = document.createElement("aside");
-    aside.id = "lateralReponer";
-    aside.style.position = "fixed";
-    aside.style.right = "0";
-    aside.style.top = "80px";
-    aside.style.width = "220px";
-    aside.style.padding = "12px";
-    aside.style.background = "#f5f5f5";
-    aside.style.borderLeft = "1px solid #ccc";
-    aside.style.zIndex = "9999";
-    aside.innerHTML = `
-      <h4 style="margin:0 0 8px 0">Reposición</h4>
-      <div style="font-size:12px;margin-bottom:6px" id="reponerInfo">Fase: no disponible</div>
-      <label for="menuReponer" style="font-size:12px">Fichas a poner:</label>
-      <select id="menuReponer" disabled style="width:100%;margin-bottom:8px"></select>
-      <button id="confirmarReponer" disabled style="width:100%">Confirmar</button>
-      <div id="reponerMensaje" style="font-size:12px;margin-top:8px;color:#555"></div>
-    `;
-    document.body.appendChild(aside);
-  }
-  return {
-    aside,
-    select: document.getElementById("menuReponer"),
-    confirmar: document.getElementById("confirmarReponer"),
-    info: document.getElementById("reponerInfo"),
-    mensaje: document.getElementById("reponerMensaje")
-  };
-}
-
-const lateral = asegurarMenuLateral();
-
-// ----------------------
-// Estado de reposición por jugador (se reinicia cuando empieza reposicion del jugador)
-// ----------------------
-// almacenamos por jugador: { continenteUsado: {Sudamerica: true, ...} , totalRepuestosEnFase: 0 }
 jugadores.forEach((j) => {
   j.reposicion = {
-    continenteUsado: {}, // ej: { Sudamerica: false, ... }
+    continenteUsado: {}, 
     totalRepuestosEnFase: 0
   };
 });
 
-// inicializa marcas de continente en false
+
 function inicializarMarcasContinentesParaJugador(jugador) {
   jugador.reposicion = {
     continenteUsado: Object.keys(bonusContinente).reduce((acc, c) => {
@@ -1119,12 +1064,8 @@ function inicializarMarcasContinentesParaJugador(jugador) {
   };
 }
 
-// ----------------------
-// calcular bonos por continente que tiene completo el jugador (devuelve mapa continente -> cantidad)
-// ----------------------
 function calcularBonosPorContinenteDelJugador(jugador) {
-  const contMap = {}; // continente -> true si controla todo
-  // arma lista de países por continente
+  const contMap = {};
   const paisesPorContinente = {};
   Object.keys(continentePorPais).forEach((pais) => {
     const cont = continentePorPais[pais];
@@ -1142,74 +1083,54 @@ function calcularBonosPorContinenteDelJugador(jugador) {
   return contMap;
 }
 
-// ----------------------
-// cuando empieza la fase de reposicion para un jugador
-// ----------------------
 function iniciarReposicionParaJugador(jugador) {
   inicializarMarcasContinentesParaJugador(jugador);
-  // marca los continentes que el jugador controla
   const bonos = calcularBonosPorContinenteDelJugador(jugador);
-  jugador.reposicion.bonosDisponiblesPorContinente = bonos; // ej: { Sudamerica: 3 }
+  jugador.reposicion.bonosDisponiblesPorContinente = bonos;
   lateral.info.textContent = `Reposición: ${jugador.nombre.toUpperCase()}`;
   lateral.mensaje.textContent = `Seleccioná un país tuyo para ver opciones.`;
-  actualizarMenuReponer(null); // deshabilita hasta que seleccione país
+  actualizarMenuReponer(null);
   lateral.select.disabled = true;
   lateral.confirmar.disabled = true;
 }
 
-// ----------------------
-// función para actualizar las opciones del select según país seleccionado
-// ----------------------
-let paisSeleccionadoParaReposicion = null;
-
 function actualizarMenuReponer(paisNombre) {
   const select = lateral.select;
+
   select.innerHTML = "";
 
   if (maquinaDeFases.state !== "fase de reposicion") {
-    // fuera de reposicion: mantiene visible pero deshabilitado
-    lateral.select.disabled = true;
+    select.disabled = true;
     lateral.confirmar.disabled = true;
-    lateral.info.textContent = `Fase actual: ${maquinaDeFases.state}`;
     return;
   }
 
   const jugador = jugadorActual();
-  lateral.info.textContent = `Reposición: ${jugador.nombre.toUpperCase()}`;
 
   if (!paisNombre) {
-    // no hay país seleccionado aún
-    lateral.select.disabled = true;
+    select.disabled = true;
     lateral.confirmar.disabled = true;
-    lateral.mensaje.textContent = "Seleccioná un país para reponer.";
-    paisSeleccionadoParaReposicion = null;
     return;
   }
 
   const paisObj = paises[paisNombre];
   if (!paisObj || !paisObj.duenio || paisObj.duenio.id !== jugador.id) {
-    lateral.select.disabled = true;
+    select.disabled = true;
     lateral.confirmar.disabled = true;
-    lateral.mensaje.textContent = "Ese país no es tuyo.";
-    paisSeleccionadoParaReposicion = null;
     return;
   }
 
-  paisSeleccionadoParaReposicion = paisNombre;
-
-  // primer chequeo: ¿el continente del país tiene bono disponible y no usado?
   const cont = continentePorPais[paisNombre];
   const bonosJugador = jugador.reposicion.bonosDisponiblesPorContinente || {};
-  const continenteTieneBono = cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
+  const continenteTieneBono =
+    cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
 
   let maxOpciones = 0;
+
   if (continenteTieneBono) {
     maxOpciones = bonosJugador[cont];
-    lateral.mensaje.textContent = `Usando bono de continente (${cont}). Opciones 1..${maxOpciones}`;
   } else {
-    // sino: normal = floor(paises del jugador / 2)
     maxOpciones = Math.floor(jugador.paises.length / 2) || 1;
-    lateral.mensaje.textContent = `Opciones normales (países/2): 1..${maxOpciones}`;
   }
 
   for (let i = 1; i <= maxOpciones; i++) {
@@ -1219,13 +1140,29 @@ function actualizarMenuReponer(paisNombre) {
     select.appendChild(opt);
   }
 
-  lateral.select.disabled = false;
+  select.disabled = false;
   lateral.confirmar.disabled = false;
 }
 
 // ----------------------
 // aplicar la reposición elegida (botón confirmar)
 // ----------------------
+// --------------------------------------
+// LATERAL (select + botón) – versión minimalista
+// --------------------------------------
+const lateral = {
+  select: document.getElementById("lateralSelect"),
+  confirmar: document.getElementById("lateralConfirmar"),
+  mensaje: null, // si querés podes usar un div luego
+  info: null
+};
+
+// Por si tu código depende de estas referencias:
+let paisSeleccionadoParaReposicion = null;
+
+// --------------------------------------
+// EVENTO DE CONFIRMAR REPOSICIÓN
+// --------------------------------------
 lateral.confirmar.addEventListener("click", () => {
   if (maquinaDeFases.state !== "fase de reposicion") return;
   if (!paisSeleccionadoParaReposicion) return;
@@ -1236,31 +1173,30 @@ lateral.confirmar.addEventListener("click", () => {
   const jugador = jugadorActual();
   const paisObj = paises[paisSeleccionadoParaReposicion];
 
-  // ¿estamos usando bono de continente?
+  // ¿tiene bono el continente?
   const cont = continentePorPais[paisSeleccionadoParaReposicion];
   const bonosJugador = jugador.reposicion.bonosDisponiblesPorContinente || {};
-  const continenteTieneBono = cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
+  const continenteTieneBono =
+      cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
 
-  // si uso bono, lo marco como usado para ese continente
+  // si uso bono => marcar
   if (continenteTieneBono) {
-    jugador.reposicion.continenteUsado[cont] = true;
-    lateral.mensaje.textContent = `Se usó bono de ${cont}.`;
-  } else {
-    lateral.mensaje.textContent = `Se agregaron ${cantidad} fichas a ${paisObj.nombre}.`;
+      jugador.reposicion.continenteUsado[cont] = true;
   }
 
   // aplicar fichas al país
   paisObj.fichas = (paisObj.fichas || 0) + cantidad;
-  jugador.reposicion.totalRepuestosEnFase = (jugador.reposicion.totalRepuestosEnFase || 0) + cantidad;
 
   // actualizar DOM de fichas
   const el = document.getElementById(`fichas-${idFromName(paisObj.nombre)}`);
   if (el) el.textContent = paisObj.fichas;
 
-  // luego de aplicar, reseteo selección y actualizo menu (si el bono quedó usado, el siguiente select mostrará la otra opción)
+  // limpiar selección
   paisesSeleccionados = [];
   paisSeleccionadoParaReposicion = null;
+
   actualizarMenuReponer(null);
 });
+
 
 actualizarFase();
