@@ -1,4 +1,4 @@
-connect2Server
+// connect2Server
 let cantidadJugadores =localStorage.getItem("lsnumeroJugadores")
 console.log (cantidadJugadores)
 
@@ -884,3 +884,21 @@ Array con todos los jugadores actuales: jugadores
 (Si por ejemplo hace falta que paises tiene el jugador 2, poné jugadores[1].paises)
 Objeto con todos los paises: paises 
 */
+function mostrarPantallaVictoria() {
+  const jugador = localStorage.getItem('jugador');
+  const logro = localStorage.getItem('logro');
+
+  const mensaje = `El jugador ${jugador} ha conseguido ${logro}`;
+  document.getElementById('victory-message').textContent = mensaje;
+
+  document.getElementById('victory-screen').style.display = 'flex';
+}
+
+// Eventos de los botones
+document.getElementById('btn-menu').addEventListener('click', () => {
+  window.location.href = 'menu.html'; // o la ruta que uses
+});
+
+document.getElementById('btn-restart').addEventListener('click', () => {
+  location.reload(); // o lógica para reiniciar el juego
+});

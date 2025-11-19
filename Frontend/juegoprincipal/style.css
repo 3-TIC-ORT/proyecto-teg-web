@@ -338,12 +338,12 @@ left: 1291px;
 rotate: 50.284deg;
 }
 .fichas-japon{
-  /* width: 20px; /* Ancho del círculo 
-  height: 20px; Altura del círculo 
-  border-radius: 50%; /* Esto lo convierte en un círculo 
+  width: 20px;  
+  height: 20px; 
+  border-radius: 50%;  
   position: absolute;
   top: 5%;
-  left: 90px; */
+  left: 90px;
 }
 .china{
   z-index: 100;
@@ -968,4 +968,41 @@ z-index: 100;
   position: absolute;
   top: 515px;
   left: 987px;
+}
+#victory-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('tu-fondo.png'); /* fondo que vos pasás */
+  background-size: cover;
+  background-position: center;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.victory-container {
+  text-align: center;
+  color: white;
+  font-family: 'Cinzel', serif; /* o la fuente que uses */
+}
+
+.victory-text p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.custom-button {
+  /* reemplazá esto con tus estilos específicos */
+  background-image: url('boton-estilo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  margin: 0 20px;
 }
