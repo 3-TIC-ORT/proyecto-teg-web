@@ -16,12 +16,11 @@ function getPaisByNameFlexible(nombre) {
   return null;
 }
 
-
 const botonAtacar = document.getElementById("atacar");
 const botonDadosAtacante = document.getElementById("tirar1");
 const botonDadosAtacado = document.getElementById("tirar2");
 const botonMoverFichas = document.getElementById("moverfichas");
-const botonPararAtacar = document.getElementById('botonPararAtacar');
+const botonPararAtacar = document.getElementById("botonPararAtacar");
 const botonTerminarTurno = document.getElementById("terminarTurno");
 
 //Jugadores
@@ -39,7 +38,7 @@ class Jugador {
   }
 
   quitarPais(pais) {
-    this.paises = this.paises.filter(p => p !== pais);
+    this.paises = this.paises.filter((p) => p !== pais);
   }
 
   totalFichas() {
@@ -53,7 +52,10 @@ function repartirPaises() {
 
   for (let i = paisesDisponibles.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]];
+    [paisesDisponibles[i], paisesDisponibles[j]] = [
+      paisesDisponibles[j],
+      paisesDisponibles[i],
+    ];
   }
 
   let indiceJugador = 0;
@@ -66,7 +68,8 @@ function repartirPaises() {
 
     paises[pais].fichas = 1;
 
-    const idHTML = pais.toLowerCase()
+    const idHTML = pais
+      .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-");
@@ -77,22 +80,23 @@ function repartirPaises() {
   }
 
   console.log("Paises repartidos entre los jugadores:");
-  jugadores.forEach(j => {
+  jugadores.forEach((j) => {
     console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
   });
 }
-let cantidadJugadores
+let cantidadJugadores;
 
 do {
   cantidadJugadores = prompt("¿Cuántos jugadores? (mínimo 3, máximo 6)");
   cantidadJugadores = Number(cantidadJugadores);
 } while (
-  isNaN(cantidadJugadores) || cantidadJugadores < 3 || cantidadJugadores > 6 ||
+  isNaN(cantidadJugadores) ||
+  cantidadJugadores < 3 ||
+  cantidadJugadores > 6 ||
   !Number.isInteger(cantidadJugadores)
 );
 
 console.log(`Se jugará con ${cantidadJugadores} jugadores.`);
-
 
 const colores = ["rojo", "azul", "verde", "amarillo", "rosa", "negro"];
 
@@ -114,17 +118,16 @@ function jugadorActual() {
 function siguienteJugador() {
   turnoActual = (turnoActual + 1) % cantidadJugadores;
   console.log(`Turno del siguiente jugador: ${jugadorActual().nombre}`);
+  paisesBloqueados.clear();
 }
 
 function terminarTurno() {
-  if (maquinaDeFases.state === 'fase de reagrupacion' || maquinaDeFases.state === 'fase de reposicion') {
-    maquinaDeFases.transition('click');
-    function siguienteJugador() {
-      turnoActual = (turnoActual + 1) % cantidadJugadores;
-      paisesBloqueados.clear();
-      console.log(`Turno del siguiente jugador: ${jugadorActual().nombre}`);
-    }
-
+  if (
+    maquinaDeFases.state === "fase de reagrupacion" ||
+    maquinaDeFases.state === "fase de reposicion"
+  ) {
+    maquinaDeFases.transition("click");
+    siguienteJugador();
     actualizarFase();
   } else {
     console.log("Este boton no tiene efecto en la fase actual.");
@@ -134,16 +137,18 @@ const jugadorActualElemento = document.getElementById("jugadorActual");
 
 function actualizarJugadorActual() {
   const jugador = jugadorActual();
-  jugadorActualElemento.textContent = `Turno de: ${jugador.nombre.toUpperCase()} (${jugador.color})`;
+  jugadorActualElemento.textContent = `Turno de: ${jugador.nombre.toUpperCase()} (${
+    jugador.color
+  })`;
 }
 
 // Maquina de estados finitos
-cantidadJugadores = Math.max(3, Math.min(6, parseInt(cantidadJugadores) || 3));
-const faseActual = document.getElementById('faseActual');
+cantidadJugadores = Number(cantidadJugadores);
+const faseActual = document.getElementById("faseActual");
 
 class fasesMachine {
   constructor() {
-    this.state = 'fase de ataque';
+    this.state = "fase de ataque";
     this.cambioDeFaseTurnos = 0;
     this.reposicionesHechas = 0;
   }
@@ -151,27 +156,33 @@ class fasesMachine {
   transition(event) {
     const estadoAnterior = this.state;
     switch (this.state) {
-      case 'fase de ataque':
-        if (event === 'click') {
-          console.log('Cambio de fase de ataque a fase de reagrupacion');
-          this.state = 'fase de reagrupacion';
+      case "fase de ataque":
+        if (event === "click") {
+          console.log("Cambio de fase de ataque a fase de reagrupacion");
+          this.state = "fase de reagrupacion";
           paisesSeleccionados.length = 0;
           actualizarListeners();
         }
         break;
 
-      case 'fase de reagrupacion':
-        if (event === 'click' && this.cambioDeFaseTurnos < cantidadJugadores * 2) {
-          console.log('Cambio de fase de reagrupacion a fase de ataque');
-          this.state = 'fase de ataque';
+      case "fase de reagrupacion":
+        if (
+          event === "click" &&
+          this.cambioDeFaseTurnos < cantidadJugadores * 2
+        ) {
+          console.log("Cambio de fase de reagrupacion a fase de ataque");
+          this.state = "fase de ataque";
           this.cambioDeFaseTurnos++;
           paisesSeleccionados.length = 0;
           actualizarListeners();
           siguienteJugador();
           actualizarJugadorActual();
-        } else if (event === 'click' && this.cambioDeFaseTurnos >= cantidadJugadores * 2) {
-          console.log('Cambio de fase de reagrupacion a fase de reposicion');
-          this.state = 'fase de reposicion';
+        } else if (
+          event === "click" &&
+          this.cambioDeFaseTurnos >= cantidadJugadores * 2
+        ) {
+          console.log("Cambio de fase de reagrupacion a fase de reposicion");
+          this.state = "fase de reposicion";
           this.cambioDeFaseTurnos = 0;
           paisesSeleccionados.length = 0;
           actualizarListeners();
@@ -180,18 +191,21 @@ class fasesMachine {
         }
         break;
 
-      case 'fase de reposicion':
-        if (event === 'click' && this.reposicionesHechas < cantidadJugadores) {
-          console.log('Repone el siguiente jugador');
-          this.state = 'fase de reposicion';
+      case "fase de reposicion":
+        if (event === "click" && this.reposicionesHechas < cantidadJugadores) {
+          console.log("Repone el siguiente jugador");
+          this.state = "fase de reposicion";
           this.reposicionesHechas++;
           paisesSeleccionados.length = 0;
           actualizarListeners();
           siguienteJugador();
           actualizarJugadorActual();
-        } else if (event === 'click' && this.reposicionesHechas >= cantidadJugadores) {
-          console.log('Cambio de fase de reposicion a fase de ataque');
-          this.state = 'fase de ataque';
+        } else if (
+          event === "click" &&
+          this.reposicionesHechas >= cantidadJugadores
+        ) {
+          console.log("Cambio de fase de reposicion a fase de ataque");
+          this.state = "fase de ataque";
           this.reposicionesHechas = 0;
           paisesSeleccionados.length = 0;
           actualizarListeners();
@@ -201,7 +215,9 @@ class fasesMachine {
         break;
 
       default:
-        console.log(`No se puede manejar el evento "${event}" en el estado "${this.state}".`);
+        console.log(
+          `No se puede manejar el evento "${event}" en el estado "${this.state}".`
+        );
     }
 
     if (this.state !== estadoAnterior) {
@@ -220,10 +236,11 @@ function actualizarFase() {
 }
 
 function actualizarListeners() {
-  Object.values(paises).forEach(pais => {
+  Object.values(paises).forEach((pais) => {
     if (!pais.mapa) return;
-    const { clickAtaque, clickReagrupacion } = pais.handlers;
+    const { clickAtaque, clickReagrupacion, clickReposicion } = pais.handlers;
 
+    pais.mapa.removeEventListener("click", clickReposicion);
     pais.mapa.removeEventListener("click", clickAtaque);
     pais.mapa.removeEventListener("click", clickReagrupacion);
 
@@ -231,6 +248,8 @@ function actualizarListeners() {
       pais.mapa.addEventListener("click", clickAtaque);
     } else if (maquinaDeFases.state === "fase de reagrupacion") {
       pais.mapa.addEventListener("click", clickReagrupacion);
+    } else if (maquinaDeFases.state === "fase de reposicion") {
+      pais.mapa.addEventListener("click", clickReposicion);
     } else {
     }
   });
@@ -250,26 +269,29 @@ function actualizarListeners() {
   }
 }
 
-
 function pararAtaque() {
-  if (maquinaDeFases.state === 'fase de ataque') {
-    maquinaDeFases.transition('click');
+  if (maquinaDeFases.state === "fase de ataque") {
+    maquinaDeFases.transition("click");
     actualizarFase();
   } else {
     console.log("Este boton no tiene efecto en la fase actual.");
   }
 }
-if (botonPararAtacar) botonPararAtacar.addEventListener('click', pararAtaque);
+if (botonPararAtacar) botonPararAtacar.addEventListener("click", pararAtaque);
 
 function terminarTurno() {
-  if (maquinaDeFases.state === 'fase de reagrupacion' || maquinaDeFases.state === 'fase de reposicion') {
-    maquinaDeFases.transition('click');
+  if (
+    maquinaDeFases.state === "fase de reagrupacion" ||
+    maquinaDeFases.state === "fase de reposicion"
+  ) {
+    maquinaDeFases.transition("click");
     actualizarFase();
   } else {
     console.log("Este boton no tiene efecto en la fase actual.");
   }
 }
-if (botonTerminarTurno) botonTerminarTurno.addEventListener('click', terminarTurno);
+if (botonTerminarTurno)
+  botonTerminarTurno.addEventListener("click", terminarTurno);
 
 //
 //paises
@@ -279,24 +301,138 @@ let paises = {};
 function crearHandlers(pais) {
   return {
     clickAtaque: () => gestionarSeleccionAtaque(pais),
-    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais)
+    clickReagrupacion: () => gestionarSeleccionReagrupacion(pais),
+    clickReposicion: () => gestionarSeleccionReposicion(pais),
   };
 }
 
 const nombresPaises = [
   // America del Sur
-  "Argentina", "Brasil", "Chile", "Uruguay", "Peru", "Colombia",
+  "Argentina",
+  "Brasil",
+  "Chile",
+  "Uruguay",
+  "Peru",
+  "Colombia",
   // America del Norte
-  "Mexico", "California", "Canada", "Groenlandia", "Alaska", "Labrador", "Terranova", "Oregon", "Nueva York", "Yukon",
+  "Mexico",
+  "California",
+  "Canada",
+  "Groenlandia",
+  "Alaska",
+  "Labrador",
+  "Terranova",
+  "Oregon",
+  "Nueva York",
+  "Yukon",
   // Europa
-  "Islandia", "GranBretana", "Francia", "Alemania", "Italia", "Espana", "Polonia", "Suecia", "Rusia",
+  "Islandia",
+  "GranBretana",
+  "Francia",
+  "Alemania",
+  "Italia",
+  "Espana",
+  "Polonia",
+  "Suecia",
+  "Rusia",
   // Africa
-  "Sahara", "Egipto", "Zaire", "Etiopia", "Sudafrica", "Madagascar",
+  "Sahara",
+  "Egipto",
+  "Zaire",
+  "Etiopia",
+  "Sudafrica",
+  "Madagascar",
   // Asia
-  "Arabia", "Turquia", "Israel", "Iran", "India", "Siberia", "Mongolia", "China", "Japon", "Kamchatka", "Tartaria", "Taimir", "Gobi", "Malasia", "Aral",
+  "Arabia",
+  "Turquia",
+  "Israel",
+  "Iran",
+  "India",
+  "Siberia",
+  "Mongolia",
+  "China",
+  "Japon",
+  "Kamchatka",
+  "Tartaria",
+  "Taimir",
+  "Gobi",
+  "Malasia",
+  "Aral",
   // Oceania
-  "Australia", "NuevaZelanda", "Sumatra", "Java"
+  "Australia",
+  "NuevaZelanda",
+  "Sumatra",
+  "Java",
 ];
+
+const continentePorPais = {
+  // América del Sur
+  Argentina: "Sudamerica",
+  Brasil: "Sudamerica",
+  Chile: "Sudamerica",
+  Uruguay: "Sudamerica",
+  Peru: "Sudamerica",
+  Colombia: "Sudamerica",
+  // América del Norte
+  Mexico: "Norteamerica",
+  California: "Norteamerica",
+  Canada: "Norteamerica",
+  Groenlandia: "Norteamerica",
+  Alaska: "Norteamerica",
+  Labrador: "Norteamerica",
+  Terranova: "Norteamerica",
+  Oregon: "Norteamerica",
+  "Nueva York": "Norteamerica",
+  Yukon: "Norteamerica",
+  // Europa
+  Islandia: "Europa",
+  GranBretana: "Europa",
+  Francia: "Europa",
+  Alemania: "Europa",
+  Italia: "Europa",
+  Espana: "Europa",
+  Polonia: "Europa",
+  Suecia: "Europa",
+  Rusia: "Europa",
+  // Africa
+  Sahara: "Africa",
+  Egipto: "Africa",
+  Zaire: "Africa",
+  Etiopia: "Africa",
+  Sudafrica: "Africa",
+  Madagascar: "Africa",
+  // Asia (agrupación amplia)
+  Arabia: "Asia",
+  Turquia: "Asia",
+  Israel: "Asia",
+  Iran: "Asia",
+  India: "Asia",
+  Siberia: "Asia",
+  Mongolia: "Asia",
+  China: "Asia",
+  Japon: "Asia",
+  Kamchatka: "Asia",
+  Tartaria: "Asia",
+  Taimir: "Asia",
+  Gobi: "Asia",
+  Malasia: "Asia",
+  Aral: "Asia",
+  // Oceania
+  Australia: "Oceania",
+  NuevaZelanda: "Oceania",
+  Sumatra: "Oceania",
+  Java: "Oceania",
+  Borneo: "Oceania"
+};
+
+const bonusContinente = {
+  Sudamerica: 3,
+  Norteamerica: 5,
+  Europa: 5,
+  Africa: 3,
+  Asia: 7,
+  Oceania: 2
+};
 
 const fronteras = {
   //America del sur
@@ -340,23 +476,32 @@ const fronteras = {
   Aral: ["Rusia", "Iran", "Tartaria", "Siberia", "Mongolia"],
   Iran: ["Rusia", "Turquia", "Aral", "Mongolia", "Gobi", "China"],
   Arabia: ["Israel", "Turquia"],
-  India: ["Iran", "China", "Sumatra", "Malasia",],
+  India: ["Iran", "China", "Sumatra", "Malasia"],
   Malasia: ["India", "China", "Borneo"],
   Gobi: ["Iran", "China", "Mongolia"],
   Mongolia: ["Aral", "Iran", "Siberia", "Gobi", "China"],
   Tartaria: ["Taimir", "Aral", "Siberia"],
   Siberia: ["Aral", "Tartraria", "Mongolia", "Taimir", "China", "Kamchatka"],
   Kamchatka: ["Siberia", "China", "Japon"],
-  China: ["Siberia", "Mongolia", "Gobi", "Iran", "Kamchatka", "India", "Malasia", "Japon"],
+  China: [
+    "Siberia",
+    "Mongolia",
+    "Gobi",
+    "Iran",
+    "Kamchatka",
+    "India",
+    "Malasia",
+    "Japon",
+  ],
   Japon: ["China", "Kamchatka"],
-  //oceania 
+  //oceania
   Sumatra: ["India", "Australia"],
   Australia: ["Sumatra", "Borneo", "Java", "Chile"],
   Borneo: ["Malasia", "Australia"],
-  Java: ["Australia"]
+  Java: ["Australia"],
 };
 
-nombresPaises.forEach(nombre => {
+nombresPaises.forEach((nombre) => {
   const idHTML = idFromName(nombre);
   const pais = {
     nombre,
@@ -364,7 +509,7 @@ nombresPaises.forEach(nombre => {
     fichas: 1,
     fichasRecibidas: 0,
     seleccionado: false,
-    paisesLimitrofes: fronteras[nombre] || []
+    paisesLimitrofes: fronteras[nombre] || [],
   };
   pais.handlers = crearHandlers(pais);
 
@@ -383,7 +528,10 @@ function repartirPaises() {
 
   for (let i = paisesDisponibles.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [paisesDisponibles[i], paisesDisponibles[j]] = [paisesDisponibles[j], paisesDisponibles[i]];
+    [paisesDisponibles[i], paisesDisponibles[j]] = [
+      paisesDisponibles[j],
+      paisesDisponibles[i],
+    ];
   }
 
   let indiceJugador = 0;
@@ -396,7 +544,8 @@ function repartirPaises() {
 
     paises[pais].fichas = 1;
 
-    const idHTML = pais.toLowerCase()
+    const idHTML = pais
+      .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-");
@@ -407,7 +556,7 @@ function repartirPaises() {
   }
 
   console.log("Paises repartidos entre los jugadores:");
-  jugadores.forEach(j => {
+  jugadores.forEach((j) => {
     console.log(`${j.nombre} (${j.color}) tiene:`, j.paises);
   });
 }
@@ -425,14 +574,13 @@ if (paises["Chile"]) {
   const el = document.getElementById("fichas-chile");
   if (el) el.textContent = 10;
 }
-// 
+//
 // ataque
-// 
+//
 let paisesSeleccionados = [];
 
 let paisAtacante = { nombre: null, fichas: null };
 let paisAtacado = { nombre: null, fichas: null };
-
 
 let dadosAtacante = [];
 let dadosAtacado = [];
@@ -452,18 +600,24 @@ function gestionarSeleccionAtaque(pais) {
     pais.seleccionado = false;
     console.log(`${pais.nombre} ha sido deseleccionado.`, paisesSeleccionados);
 
-    if (paisAtacante.nombre === pais.nombre) paisAtacante = { nombre: null, fichas: null };
-    if (paisAtacado.nombre === pais.nombre) paisAtacado = { nombre: null, fichas: null };
+    if (paisAtacante.nombre === pais.nombre)
+      paisAtacante = { nombre: null, fichas: null };
+    if (paisAtacado.nombre === pais.nombre)
+      paisAtacado = { nombre: null, fichas: null };
     return;
   }
 
   if (paisesSeleccionados.length === 0) {
     if (pais.duenio !== jugador) {
-      console.log("Solo podes seleccionar como atacante un país que te pertenezca.");
+      console.log(
+        "Solo podes seleccionar como atacante un país que te pertenezca."
+      );
       return;
     }
     if (pais.fichas <= 1) {
-      console.log(`${pais.nombre} no puede atacar (solo tiene ${pais.fichas} ficha(s)).`);
+      console.log(
+        `${pais.nombre} no puede atacar (solo tiene ${pais.fichas} ficha(s)).`
+      );
       return;
     }
 
@@ -471,7 +625,6 @@ function gestionarSeleccionAtaque(pais) {
     pais.seleccionado = true;
     paisAtacante = { nombre: pais.nombre, fichas: pais.fichas };
     console.log(`${pais.nombre} seleccionado como atacante.`);
-
   } else if (paisesSeleccionados.length === 1) {
     const nombreAtacante = paisesSeleccionados[0];
     const paisAt = paises[nombreAtacante];
@@ -482,7 +635,9 @@ function gestionarSeleccionAtaque(pais) {
     }
 
     if (!paisAt.paisesLimitrofes.includes(pais.nombre)) {
-      console.log(`${pais.nombre} no es limitrofe de ${paisAt.nombre}. No se puede atacar.`);
+      console.log(
+        `${pais.nombre} no es limitrofe de ${paisAt.nombre}. No se puede atacar.`
+      );
       return;
     }
 
@@ -491,7 +646,9 @@ function gestionarSeleccionAtaque(pais) {
     paisAtacado = { nombre: pais.nombre, fichas: pais.fichas };
     console.log(`${pais.nombre} seleccionado como atacado.`);
   } else {
-    console.log("Ya tienes 2 paises seleccionados. Deselecciona uno para elegir otro.");
+    console.log(
+      "Ya tienes 2 paises seleccionados. Deselecciona uno para elegir otro."
+    );
   }
 
   console.log("Paises seleccionados:", paisesSeleccionados);
@@ -536,10 +693,14 @@ function ataqueResolucion() {
   while (dadosAtacante.length > i && dadosAtacado.length > i) {
     if (dadosAtacante[i] > dadosAtacado[i]) {
       atacadoObj.fichas--;
-      console.log(`El atacado pierde 1 ficha. (${atacadoObj.nombre}: ${atacadoObj.fichas})`);
+      console.log(
+        `El atacado pierde 1 ficha. (${atacadoObj.nombre}: ${atacadoObj.fichas})`
+      );
     } else {
       atacanteObj.fichas--;
-      console.log(`El atacante pierde 1 ficha. (${atacanteObj.nombre}: ${atacanteObj.fichas})`);
+      console.log(
+        `El atacante pierde 1 ficha. (${atacanteObj.nombre}: ${atacanteObj.fichas})`
+      );
     }
     i++;
   }
@@ -563,23 +724,36 @@ function ataqueResolucion() {
 
     nuevoDuenio.agregarPais(atacadoObj.nombre);
 
-    const atacado = jugadores.find(j => j.paises.includes(atacadoObj.nombre) && j !== nuevoDuenio);
+    const atacado = jugadores.find(
+      (j) => j.paises.includes(atacadoObj.nombre) && j !== nuevoDuenio
+    );
     if (atacado) atacado.quitarPais(atacadoObj.nombre);
 
     const maxMovibles = atacanteObj.fichas - 1;
-    let mover = parseInt(prompt(`Conquistaste ${atacadoObj.nombre}! ¿Cuántas fichas querés mover desde ${atacanteObj.nombre}? (1-${maxMovibles})`), 10);
+    let mover = parseInt(
+      prompt(
+        `Conquistaste ${atacadoObj.nombre}! ¿Cuántas fichas querés mover desde ${atacanteObj.nombre}? (1-${maxMovibles})`
+      ),
+      10
+    );
 
-    if (isNaN(mover) || mover < 1 || mover > maxMovibles) mover = 1; 
+    if (isNaN(mover) || mover < 1 || mover > maxMovibles) mover = 1;
 
     atacanteObj.fichas -= mover;
     atacadoObj.fichas = mover;
 
-    const elAt = document.getElementById(`fichas-${idFromName(atacanteObj.nombre)}`);
-    const elDef = document.getElementById(`fichas-${idFromName(atacadoObj.nombre)}`);
+    const elAt = document.getElementById(
+      `fichas-${idFromName(atacanteObj.nombre)}`
+    );
+    const elDef = document.getElementById(
+      `fichas-${idFromName(atacadoObj.nombre)}`
+    );
     if (elAt) elAt.textContent = atacanteObj.fichas;
     if (elDef) elDef.textContent = atacadoObj.fichas;
 
-    console.log(`${nuevoDuenio.nombre} ahora posee ${atacadoObj.nombre} con ${mover} fichas.`);
+    console.log(
+      `${nuevoDuenio.nombre} ahora posee ${atacadoObj.nombre} con ${mover} fichas.`
+    );
   }
 
   if (botonDadosAtacante) botonDadosAtacante.disabled = true;
@@ -587,7 +761,6 @@ function ataqueResolucion() {
   if (botonAtacar) botonAtacar.disabled = false;
   estadoAtaque = "esperando";
 }
-
 
 let estadoAtaque = "esperando";
 
@@ -600,17 +773,23 @@ function puedeAtacar() {
     return false;
   }
   if (paisAtacante.fichas <= 1) {
-    console.log(`${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`);
+    console.log(
+      `${paisAtacante.nombre} no puede atacar porque solo tiene ${paisAtacante.fichas} ficha(s).`
+    );
     return false;
   }
-  console.log(`${paisAtacante.nombre} puede atacar (tiene ${paisAtacante.fichas} fichas).`);
+  console.log(
+    `${paisAtacante.nombre} puede atacar (tiene ${paisAtacante.fichas} fichas).`
+  );
   return true;
 }
 
 if (botonAtacar) {
   botonAtacar.addEventListener("click", () => {
     if (paisesSeleccionados.length !== 2) {
-      console.log("Debes seleccionar exactamente 2 paises para iniciar el ataque.");
+      console.log(
+        "Debes seleccionar exactamente 2 paises para iniciar el ataque."
+      );
       return;
     }
 
@@ -633,11 +812,15 @@ if (botonAtacar) {
       return;
     }
     if (!pais1.paisesLimitrofes.includes(pais2.nombre)) {
-      console.log(`${pais2.nombre} no es limitrofe con ${pais1.nombre}. No se puede atacar.`);
+      console.log(
+        `${pais2.nombre} no es limitrofe con ${pais1.nombre}. No se puede atacar.`
+      );
       return;
     }
     if (pais1.fichas <= 1) {
-      console.log(`${pais1.nombre} no puede atacar (solo tiene ${pais1.fichas} ficha(s)).`);
+      console.log(
+        `${pais1.nombre} no puede atacar (solo tiene ${pais1.fichas} ficha(s)).`
+      );
       return;
     }
 
@@ -651,7 +834,6 @@ if (botonAtacar) {
     if (botonDadosAtacado) botonDadosAtacado.disabled = true;
   });
 }
-
 
 if (botonDadosAtacante) {
   botonDadosAtacante.addEventListener("click", () => {
@@ -700,7 +882,7 @@ function gestionarSeleccionReagrupacion(pais) {
   }
 
   if (paisesSeleccionados.includes(pais.nombre)) {
-    paisesSeleccionados = paisesSeleccionados.filter(p => p !== pais.nombre);
+    paisesSeleccionados = paisesSeleccionados.filter((p) => p !== pais.nombre);
     console.log(`Deseleccionaste ${pais.nombre}. Array:`, paisesSeleccionados);
     return;
   }
@@ -728,17 +910,19 @@ function gestionarSeleccionReagrupacion(pais) {
     console.log("Países seleccionados para reagrupación:", paisesSeleccionados);
     console.log("Datos actuales:", [
       { nombre: paisEmisor.nombre, fichas: paisEmisor.fichas },
-      { nombre: pais.nombre, fichas: pais.fichas }
+      { nombre: pais.nombre, fichas: pais.fichas },
     ]);
     return;
   }
 
   if (paisesSeleccionados.length === 2) {
-    console.log("Solo podes tener 2 paises seleccionados:", paisesSeleccionados);
-  } return;
-} 
-
-
+    console.log(
+      "Solo podes tener 2 paises seleccionados:",
+      paisesSeleccionados
+    );
+  }
+  return;
+}
 
 if (botonMoverFichas) {
   botonMoverFichas.addEventListener("click", () => {
@@ -748,7 +932,9 @@ if (botonMoverFichas) {
     }
 
     if (paisesSeleccionados.length !== 2) {
-      console.log("Tenes que seleccionar 2 países aliados y limítrofes primero.");
+      console.log(
+        "Tenes que seleccionar 2 países aliados y limítrofes primero."
+      );
       return;
     }
 
@@ -761,12 +947,18 @@ if (botonMoverFichas) {
 
     const fichasDisponibles = paisEmisor.fichas - paisEmisor.fichasRecibidas;
     if (fichasDisponibles <= 1) {
-      console.log(`${paisEmisor.nombre} no tiene fichas libres para mover (fichas bloqueadas: ${paisEmisor.fichasRecibidas}).`);
+      console.log(
+        `${paisEmisor.nombre} no tiene fichas libres para mover (fichas bloqueadas: ${paisEmisor.fichasRecibidas}).`
+      );
       return;
     }
 
     const cantidad = parseInt(
-      prompt(`¿Cuántas fichas queres mover de ${paisEmisor.nombre} a ${paisReceptor.nombre}? (máx ${fichasDisponibles - 1})`),
+      prompt(
+        `¿Cuántas fichas queres mover de ${paisEmisor.nombre} a ${
+          paisReceptor.nombre
+        }? (máx ${fichasDisponibles - 1})`
+      ),
       10
     );
 
@@ -793,12 +985,20 @@ if (botonMoverFichas) {
       origen: paisEmisor.nombre,
       receptor: paisReceptor.nombre,
       cantidad,
-      bloqueadasEnReceptor: paisReceptor.fichasRecibidas
+      bloqueadasEnReceptor: paisReceptor.fichasRecibidas,
     });
 
     console.log("Estado actualizado:", [
-      { nombre: paisEmisor.nombre, fichas: paisEmisor.fichas, bloqueadas: paisEmisor.fichasRecibidas },
-      { nombre: paisReceptor.nombre, fichas: paisReceptor.fichas, bloqueadas: paisReceptor.fichasRecibidas }
+      {
+        nombre: paisEmisor.nombre,
+        fichas: paisEmisor.fichas,
+        bloqueadas: paisEmisor.fichasRecibidas,
+      },
+      {
+        nombre: paisReceptor.nombre,
+        fichas: paisReceptor.fichas,
+        bloqueadas: paisReceptor.fichasRecibidas,
+      },
     ]);
 
     paisesSeleccionados = [];
@@ -809,47 +1009,258 @@ if (botonMoverFichas) {
 //reposicion
 //
 
-function gestionarSeleccionReposicion (pais){
-  if (maquinaDeFases.state !== "fase de reposicion") return
+function gestionarSeleccionReposicion(pais) {
+  if (maquinaDeFases.state !== "fase de reposicion") return;
   const jugador = jugadorActual();
-  
+
   if (!pais.duenio || pais.duenio.id !== jugador.id) {
     console.log(`${pais.nombre} no te pertenece.`);
     return;
   }
+
+  // ─────────────────────────────────────────
+  // SELECCIÓN
+  // ─────────────────────────────────────────
   if (paisesSeleccionados.length === 0) {
     paisesSeleccionados.push(pais.nombre);
     console.log("País para reponer seleccionado:", paisesSeleccionados);
+
+    // 👉 MOSTRAR MENÚ LATERAL PARA ESTE PAÍS
+    actualizarMenuReponer(pais.nombre);
+
     return;
   }
+
+  // ─────────────────────────────────────────
+  // DESELECCIÓN
+  // ─────────────────────────────────────────
   if (paisesSeleccionados.includes(pais.nombre)) {
-    paisesSeleccionados = paisesSeleccionados.filter(p => p !== pais.nombre);
-    console.log(`Deseleccionaste ${pais.nombre}. paises seleccionados:`, paisesSeleccionados);
+    paisesSeleccionados = paisesSeleccionados.filter((p) => p !== pais.nombre);
+    console.log(
+      `Deseleccionaste ${pais.nombre}. paises seleccionados:`,
+      paisesSeleccionados
+    );
+
+    // 👉 SI NO QUEDA NINGÚN PAÍS, SE OCULTA EL MENÚ
+    if (paisesSeleccionados.length === 0) {
+      actualizarMenuReponer(null);
+    }
+
     return;
-  } 
+  }
+
+  // ─────────────────────────────────────────
+  // YA HABÍA OTRO PAÍS SELECCIONADO
+  // ─────────────────────────────────────────
   if (paisesSeleccionados.length === 1) {
-    console.log("Solo podes tener 1 país seleccionados:", paisesSeleccionados);
-  } return;
+    console.log("Solo podes tener 1 país seleccionado:", paisesSeleccionados);
+  }
+
+  return;
 }
 
-function calcularFichasDisponibles () {
-const jugador = jugadorActual()
-let fichasDisponibles = jugador.paises.lenght / 2
 
+// ----------------------
+// ELEMENTOS LATERAL (crea DOM si no existe)
+// ----------------------
+function asegurarMenuLateral() {
+  let aside = document.getElementById("lateralReponer");
+  if (!aside) {
+    aside = document.createElement("aside");
+    aside.id = "lateralReponer";
+    aside.style.position = "fixed";
+    aside.style.right = "0";
+    aside.style.top = "80px";
+    aside.style.width = "220px";
+    aside.style.padding = "12px";
+    aside.style.background = "#f5f5f5";
+    aside.style.borderLeft = "1px solid #ccc";
+    aside.style.zIndex = "9999";
+    aside.innerHTML = `
+      <h4 style="margin:0 0 8px 0">Reposición</h4>
+      <div style="font-size:12px;margin-bottom:6px" id="reponerInfo">Fase: no disponible</div>
+      <label for="menuReponer" style="font-size:12px">Fichas a poner:</label>
+      <select id="menuReponer" disabled style="width:100%;margin-bottom:8px"></select>
+      <button id="confirmarReponer" disabled style="width:100%">Confirmar</button>
+      <div id="reponerMensaje" style="font-size:12px;margin-top:8px;color:#555"></div>
+    `;
+    document.body.appendChild(aside);
+  }
+  return {
+    aside,
+    select: document.getElementById("menuReponer"),
+    confirmar: document.getElementById("confirmarReponer"),
+    info: document.getElementById("reponerInfo"),
+    mensaje: document.getElementById("reponerMensaje")
+  };
 }
 
-const select = document.createElement("select");
-select.id = "miMenu"; 
+const lateral = asegurarMenuLateral();
 
-const opciones = [];
-
-opciones.forEach(op => {
-  const option = document.createElement("option");
-  option.value = op.toLowerCase(); 
-  option.textContent = op;        
-  select.appendChild(option);
+// ----------------------
+// Estado de reposición por jugador (se reinicia cuando empieza reposicion del jugador)
+// ----------------------
+// almacenamos por jugador: { continenteUsado: {Sudamerica: true, ...} , totalRepuestosEnFase: 0 }
+jugadores.forEach((j) => {
+  j.reposicion = {
+    continenteUsado: {}, // ej: { Sudamerica: false, ... }
+    totalRepuestosEnFase: 0
+  };
 });
 
-document.getElementById("contenedorMenu").appendChild(select);
+// inicializa marcas de continente en false
+function inicializarMarcasContinentesParaJugador(jugador) {
+  jugador.reposicion = {
+    continenteUsado: Object.keys(bonusContinente).reduce((acc, c) => {
+      acc[c] = false;
+      return acc;
+    }, {}),
+    totalRepuestosEnFase: 0
+  };
+}
 
-actualizarFase(); 
+// ----------------------
+// calcular bonos por continente que tiene completo el jugador (devuelve mapa continente -> cantidad)
+// ----------------------
+function calcularBonosPorContinenteDelJugador(jugador) {
+  const contMap = {}; // continente -> true si controla todo
+  // arma lista de países por continente
+  const paisesPorContinente = {};
+  Object.keys(continentePorPais).forEach((pais) => {
+    const cont = continentePorPais[pais];
+    paisesPorContinente[cont] = paisesPorContinente[cont] || [];
+    paisesPorContinente[cont].push(pais);
+  });
+
+  Object.entries(paisesPorContinente).forEach(([cont, list]) => {
+    const controlaTodo = list.every((pais) => {
+      const p = paises[pais]; // usa tu objeto paises
+      return p && p.duenio && p.duenio.id === jugador.id;
+    });
+    if (controlaTodo) contMap[cont] = bonusContinente[cont] || 0;
+  });
+  return contMap;
+}
+
+// ----------------------
+// cuando empieza la fase de reposicion para un jugador
+// ----------------------
+function iniciarReposicionParaJugador(jugador) {
+  inicializarMarcasContinentesParaJugador(jugador);
+  // marca los continentes que el jugador controla
+  const bonos = calcularBonosPorContinenteDelJugador(jugador);
+  jugador.reposicion.bonosDisponiblesPorContinente = bonos; // ej: { Sudamerica: 3 }
+  lateral.info.textContent = `Reposición: ${jugador.nombre.toUpperCase()}`;
+  lateral.mensaje.textContent = `Seleccioná un país tuyo para ver opciones.`;
+  actualizarMenuReponer(null); // deshabilita hasta que seleccione país
+  lateral.select.disabled = true;
+  lateral.confirmar.disabled = true;
+}
+
+// ----------------------
+// función para actualizar las opciones del select según país seleccionado
+// ----------------------
+let paisSeleccionadoParaReposicion = null;
+
+function actualizarMenuReponer(paisNombre) {
+  const select = lateral.select;
+  select.innerHTML = "";
+
+  if (maquinaDeFases.state !== "fase de reposicion") {
+    // fuera de reposicion: mantiene visible pero deshabilitado
+    lateral.select.disabled = true;
+    lateral.confirmar.disabled = true;
+    lateral.info.textContent = `Fase actual: ${maquinaDeFases.state}`;
+    return;
+  }
+
+  const jugador = jugadorActual();
+  lateral.info.textContent = `Reposición: ${jugador.nombre.toUpperCase()}`;
+
+  if (!paisNombre) {
+    // no hay país seleccionado aún
+    lateral.select.disabled = true;
+    lateral.confirmar.disabled = true;
+    lateral.mensaje.textContent = "Seleccioná un país para reponer.";
+    paisSeleccionadoParaReposicion = null;
+    return;
+  }
+
+  const paisObj = paises[paisNombre];
+  if (!paisObj || !paisObj.duenio || paisObj.duenio.id !== jugador.id) {
+    lateral.select.disabled = true;
+    lateral.confirmar.disabled = true;
+    lateral.mensaje.textContent = "Ese país no es tuyo.";
+    paisSeleccionadoParaReposicion = null;
+    return;
+  }
+
+  paisSeleccionadoParaReposicion = paisNombre;
+
+  // primer chequeo: ¿el continente del país tiene bono disponible y no usado?
+  const cont = continentePorPais[paisNombre];
+  const bonosJugador = jugador.reposicion.bonosDisponiblesPorContinente || {};
+  const continenteTieneBono = cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
+
+  let maxOpciones = 0;
+  if (continenteTieneBono) {
+    maxOpciones = bonosJugador[cont];
+    lateral.mensaje.textContent = `Usando bono de continente (${cont}). Opciones 1..${maxOpciones}`;
+  } else {
+    // sino: normal = floor(paises del jugador / 2)
+    maxOpciones = Math.floor(jugador.paises.length / 2) || 1;
+    lateral.mensaje.textContent = `Opciones normales (países/2): 1..${maxOpciones}`;
+  }
+
+  for (let i = 1; i <= maxOpciones; i++) {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = i;
+    select.appendChild(opt);
+  }
+
+  lateral.select.disabled = false;
+  lateral.confirmar.disabled = false;
+}
+
+// ----------------------
+// aplicar la reposición elegida (botón confirmar)
+// ----------------------
+lateral.confirmar.addEventListener("click", () => {
+  if (maquinaDeFases.state !== "fase de reposicion") return;
+  if (!paisSeleccionadoParaReposicion) return;
+
+  const cantidad = Number(lateral.select.value);
+  if (!cantidad || cantidad <= 0) return;
+
+  const jugador = jugadorActual();
+  const paisObj = paises[paisSeleccionadoParaReposicion];
+
+  // ¿estamos usando bono de continente?
+  const cont = continentePorPais[paisSeleccionadoParaReposicion];
+  const bonosJugador = jugador.reposicion.bonosDisponiblesPorContinente || {};
+  const continenteTieneBono = cont && bonosJugador[cont] && !jugador.reposicion.continenteUsado[cont];
+
+  // si uso bono, lo marco como usado para ese continente
+  if (continenteTieneBono) {
+    jugador.reposicion.continenteUsado[cont] = true;
+    lateral.mensaje.textContent = `Se usó bono de ${cont}.`;
+  } else {
+    lateral.mensaje.textContent = `Se agregaron ${cantidad} fichas a ${paisObj.nombre}.`;
+  }
+
+  // aplicar fichas al país
+  paisObj.fichas = (paisObj.fichas || 0) + cantidad;
+  jugador.reposicion.totalRepuestosEnFase = (jugador.reposicion.totalRepuestosEnFase || 0) + cantidad;
+
+  // actualizar DOM de fichas
+  const el = document.getElementById(`fichas-${idFromName(paisObj.nombre)}`);
+  if (el) el.textContent = paisObj.fichas;
+
+  // luego de aplicar, reseteo selección y actualizo menu (si el bono quedó usado, el siguiente select mostrará la otra opción)
+  paisesSeleccionados = [];
+  paisSeleccionadoParaReposicion = null;
+  actualizarMenuReponer(null);
+});
+
+actualizarFase();
