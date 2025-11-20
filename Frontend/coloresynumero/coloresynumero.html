@@ -2,40 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selección de jugadores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>T.E.G. - Selección</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="coloresynumero.js" defer></script>
 </head>
 <body>
-  <img class="fondo" src="../imagenes/COPIA de seleccion de jugadores.svg" alt="fondo madera" />
-
-  <button class="cerrar" onclick="volverAlMenuPrincipal()">✖</button>
-
-  <section class="contenedor-jugadores">
-    <h2>Selecciona cantidad de jugadores</h2>
-    <div class="botones-jugadores">
-      <button onclick="generarSelectores(3)">3 Jugadores</button>
-      <button onclick="generarSelectores(4)">4 Jugadores</button>
-      <button onclick="generarSelectores(5)">5 Jugadores</button>
-      <button onclick="generarSelectores(6)">6 Jugadores</button>
+  <!-- Pantalla de selección de cantidad de jugadores -->
+  <div id="pantalla-jugadores" class="pantalla">
+    <img src="../imagenes/boton salida.svg" alt="Salir" class="cruz" onclick="irMenuPrincipal()" />
+    <div class="panel-jugadores">
+      <button onclick="seleccionarJugadores(3)">
+        <img alt="icono" src="../imagenes/icono jugadores.svg" class="icono" /> 3 Jugadores
+      </button>
+      <button onclick="seleccionarJugadores(4)">
+        <img alt="icono" src="../imagenes/icono jugadores.svg" class="icono" /> 4 Jugadores
+      </button>
+      <button onclick="seleccionarJugadores(5)">
+        <img alt="icono" src="../imagenes/icono jugadores.svg" class="icono" /> 5 Jugadores
+      </button>
+      <button onclick="seleccionarJugadores(6)">
+        <img alt="icono" src="../imagenes/icono jugadores.svg" class="icono" /> 6 Jugadores
+      </button>
     </div>
-    <div class="iconos-jugadores">
-      <img src="../imagenes/icono jugadores.svg" alt="jugador" />
-      <img src="../imagenes/icono jugadores.svg" alt="jugador" />
-      <img src="../imagenes/icono jugadores.svg" alt="jugador" />
-      <img src="../imagenes/icono jugadores.svg" alt="jugador" />
-    </div>
-  </section>
-
-  <div id="selectores"></div>
-
-  <div class="navegacion">
-    <img src="../imagenes/flecha-izquierda.svg" alt="flecha izquierda" onclick="verificarColoresSeleccionados()" />
-    <img src="../imagenes/flecha-derecha.svg" alt="flecha derecha" onclick="volverASeleccionJugadores()" />
+    
   </div>
 
-  <button class="continuar" onclick="verificarColoresSeleccionados()">Continuar</button>
+  <!-- Pantalla de selección de colores -->
+  <div id="pantalla-colores" class="pantalla oculto">
+    <div class="panel-colores">
+      <h2>Selección de colores</h2>
+      <div class="contenedor-selects" id="jugadores-selects"></div>
+      <img alt="flecha-derecha" src="../imagenes/flecha-derecha.svg" class="flecha-derecha" onclick="volverSeleccion()" />
+      <img alt="flecha-izquierda" src="../imagenes/flecha-izquierda.svg" class="flecha-izquierda" onclick="continuarObjetivos()" />
+    </div>
+  </div>
+
+  <script src="coloresynumero.js"></script>
 </body>
 </html>
-
