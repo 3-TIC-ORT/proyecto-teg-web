@@ -1,81 +1,66 @@
-/* Fondo general */
+
+.jaini-regular {
+  font-family: "Jaini", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: url('../imagenes/fondo pantalla principal.svg') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Georgia', serif;
+  background: url('../imagenes/fondo pantalla principal.svg') no-repeat center center fixed;;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.imagen{
-    width: 10%;
-    height: 10%;
+.logo{
+    width: 30%;
+    height: auto;
     position: absolute;
-    top: 0px;
-    left: 520px;
-    
-}
-.nueva{
-    width: 70%;
-    height: 20%;
-    position: absolute;
-    top: 240px;
-    left:200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-color: black;
-    border-bottom: 1.5rem;
-}
-.cargar{
-    width: 70%;
-    height: 20%;
-    position: absolute;
-    top: 360px;
-    left:200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-color: black;
-    border-bottom: .5rem;
-    color: black;
-}
-.salir{
-    width:70%;
-    height:100px;
-    position: absolute;
-    top: 470px;
-    left:200px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: #fff;
-    border-color: black;
-    border-bottom: .5rem;
-}
-.instrerucciones{
-    width: 7%;
-    height: 3%;
-    position: absolute;
-    top: 88%;
-    left: 93%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: #fff;
-    border: 10px;
-    border-color: black;
+    background-color: transparent;
+    top: 5%;
+    left: 35%;
 }
 div{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    height: 700px;
-    background-color: forestgreen;
+    position: absolute;
+    top: 40%;
+     border:  0 solid; 
+    border-radius: 10px;
+    width: 400px;
+    height: 500px;
 }
+div button{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background-color: #2B1D0B;
+    border: 2px solid ;
+    width: 900px;
+    height: 120px;
+    color: #FFAE00;
+    font-family: jaini-regular;
+    font-size: large;
+   }
+   .nueva{
+    border-top-left-radius: 27px;
+    border-top-right-radius: 27px;
+    border-bottom-color: 10px solid #827A7A ;
+   }
+ .instrerucciones{
+    border-bottom-left-radius: 27px;
+    border-bottom-right-radius: 27px;
+    border-top-color:   10px solid #827A7A;
+   }
+   .cargar{
+   border-top-color:   10px solid #827A7A;
+     border-bottom-color: 10px solid #827A7A;
+   }
+   .salir{
+     border-top-color:  10px solid #827A7A ;
+     border-bottom-color: 10px solid #827A7A ;
+   }
