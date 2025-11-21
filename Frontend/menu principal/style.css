@@ -39,7 +39,6 @@ div button{
     align-items: center;
     justify-content: center;    
     background-color: #2B1D0B;
-    border: 2px solid ;
     width: 900px;
     height: 120px;
     color: #FFAE00;
@@ -49,18 +48,18 @@ div button{
    .nueva{
     border-top-left-radius: 27px;
     border-top-right-radius: 27px;
-    border-bottom-color: 10px solid #827A7A ;
+    border-bottom-color: 30px solid #827A7A ;
    }
  .instrerucciones{
     border-bottom-left-radius: 27px;
     border-bottom-right-radius: 27px;
-    border-top-color:   10px solid #827A7A;
+    border-top-color:   30px solid #827A7A;
    }
    .cargar{
-   border-top-color:   10px solid #827A7A;
-     border-bottom-color: 10px solid #827A7A;
+   border-top-color:   30px solid #827A7A;
+     border-bottom-color: 30px solid #827A7A;
    }
    .salir{
-     border-top-color:  10px solid #827A7A ;
-     border-bottom-color: 10px solid #827A7A ;
+     border-top-color:  30px solid #827A7A ;
+     border-bottom-color: 30px solid #827A7A ;
    }

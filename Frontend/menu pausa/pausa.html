@@ -4,39 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Link al CSS -->
-    <link rel="stylesheet" href="pausa.css" />
+    <!-- <link rel="stylesheet" href="pausa.css" /> -->
     <!-- Link al JS. El 'defer' hace que se ejecute AL FINAL, después de haber cargado el html inicial -->
-    <script src="main.js" defer ></script>
+    <!-- <script src="main.js" defer ></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>  
-<title>Menu Pausa</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
-</head>
 
+<title>Menu Pausa</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+<<script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script> -->
+</head> 
+<!-- 
 <body>
    <button id="atacar">Atacar</button>
 
-  <!-- Overlay -->
+  <!-- Overlay 
   <div id="overlay" class="overlay" hidden></div>
 
-  <!-- Popup -->
+  <!-- Popup 
   <div id="popup" class="popup" hidden>
     <header>
       <h2>Carta obtenida</h2>
       <button id="cerrar">&times;</button>
     </header>
     <div id="popupContent" class="popup-content">
-      <!-- Aquí se inyecta la carta obtenida -->
+      <!-- Aquí se inyecta la carta obtenida 
     </div>
   </div>
 
-  <!-- Contenedor de todas las cartas acumuladas -->
+  <!-- Contenedor de todas las cartas acumuladas
   <div id="cartasContainer" class="cartas-container"></div>
 </body>
-</html>
+</html> -->
 <body>
   
 <!-- Botón que dispara la pantalla de victoria -->
@@ -57,15 +57,15 @@
 </div>
 <style>
   #victory-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 0%;
+  left: 0%;
   width: 100%;
   height: 100%;
-  background-image: url('fondo-victoria.png'); /* fondo con "¡VICTORIA GLOBAL!" incluido */
+  background-image: url('../imagenes/final.svg'); /* fondo con "¡VICTORIA GLOBAL!" incluido */
   background-size: cover;
   background-position: center;
-  z-index: 9999;
+  z-index: 100000000000000000000000000000000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +73,7 @@
 
 .victory-container {
   text-align: center;
-  color: white;
+  /* color: white; */
   font-family: 'Cinzel', serif;
 }
 
@@ -83,21 +83,26 @@
 }
 
 .custom-button {
-  background-image: url('boton-estilo.png'); /* tu diseño de botón */
+  background-image: url('../imagenes/boton\ victoria.svg'); 
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   width: 200px;
   height: 60px;
-  border: none;
-  cursor: pointer;
-  margin: 0 20px;
+ position: relative;
+ top: 350px;
+ display: flexbox;
+ justify-content: center;
+  flex-direction: row;
+  gap: 1000px;
+ border: none;
 }
 
 </style>
 <script>
   function mostrarPantallaVictoria() {
   const jugador = localStorage.getItem('jugador') || 'Desconocido';
-  const logro = localStorage.getItem('logro') || 'algo impresionante';
+  const logro = localStorage.getItem('objetivo') || 'algo impresionante';
 
   const mensaje = `El jugador ${jugador} ha conseguido ${logro}`;
   document.getElementById('victory-message').textContent = mensaje;
@@ -107,11 +112,11 @@
 
 // Eventos de los botones
 document.getElementById('btn-menu').addEventListener('click', () => {
-  window.location.href = 'menu.html'; // ajustá la ruta
+  window.location.href = '../'; // ajustá la ruta
 });
 
 document.getElementById('btn-restart').addEventListener('click', () => {
-  location.reload(); // o lógica para reiniciar
+  window.Location.href="../coloresynumero/coloresynumero.html"; 
 });
 
 </script>
