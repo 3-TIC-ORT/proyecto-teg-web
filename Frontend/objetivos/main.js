@@ -21,56 +21,85 @@ let playerObjectives = {};
 let i = 0;
 
 window.onload = () => {
-  const data = localStorage.getItem("lsnumeroJugadores");
-  if (!data) {
-    alert("No se encontraron jugadores seleccionados.");
-    window.location.href = "seleccion.html";
-    return;
+  // Intentar leer formato nuevo: objeto JSON guardado como 'configJugadores'
+  let cantidad = null;
+  let coloresJugadores = [];
+
+  const configRaw = localStorage.getItem("configJugadores");
+  if (configRaw) {
+    try {
+      const cfg = JSON.parse(configRaw);
+      cantidad = parseInt(cfg.cantidad, 10);
+      // cfg.elecciones puede ser objeto con claves "1","2",...
+      for (let idx = 1; idx <= cantidad; idx++) {
+        const key = String(idx);
+        coloresJugadores.push((cfg.elecciones && (cfg.elecciones[key] || cfg.elecciones[idx])) || null);
+      }
+    } catch (err) {
+      // si falla el parseo, sigue al fallback
+      cantidad = null;
+      coloresJugadores = [];
+    }
   }
 
-  // data viene como cadena con la cantidad de jugadores; convertir y crear array de jugadores
-  const cantidad = parseInt(data, 10);
-  if (isNaN(cantidad) || cantidad <= 0) {
-    alert("Número de jugadores inválido.");
-    window.location.href = "seleccion.html";
-    return;
+  // Fallback a formato antiguo (cantidadJugadores + coloresElegidos)
+  if (!cantidad) {
+    const data = localStorage.getItem("cantidadJugadores");
+    console.log(data)
+    if (!data) {
+      alert("No se encontraron jugadores seleccionados.");
+      window.location.href = "seleccion.html";
+      return;
+    }
+    cantidad = parseInt(data, 10);
+    if (isNaN(cantidad) || cantidad <= 0) {
+      alert("Número de jugadores inválido.");
+      window.location.href = "seleccion.html";
+      return;
+    }
+
+    const coloresRaw = localStorage.getItem("coloresElegidos") || "{}";
+    console.log(coloresRaw) 
+    // Intentar parsear JSON
+    let parsed = {};
+    try {
+      parsed = JSON.parse(coloresRaw);
+    } catch (e) {
+      parsed = {};
+    }
+
+    // El formato guardado es un objeto con claves "1", "2", etc.
+    for (let idx = 1; idx <= cantidad; idx++) {
+        const key = String(idx);
+        coloresJugadores.push(parsed[key] || null);
+    }
   }
 
-  // Generar lista de jugadores: ["Jugador 1", "Jugador 2", ...]
-  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador color ${localStorage.getItem("lscolores").split(",")[idx]} ${idx + 1}`);
+  // Asegurar longitud correcta rellenando con nulls si falta
+  while (coloresJugadores.length < cantidad) coloresJugadores.push(null);
 
-  // mezclar objetivos sin mutar el array original
-  // mezclar objetivos sin mutar el array original
-let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
+  // Generar lista de jugadores simples ("Jugador 1", ...)
+  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`);
 
-// colores usados por los jugadores
-let coloresJugadores = localStorage.getItem("lscolores").split(",");
+  // Mezclar objetivos
+  let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
 
-// Asignar objetivos evitando que un jugador reciba "destruir su propio color"
-selectedPlayers.forEach((player, idx) => {
+  // Asignar objetivos evitando "destruir su propio color" cuando sea posible
+  selectedPlayers.forEach((player, idx) => {
+    const colorJugador = coloresJugadores[idx]; // puede ser null
+    let objetivoProhibido = colorJugador ? `Destruir al ejército ${colorJugador}` : null;
 
-  let colorJugador = coloresJugadores[idx]; // Azul, Rojo, Amarillo, etc.
+    // Buscar objetivo válido
+    let objetivoAsignado = mezcla.find(obj => objetivoProhibido ? obj.toLowerCase() !== objetivoProhibido.toLowerCase() : true);
 
-  // Objetivo prohibido para este jugador
-  let objetivoProhibido = `Destruir al ejército ${colorJugador.toLowerCase()}`;
+    // Si no hay (caso absurdo), elegir uno que no empiece con "Destruir" si es posible
+    if (!objetivoAsignado) {
+      objetivoAsignado = mezcla.find(obj => !obj.toLowerCase().startsWith("destruir")) || mezcla[0];
+    }
 
-  // Buscar un objetivo válido
-  let objetivoAsignado = mezcla.find(obj => 
-    obj.toLowerCase() !== objetivoProhibido.toLowerCase()
-  );
-
-  // Si no se encuentra un objetivo válido (muy improbable), usar uno de dominio
-  if (!objetivoAsignado) {
-    objetivoAsignado = mezcla.find(obj => !obj.startsWith("Destruir"));
-  }
-
-  // Guardar el objetivo
-  playerObjectives[player] = objetivoAsignado;
-
-  // Sacarlo de la lista para evitar duplicados
-  mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
-});
-
+    playerObjectives[player] = objetivoAsignado;
+    mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
+  });
 
   showNextPlayer();
 };
@@ -105,10 +134,10 @@ function nextObjective() {
   if (i < selectedPlayers.length) {
     showNextPlayer();
   } else {
+    localStorage.setItem("objetivos", JSON.stringify(playerObjectives));
     document.getElementById("overlay").style.display = "none";
     alert("Todos los objetivos fueron revelados. ¡A jugar!");
-    //postEvent ("objetivosJugadores", {playerObjectives});
-    // redirigir al juego principal
     window.location.href = "../juegoprincipal/juegoprincipal.html";
   }
 }
+// ...existing code...

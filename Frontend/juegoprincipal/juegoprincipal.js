@@ -1,10 +1,11 @@
 // connect2Server
-let cantidadJugadores =localStorage.getItem("lsnumeroJugadores")
+let cantidadJugadores = localStorage.getItem("cantidadJugadores")
 console.log (cantidadJugadores)
 
-let coloresjugadores=localStorage.getItem("lscolores")
+let coloresjugadores = JSON.parse(localStorage.getItem("coloresElegidos") || "{}")
 console.log(coloresjugadores)
-
+let objetivos = JSON.parse(localStorage.getItem("objetivos") || "{}")
+console.log (objetivos)
 let atacar = document.getElementById("Atacar")
 let reagrupar = document.getElementById("Reagrupar")
 let reponer = document.getElementById ("Reponer")
@@ -58,10 +59,9 @@ const botonGuardar = document.getElementById("boton3");
 // 🟠 Botón de Pausa
 pauseBtn.addEventListener("click", function () {
   paused = true;
-  clearInterval(timerInterval);
   remainingTime = targetDate - new Date();
   overlay.style.display = "flex";
-  if(pauseBtn===true){
+  if(paused){
   PostEvent ("cantidadJugadores",{cantidadJugadores})
     
     PostEvent ("faseDeEstados",{fase})
@@ -76,7 +76,6 @@ pauseBtn.addEventListener("click", function () {
 botonReanudar.addEventListener("click", function () {
   paused = false;
   targetDate = new Date(new Date().getTime() + remainingTime);
-  timerInterval = setInterval(updateTimer, 1000);
   overlay.style.display = "none";
 });
 

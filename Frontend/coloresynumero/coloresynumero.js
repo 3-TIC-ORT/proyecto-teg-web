@@ -1,3 +1,4 @@
+
 const colores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
 let cantidadJugadores = 0;
 let elecciones = {};
@@ -61,9 +62,14 @@ function continuarObjetivos() {
       return;
     }
   }
-  window.location.href = "../objetivos/objetivos.html";
-}
 
+
+
+  localStorage.setItem("cantidadJugadores", cantidadJugadores)
+  localStorage.setItem("coloresElegidos", JSON.stringify(elecciones))
+
+  window.location.href = "../objetivos/objetivos.html"
+}
 function irMenuPrincipal() {
-  window.location.href = "../menu%20principal/menuprincipal.html";
+  window.location.href = "../menu%20principal/menuprincipal.html"
 }

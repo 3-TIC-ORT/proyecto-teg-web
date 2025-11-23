@@ -107,10 +107,10 @@ button {
  .relleno1{
   background-color:#1ABFED ;
   position: absolute;
-  top: 85%;
+  top: 80%;
   left: 17%;
   width: 80%;
-  height: 15%;
+  height: 20%;
   z-index: 900;
  }
  .relleno2{
