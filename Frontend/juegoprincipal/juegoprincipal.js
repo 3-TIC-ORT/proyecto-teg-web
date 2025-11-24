@@ -16,17 +16,15 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
-
-  // 🕒 Configuración inicial
 let targetDate = new Date();
 targetDate.setSeconds(targetDate.getSeconds() + 240); // 4 minutos
-let paused = false;
-let remainingTime = 240000; // 4 minutos en ms
+let remainingTime = 240000; // 4 min en ms
 let timerInterval;
+let paused = false;
 
 // 🔁 Actualiza el temporizador
 function updateTimer() {
-  if (paused) return;
+  if (paused) return; // ⛔ No actualizar si está pausado
 
   let now = new Date();
   let diff = targetDate - now;
@@ -41,57 +39,81 @@ function updateTimer() {
   let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
   document.getElementById("timer").textContent =
-    String(minutes).padStart(2, '0') + ":" +
-    String(seconds).padStart(2, '0');
+    String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, "0");
 }
 
-// ⏳ Iniciar temporizador automáticamente
-timerInterval = setInterval(updateTimer, 1000);
-updateTimer(); // Mostrar el tiempo inmediatamente
+// ▶️ Iniciar Timer
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(updateTimer, 1000);
+  updateTimer();
+}
+startTimer();
 
-// 🔘 Elementos
+// -------------------------
+// 🔘 PAUSA
+// -------------------------
 const pauseBtn = document.getElementById("pauseBtn");
 const overlay = document.getElementById("pauseOverlay");
-const botonReglamento = document.getElementById("boton1");
 const botonReanudar = document.getElementById("boton2");
-const botonGuardar = document.getElementById("boton3");
 
-// 🟠 Botón de Pausa
 pauseBtn.addEventListener("click", function () {
-  paused = true;
-  remainingTime = targetDate - new Date();
-  overlay.style.display = "flex";
-  if(paused){
-  PostEvent ("cantidadJugadores",{cantidadJugadores})
-    
-    PostEvent ("faseDeEstados",{fase})
-    
-    PostEvent("jugador",{jugador})
-    
-    PostEvent("jugadores", {jugadores})
-  }
+  paused = true;                       // PAUSA ACTIVADA
+  remainingTime = targetDate - new Date(); // Guarda el tiempo restante
+  clearInterval(timerInterval);        // frena el timer
+  overlay.style.display = "flex";      // muestra pantalla oscura
 });
 
-// 🟢 Botón de Reanudar
+// -------------------------
+// ▶️ REANUDAR
+// -------------------------
 botonReanudar.addEventListener("click", function () {
   paused = false;
-  targetDate = new Date(new Date().getTime() + remainingTime);
-  overlay.style.display = "none";
+  targetDate = new Date(new Date().getTime() + remainingTime); // restaura tiempo
+  overlay.style.display = "none"; // cierra overlay
+  startTimer(); // vuelve a iniciar el timer correcto
 });
 
-// 📘 Botón de Reglamento
+// -------------------------
+// 💾 GUARDAR ESTADO (solo si está pausado)
+// -------------------------
+if (paused) {
+  PostEvent("cantidadJugadores", { cantidadJugadores });
+  PostEvent("faseDeEstados", { fase });
+  PostEvent("jugador", { jugador });
+  PostEvent("jugadores", { jugadores });
+}
+
+// -------------------------
+// 📘 Botón Reglamento
+// -------------------------
 botonReglamento.addEventListener("click", function () {
   window.open("reglamento.html");
 });
 
-// 💾 Botón Guardar y salir
+// -------------------------
+// 💾 Guardar y salir
+// -------------------------
 botonGuardar.addEventListener("click", function () {
   window.location.href = "menu.html";
 });
 
-//ejemplo de get event
-getEvent ("timer", targetDate)
-//termine el  timer
+// -------------------------
+// 🔍 Info Popup
+// -------------------------
+const infoBtn = document.getElementById("infoBtn");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("closePopup");
+
+infoBtn.addEventListener("click", () => {
+  popup.style.display = "flex";
+});
+
+closePopup.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+
 //esto es para estandarizar los nombres de cosas
 function idFromName(nombre) {
   return nombre

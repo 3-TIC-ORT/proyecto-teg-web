@@ -15,8 +15,8 @@
 .logo{
   z-index: 10000000000000000000000000000000000000000;
   position: absolute;
-  top: 91%;
-  left: 96%;
+  top: 92.5%;
+  left: 95%;
   width: 100px;
   height: 100px;
 }
@@ -79,7 +79,18 @@ z-index: 900;
 left: 17%;
  
 }
-
+.color-jugador{
+  border: 3% solid black;
+  border-color: #000;
+  position: absolute;
+  background-color: red;
+  top: 1%;
+  left:.1%;
+  border-radius: 20%;
+  width: 16.6%;
+  height: 10%;
+ z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
+}
 #timer {
    z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
   color: rgb(0, 0, 0);
@@ -110,7 +121,7 @@ button {
   top: 80%;
   left: 17%;
   width: 80%;
-  height: 20%;
+  height: 22.5%;
   z-index: 900;
  }
  .relleno2{
@@ -129,16 +140,15 @@ button {
   top: 0%;
   left: 95%;
   width: 17%;
-  height: 100%;
+  height: 102.5%;
   display: flex;
   flex-direction: column;
  }
 #pauseBtn {
-  color: white;
   position: absolute;
-
-top: 580px;
-left: 5px;
+ z-index: 10000000000000000000000000000000000000000000000000000000;
+top: 95%;
+left: .5%;
 }
 
 /* 🔒 Overlay oscuro cuando se pausa */
@@ -166,29 +176,21 @@ left: 5px;
   padding: 10px 0;
 }
 
-.boton:hover {
-  background-color: #ddd;
-}
 .todo{
 display: flex;
 gap: 15px;
 justify-content: center;
 align-items: center;
+z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000;
 }
-.color-jugador{
-  position: absolute;
-  top: 40px;
-  left:5px;
-  width: 200px;
-  height: 75px;
-}
+
 .atacar{
-height: 75px;
-width: 90px;
+height: 5%;
+width: 7%;
 position: absolute;
-top: 80px;
-left: 5px;
-border-color: .000;
+top: 15%;
+left: .05%;
+border-color: #000;
 background-color: #fff;
 }
 .Reagrupar{
@@ -196,10 +198,10 @@ border-color: black;
 border-bottom: 10px;
 background-color: #fff;
 position: absolute;
-height: 75px;
-width: 90px;
-top: 80px;
-left: 100px;
+height: 5%;
+width: 7%;
+top: 15%;
+left: 9%;
 }
 
 
@@ -208,62 +210,76 @@ border-color: black;
 border-bottom: 10px;
 background-color: #fff;
 position: absolute;
-height: 75px;
-width: 90px;
-top: 180px;
-left: 5px;
+height: 5%;
+width: 7%;
+top: 22%;
+left: .05%;
 }
 .Canjear{
 border-color: black;
 border-bottom: 10px;
 background-color: #fff;
 position: absolute;
-width: 90px;
-height: 75px ;
-top: 180px;
-left: 100px;
+width: 7%;
+height: 5% ;
+top: 22%;
+left: 9%;
 }
 .Menu{
-width: 250px;
-height: 190px;
+width: 16%;
+height: 19%;
 position: absolute;
-top: 275px;
-left: 5px;
-display: flexbox;
+top: 30%;
+left: .05%;
+display: flex;
 }
 .parar{
 border-color: black;
 border-bottom: 10px;
 background-color: #fff;
 position: absolute;
-width: 90px;
-height:75px ;
+width: 7%;
+height:9% ;
 top: 400px;
-left: 5px;
+left: .05%;
 }
 .terminar{
 border-color: black;
 border-bottom: 10px;
 background-color: #fff;
 position: absolute;
-width: 90px;
-height:75px ;
+width: 7%;
+height:9% ;
 top: 400px;
-left: 100px;
+left: 9%;
 }
 .tirar1{
-width: 60px;
-height: 60px;
+width: 7%;
+height: 10%;
 position: absolute;
-top: 500px;
-left: 20px;
+top: 55%;
+left: .05%;
 }
 .tirar2{
- width: 60px;
-height: 60px;
+width: 7%;
+height: 10%;
 position: absolute;
-top: 500px;
-left: 120px;
+top: 55%;
+left: 9%;
+}
+.revelar{
+width: 16%;
+height: 10%;
+position: absolute;
+top: 70%;
+left: .05%;
+}
+.recordar{
+width: 16%;
+height: 10%;
+position: absolute;
+top: 82%;
+left: .05%;
 }
 .linea-medio{
 width: 17%;
@@ -279,22 +295,22 @@ border-right: 5px solid black;
 .fondo-costado{
   left: 0%;
   top: 0%;
-  height: 100%;
+  height: 102.5%;
   position: absolute;
 }
 .fichas{
-  width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .fichas-amrillas{
-    width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+    width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
@@ -302,9 +318,9 @@ border-right: 5px solid black;
   background-color: yellow;
 }
 .fichas-rojas{
-      width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+      width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
@@ -312,9 +328,9 @@ border-right: 5px solid black;
   background-color: red;
 }
 .fichas-azules{
-    width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+    width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
@@ -322,9 +338,9 @@ border-right: 5px solid black;
   background-color: blue;
 }
 .fichas-rosas{
-      width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+      width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
@@ -332,9 +348,9 @@ border-right: 5px solid black;
   background-color: pink;
 }
 .fichas-negras{
-      width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+      width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;
@@ -342,9 +358,9 @@ border-right: 5px solid black;
   background-color: black;
 }
 .fichas-verdes{
-      width: 20px; /* Ancho del círculo */
-  height: 20px; /* Altura del círculo */
-  border-radius: 50%; /* Esto lo convierte en un círculo */
+      width: 20px;
+  height: 20px;
+  border-radius: 50%; 
   position: absolute;
   display: flex;
   align-items: center;

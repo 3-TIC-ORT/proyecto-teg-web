@@ -24,6 +24,8 @@
     <div class="relleno3"></div>
    <img src="../imagenes/MAPA PAra fronts.svg" alt="foto"class="foto">
     <div class="color-jugador" id="color-jugador"></div>
+    <button class="atacar todo" id="atacar">Atacar</button>
+    <button id="reagrupar" class="Reagrupar todo">Reagrupar</button>
   <button class="Reponer todo" id="Reponer"  > Reponer fichas</button>
   <button class="Canjear todo" id="Canjear"  > Canjear cartas</button>
   <div class="container">
@@ -36,7 +38,7 @@
 <button id="moverfichas">Mover Fichas</button>
 
   </div>    
-    <!-- <div class="Menu todo">  
+    <div class="Menu todo">  
     <select id="menuasia" class="menuaisa" disabled>
       <option value="Selecionaropcion">Selecionar opcion en Asia</option>
       <option value="1">1</option>
@@ -80,24 +82,33 @@
       <option value="1">1</option>
       <option value="2">2</option>
     </select>
-  </div> -->
   </div>
-    <button class="parar botonCambioFase" id="Parar"  > Parar de atacar</button>
-    <button class="terminar botonCambioFase" >Terminar turno</button>
-    <div class="tirar1 todo" id="tirar1"  >tirar</div>
-    <div class="tirar2 todo" id="tirar2"  >tirar</div>
-    <h1 id="timer">04:00</h1>
-    
-  
-    <!-- 🕹️ Overlay de pausa -->
-    <div id="pauseOverlay">
-      <button id="boton1" class="boton boton1">Reglamento</button>
-      <button id="boton2" class="boton boton2">Reanudar</button>
-      <button id="boton3" class="boton boton3">Guardar y salir</button>
-    </div>
-    <button class="pausar-partida" id="pauseBtn">
-      ⏸️
-    </button>
+  </div>
+    <button class="parar botonCambioFase todo" id="Parar"  > Parar de atacar</button>
+    <button class="terminar botonCambioFase todo" >Terminar turno</button>
+<button class="tirar1 todo" id="tirar1" style="border: 70px;" >tirar dados atacante</button>
+<button class="tirar2 todo" id="tirar2" style="border: 70px;" >tirar dados atacado</button>
+<button id="recordar" class="recordar todo">Recordar Objetivo</button>
+<button id="revelar" class="revelar todo">Revelar Cartas</button>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="closePopup" class="close">&times;</span>
+    <h2>Información recibida</h2>
+    <p id="popupData">Esperando datos...</p>
+  </div>
+</div>
+<!-- aca va el popup  -->
+<button class="todo revelar" id="revelar">Revelar Cartas</button>
+  <h1 id="timer">04:00</h1>
+
+<!-- 🕹️ Overlay de pausa -->
+<div id="pauseOverlay" style="display: none;">
+  <button id="boton1" class="boton boton1">Reglamento</button>
+  <button id="boton2" class="boton boton2">Reanudar</button>
+  <button id="boton3" class="boton boton3">Guardar y salir</button>
+</div>
+
+<img alt="pausa" src="../imagenes/pausa-boton" class="pausar-partida todo" id="pauseBtn"></img>
    <div id="paisselecionado" class="paises">
       <div class="linea-medio"></div>
       <img src="../imagenes/image 2.svg" alt="fondo del costado" class="fondo-costado"></img>
