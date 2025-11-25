@@ -87,6 +87,7 @@ if (paused) {
 // -------------------------
 // 📘 Botón Reglamento
 // -------------------------
+const botonReglamento = document.getElementById("boton1")
 botonReglamento.addEventListener("click", function () {
   window.open("reglamento.html");
 });
@@ -94,6 +95,7 @@ botonReglamento.addEventListener("click", function () {
 // -------------------------
 // 💾 Guardar y salir
 // -------------------------
+const botonGuardar = document.getElementById("boton3")
 botonGuardar.addEventListener("click", function () {
   window.location.href = "menu.html";
 });
