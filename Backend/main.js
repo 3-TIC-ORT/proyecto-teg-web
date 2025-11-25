@@ -48,12 +48,14 @@ subscribePOSTEvent("ActualizarTimer", (data) => {
   return { ok: true };
 });
 
-
-subscribePOSTEvent("guardarPartida", () => {
-  guardarPartidaArchivo(estadoActual);
-  return { ok: true };
+//guarda la partida
+subscribePOSTEvent("guardarPartida", (data) => {
+  let joaco = JSON.parse(fs.readFileSync("./joaco.json","utf-8"))
+  data = estadoActual
+  joaco = estadoActual
+  fs.writeFileSync("./joaco.json", JSON.stringify(joaco, null, 2));
+  return joaco
 });
-
 
 subscribeGETEvent("cargarPartida", () => {
   let datos = leerPartida();
