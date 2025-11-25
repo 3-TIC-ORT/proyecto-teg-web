@@ -33,7 +33,11 @@ body {
   width: 40px;
   
 }
-
+.icono{
+  width: 80px;
+  position: absolute;
+  left: -20px;
+}
 /* Panel de selección de jugadores */
 .panel-jugadores {
   background-color: black;
@@ -45,11 +49,11 @@ body {
   top: 1%;
   left: 35%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   flex-wrap: wrap;
  flex-direction: column;
-  gap: 20px;
+  gap: 0px;
 }
 
 .panel-jugadores button {
@@ -71,7 +75,7 @@ body {
   width: 40%;
   position: relative;
   top: 10px;
-  left: 120px;
+  left: 35px;
   
 }
 

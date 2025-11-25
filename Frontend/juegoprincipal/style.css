@@ -15,7 +15,7 @@
 .logo{
   z-index: 10000000000000000000000000000000000000000;
   position: absolute;
-  top: 92.5%;
+  top: 91%;
   left: 95%;
   width: 100px;
   height: 100px;
@@ -796,7 +796,7 @@ font-size: 11px;
 }
 .fichas-argentina{
    z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
-  color: #fff;
+  color: #000;
   position: absolute;
  top: 75.8%;
  left: 43.8%;
@@ -812,7 +812,7 @@ rotate: -25.885deg;
 }
 .fichas-uruguay{
    z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
-  color: #fff;
+  color: black;
   position: absolute;
  top: 68.4%;
  left: 47.4%;
