@@ -34,7 +34,7 @@ window.onload = () => {
         coloresJugadores.push((cfg.elecciones && (cfg.elecciones[key] || cfg.elecciones[idx])) || null);
       }
     } catch (err) {
-      // si falla el parseo, sigue al fallback
+     
       cantidad = null;
       coloresJugadores = [];
     }
@@ -58,7 +58,6 @@ window.onload = () => {
 
     const coloresRaw = localStorage.getItem("coloresElegidos") || "{}";
     console.log(coloresRaw) 
-    // Intentar parsear JSON
     let parsed = {};
     try {
       parsed = JSON.parse(coloresRaw);
@@ -66,39 +65,34 @@ window.onload = () => {
       parsed = {};
     }
 
-    // El formato guardado es un objeto con claves "1", "2", etc.
-    for (let idx = 1; idx <= cantidad; idx++) {
+    for (let i = 1; i <= cantidad; i++) {
         const key = String(idx);
         coloresJugadores.push(parsed[key] || null);
     }
   }
 
-  // Asegurar longitud correcta rellenando con nulls si falta
+
   while (coloresJugadores.length < cantidad) coloresJugadores.push(null);
 
-  // Generar lista de jugadores simples ("Jugador 1", ...)
+  
   jugadoresSeleccionados = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`);
 
-  // Mezclar objetivos
-    // --- Mezclar y asignar objetivos evitando destruir colores inactivos ---
-  // Normalizar y obtener set de colores activos (lowercase, trimmed)
   const activeColors = new Set(
     coloresJugadores
       .filter(Boolean)
       .map(c => String(c).toLowerCase().trim())
   );
 
-  // Mezclar la lista de objetivos
+  
   let mezcla = objetivos.slice().sort(() => 0.5 - Math.random());
 
-  // Función utilitaria: devuelve true si el objetivo es "Destruir al ejército X"
-  // y X está activo y diferente del color prohibido (ownColorLower)
+
   function puedeAsignarDestruir(obj, ownColorLower) {
     const prefix = "destruir al ejército ";
     const low = obj.toLowerCase().trim();
     if (!low.startsWith(prefix)) return false;
     const colorTarget = low.slice(prefix.length).trim();
-    // Solo permitir si el color está en la partida y no es el propio
+    
     return activeColors.has(colorTarget) && colorTarget !== ownColorLower;
   }
 

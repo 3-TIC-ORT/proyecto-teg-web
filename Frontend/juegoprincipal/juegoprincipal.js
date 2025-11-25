@@ -16,18 +16,16 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
-let targetDate = new Date();
-targetDate.setSeconds(targetDate.getSeconds() + 240); // 4 minutos
-let remainingTime = 240000; // 4 min en ms
-let timerInterval;
-let paused = false;
+let fecha = new Date()
+fecha.setSeconds(fecha.getSeconds() + 240) 
+let tiempo = 240000
+let timerInterval
+let pausado = false;
+function cambiotimer() {
+  if (pausado) return; 
 
-// 🔁 Actualiza el temporizador
-function updateTimer() {
-  if (paused) return; // ⛔ No actualizar si está pausado
-
-  let now = new Date();
-  let diff = targetDate - now;
+  let tiempoact = new Date();
+  let diff = fecha - tiempoact;
 
   if (diff <= 0) {
     document.getElementById("timer").textContent = "¡Tiempo terminado!";
@@ -42,13 +40,13 @@ function updateTimer() {
     String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, "0");
 }
 
-// ▶️ Iniciar Timer
-function startTimer() {
+
+function iniciartimer() {
   clearInterval(timerInterval);
-  timerInterval = setInterval(updateTimer, 1000);
-  updateTimer();
+  timerInterval = setInterval(cambiotimer, 1000);
+  cambiotimer();
 }
-startTimer();
+iniciartimer();
 
 // -------------------------
 // 🔘 PAUSA
@@ -58,25 +56,20 @@ const overlay = document.getElementById("pauseOverlay");
 const botonReanudar = document.getElementById("boton2");
 
 pauseBtn.addEventListener("click", function () {
-  paused = true;                       // PAUSA ACTIVADA
-  remainingTime = targetDate - new Date(); // Guarda el tiempo restante
-  clearInterval(timerInterval);        // frena el timer
-  overlay.style.display = "flex";      // muestra pantalla oscura
+  pausado = true
+  tiempo = fecha - new Date()
+  clearInterval(timerInterval)
+  overlay.style.display = "flex"
 });
 
-// -------------------------
-// ▶️ REANUDAR
-// -------------------------
 botonReanudar.addEventListener("click", function () {
-  paused = false;
-  targetDate = new Date(new Date().getTime() + remainingTime); // restaura tiempo
-  overlay.style.display = "none"; // cierra overlay
-  startTimer(); // vuelve a iniciar el timer correcto
+  pausado = false
+  fecha = new Date(new Date().getTime() + tiempo)
+  overlay.style.display = "none"
+  iniciartimer()
 });
 
-// -------------------------
-// 💾 GUARDAR ESTADO (solo si está pausado)
-// -------------------------
+
 if (paused) {
   PostEvent("cantidadJugadores", { cantidadJugadores });
   PostEvent("faseDeEstados", { fase });
@@ -84,25 +77,15 @@ if (paused) {
   PostEvent("jugadores", { jugadores });
 }
 
-// -------------------------
-// 📘 Botón Reglamento
-// -------------------------
 const botonReglamento = document.getElementById("boton1")
 botonReglamento.addEventListener("click", function () {
   window.open("reglamento.html");
 });
 
-// -------------------------
-// 💾 Guardar y salir
-// -------------------------
-const botonGuardar = document.getElementById("boton3")
-botonGuardar.addEventListener("click", function () {
-  window.location.href = "menu.html";
-});
 
-// -------------------------
-// 🔍 Info Popup
-// -------------------------
+
+
+
 const infoBtn = document.getElementById("infoBtn");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
