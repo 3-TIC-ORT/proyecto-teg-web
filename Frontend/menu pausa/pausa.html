@@ -50,8 +50,8 @@
       <p id="victory-message"></p>
     </div>
     <div class="victory-buttons">
-      <button id="btn-menu" class="custom-button">VOLVER AL MENU</button>
-      <button id="btn-restart" class="custom-button">JUGAR DE NUEVO</button>
+      <div id="btn-menu" class="custdiv OLVER AL MENU"></div>
+      <div id="btn-restart" class="custom-button">JUGAR DE NUEVO</div>
     </div>
   </div>
 </div>
@@ -62,7 +62,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-image: url('../imagenes/final.svg'); /* fondo con "¡VICTORIA GLOBAL!" incluido */
+  background-image: url('../imagenes/Final.svg'); 
   background-size: cover;
   background-position: center;
   z-index: 100000000000000000000000000000000000;
@@ -73,7 +73,6 @@
 
 .victory-container {
   text-align: center;
-  /* color: white; */
   font-family: 'Cinzel', serif;
 }
 
@@ -82,20 +81,16 @@
   margin-bottom: 40px;
 }
 
-.custom-button {
-  background-image: url('../imagenes/boton\ victoria.svg'); 
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+.custom div {
   width: 200px;
   height: 60px;
- position: relative;
- top: 350px;
- display: flexbox;
+ position: absolute;
+ top: 85%;
+ display: flex;
  justify-content: center;
   flex-direction: row;
-  gap: 1000px;
  border: none;
+ z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
 }
 
 </style>
