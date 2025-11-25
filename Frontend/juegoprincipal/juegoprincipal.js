@@ -16,11 +16,13 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
+
 let fecha = new Date()
 fecha.setSeconds(fecha.getSeconds() + 240) 
 let tiempo = 240000
 let timerInterval
 let pausado = false;
+
 function cambiotimer() {
   if (pausado) return; 
 
@@ -40,7 +42,6 @@ function cambiotimer() {
     String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, "0");
 }
 
-
 function iniciartimer() {
   clearInterval(timerInterval);
   timerInterval = setInterval(cambiotimer, 1000);
@@ -56,36 +57,34 @@ const overlay = document.getElementById("pauseOverlay");
 const botonReanudar = document.getElementById("boton2");
 
 pauseBtn.addEventListener("click", function () {
-  pausado = true
-  tiempo = fecha - new Date()
-  clearInterval(timerInterval)
-  overlay.style.display = "flex"
+  pausado = true;
+  tiempo = fecha - new Date();
+  clearInterval(timerInterval);
+  overlay.style.display = "flex"; // 👈 aquí aparece el popup
 });
 
 botonReanudar.addEventListener("click", function () {
-  pausado = false
-  fecha = new Date(new Date().getTime() + tiempo)
-  overlay.style.display = "none"
-  iniciartimer()
+  pausado = false;
+  fecha = new Date(new Date().getTime() + tiempo);
+  overlay.style.display = "none";
+  iniciartimer();
 });
 
-
-if (paused) {
+if (pausado) {
   PostEvent("cantidadJugadores", { cantidadJugadores });
   PostEvent("faseDeEstados", { fase });
   PostEvent("jugador", { jugador });
   PostEvent("jugadores", { jugadores });
 }
 
-const botonReglamento = document.getElementById("boton1")
+const botonReglamento = document.getElementById("boton1");
 botonReglamento.addEventListener("click", function () {
   window.open("reglamento.html");
 });
 
-
-
-
-
+// -------------------------
+// ℹ️ POPUP INFO
+// -------------------------
 const infoBtn = document.getElementById("infoBtn");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
