@@ -99,14 +99,29 @@
 </div>
 <!-- aca va el popup  -->
 <button class="todo revelar" id="revelar">Revelar Cartas</button>
-  <h1 id="timer">04:00</h1>
 
-<!-- 🕹️ Overlay de pausa -->
-<div id="pauseOverlay" style="display: none;">
-  <button id="boton1" class="boton boton1">Reglamento</button>
-  <button id="boton2" class="boton boton2">Reanudar</button>
-  <button id="boton3" class="boton boton3">Guardar y salir</button>
+<h1 id="timer">04:00</h1>
+
+<div id="mainGame" style="padding:20px; background:#eee;">
+  <p>Juego en curso...</p>
 </div>
+
+<div id="pauseOverlay" style="
+  display:none; 
+  position:fixed; 
+  top:0; left:0; width:100%; height:100%; 
+  background:rgba(0,0,0,0.6);
+  justify-content:center; 
+  align-items:center; 
+  z-index:999;">
+  <div style="background:white; padding:20px; border-radius:8px;">
+    <button id="boton1">Reglamento</button>
+    <button id="boton2">Reanudar</button>
+    <button id="boton3">Guardar y salir</button>
+  </div>
+</div>
+
+<img id="pauseBtn" src="../imagenes/botonpausa.svg" class="pausar-partida todo" alt="pausa" style="width:60px; cursor:pointer; position:absolute; top:20px; right:20px;">
 
 <img alt="pausa" src="../imagenes/botonpausa.svg" class="pausar-partida todo" id="pauseBtn"></img>
    <div id="paisselecionado" class="paises">

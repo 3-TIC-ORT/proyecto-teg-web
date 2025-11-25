@@ -16,88 +16,87 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
+document.addEventListener("DOMContentLoaded", () => {
 
-let fecha = new Date()
-fecha.setSeconds(fecha.getSeconds() + 240) 
-let tiempo = 240000
-let timerInterval
-let pausado = false;
+  // Timer inicial
+  let fecha = new Date();
+  fecha.setSeconds(fecha.getSeconds() + 240);
+  let tiempoRestante = 240000;
+  let timerInterval;
+  let pausado = false;
 
-function cambiotimer() {
-  if (pausado) return; 
+  const timer = document.getElementById("timer");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const overlay = document.getElementById("pauseOverlay");
+  const mainGame = document.getElementById("mainGame");
+  const botonReanudar = document.getElementById("boton2");
 
-  let tiempoact = new Date();
-  let diff = fecha - tiempoact;
+  function actualizarTimer() {
+    if (pausado) return;
 
-  if (diff <= 0) {
-    document.getElementById("timer").textContent = "¡Tiempo terminado!";
-    clearInterval(timerInterval);
-    return;
+    let ahora = new Date();
+    let diff = fecha - ahora;
+
+    if (diff <= 0) {
+      timer.textContent = "¡Tiempo terminado!";
+      clearInterval(timerInterval);
+      return;
+    }
+
+    let minutos = Math.floor(diff / 60000);
+    let segundos = Math.floor((diff % 60000) / 1000);
+
+    timer.textContent =
+      String(minutos).padStart(2, "0") + ":" +
+      String(segundos).padStart(2, "0");
   }
 
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  function iniciarTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(actualizarTimer, 1000);
+    actualizarTimer();
+  }
 
-  document.getElementById("timer").textContent =
-    String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, "0");
-}
+  iniciarTimer();
 
-function iniciartimer() {
-  clearInterval(timerInterval);
-  timerInterval = setInterval(cambiotimer, 1000);
-  cambiotimer();
-}
-iniciartimer();
+  // -------------------
+  // PAUSAR
+  // -------------------
+  pauseBtn.addEventListener("click", () => {
+    console.log("▶ CLICK PAUSA");
 
-// -------------------------
-// 🔘 PAUSA
-// -------------------------
-const pauseBtn = document.getElementById("pauseBtn");
-const overlay = document.getElementById("pauseOverlay");
-const botonReanudar = document.getElementById("boton2");
+    if (!pausado) {
+      pausado = true;
+      tiempoRestante = fecha - new Date();
+      clearInterval(timerInterval);
 
-pauseBtn.addEventListener("click", function () {
-  pausado = true;
-  tiempo = fecha - new Date();
-  clearInterval(timerInterval);
-  overlay.style.display = "flex"; // 👈 aquí aparece el popup
+      overlay.style.display = "flex";
+      mainGame.style.display = "none";
+
+      console.log("⏸ PAUSADO, TIEMPO:", tiempoRestante);
+    }
+  });
+
+  // -------------------
+  // REANUDAR
+  // -------------------
+  botonReanudar.addEventListener("click", () => {
+    console.log("▶ CLICK REANUDAR");
+
+    if (pausado) {
+      pausado = false;
+      fecha = new Date(new Date().getTime() + tiempoRestante);
+
+      overlay.style.display = "none";
+      mainGame.style.display = "block";
+
+      iniciarTimer();
+
+      console.log("▶ REANUDADO");
+    }
+  });
+
 });
-
-botonReanudar.addEventListener("click", function () {
-  pausado = false;
-  fecha = new Date(new Date().getTime() + tiempo);
-  overlay.style.display = "none";
-  iniciartimer();
-});
-
-if (pausado) {
-  PostEvent("cantidadJugadores", { cantidadJugadores });
-  PostEvent("faseDeEstados", { fase });
-  PostEvent("jugador", { jugador });
-  PostEvent("jugadores", { jugadores });
-}
-
-const botonReglamento = document.getElementById("boton1");
-botonReglamento.addEventListener("click", function () {
-  window.open("reglamento.html");
-});
-
-// -------------------------
-// ℹ️ POPUP INFO
-// -------------------------
-const infoBtn = document.getElementById("infoBtn");
-const popup = document.getElementById("popup");
-const closePopup = document.getElementById("closePopup");
-
-infoBtn.addEventListener("click", () => {
-  popup.style.display = "flex";
-});
-
-closePopup.addEventListener("click", () => {
-  popup.style.display = "none";
-});
-
-
 //esto es para estandarizar los nombres de cosas
 function idFromName(nombre) {
   return nombre
@@ -889,21 +888,3 @@ Array con todos los jugadores actuales: jugadores
 (Si por ejemplo hace falta que paises tiene el jugador 2, poné jugadores[1].paises)
 Objeto con todos los paises: paises 
 */
-function mostrarPantallaVictoria() {
-  const jugador = localStorage.getItem('jugador');
-  const logro = localStorage.getItem('logro');
-
-  const mensaje = `El jugador ${jugador} ha conseguido ${logro}`;
-  document.getElementById('victory-message').textContent = mensaje;
-
-  document.getElementById('victory-screen').style.display = 'flex';
-}
-
-// Eventos de los botones
-document.getElementById('btn-menu').addEventListener('click', () => {
-  window.location.href = 'menu.html'; // o la ruta que uses
-});
-
-document.getElementById('btn-restart').addEventListener('click', () => {
-  location.reload(); // o lógica para reiniciar el juego
-});

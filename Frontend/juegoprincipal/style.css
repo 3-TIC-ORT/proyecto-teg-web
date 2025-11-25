@@ -144,12 +144,7 @@ button {
   display: flex;
   flex-direction: column;
  }
-#pauseBtn {
-  position: absolute;
- z-index: 10000000000000000000000000000000000000000000000000000000;
-top: 95%;
-left: .5%;
-}
+
 
 #pauseOverlay {
   display: none; 
@@ -225,12 +220,24 @@ top: 22%;
 left: 9%;
 }
 .Menu{
-width: 16%;
+width: 15%;
 height: 19%;
 position: absolute;
-top: 30%;
-left: .05%;
-display: flex;
+top: 29%;
+left: 1%;
+display: flexbox;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 0px;
+}
+#pauseBtn {
+  cursor: pointer;
+  pointer-events: auto !important;
+    position: absolute;
+ z-index: 10000000000000000000000000000000000000000000000000000000;
+top: 95%;
+left: .5%;
 }
 .parar{
 border-color: black;
