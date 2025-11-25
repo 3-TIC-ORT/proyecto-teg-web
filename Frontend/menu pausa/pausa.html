@@ -45,13 +45,11 @@
 <!-- Pantalla de victoria -->
 <div id="victory-screen">
   <div class="victory-container">
-    <!-- Aquí ya está incluido el fondo con el texto "¡VICTORIA GLOBAL!" como imagen -->
-    <div class="victory-text">
       <p id="victory-message"></p>
     </div>
     <div class="victory-buttons">
-      <div id="btn-menu" class="custdiv OLVER AL MENU"></div>
-      <div id="btn-restart" class="custom-button">JUGAR DE NUEVO</div>
+      <a href="../menu principal/menuprincipal.html"><h1 id="btn-menu" class="custdiv">VOLVER AL MENU</h1></a>
+      <a href="../coloresynumero/coloresynumero.html"><h1 id="btn-restart" class="custom-button">JUGAR DE NUEVO</h1></a>
     </div>
   </div>
 </div>
@@ -79,6 +77,7 @@
 .victory-text p {
   font-size: 24px;
   margin-bottom: 40px;
+  z-index: 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 }
 
 .custom div {
@@ -91,6 +90,27 @@
   flex-direction: row;
  border: none;
  z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
+}
+#btn-menu{
+  position: absolute;
+  top: 72%;
+  left: 29%;
+  width: 5px;
+  font-size: 30px;
+  align-items: center;
+   color: #000;
+  border-text: 5px solid #FFBF05;
+  z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
+}
+#btn-restart{
+  position: absolute;
+  top: 72%;
+  left: 68%;
+  width: 5px;
+  font-size: 30px;
+  color: #000;
+  border-text: 5px solid #FFBF05;
+  z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
 }
 
 </style>
@@ -105,14 +125,7 @@
   document.getElementById('victory-screen').style.display = 'flex';
 }
 
-// Eventos de los botones
-document.getElementById('btn-menu').addEventListener('click', () => {
-  window.location.href = '../'; // ajustá la ruta
-});
 
-document.getElementById('btn-restart').addEventListener('click', () => {
-  window.Location.href="../coloresynumero/coloresynumero.html"; 
-});
 
 </script>
   </body>
