@@ -1,5 +1,5 @@
 
-const colores = ["Azul", "Rojo", "Amarillo", "Verde", "Rosa", "Negro"];
+const colores = ["🔵", "🔴", "🟡", "🟢", scr="../imagenes/puntorosa", "⚫"];
 let cantidadJugadores = 0;
 let elecciones = {};
 

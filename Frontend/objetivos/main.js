@@ -1,4 +1,5 @@
-let objetivos = [
+// ...existing code...
+let objectives = [
   "Destruir al ejército amarillo",
   "Destruir al ejército azul",
   "Destruir al ejército rojo",
@@ -15,15 +16,16 @@ let objetivos = [
   "Ocupar 2 países de Oceanía, 2 países de África, 2 países de América del Sur, 3 países de Europa, 4 países de África y 3 de Asia"
 ];
 
-let jugadoresSeleccionados = [];
-let jugadoresobjetivos = {};
+let selectedPlayers = [];
+let playerObjectives = {};
 let i = 0;
 
 window.onload = () => {
+  // Intentar leer formato nuevo: objeto JSON guardado como 'configJugadores'
   let cantidad = null;
   let coloresJugadores = [];
 
-  const configRaw = localStorage.getItem("cantidadJugadores");
+  const configRaw = localStorage.getItem("configJugadores");
   if (configRaw) {
     try {
       const cfg = JSON.parse(configRaw);
@@ -34,7 +36,7 @@ window.onload = () => {
         coloresJugadores.push((cfg.elecciones && (cfg.elecciones[key] || cfg.elecciones[idx])) || null);
       }
     } catch (err) {
-     
+      // si falla el parseo, sigue al fallback
       cantidad = null;
       coloresJugadores = [];
     }
@@ -58,6 +60,7 @@ window.onload = () => {
 
     const coloresRaw = localStorage.getItem("coloresElegidos") || "{}";
     console.log(coloresRaw) 
+    // Intentar parsear JSON
     let parsed = {};
     try {
       parsed = JSON.parse(coloresRaw);
@@ -65,70 +68,24 @@ window.onload = () => {
       parsed = {};
     }
 
-    for (let i = 1; i <= cantidad; i++) {
+    // El formato guardado es un objeto con claves "1", "2", etc.
+    for (let idx = 1; idx <= cantidad; idx++) {
         const key = String(idx);
         coloresJugadores.push(parsed[key] || null);
     }
   }
 
-
+  // Asegurar longitud correcta rellenando con nulls si falta
   while (coloresJugadores.length < cantidad) coloresJugadores.push(null);
 
-  
-  jugadoresSeleccionados = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`);
+  // Generar lista de jugadores simples ("Jugador 1", ...)
+  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`);
 
-  const activeColors = new Set(
-    coloresJugadores
-      .filter(Boolean)
-      .map(c => String(c).toLowerCase().trim())
-  );
+  // Mezclar objetivos
+  let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
 
-  
-  let mezcla = objetivos.slice().sort(() => 0.5 - Math.random());
-
-
-  function puedeAsignarDestruir(obj, ownColorLower) {
-    const prefix = "destruir al ejército ";
-    const low = obj.toLowerCase().trim();
-    if (!low.startsWith(prefix)) return false;
-    const colorTarget = low.slice(prefix.length).trim();
-    
-    return activeColors.has(colorTarget) && colorTarget !== ownColorLower;
-  }
-
-  jugadoresSeleccionados.forEach((jugadores, idx) => {
-    const colorJugadorRaw = coloresJugadores[idx];
-    const colorJugador = colorJugadorRaw ? String(colorJugadorRaw).toLowerCase().trim() : null;
-    const objetivoProhibido = colorJugador; // puede ser null
-
-    // Buscar prioridad 1: un "destruir" válido (color activo y no propio)
-    let objetivoAsignado = mezcla.find(obj => {
-      return puedeAsignarDestruir(obj, objetivoProhibido);
-    });
-
-    // Prioridad 2: si no hay un "destruir" válido, elegir cualquier objetivo que no
-    // sea "destruir a <color inexistente o propio>" — es decir, preferir objetivos no-destrucción.
-    if (!objetivoAsignado) {
-      objetivoAsignado = mezcla.find(obj => {
-        const low = obj.toLowerCase().trim();
-        const prefix = "destruir al ejército ";
-        if (!low.startsWith(prefix)) return true; // objetivo que no es "destruir" -> válido
-        // Si es "destruir", comprobar si apoya al color activo y distinto (por si hay alguno)
-        return puedeAsignarDestruir(obj, objetivoProhibido);
-      });
-    }
-
-    // Si aún no hay (caso extremo), tomar el primer objetivo disponible
-    if (!objetivoAsignado) objetivoAsignado = mezcla[0];
-
-    jugadoresobjetivos[jugadores] = objetivoAsignado;
-    // Quitar el objetivo asignado de la mezcla para que no se repita
-    mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
-  });
-
-  
   // Asignar objetivos evitando "destruir su propio color" cuando sea posible
-  jugadoresSeleccionados.forEach((jugadores, idx) => {
+  selectedPlayers.forEach((player, idx) => {
     const colorJugador = coloresJugadores[idx]; // puede ser null
     let objetivoProhibido = colorJugador ? `Destruir al ejército ${colorJugador}` : null;
 
@@ -140,19 +97,19 @@ window.onload = () => {
       objetivoAsignado = mezcla.find(obj => !obj.toLowerCase().startsWith("destruir")) || mezcla[0];
     }
 
-    jugadoresobjetivos[jugadores] = objetivoAsignado;
+    playerObjectives[player] = objetivoAsignado;
     mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
   });
 
-  mostrarSiguientejugadores();
+  showNextPlayer();
 };
 
-function mostrarSiguientejugadores() {
-  let jugadores = jugadoresSeleccionados[i];
+function showNextPlayer() {
+  let player = selectedPlayers[i];
   document.getElementById("reveal-instructions").innerHTML =
     `¡MÍRALO RÁPIDO Y NO LO COMPARTAS!<br>Y ¡ASEGÚRATE QUE NADIE ESTÉ VIENDO!<br><br>
-    TODOS CIERRAN LOS OJOS EXCEPTO <b>${jugadores.toUpperCase()}</b><br>
-    CUANDO TODOS CIERREN LOS OJOS, <b>${jugadores.toUpperCase()}</b> DEBE APRETAR EL BOTÓN`;
+    TODOS CIERRAN LOS OJOS EXCEPTO <b>${player.toUpperCase()}</b><br>
+    CUANDO TODOS CIERREN LOS OJOS, <b>${player.toUpperCase()}</b> DEBE APRETAR EL BOTÓN`;
 
   document.getElementById("objective").style.display = "none";
   const btn = document.getElementById("action-button");
@@ -162,9 +119,9 @@ function mostrarSiguientejugadores() {
 }
 
 function showObjective() {
-  let jugadores = jugadoresSeleccionados[i];
+  let player = selectedPlayers[i];
   document.getElementById("objective").innerText =
-    `CONQUISTAR “${jugadoresobjetivos[jugadores]}”`;
+    `CONQUISTAR “${playerObjectives[player]}”`;
   document.getElementById("objective").style.display = "block";
 
   const btn = document.getElementById("action-button");
@@ -174,13 +131,12 @@ function showObjective() {
 
 function nextObjective() {
   i++;
-  if (i < jugadoresSeleccionados.length) {
-    mostrarSiguientejugadores();
+  if (i < selectedPlayers.length) {
+    showNextPlayer();
   } else {
-    localStorage.setItem("objetivos", JSON.stringify(jugadoresobjetivos));
+    localStorage.setItem("objetivos", JSON.stringify(playerObjectives));
     document.getElementById("overlay").style.display = "none";
     alert("Todos los objetivos fueron revelados. ¡A jugar!");
     window.location.href = "../juegoprincipal/juegoprincipal.html";
   }
 }
-
