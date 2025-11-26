@@ -48,7 +48,7 @@ function updateTimer() {
 timerInterval = setInterval(updateTimer, 1000);
 updateTimer(); 
 
-// 🔘 Elementos
+
 const pauseBtn = document.getElementById("pauseBtn");
 const overlay = document.getElementById("pauseOverlay");
 const botonReglamento = document.getElementById("boton1");
