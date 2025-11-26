@@ -44,9 +44,9 @@ function updateTimer() {
     String(seconds).padStart(2, '0');
 }
 
-// ⏳ Iniciar temporizador automáticamente
+
 timerInterval = setInterval(updateTimer, 1000);
-updateTimer(); // Mostrar el tiempo inmediatamente
+updateTimer(); 
 
 // 🔘 Elementos
 const pauseBtn = document.getElementById("pauseBtn");
@@ -55,7 +55,7 @@ const botonReglamento = document.getElementById("boton1");
 const botonReanudar = document.getElementById("boton2");
 const botonGuardar = document.getElementById("boton3");
 
-// 🟠 Botón de Pausa
+
 pauseBtn.addEventListener("click", function () {
   paused = true;
   clearInterval(timerInterval);
@@ -72,7 +72,7 @@ pauseBtn.addEventListener("click", function () {
   }
 });
 
-// 🟢 Botón de Reanudar
+
 botonReanudar.addEventListener("click", function () {
   paused = false;
   targetDate = new Date(new Date().getTime() + remainingTime);
