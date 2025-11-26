@@ -28,23 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const timer = document.getElementById("timer");
   const pauseBtn = document.getElementById("pauseBtn");
   const overlay = document.getElementById("pauseOverlay");
-  const mainGame = document.getElementById("mainGame");
+  const fondo = document.getElementById("maingame");
   const botonReanudar = document.getElementById("boton2");
 
   function actualizarTimer() {
     if (pausado) return;
 
     let ahora = new Date();
-    let diff = fecha - ahora;
+    let differencia = fecha - ahora;
 
-    if (diff <= 0) {
+    if (differencia <= 0) {
       timer.textContent = "¡Tiempo terminado!";
       clearInterval(timerInterval);
       return;
     }
 
-    let minutos = Math.floor(diff / 60000);
-    let segundos = Math.floor((diff % 60000) / 1000);
+    let minutos = Math.floor(differencia / 60000);
+    let segundos = Math.floor((differencia % 60000) / 1000);
 
     timer.textContent =
       String(minutos).padStart(2, "0") + ":" +
@@ -59,9 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   iniciarTimer();
 
-  // -------------------
-  // PAUSAR
-  // -------------------
+
   pauseBtn.addEventListener("click", () => {
     console.log("▶ CLICK PAUSA");
 
@@ -71,28 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
       clearInterval(timerInterval);
 
       overlay.style.display = "flex";
-      mainGame.style.display = "none";
+      fondo.style.display = "none";
 
       console.log("⏸ PAUSADO, TIEMPO:", tiempoRestante);
     }
   });
-
-  // -------------------
-  // REANUDAR
-  // -------------------
   botonReanudar.addEventListener("click", () => {
-    console.log("▶ CLICK REANUDAR");
+    console.log("REANUDAR");
 
     if (pausado) {
       pausado = false;
       fecha = new Date(new Date().getTime() + tiempoRestante);
 
       overlay.style.display = "none";
-      mainGame.style.display = "block";
+      fondo.style.display = "block";
 
       iniciarTimer();
 
-      console.log("▶ REANUDADO");
+      console.log("REANUDADO");
     }
   });
 

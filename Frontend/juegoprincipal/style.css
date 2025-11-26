@@ -388,7 +388,7 @@ rotate: 50.284deg;
   height: 20px; 
   border-radius: 50%;  
   position: absolute;
-  background-color: none;
+  background-color: red;
   top: 27.5%;
   left: 92.5%;
 z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
@@ -416,6 +416,11 @@ display: flex;
   position: absolute;
   top: 42%;
   left: 88.17%;
+    width: 20px;  
+  height: 20px; 
+  border-radius: 50%;  
+  position: absolute;
+  background-color: red;
 }
 .kamchatka{
     z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
@@ -436,6 +441,11 @@ display: flex;
   position: absolute;
   top: 18.7%;
   left: 85.6%;
+    width: 20px;  
+  height: 20px; 
+  border-radius: 50%;  
+  position: absolute;
+  background-color: red;
 }
 .mongolia{
   z-index: 100000000000000000000000000000000000000000000000000000000000000000000000000000000;
