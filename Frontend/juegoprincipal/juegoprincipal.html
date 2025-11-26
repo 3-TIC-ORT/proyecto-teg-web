@@ -1,44 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Link al CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Link al JS. El 'defer' hace que se ejecute AL FINAL, después de haber cargado el html inicial -->
-    <script src="juegoprincipal.js" defer ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
-<title> TEG-WEB</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!--inknut antiqua--><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-</head>
-  <body>
-<img class="logo" src="../imagenes/logo.svg" alt="logo">
-    <div class="relleno1"></div>
-    <div class="relleno2"></div>
-    <div class="relleno3"></div>
-   <img src="../imagenes/MAPA PAra fronts.svg" alt="foto"class="foto">
-    <div class="color-jugador" id="color-jugador"></div>
-    <button class="atacar todo" id="atacar">Atacar</button>
-    <button id="reagrupar" class="Reagrupar todo">Reagrupar</button>
-  <button class="Reponer todo" id="Reponer"  > Reponer fichas</button>
-  <button class="Canjear todo" id="Canjear"  > Canjear cartas</button>
-  <div class="container">
-  <span id="faseActual">fase de ataque</span>
-  <br><br>
-  <button class="parar todo" id="botonPararAtacar">parar de atacar</button>
-  <button class="turno todo" id="terminarTurno">terminar turno</button>
-        <div id="jugadorActual"></div>
-        <br><br>
-<button id="moverfichas">Mover Fichas</button>
 
-  </div>    
-    <div class="Menu todo">  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link al CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Link al JS. El 'defer' hace que se ejecute AL FINAL, después de haber cargado el html inicial -->
+  <script src="juegoprincipal.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
+  <title> TEG-WEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!--inknut antiqua-->
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <img class="logo" src="../imagenes/logo.svg" alt="logo">
+  <div class="relleno1"></div>
+  <div class="relleno2"></div>
+  <div class="relleno3"></div>
+  <img src="../imagenes/MAPA PAra fronts.svg" alt="foto" class="foto">
+  <div class="color-jugador" id="color-jugador"></div>
+  <button class="atacar todo" id="atacar">Atacar</button>
+  <button id="reagrupar" class="Reagrupar todo">Reagrupar</button>
+  <button class="Reponer todo" id="Reponer"> Reponer fichas</button>
+  <button class="Canjear todo" id="Canjear"> Canjear cartas</button>
+  <div class="container">
+    <span id="faseActual">fase de ataque</span>
+    <br><br>
+    <button class="parar todo" id="botonPararAtacar">parar de atacar</button>
+    <button class="turno todo" id="terminarTurno">terminar turno</button>
+    <div id="jugadorActual"></div>
+    <br><br>
+    <button id="moverfichas">Mover Fichas</button>
+
+  </div>
+  <div class="Menu todo">
     <select id="menuasia" class="menuaisa" disabled>
       <option value="Selecionaropcion">Selecionar opcion en Asia</option>
       <option value="1">1</option>
@@ -83,30 +86,30 @@
       <option value="2">2</option>
     </select>
   </div>
+
+  <button class="parar botonCambioFase todo" id="Parar"> Parar de atacar</button>
+  <button class="terminar botonCambioFase todo">Terminar turno</button>
+  <button class="tirar1 todo" id="tirar1" style="border: 70px;">tirar dados atacante</button>
+  <button class="tirar2 todo" id="tirar2" style="border: 70px;">tirar dados atacado</button>
+  <button id="recordar" class="recordar todo">Recordar Objetivo</button>
+  <button id="revelar" class="revelar todo">Revelar Cartas</button>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2>Información recibida</h2>
+      <p id="popupData">Esperando datos...</p>
+    </div>
   </div>
-    <button class="parar botonCambioFase todo" id="Parar"  > Parar de atacar</button>
-    <button class="terminar botonCambioFase todo" >Terminar turno</button>
-<button class="tirar1 todo" id="tirar1" style="border: 70px;" >tirar dados atacante</button>
-<button class="tirar2 todo" id="tirar2" style="border: 70px;" >tirar dados atacado</button>
-<button id="recordar" class="recordar todo">Recordar Objetivo</button>
-<button id="revelar" class="revelar todo">Revelar Cartas</button>
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span id="closePopup" class="close">&times;</span>
-    <h2>Información recibida</h2>
-    <p id="popupData">Esperando datos...</p>
+  <!-- aca va el popup  -->
+  <button class="todo revelar" id="revelar">Revelar Cartas</button>
+
+  <h1 id="timer">04:00</h1>
+
+  <div id="mainGame" style="padding:20px; background:#eee;">
+    <p>Juego en curso...</p>
   </div>
-</div>
-<!-- aca va el popup  -->
-<button class="todo revelar" id="revelar">Revelar Cartas</button>
 
-<h1 id="timer">04:00</h1>
-
-<div id="mainGame" style="padding:20px; background:#eee;">
-  <p>Juego en curso...</p>
-</div>
-
-<div id="pauseOverlay" style="
+  <div id="pauseOverlay" style="
   display:none; 
   position:fixed; 
   top:0; left:0; width:100%; height:100%; 
@@ -114,94 +117,111 @@
   justify-content:center; 
   align-items:center; 
   z-index:999;">
-  <div style="background:white; padding:20px; border-radius:8px;">
-    <button id="boton1">Reglamento</button>
-    <button id="boton2">Reanudar</button>
-    <button id="boton3">Guardar y salir</button>
-  </div>
-</div>
-
-
-<img alt="pausa" src="../imagenes/botonpausa.svg" class="pausar-partida todo" id="pauseBtn"></img>
-   <div id="paisselecionado" class="paises">
-      <div class="linea-medio"></div>
-      <img src="../imagenes/image 2.svg" alt="fondo del costado" class="fondo-costado"></img>
-    
-
-  <div class="americadelsur">
-    <div class="argentina" id="argentina">Argentina</div><span class="fichas fichas-argentina" id="fichas-argentina">1</span>
-    <div class="chile" id="chile">Chile</div><span class="fichas fichas-chile" id="fichas-chile">1</span>
-    <div class="uruguay" id="uruguay">Uruguay</div><span class="fichas fichas-uruguay" id="fichas-uruguay">1</span>
-    <div class="brasil" id="brasil">Brasil</div><span class="fichas fichas-brasil" id="fichas-brasil">1</span>
-    <div class="peru" id="peru">Perú</div><span class="fichas fichas-peru" id="fichas-peru">1</span>
-    <div class="colombia" id="colombia">Colombia</div><span class="fichas fichas-colombia" id="fichas-colombia">1</span>
+    <div style="background:white; padding:20px; border-radius:8px;">
+      <button id="boton1">Reglamento</button>
+      <button id="boton2">Reanudar</button>
+      <button id="boton3">Guardar y salir</button>
+    </div>
   </div>
 
 
-   <div class="Europa">
-    <div class="islandia" id="islandia">Islandia</div><span class="fichas fichas-islandia" id="fichas-islandia">1</span>
-    <div class="inglaterra" id="inglaterra">Gran Bretaña</div><span id="fichas-bretana" class="fichas fichas-bretaña">1</span>
-    <div class="espana" id="espana">España</div><span class="fichas fichas-españa" id="fichas-espana">1</span>
-    <div class="francia" id="francia">Francia</div><span id="fichas-francia" class="fichas fichas-francia">1</span>
-    <div class="alemania" id="alemania">Alemania</div><span class="fichas fichas-alemania" id="fichas-alemania">1</span>
-    <div class="italia" id="italia">Italia</div><span class="fichas fichas-italia" id="fichas-italia">1</span>
-    <div class="polonia" id="polonia">Polonia</div><span class="fichas fichas-polonia" id="fichas-polonia">1</span>
-    <div class="rusia" id="rusia">Rusia</div><span class="fichas fichas-rusia" id="fichas-rusia">1</span>
-    <div class="suecia" id="suecia">Suecia</div><span class="fichas fichas-suecia" id="fichas-suecia">1</span>
-  </div>
+  <img alt="pausa" src="../imagenes/botonpausa.svg" class="pausar-partida todo" id="pauseBtn"></img>
+  <div id="paisselecionado" class="paises">
+    <div class="linea-medio"></div>
+    <img src="../imagenes/image 2.svg" alt="fondo del costado" class="fondo-costado"></img>
 
 
-  <div class="Oceania">
-    <div class="australia" id="australia">Australia</div><span id="fichas-australia" class="fichas fichas-australia">1</span>
-    <div class="sumatra" id="sumatra">Sumatra</div><span id="fichas-sumatra" class="fichas fichas-sumatra">1</span>
-    <div class="java" id="java">Java</div><span id="fichas-java" class="fichas fichas-java">1</span>
-    <div class="borneo" id="borneo">Borneo</div><span class="fichas fichas-borneo" id="fichas-borneo">1</span> 
-  </div>
-   
+    <div class="americadelsur">
+      <div class="argentina" id="argentina">Argentina</div><span class="fichas fichas-argentina"
+        id="fichas-argentina">1</span>
+      <div class="chile" id="chile">Chile</div><span class="fichas fichas-chile" id="fichas-chile">1</span>
+      <div class="uruguay" id="uruguay">Uruguay</div><span class="fichas fichas-uruguay" id="fichas-uruguay">1</span>
+      <div class="brasil" id="brasil">Brasil</div><span class="fichas fichas-brasil" id="fichas-brasil">1</span>
+      <div class="peru" id="peru">Perú</div><span class="fichas fichas-peru" id="fichas-peru">1</span>
+      <div class="colombia" id="colombia">Colombia</div><span class="fichas fichas-colombia"
+        id="fichas-colombia">1</span>
+    </div>
+
+
+    <div class="Europa">
+      <div class="islandia" id="islandia">Islandia</div><span class="fichas fichas-islandia"
+        id="fichas-islandia">1</span>
+      <div class="inglaterra" id="inglaterra">Gran Bretaña</div><span id="fichas-bretana"
+        class="fichas fichas-bretaña">1</span>
+      <div class="espana" id="espana">España</div><span class="fichas fichas-españa" id="fichas-espana">1</span>
+      <div class="francia" id="francia">Francia</div><span id="fichas-francia" class="fichas fichas-francia">1</span>
+      <div class="alemania" id="alemania">Alemania</div><span class="fichas fichas-alemania"
+        id="fichas-alemania">1</span>
+      <div class="italia" id="italia">Italia</div><span class="fichas fichas-italia" id="fichas-italia">1</span>
+      <div class="polonia" id="polonia">Polonia</div><span class="fichas fichas-polonia" id="fichas-polonia">1</span>
+      <div class="rusia" id="rusia">Rusia</div><span class="fichas fichas-rusia" id="fichas-rusia">1</span>
+      <div class="suecia" id="suecia">Suecia</div><span class="fichas fichas-suecia" id="fichas-suecia">1</span>
+    </div>
+
+
+    <div class="Oceania">
+      <div class="australia" id="australia">Australia</div><span id="fichas-australia"
+        class="fichas fichas-australia">1</span>
+      <div class="sumatra" id="sumatra">Sumatra</div><span id="fichas-sumatra" class="fichas fichas-sumatra">1</span>
+      <div class="java" id="java">Java</div><span id="fichas-java" class="fichas fichas-java">1</span>
+      <div class="borneo" id="borneo">Borneo</div><span class="fichas fichas-borneo" id="fichas-borneo">1</span>
+    </div>
+
     <div class="Africa">
       <div id="sahara" class="sahara">Sahara</div><span id="fichas-sahara" class="fichas fichas-sahara">1</span>
       <div id="egipto" class="egipto">Egipto</div><span id="fichas-egipto" class="fichas fichas-egipto">1</span>
       <div id="etiopia" class="etiopia">Etiopía</div><span id="fichas-etiopia" class="fichas fichas-etiopia">1</span>
-      <div id="zaire" class="zaire">Zaire</div><span id="fichas-zaire"  class="fichas fichas-zaire">1</span>
-      <div class="sudafrica" id="sudafrica">Sudáfrica</div><span id="fichas-sudafrica" class="fichas fichas-sudafrica">1</span>
-      <div class="madagascar" id="madagascar">Madagascar</div><span id="fichas-madagascar" class="fichas fichas-madagascar">1</span>
+      <div id="zaire" class="zaire">Zaire</div><span id="fichas-zaire" class="fichas fichas-zaire">1</span>
+      <div class="sudafrica" id="sudafrica">Sudáfrica</div><span id="fichas-sudafrica"
+        class="fichas fichas-sudafrica">1</span>
+      <div class="madagascar" id="madagascar">Madagascar</div><span id="fichas-madagascar"
+        class="fichas fichas-madagascar">1</span>
     </div>
-   
-   
-  <div class="Americadelnorte">
-    <div id="alaska" class="alaska">Alaska</div><span id="fichas-alaska" class="fichas fichas-alaska">1</span> 
-    <div id="canada" class="canada">Canadá</div><span id="fichas-canada" class="fichas fichas-canada">1</span>
-    <div class="groenlandia" id="groenlandia">Groenlandia</div><span id="fichas-groenlandia" class="fichas fichas-groenlandia">1</span>
-    <div class="terranova" id="terranova">Terranova</div><span id="fichas-terranova"class="fichas fichas-terranova">1</span>
-    <div id="mexico" class="mexico">México</div><span id="fichas-mexico" class="fichas fichas-mexico">1</span>
-    <div class="california" id="california">California</div><span id="fichas-california" class="fichas fichas-california">1</span>
-    <div id="labrador" class="labrador">Labrador</div><span id="fichas-labrador" class="fichas fichas-labrador">1</span>
-    <div id="oregon" class="oregon" >Oregón</div><span id="fichas-oregon" class="fichas fichas-oregon">1</span>
-    <div id="nuevaYork" class="nuevaYork">Nueva York</div><span id="fichas-nuevaYork" class="fichas fichas-nuevaYork">1</span>
-    <div id="yukon" class="yukon">Yukón</div><span id="fichas-yukon" class="fichas fichas-yukon">1</span>
-  </div>
-   
-   
-  <div class="Asia">
-    <div id="china" class="china">China</div><span id="fichas-china" class="fichas fichas-china">1</span>
-    <div id="japon" class="japon">Japón</div><span id="fichas-japon" class="fichas fichas-japon">1</span>
-    <div id="iran" class="iran">Irán</div><span id="fichas-iran" class="fichas fichas-iran">1</span>
-    <div id="israel" class="israel">Israel</div><span id="fichas-israel"class="fichas fichas-israel">1</span>
-    <div id="arabia" class="arabia">Arabia</div><span id="fichas-arabia" class="fichas fichas-arabia">1</span>
-    <div id="turquia" class="turquia">Turquía</div><span id="fichas-turquia" class="fichas fichas-turquia">1</span>
-    <div id="tartaria" class="tartaria">Tartaria</div><span id="fichas-tartaria" class="fichas fichas-tartaria">1</span>
-    <div id="kamchatka" class="kamchatka">Kamchatka</div><span id="fichas-kamchatka" class="fichas fichas-kamchatka">1</span>
-    <div id="taimir" class="taimir">Taymir</div><span id="fichas-taimir" class="fichas fichas-taimir">1</span>
-    <div id="gobi" class="gobi">Gobi</div><span id="fichas-gobi" class="fichas fichas-gobi">1</span>
-    <div id="india" class="india">India</div><span id="fichas-india" class="fichas fichas-india">1</span>
-    <div id="malasia" class="malasia">Malasia</div><span id="fichas-malasia" class="fichas fichas-malasia">1</span>
-    <div id="siberia" class="siberia">Siberia</div><span id="fichas-siberia"class="fichas fichas-siberia">1</span>
-    <div id="aral" class="aral">Aral</div><span id="fichas-aral" class="fichas fichas-aral">1</span>
-    <div id="mongolia" class="mongolia">Mongolia</div><span id="fichas-mongolia" class="fichas fichas-mongolia">1</span>
 
 
-</div>
+    <div class="Americadelnorte">
+      <div id="alaska" class="alaska">Alaska</div><span id="fichas-alaska" class="fichas fichas-alaska">1</span>
+      <div id="canada" class="canada">Canadá</div><span id="fichas-canada" class="fichas fichas-canada">1</span>
+      <div class="groenlandia" id="groenlandia">Groenlandia</div><span id="fichas-groenlandia"
+        class="fichas fichas-groenlandia">1</span>
+      <div class="terranova" id="terranova">Terranova</div><span id="fichas-terranova"
+        class="fichas fichas-terranova">1</span>
+      <div id="mexico" class="mexico">México</div><span id="fichas-mexico" class="fichas fichas-mexico">1</span>
+      <div class="california" id="california">California</div><span id="fichas-california"
+        class="fichas fichas-california">1</span>
+      <div id="labrador" class="labrador">Labrador</div><span id="fichas-labrador"
+        class="fichas fichas-labrador">1</span>
+      <div id="oregon" class="oregon">Oregón</div><span id="fichas-oregon" class="fichas fichas-oregon">1</span>
+      <div id="nuevaYork" class="nuevaYork">Nueva York</div><span id="fichas-nuevaYork"
+        class="fichas fichas-nuevaYork">1</span>
+      <div id="yukon" class="yukon">Yukón</div><span id="fichas-yukon" class="fichas fichas-yukon">1</span>
+    </div>
 
 
-  </body>
+    <div class="Asia">
+      <div id="china" class="china">China</div><span id="fichas-china" class="fichas fichas-china">1</span>
+      <div id="japon" class="japon">Japón</div><span id="fichas-japon" class="fichas fichas-japon">1</span>
+      <div id="iran" class="iran">Irán</div><span id="fichas-iran" class="fichas fichas-iran">1</span>
+      <div id="israel" class="israel">Israel</div><span id="fichas-israel" class="fichas fichas-israel">1</span>
+      <div id="arabia" class="arabia">Arabia</div><span id="fichas-arabia" class="fichas fichas-arabia">1</span>
+      <div id="turquia" class="turquia">Turquía</div><span id="fichas-turquia" class="fichas fichas-turquia">1</span>
+      <div id="tartaria" class="tartaria">Tartaria</div><span id="fichas-tartaria"
+        class="fichas fichas-tartaria">1</span>
+      <div id="kamchatka" class="kamchatka">Kamchatka</div><span id="fichas-kamchatka"
+        class="fichas fichas-kamchatka">1</span>
+      <div id="taimir" class="taimir">Taymir</div><span id="fichas-taimir" class="fichas fichas-taimir">1</span>
+      <div id="gobi" class="gobi">Gobi</div><span id="fichas-gobi" class="fichas fichas-gobi">1</span>
+      <div id="india" class="india">India</div><span id="fichas-india" class="fichas fichas-india">1</span>
+      <div id="malasia" class="malasia">Malasia</div><span id="fichas-malasia" class="fichas fichas-malasia">1</span>
+      <div id="siberia" class="siberia">Siberia</div><span id="fichas-siberia" class="fichas fichas-siberia">1</span>
+      <div id="aral" class="aral">Aral</div><span id="fichas-aral" class="fichas fichas-aral">1</span>
+      <div id="mongolia" class="mongolia">Mongolia</div><span id="fichas-mongolia"
+        class="fichas fichas-mongolia">1</span>
+
+
+    </div>
+
+
+</body>
+
 </html>

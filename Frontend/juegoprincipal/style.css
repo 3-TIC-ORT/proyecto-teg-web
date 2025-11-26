@@ -80,8 +80,8 @@ left: 17%;
  
 }
 .color-jugador{
-  border: 3% solid black;
-  border-color: #000;
+ border-radius: 10px;
+border: 4px solid #000;
   position: absolute;
   background-color: red;
   top: 1%;
@@ -107,14 +107,7 @@ height: 3%;
 
 }
 
-button {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
+
  .relleno1{
   background-color:#1ABFED ;
   position: absolute;
@@ -139,7 +132,7 @@ button {
   position: absolute;
   top: 0%;
   left: 95%;
-  width: 17%;
+  width: 5.7%;
   height: 102.5%;
   display: flex;
   flex-direction: column;
@@ -184,12 +177,13 @@ width: 7%;
 position: absolute;
 top: 15%;
 left: .05%;
-border-color: #000;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 }
 .Reagrupar{
-border-color: black;
-border-bottom: 10px;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 position: absolute;
 height: 5%;
@@ -200,22 +194,22 @@ left: 9%;
 
 
 .Reponer{
-border-color: black;
-border-bottom: 10px;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 position: absolute;
-height: 5%;
+height: 6%;
 width: 7%;
 top: 22%;
 left: .05%;
 }
 .Canjear{
-border-color: black;
-border-bottom: 10px;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 position: absolute;
 width: 7%;
-height: 5% ;
+height: 6% ;
 top: 22%;
 left: 9%;
 }
@@ -240,8 +234,8 @@ top: 95%;
 left: .5%;
 }
 .parar{
-border-color: black;
-border-bottom: 10px;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 position: absolute;
 width: 7%;
@@ -250,8 +244,8 @@ top: 400px;
 left: .05%;
 }
 .terminar{
-border-color: black;
-border-bottom: 10px;
+border-radius: 20px;
+border: 4px solid #000;
 background-color: #fff;
 position: absolute;
 width: 7%;
@@ -260,6 +254,8 @@ top: 400px;
 left: 9%;
 }
 .tirar1{
+border-radius: 20px;
+border: 4px solid #000;
 width: 7%;
 height: 10%;
 position: absolute;
@@ -267,6 +263,8 @@ top: 55%;
 left: .05%;
 }
 .tirar2{
+  border-radius: 20px;
+border: 4px solid #000;
 width: 7%;
 height: 10%;
 position: absolute;
@@ -279,8 +277,12 @@ height: 10%;
 position: absolute;
 top: 70%;
 left: .05%;
+border-radius: 20px;
+border: 4px solid #000;
 }
 .recordar{
+  border-radius: 20px;
+border: 4px solid #000;
 width: 16%;
 height: 10%;
 position: absolute;
