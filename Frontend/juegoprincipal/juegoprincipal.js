@@ -16,81 +16,83 @@ let terminar = document.getElementById ("Terminar turno")
 let paisselecionado = document.getElementById("paisselecionado")
 let jugador1 = document.getElementById ("")
 // timer
-document.addEventListener("DOMContentLoaded", () => {
+ // 🕒 Configuración inicial
+let targetDate = new Date();
+targetDate.setSeconds(targetDate.getSeconds() + 240); // 4 minutos
+let paused = false;
+let remainingTime = 240000; // 4 minutos en ms
+let timerInterval;
 
-  // Timer inicial
-  let fecha = new Date();
-  fecha.setSeconds(fecha.getSeconds() + 240);
-  let tiempoRestante = 240000;
-  let timerInterval;
-  let pausado = false;
+// 🔁 Actualiza el temporizador
+function updateTimer() {
+  if (paused) return;
 
-  const timer = document.getElementById("timer");
-  const pauseBtn = document.getElementById("pauseBtn");
-  const overlay = document.getElementById("pauseOverlay");
-  const fondo = document.getElementById("maingame");
-  const botonReanudar = document.getElementById("boton2");
+  let now = new Date();
+  let diff = targetDate - now;
 
-  function actualizarTimer() {
-    if (pausado) return;
-
-    let ahora = new Date();
-    let differencia = fecha - ahora;
-
-    if (differencia <= 0) {
-      timer.textContent = "¡Tiempo terminado!";
-      clearInterval(timerInterval);
-      return;
-    }
-
-    let minutos = Math.floor(differencia / 60000);
-    let segundos = Math.floor((differencia % 60000) / 1000);
-
-    timer.textContent =
-      String(minutos).padStart(2, "0") + ":" +
-      String(segundos).padStart(2, "0");
-  }
-
-  function iniciarTimer() {
+  if (diff <= 0) {
+    document.getElementById("timer").textContent = "¡Tiempo terminado!";
     clearInterval(timerInterval);
-    timerInterval = setInterval(actualizarTimer, 1000);
-    actualizarTimer();
+    return;
   }
 
-  iniciarTimer();
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+  document.getElementById("timer").textContent =
+    String(minutes).padStart(2, '0') + ":" +
+    String(seconds).padStart(2, '0');
+}
 
-  pauseBtn.addEventListener("click", () => {
-    console.log("▶ CLICK PAUSA");
+// ⏳ Iniciar temporizador automáticamente
+timerInterval = setInterval(updateTimer, 1000);
+updateTimer(); // Mostrar el tiempo inmediatamente
 
-    if (!pausado) {
-      pausado = true;
-      tiempoRestante = fecha - new Date();
-      clearInterval(timerInterval);
+// 🔘 Elementos
+const pauseBtn = document.getElementById("pauseBtn");
+const overlay = document.getElementById("pauseOverlay");
+const botonReglamento = document.getElementById("boton1");
+const botonReanudar = document.getElementById("boton2");
+const botonGuardar = document.getElementById("boton3");
 
-      overlay.style.display = "flex";
-      fondo.style.display = "none";
-
-      console.log("⏸ PAUSADO, TIEMPO:", tiempoRestante);
-    }
-  });
-  botonReanudar.addEventListener("click", () => {
-    console.log("REANUDAR");
-
-    if (pausado) {
-      pausado = false;
-      fecha = new Date(new Date().getTime() + tiempoRestante);
-
-      overlay.style.display = "none";
-      fondo.style.display = "block";
-
-      iniciarTimer();
-
-      console.log("REANUDADO");
-    }
-  });
-
+// 🟠 Botón de Pausa
+pauseBtn.addEventListener("click", function () {
+  paused = true;
+  clearInterval(timerInterval);
+  remainingTime = targetDate - new Date();
+  overlay.style.display = "flex";
+  if(pauseBtn===true){
+  PostEvent ("cantidadJugadores",{cantidadJugadores})
+    
+    PostEvent ("faseDeEstados",{fase})
+    
+    PostEvent("jugador",{jugador})
+    
+    PostEvent("jugadores", {jugadores})
+  }
 });
+
+// 🟢 Botón de Reanudar
+botonReanudar.addEventListener("click", function () {
+  paused = false;
+  targetDate = new Date(new Date().getTime() + remainingTime);
+  timerInterval = setInterval(updateTimer, 1000);
+  overlay.style.display = "none";
+});
+
+
+botonReglamento.addEventListener("click", function () {
+  window.open("../reglamento/reglamento.html");
+});
+
+
+botonGuardar.addEventListener("click", function () {
+  window.location.href = "../menu%20principal/menuprincipal.html";
+});
+
+//ejemplo de get event
+getEvent ("timer", targetDate)
+//termine el  timer
 //esto es para estandarizar los nombres de cosas
 function idFromName(nombre) {
   return nombre
