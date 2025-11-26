@@ -63,59 +63,42 @@ window.onload = () => {
     // Intentar parsear JSON
     let parsed = {};
     try {
-      parsed = JSON.parse(coloresRaw);
+      parsed = JSON.parse(coloresRaw)
     } catch (e) {
-      parsed = {};
+      parsed = {}
     }
-
-    // El formato guardado es un objeto con claves "1", "2", etc.
     for (let idx = 1; idx <= cantidad; idx++) {
-        const key = String(idx);
-        coloresJugadores.push(parsed[key] || null);
+        const key = String(idx)
+        coloresJugadores.push(parsed[key] || null)
     }
   }
-
-  // Asegurar longitud correcta rellenando con nulls si falta
-  while (coloresJugadores.length < cantidad) coloresJugadores.push(null);
-
-  // Generar lista de jugadores simples ("Jugador 1", ...)
-  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`);
-
-  // Mezclar objetivos
-  let mezcla = objectives.slice().sort(() => 0.5 - Math.random());
-
-  // Asignar objetivos evitando "destruir su propio color" cuando sea posible
+  while (coloresJugadores.length < cantidad) coloresJugadores.push(null)
+  selectedPlayers = Array.from({ length: cantidad }, (_, idx) => `Jugador ${idx + 1}`)
+  let mezcla = objectives.slice().sort(() => 0.5 - Math.random())
   selectedPlayers.forEach((player, idx) => {
-    const colorJugador = coloresJugadores[idx]; // puede ser null
-    let objetivoProhibido = colorJugador ? `Destruir al ejército ${colorJugador}` : null;
-
-    // Buscar objetivo válido
-    let objetivoAsignado = mezcla.find(obj => objetivoProhibido ? obj.toLowerCase() !== objetivoProhibido.toLowerCase() : true);
-
-    // Si no hay (caso absurdo), elegir uno que no empiece con "Destruir" si es posible
+    const colorJugador = coloresJugadores[idx]
+    let objetivoProhibido = colorJugador ? `Destruir al ejército ${colorJugador}` : null
+    let objetivoAsignado = mezcla.find(obj => objetivoProhibido ? obj.toLowerCase() !== objetivoProhibido.toLowerCase() : true)
     if (!objetivoAsignado) {
       objetivoAsignado = mezcla.find(obj => !obj.toLowerCase().startsWith("destruir")) || mezcla[0];
     }
-
-    playerObjectives[player] = objetivoAsignado;
-    mezcla = mezcla.filter(obj => obj !== objetivoAsignado);
-  });
-
-  showNextPlayer();
-};
-
+    playerObjectives[player] = objetivoAsignado
+    mezcla = mezcla.filter(obj => obj !== objetivoAsignado)
+  })
+  showNextPlayer()
+}
 function showNextPlayer() {
   let player = selectedPlayers[i];
   document.getElementById("reveal-instructions").innerHTML =
     `¡MÍRALO RÁPIDO Y NO LO COMPARTAS!<br>Y ¡ASEGÚRATE QUE NADIE ESTÉ VIENDO!<br><br>
     TODOS CIERRAN LOS OJOS EXCEPTO <b>${player.toUpperCase()}</b><br>
-    CUANDO TODOS CIERREN LOS OJOS, <b>${player.toUpperCase()}</b> DEBE APRETAR EL BOTÓN`;
+    CUANDO TODOS CIERREN LOS OJOS, <b>${player.toUpperCase()}</b> DEBE APRETAR EL BOTÓN`
 
-  document.getElementById("objective").style.display = "none";
-  const btn = document.getElementById("action-button");
-  btn.innerText = "REVELAR OBJETIVO SECRETO";
-  btn.onclick = showObjective;
-  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("objective").style.display = "none"
+  const btn = document.getElementById("action-button")
+  btn.innerText = "REVELAR OBJETIVO SECRETO"
+  btn.onclick = showObjective
+  document.getElementById("overlay").style.display = "flex"
 }
 
 function showObjective() {
